@@ -1,10 +1,10 @@
-drop user wdist;
+drop user wdist cascade;
 create user wdist identified by 1234;
 grant dba to wdist;
 connect wdist/1234;
 
 drop table Reply;
-drop table File;
+drop table Files;
 drop table FileGroup;
 drop table Board;
 drop table Users;
@@ -39,7 +39,7 @@ CREATE TABLE FileGroup(
 /**********************************/
 /* Table Name: File */
 /**********************************/
-CREATE TABLE File(
+CREATE TABLE Files(
 		FileNum INT,
 		FileName VARCHAR(100) NOT NULL,
 		HashValue VARCHAR(100) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE Reply(
 		UsersID VARCHAR(15) NOT NULL,
 		Contents VARCHAR(1000),
 		PostDate DATE NOT NULL,
-		ReplyNum VARCHAR(10),
+		ReplyNums VARCHAR(10),
 		BoardNum INT
 );
 
@@ -69,5 +69,5 @@ ALTER TABLE Reply ADD CONSTRAINT IDX_Reply_FK1 FOREIGN KEY (UsersID) REFERENCES 
 ALTER TABLE FileGroup ADD CONSTRAINT IDX_FileGroup_PK PRIMARY KEY (FileGroupNum);
 ALTER TABLE FileGroup ADD CONSTRAINT IDX_FileGroup_FK0 FOREIGN KEY (BoardNum) REFERENCES Board (BoardNum);
 
-ALTER TABLE File ADD CONSTRAINT IDX_File_PK PRIMARY KEY (FileNum);
-ALTER TABLE File ADD CONSTRAINT IDX_File_FK0 FOREIGN KEY (FileGroupNum) REFERENCES FileGroup (FileGroupNum);
+ALTER TABLE Files ADD CONSTRAINT IDX_File_PK PRIMARY KEY (FileNum);
+ALTER TABLE Files ADD CONSTRAINT IDX_File_FK0 FOREIGN KEY (FileGroupNum) REFERENCES FileGroup (FileGroupNum);
