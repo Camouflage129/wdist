@@ -44,6 +44,7 @@ CREATE TABLE Files(
 		FileName VARCHAR(100) NOT NULL,
 		HashValue VARCHAR(100) NOT NULL,
 		FileGroupNum INT
+		FileSize INT
 );
 /**********************************/
 /* Table Name: Reply */

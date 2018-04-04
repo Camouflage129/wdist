@@ -12,20 +12,35 @@
 	<context:component-scan base-package="com.wdist.biz.*"></context:component-scan>
 
 	<!-- Spring -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"></property>
-		<property name="username" value="scott"></property>
-		<property name="password" value="tiger"></property>
+	<bean id="dataSourceLinux" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.apache.hive.jdbc.HiveDriver"></property>
+		<property name="url" value="jdbc:hive2://70.12.109.53:10000"></property>
+		<property name="username" value="hive"></property>
+		<property name="password" value="1234"></property>
+	</bean>
+			
+	<!-- MyBatis -->
+	<bean id="sqlSessionLinux" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceLinux"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	<bean id="sqlSessionTemplateLinux" class="org.mybatis.spring.SqlSessionTemplate"
+		c:sqlSessionFactory-ref="sqlSessionLinux"></bean>
+	
+	<bean id="dataSourceWindow" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://70.12.109.78:3306/wdist"></property>
+		<property name="username" value="wdist"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 		
 	<!-- MyBatis -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
+	<bean id="sqlSessionWindow" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceWindow"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
-		c:sqlSessionFactory-ref="sqlSession"></bean>
+	<bean id="sqlSessionTemplateWindow" class="org.mybatis.spring.SqlSessionTemplate"
+		c:sqlSessionFactory-ref="sqlSessionWindow"></bean>
 		
 	<!-- AOP Annotation -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
