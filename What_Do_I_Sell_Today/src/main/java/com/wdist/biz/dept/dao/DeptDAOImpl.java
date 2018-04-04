@@ -14,7 +14,7 @@ import com.wdist.biz.mybatis.mapper.DeptMapper;
 
 @Component
 public class DeptDAOImpl implements DeptDAO{
-	@Resource(name="sqlSessionTemplateWindow")
+	@Resource(name="sqlSessionTemplateLinux")
 	SqlSession mybatis;
 	DeptMapper mapper;
 	
