@@ -55,30 +55,28 @@
 					<h5 class="modal-title">Login</h5>
 				</div>
 				<div class="modal-body">
-				
-				<!-- 부트스트랩 로그인창 -->
-					<div class="form-group">
+
+					<!-- 부트스트랩 로그인창 -->
+					<!-- 				<div class="form-group">
 						<fieldset>
 							<label class="control-label" for="readOnlyInput">Readonly
 								input</label> <input class="form-control" id="readOnlyInput" type="text"
 								placeholder="Readonly input here…" readonly="">
 						</fieldset>
 					</div>
-
+ -->
 					<div class="form-group has-success">
-						<label class="form-control-label" for="inputSuccess1">유1효한
-							입력</label> <input type="text" value="" class="form-control is-valid"
-							id="inputValid" autofocus placeholder="ID 입력">
-						<div class="valid-feedback">Success! You've done it.</div>
+						<label class="form-control-label" for="inputSuccess1">ID</label> <input
+							type="text" value="" class="form-control is-valid"
+							id="inputValid" autofocus placeholder="아이디를 입력해주세요">
+						<div class="valid-feedback"></div>
 					</div>
 
 					<div class="form-group has-danger">
-						<label class="form-control-label" for="inputDanger1">유효하지
-							않은 입력1</label> <input type="text" value=""
+						<label class="form-control-label" for="inputDanger1">Password</label> <input type="text" value=""
 							class="form-control is-invalid" id="inputInvalid" autofocus
-							placeholder="Password">
-						<div class="invalid-feedback">Sorry, that username's taken.
-							Try another?</div>
+							placeholder="비밀번호를 입력해주세요.">
+						<div class="invalid-feedback"></div>
 					</div>
 
 				</div>
