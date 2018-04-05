@@ -66,7 +66,7 @@
 					</div>
 
 					<div class="form-group has-success">
-						<label class="form-control-label" for="inputSuccess1">유효한
+						<label class="form-control-label" for="inputSuccess1">유1효한
 							입력</label> <input type="text" value="" class="form-control is-valid"
 							id="inputValid" autofocus placeholder="ID 입력">
 						<div class="valid-feedback">Success! You've done it.</div>
