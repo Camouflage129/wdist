@@ -1,0 +1,33 @@
+.logo {
+	width: 50%;
+	height: 100%;
+}
+
+.nav-item {
+	margin-right: 30px;
+}
+
+.navbar-collapse {
+	color: white;
+}
+
+.navbar-collapse a {
+	color: white;
+	text-decoration: none;
+} 
+
+.main {
+	color: white;
+	border: black;
+	background: black;
+	text-align: center;
+}
+
+.card-img-top {
+	align-self: center;
+}
+
+.mainImage {
+	width : 80%;
+	height : 80%;
+}
