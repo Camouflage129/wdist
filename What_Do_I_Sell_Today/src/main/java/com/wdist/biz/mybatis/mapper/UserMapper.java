@@ -20,10 +20,5 @@ public interface UserMapper {
 	@Select("select * from users where id = #{id}")
 	public UserVO login(UserVO vo);
 
-/*	@Select("select id from users where name = #{name} and email = #{email}")
-	public List<String> idFind(UserVO vo);
 
-	@Select("select pw from users where id = #{id} and name = #{name} and email = #{email}")
-	public String pwFind(UserVO vo);
-*/
 }
