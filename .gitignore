@@ -1,3 +1,6 @@
-m2e-wtp/
-MANIFEST.MF
+.classpath
+.project
+.springBeans
+.tern-project
 pom.properties
+MANIFEST.MF
