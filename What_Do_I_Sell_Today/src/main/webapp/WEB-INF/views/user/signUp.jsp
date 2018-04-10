@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/signUp.js?ver=2"></script>
 <title>SignUp</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
 						placeholder="사용할 ID를 입력하세요." required="required" />
 				  	</div>
 				  	<div class="col-sm-4" style="position:absolute; right:0px; bottom:0px;">
-					    <button id="id_check" type="button" class="btn btn-primary">ID중복확인</button>
+					    <button id="id_checkBtn" type="button" class="btn btn-primary">ID중복확인</button>
 				  	</div>
 			  	</div>
 			  </div>
@@ -62,7 +63,7 @@
 			</div>
 			
 			<div align="center">
-				<button id="joinBtn" type="button" class="btn btn-outline-success">가입하기</button>
+				<button id="signUpBtn" type="button" class="btn btn-outline-success">가입하기</button>
 				<button id="backBtn" type="button" class="btn btn-outline-secondary">취소</button>
 			</div>
 			

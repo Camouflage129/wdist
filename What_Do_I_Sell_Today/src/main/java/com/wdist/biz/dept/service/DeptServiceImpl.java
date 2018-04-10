@@ -2,15 +2,16 @@ package com.wdist.biz.dept.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.wdist.biz.dept.dao.DeptDAO;
 import com.wdist.biz.dept.vo.DeptVO;
 
-@Service
+@Service("deptService")
 public class DeptServiceImpl implements DeptService{
-	@Autowired
+	@Resource(name="deptDAO")
 	DeptDAO dao;
 	
 	@Override

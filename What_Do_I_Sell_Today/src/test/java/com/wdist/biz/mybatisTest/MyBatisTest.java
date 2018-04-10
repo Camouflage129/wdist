@@ -3,6 +3,8 @@ package com.wdist.biz.mybatisTest;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +19,7 @@ import com.wdist.biz.user.service.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class MyBatisTest {
-	@Autowired
+	@Resource(name="deptService")
 	DeptService service;
 
 	@Autowired

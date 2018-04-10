@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import com.wdist.biz.dept.vo.DeptVO;
 import com.wdist.biz.mybatis.mapper.DeptMapper;
 
-@Component
+@Component("deptDAO")
 public class DeptDAOImpl implements DeptDAO{
 	@Resource(name="sqlSessionTemplateLinux")
 	SqlSession mybatis;
