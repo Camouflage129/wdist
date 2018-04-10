@@ -17,7 +17,7 @@ import com.wdist.biz.user.vo.UserVO;
 @Controller
 public class UserController {
 	
-	@Resource(name="userService")
+	@Resource(name="UserService")
 	UserService service;
 	
 	@RequestMapping(value="/signUp.do", method=RequestMethod.POST)

@@ -1,17 +1,17 @@
 package com.wdist.biz.user.dao;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.wdist.biz.mybatis.mapper.UserMapper;
 import com.wdist.biz.user.vo.UserVO;
 
-@Component("UserVO")
+@Component("userDAO")
 public class UserDAOImpl implements UserDAO {
-	@Autowired
+	@Resource(name="sqlSessionTemplateWindow")
 	SqlSession mybatis;
 	UserMapper mapper;
 

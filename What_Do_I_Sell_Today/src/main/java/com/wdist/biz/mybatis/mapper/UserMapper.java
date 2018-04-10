@@ -19,6 +19,4 @@ public interface UserMapper {
 
 	@Select("select * from users where id = #{id}")
 	public UserVO login(UserVO vo);
-
-
 }
