@@ -19,8 +19,8 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
- -->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">--> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <style>
@@ -33,17 +33,36 @@
   	height:100%;
   	}
   	
- 	 a:link {text-decoration: none;}
-	 a:visited {text-decoration: none;}
- 	 a:hover {text-decoration: none;}
+ 	 a:link {
+ 	 	text-decoration: none;
+ 	 	
+ 	 }
+	 a:visited {
+	 	text-decoration: none;
+	 }
+ 	 a:hover {
+ 	 	text-decoration: none;
+ 	 	  
+ 	 }
   	
   </style>
+  
+  <script type="text/javascript">
+  $(function (){
+	  $(".button").click(function (){
+		  $("#divToggle").toggle(); 
+		  }); 
+	  
+	  $('tr').has('td').has('a').css('cursor', 'pointer');
+	  });
+ 
+    </script>
 </head>
 <body>
 
 <div class="container">
-  <h2>Bordered Table</h2>
-  <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>            
+  <h2>지역별 검색</h2>
+  <br>
   <table class="table table-bordered">
    <!--  <thead>
       <tr>
@@ -54,40 +73,57 @@
     </thead> -->
     <tbody>
       <tr>
-        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
-        <td>강동구</td>
-        <td>강북구</td>
-        <td>강서구</td>
-        <td>관악구</td>
-        <td>광진구</td>
-        <td>구로구</td>
+        <td><a class="button">강남구</a></td>
+        <td><a class="button">강동구</a></td>
+        <td><a class="button">강북구</a></td>
+        <td><a class="button">강서구</a></td>
+        <td><a class="button">관악구</a></td>
+        <td><a class="button">광진구</a></td>
+        <td><a class="button">구로구</a></td>
       </tr>
       <tr>
-        <td>금천구</td>
-        <td>노원구</td>
-        <td>도봉구</td>
-        <td>동대문구</td>
-        <td>동작구</td>
-        <td>마포구</td>
-        <td>서대문구</td>
+        <td><a class="button">금천구</a></td>
+        <td><a class="button">노원구</a></td>
+        <td><a class="button">도봉구</a></td>
+        <td><a class="button">동대문구</a></td>
+        <td><a class="button">동작구</a></td>
+        <td><a class="button">마포구</a></td>
+        <td><a class="button">서대문구</a></td>
       </tr>
       <tr>
-        <td>서초구</td>
-        <td>성동구</td>
-        <td>성북구</td>
-        <td>송파구</td>
-        <td>양천구</td>
-        <td>영등포구</td>
-        <td>용산구</td>
+        <td><a class="button">서초구</a></td>
+        <td><a class="button">성동구</a></td>
+        <td><a class="button">성북구</a></td>
+        <td><a class="button">송파구</a></td>
+        <td><a class="button">양천구</a></td>
+        <td><a class="button">영등포구</a></td>
+        <td><a class="button">용산구</a></td>
       </tr>
       <tr>
-        <td>은평구</td>
-        <td>종로구</td>
-        <td>중구</td>
-        <td>중랑구</td>
+        <td><a class="button">은평구</a></td>
+        <td><a class="button">종로구</a></td>
+        <td><a class="button">도봉구</a></td>
+        <td><a class="button">중구</a></td>
+        <td><a class="button">중랑구</a></td>
       </tr>
     </tbody>
   </table>
+</div>
+
+
+<div id="divToggle" style="display: none;">
+
+<table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">한식</a></td>
+        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">일식</a></td>
+        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">중식</a></td>
+        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">카페</a></td>
+        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">양식</a></td>
+      </tr>
+      </tbody>
+</table>
 </div>
 
 </body>

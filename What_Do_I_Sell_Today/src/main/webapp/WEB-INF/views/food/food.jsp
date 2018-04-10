@@ -22,8 +22,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <!-- table -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <style>
-	
+	table,tr,td{
+  		text-align:center;
+  	}
+  	table td a{
+  	display:block;
+  	width:100%;
+  	height:100%;
+  	}
+  	
+ 	 a:link {text-decoration: none;}
+	 a:visited {text-decoration: none;}
+ 	 a:hover {text-decoration: none;}
+ 	 
+ 	.card-header{
+ 		text-align: center;
+ 	}
+  	
+  	#accordion{
+  		width:50%;
+  	}
+  	
 </style>
 
 </head>
@@ -41,11 +66,17 @@
       </div>
       <div id="collapseOne" class="collapse show" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="index.jsp?content=WEB-INF/views/food/area_desc.jsp">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+         <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -57,11 +88,17 @@
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -73,11 +110,17 @@
       </div>
       <div id="collapseThree" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -90,11 +133,17 @@
       </div>
       <div id="collapseFour" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+       <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -107,11 +156,17 @@
       </div>
       <div id="collapseFive" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -124,11 +179,17 @@
       </div>
       <div id="collapseSix" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+       <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -141,11 +202,17 @@
       </div>
       <div id="collapseSeven" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -158,11 +225,17 @@
       </div>
       <div id="collapseEight" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -175,11 +248,17 @@
       </div>
       <div id="collapseNine" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>
@@ -192,11 +271,17 @@
       </div>
       <div id="collapseTen" class="collapse" data-parent="#accordion">
         <div class="card-body">
-        <p><a href="#">1.강남</a></p>
-        <p><a href="#">2.마포</a></p>
-        <p><a href="#">3.강서</a></p>
-        <p><a href="#">4.강북</a></p>
-        <p><a href="#">5.노원</a></p>
+        <table class="table table-bordered">
+        	<tbody>
+     		 	<tr>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강남구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강동구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강북구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">강서구</a></td>
+        			<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">관악구</a></td>
+      			</tr>
+    		</tbody>
+    	</table>
         </div>
       </div>
     </div>

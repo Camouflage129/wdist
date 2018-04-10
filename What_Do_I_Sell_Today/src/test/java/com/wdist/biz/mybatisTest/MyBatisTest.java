@@ -35,7 +35,7 @@ public class MyBatisTest {
 	public void login() {
 		UserVO vo = new UserVO("java01", "1234");
 		System.out.println("Ω√¿€");
-		boolean tmp=userservice.checkId(vo);
+		UserVO tmp=userservice.login("java01", "1234");
 		System.out.println(tmp);
 		
 	}
