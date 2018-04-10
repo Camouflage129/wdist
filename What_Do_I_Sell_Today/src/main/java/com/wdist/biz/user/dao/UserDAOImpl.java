@@ -40,17 +40,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public Boolean checkId(UserVO vo) {
-		UserVO user = mapper.login(vo);
-		if (user != null) {
-			return false;
-		} else {
+		String user = mapper.login(vo);
+		if (user != null && !user.equals("")) {
 			return true;
+		} else {
+			return false;
 		}
 
-	}
-	@Override
-	public String login(String id, String pw) {
-		return mapper.login();
 	}
 
 }

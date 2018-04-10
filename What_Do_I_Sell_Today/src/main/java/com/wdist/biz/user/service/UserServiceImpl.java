@@ -29,15 +29,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Boolean checkId(UserVO vo) {
 		return dao.checkId(vo);
+	
 	}
-	
-	@Override
-	public String login(String id, String pw) {
-		return dao.login(id,pw);
-	}
-
-	
-	
-	
 	
 }

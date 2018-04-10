@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.wdist.biz.dept.service.DeptService;
 import com.wdist.biz.dept.vo.DeptVO;
 import com.wdist.biz.user.service.UserService;
+import com.wdist.biz.user.vo.UserVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
@@ -32,15 +33,14 @@ public class MyBatisTest {
 	
 	@Test
 	public void login() {
-		String id = "ididid";
-		String pw = "wpwpwpwpwp";
+		UserVO vo = new UserVO("java01", "1234");
 		System.out.println("Ω√¿€");
-		String tmp=userservice.login(id, pw);
+		boolean tmp=userservice.checkId(vo);
 		System.out.println(tmp);
 		
 	}
 
-	@Test
+	//@Test
 	public void test() {
 		System.out.println(service.getDept());
 		List<DeptVO> table = service.getDept();
