@@ -49,9 +49,25 @@ public class UserDAOImpl implements UserDAO {
 		}
 
 	}
-	
+/*	
 	@Override
 	public String login(String id, String pw) {
 		return mapper.login(id);
+	}*/
+
+	@Override
+	public UserVO getUser(String uid) {
+		return mapper.getuser(uid);
 	}
+
+	@Override
+	public UserVO login(String id, String pw) {
+		UserVO vo = new UserVO();
+		vo.setId(id);
+		vo.setPw(pw);
+		return mapper.login(vo);
+	}
+	
+	
+	
 }

@@ -21,6 +21,13 @@ public interface UserMapper {
 	@Update("update users set pw = #{pw}, name = #{name}, email = #{email} where id = #{id}")
 	public int updateUser(UserVO vo);
 
-	@Select("select pw from users where id = #{id}")
-	public String login(String id);
+//	@Select("select pw from users where id = #{id}")
+//	public String login(String id);
+	
+    @Select("select * from users where id = #{id} and pw= #{pw}")
+    public UserVO login(UserVO vo);
+
+    @Select("select * from users where id = #{id}")
+    public UserVO getuser(String uid);
+	
 }

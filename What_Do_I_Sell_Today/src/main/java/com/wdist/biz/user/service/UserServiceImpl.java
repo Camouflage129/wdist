@@ -31,9 +31,22 @@ public class UserServiceImpl implements UserService {
 		return dao.checkId(vo);
 	}
 	
-	@Override
+/*	@Override
 	public String login(String id, String pw) {
 		return dao.login(id,pw);
+	}*/
+
+	@Override
+	public UserVO getUser(String uid) {
+		return dao.getUser(uid);
+	}
+
+	@Override
+	public UserVO login(String id, String pw) {
+		if(id.equals("") || id == null) {
+			throw new RuntimeException("로그인 정보가 필요합니다.");
+		}
+		return dao.login(id, pw);
 	}
 
 	
