@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wdist.biz.dept.service.DeptService;
 import com.wdist.biz.dept.vo.DeptVO;
+import com.wdist.biz.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
@@ -19,9 +20,22 @@ public class MyBatisTest {
 	@Autowired
 	DeptService service;
 
+	@Autowired
+	UserService userservice;
+	
 	@After
 	public void tearDown() throws Exception {
 		service = null;
+	}
+	
+	@Test
+	public void login() {
+		String id = "ididid";
+		String pw = "wpwpwpwpwp";
+		System.out.println("Ω√¿€");
+		String tmp=userservice.login(id, pw);
+		System.out.println(tmp);
+		
 	}
 
 	@Test
