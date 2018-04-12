@@ -8,66 +8,52 @@
 <title>SignUp</title>
 </head>
 <body>
-	<form>
-		<fieldset>
-			<div align="center">
-				<legend>회원가입</legend>
-			</div>
+<form>
+  <fieldset>
+  <div align="center">
+	<legend>회원가입</legend>
+  </div>
+  <div align="center">
+  <div class="col-md-6 col-md-offset-3" align="left">
+		<div id="idDiv" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">ID</label> 
+			<input id="id" type="text" class="form-control is-invalid" >
+			<div class="id_feedback"> ID를 입력해주세요.</div>
+		</div>
+		
+		<div id="nameDiv" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">Name</label> 
+			<input id="name" type="text" class="form-control is-invalid">
+			<div class="name_feedback">이름을 입력해주세요.</div>
+		</div>
 			
-			<div class="form-group" align="center">
-			  <div class="col-sm-6" align="left">
-			  	<div class="row">
-				  	<div class="col-md-10">
-						<label class="col-form-label" for="inputDefault">ID</labvel> 
-						<input id="id" type="text" class="form-control"
-						placeholder="사용할 ID를 입력하세요." required="required" />
-				  	</div>
-				  	<div class="col-sm-4" style="position:absolute; right:0px; bottom:0px;">
-					    <button id="id_checkBtn" type="button" class="btn btn-primary">ID중복확인</button>
-				  	</div>
-			  	</div>
-			  </div>
-			</div>
+		<div id="emailDiv" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">Email</label> 
+			<input id="email" type="text" class="form-control is-invalid">
+			<div class="email_feedback">이메일 주소를 입력해주세요.</div>
+		</div>
+					
+		<div id="pwDiv" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">Password</label> 
+			<input id="pw" type="text" class="form-control is-invalid">
+			<div class="pw_feedback">비밀번호를 입력해주세요.</div>
+		</div>
 
-			<div class="form-group" align="center">
-			  <div class="col-sm-6" align="left">
-				<label class="col-form-label" for="inputDefault">Name</label> <input
-					id="name" type="text" class="form-control"
-					placeholder="예시) 홍길동">
-			  </div>
-			</div>
-
-			<div class="form-group" align="center">
-				<div class="col-sm-6" align="left">
-					<label for="exampleInputPassword1" align="left">password</label> <input
-						id="pw" type="password" class="form-control"
-						placeholder="사용할 비밀번호를 입력해주세요." required="required" />
-				</div>
-			</div>
-			
-			<div class="form-group" align="center">
-				<div class="col-sm-6" align="left">
-					<label for="exampleInputPassword1" align="left">password check </label> <input
-						id="pw_check" type="password" class="form-control"
-						placeholder="비밀번호를 다시 한번 입력해주세요." required="required" />
-				</div>
-			</div>
-
-			<div class="form-group" align="center">
-				<div class="col-sm-6" align="left">
-					<label for="exampleInputEmail1" align="center">Email address</label> 
-					<input id="Email" type="email" class="form-control"
-						aria-describedby="emailHelp" placeholder="Enter email"
-						required="required" />
-				</div>
-			</div>
-			
-			<div align="center">
-				<button id="signUpBtn" type="button" class="btn btn-outline-success">가입하기</button>
-				<button id="backBtn" type="button" class="btn btn-outline-secondary">취소</button>
-			</div>
-			
-		</fieldset>
-	</form>
+		<div id="pwCkDiv" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">Password Check</label> 
+			<input id="pw_Check" type="text" class="form-control is-invalid">
+			<div class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
+		</div>			
+	
+		<div class="form-group text-center">
+			<button id="signUpBtn" type="button" class="btn btn-success">회원가입</button>
+			<button type="button" class="btn btn-warning">가입취소</button>			
+		</div>
+	</div>
+	</div>
+	</fieldset>
+</form>
 </body>
 </html>
+
+
