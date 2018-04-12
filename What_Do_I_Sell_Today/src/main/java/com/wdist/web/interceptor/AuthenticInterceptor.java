@@ -16,7 +16,7 @@ public class AuthenticInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("login") != null) {
+		if(session.getAttribute("login") == null) {
 			return true;
 		}
 		else {
