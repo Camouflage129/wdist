@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class RSAUtil {
-	private static final Logger logger = LoggerFactory.getLogger(RSAUtil.class);
 	 
     private KeyPairGenerator generator;
     private KeyFactory keyFactory;
@@ -27,8 +26,7 @@ public class RSAUtil {
             keyFactory = KeyFactory.getInstance("RSA");
             cipher = Cipher.getInstance("RSA");
         } catch (Exception e) {
-            logger.warn("RSAUtil 생성 실패.", e);
-            System.out.println("err1");
+            System.out.println("RSAUtil 생성 실패."+ e);
         }
     }
  
@@ -47,8 +45,7 @@ public class RSAUtil {
             String exponent = publicSpec.getPublicExponent().toString(16);
             rsa = new RSA(privateKey, modulus, exponent);
         } catch (Exception e) {
-            logger.warn("RSAUtil.createRSA()", e);
-            System.out.println("err2");
+            System.out.println("RSAUtil.createRSA()"+ e);
         }
         return rsa;
     }
@@ -60,7 +57,6 @@ public class RSAUtil {
     	System.out.println(privateKey);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] decryptedBytes = cipher.doFinal(hexToByteArray(encryptedText));
-        System.out.println("복호화 : "+new String(decryptedBytes, "UTF-8"));
         return new String(decryptedBytes, "UTF-8");
     }
  
