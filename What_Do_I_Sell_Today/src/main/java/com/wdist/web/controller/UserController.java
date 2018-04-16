@@ -73,6 +73,12 @@ public class UserController {
         return "redirect:index.jsp";
     }
     
+    // 로그인
+    @RequestMapping(value="/login.do")
+    public String loginDo(String id, String pw) {
+        return "user/login";
+    }
+    
 
     // 로그인 페이지 진입
        @RequestMapping(value = "/TestLogin.do", method = RequestMethod.GET)
