@@ -90,19 +90,21 @@ public class UserController {
 		return "redirect:index.jsp";
 	}
 
-	@RequestMapping(value = "/modifyuser.do")
-	public String userModify(String id, HttpServletRequest req) {
-		UserVO vo = service.getUser(id);
-		req.setAttribute("user", vo);
-		return "user/user_modify";
-	}
 
-	@RequestMapping(value = "/updateuser.do")
-	public String updateuser(UserVO vo) {
-		System.out.println(vo);
-		service.modifyAccount(vo);
-		return "redirect:index.jsp";
-	}
+    
+    @RequestMapping(value="/updateuser.do")
+    public String updateuser(UserVO vo) {
+        System.out.println(vo);
+        service.modifyAccount(vo);
+        return "redirect:index.jsp";
+    }
+    
+    // 로그인
+    @RequestMapping(value="/login.do")
+    public String loginDo(String id, String pw) {
+        return "user/login";
+    }
+
 
 	// 로그인 페이지 진입
 	@RequestMapping(value = "/TestLogin.do", method = RequestMethod.GET)
