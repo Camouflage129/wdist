@@ -1,4 +1,4 @@
-package com.wdist.web.controller;
+ï»¿package com.wdist.web.controller;
 
 import java.security.PrivateKey;
 import java.util.HashMap;
@@ -74,12 +74,12 @@ public class UserController {
     }
     
 
-    // ·Î±×ÀÎ ÆäÀÌÁö ÁøÀÔ
+    // ë¡œê·¸ì¸ í˜ì´ì§€ ì§„ì…
        @RequestMapping(value = "/TestLogin.do", method = RequestMethod.GET)
        public String loginForm(HttpSession session, Model model) {
-           // RSA Å° »ı¼º
+           // RSA í‚¤ ìƒì„±
            PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
-           if (key != null) { // ±âÁ¸ key ÆÄ±â
+           if (key != null) { // ê¸°ì¡´ key íŒŒê¸°
                session.removeAttribute("RSAprivateKey");
            }
            RSA rsa = rsaUtil.createRSA();
@@ -88,41 +88,41 @@ public class UserController {
            session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
            return "redirect:/index";
        }
-    // ·Î±×ÀÎ Ã³¸®
+    // ë¡œê·¸ì¸ ì²˜ë¦¬
        @RequestMapping(value = "/TestLogin.do", method = RequestMethod.POST)
        public String login(UserVO vo, HttpSession session, RedirectAttributes ra) {
-           // °³ÀÎÅ° Ãëµæ
+           // ê°œì¸í‚¤ ì·¨ë“
            PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
            if (key == null) {
-               ra.addFlashAttribute("resultMsg", "ºñÁ¤»ó ÀûÀÎ Á¢±Ù ÀÔ´Ï´Ù.");
+               ra.addFlashAttribute("resultMsg", "ë¹„ì •ìƒ ì ì¸ ì ‘ê·¼ ì…ë‹ˆë‹¤.");
                return "redirect:/login";
            }
         
-           // session¿¡ ÀúÀåµÈ °³ÀÎÅ° ÃÊ±âÈ­
+           // sessionì— ì €ì¥ëœ ê°œì¸í‚¤ ì´ˆê¸°í™”
            session.removeAttribute("RSAprivateKey");
         
-           // ¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ º¹È£È­
+           // ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ë³µí˜¸í™”
            try {
-           	System.out.println("º¹È£È­Àü");
+           	System.out.println("ë³µí˜¸í™”ì „");
            	System.out.println(vo.getEmail());
            	System.out.println(vo.getPw());
            	
             String email = rsaUtil.getDecryptText(key, vo.getEmail());
             String pw = rsaUtil.getDecryptText(key, vo.getPw());
         
-               // º¹È£È­µÈ Æò¹®À» Àç¼³Á¤
+               // ë³µí˜¸í™”ëœ í‰ë¬¸ì„ ì¬ì„¤ì •
             vo.setEmail(email);
             vo.setPw(pw);
-            System.out.println("º¹È£È­ ÈÄ");
+            System.out.println("ë³µí˜¸í™” í›„");
            	System.out.println(vo.getEmail());
            	System.out.println(vo.getPw());
            } catch (Exception e) {
-               ra.addFlashAttribute("resultMsg", "ºñÁ¤»ó ÀûÀÎ Á¢±Ù ÀÔ´Ï´Ù.");
+               ra.addFlashAttribute("resultMsg", "ë¹„ì •ìƒ ì ì¸ ì ‘ê·¼ ì…ë‹ˆë‹¤.");
                return "redirect:/index.jsp";
            }
    		return null;
         
-           // ·Î±×ÀÎ ·ÎÁ÷ ½ÇÇà
+           // ë¡œê·¸ì¸ ë¡œì§ ì‹¤í–‰
            // userService.login(user);
        }
 

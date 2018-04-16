@@ -1,4 +1,4 @@
-package com.wdist.biz.user.service;
+ï»¿package com.wdist.biz.user.service;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO login(String id, String pw) {
 		if(id.equals("") || id == null) {
-			throw new RuntimeException("·Î±×ÀÎ Á¤º¸°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+			throw new RuntimeException("ë¡œê·¸ì¸ ì •ë³´ê°€ í•„ìš”í•©ë‹ˆë‹¤.");
 		}
 		return dao.login(id, pw);
 	}

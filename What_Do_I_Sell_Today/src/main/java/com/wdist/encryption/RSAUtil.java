@@ -1,4 +1,4 @@
-package com.wdist.encryption;
+ï»¿package com.wdist.encryption;
 
 import java.security.KeyPairGenerator;
 import java.security.KeyFactory;
@@ -27,12 +27,12 @@ public class RSAUtil {
             keyFactory = KeyFactory.getInstance("RSA");
             cipher = Cipher.getInstance("RSA");
         } catch (Exception e) {
-            logger.warn("RSAUtil »ı¼º ½ÇÆĞ.", e);
+            logger.warn("RSAUtil ìƒì„± ì‹¤íŒ¨.", e);
             System.out.println("err1");
         }
     }
  
-    /** »õ·Î¿î Å°°ªÀ» °¡Áø RSA »ı¼º
+    /** ìƒˆë¡œìš´ í‚¤ê°’ì„ ê°€ì§„ RSA ìƒì„±
      *  @return vo.other.RSA **/
     public RSA createRSA() {
         RSA rsa = null;
@@ -53,18 +53,18 @@ public class RSAUtil {
         return rsa;
     }
  
-    /** °³ÀÎÅ°¸¦ ÀÌ¿ëÇÑ RSA º¹È£È­
-     *  @param privateKey session¿¡ ÀúÀåµÈ PrivateKey
-     *  @param encryptedText ¾ÏÈ£È­µÈ ¹®ÀÚ¿­ **/
+    /** ê°œì¸í‚¤ë¥¼ ì´ìš©í•œ RSA ë³µí˜¸í™”
+     *  @param privateKey sessionì— ì €ì¥ëœ PrivateKey
+     *  @param encryptedText ì•”í˜¸í™”ëœ ë¬¸ìì—´ **/
     public String getDecryptText(PrivateKey privateKey, String encryptedText) throws Exception {
     	System.out.println(privateKey);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] decryptedBytes = cipher.doFinal(hexToByteArray(encryptedText));
-        System.out.println("º¹È£È­ : "+new String(decryptedBytes, "UTF-8"));
+        System.out.println("ë³µí˜¸í™” : "+new String(decryptedBytes, "UTF-8"));
         return new String(decryptedBytes, "UTF-8");
     }
  
-    // 16Áø¼ö ¹®ÀÚ¿­À» byte ¹è¿­·Î º¯È¯
+    // 16ì§„ìˆ˜ ë¬¸ìì—´ì„ byte ë°°ì—´ë¡œ ë³€í™˜
     private byte[] hexToByteArray(String hex) {
         if (hex == null || hex.length() % 2 != 0) {
             return new byte[] {};
