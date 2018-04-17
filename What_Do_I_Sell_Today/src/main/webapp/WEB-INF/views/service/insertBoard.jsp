@@ -6,6 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="js/insertBoard.js"></script>
 	<title>Insert Board</title>
 </head>
 <body>
@@ -13,14 +14,15 @@
 		<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>글쓰기</legend>
+				<input type="hidden" name="Type" value="freeBoard">
 				<div class="form-group">
-					제목 : <input type="text" name="title" class="form-control" id="inputDefault">
+					제목 : <input type="text" name="Title" class="form-control" id="inputDefault">
 				</div>
 				<div class="form-group">
-					작성자 : <input type="text" name="name" class="form-control" id="inputDefault" value="${login.UsersID}" readonly="readonly">
+					작성자 : <input type="text" name="UsersID" class="form-control" id="inputDefault" value="${userid}" readonly="readonly">
 				</div>
 				<form>
-		            <textarea name="editor1" id="editor1" rows="10" cols="80">
+		            <textarea name="Contents" id="editor1" rows="10" cols="80">
 		                	게시글을 입력해주세요.
 		            </textarea>
 		            <script>

@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
-					<a href="/index.jsp"> <img class="logo" alt="오늘 뭐 팔지?"
+					<a href="/main.do"> <img class="logo" alt="오늘 뭐 팔지?"
 						src="./image/logo.png">
 					</a>
 				</div>

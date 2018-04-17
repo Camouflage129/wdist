@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,10 +21,10 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<!-- <a id="loginA" href="./TestLogin.do">로그인</a>&nbsp;|&nbsp; -->
-				<c:if test="${login.UsersID eq null}">
+				<c:if test="${userid eq null}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;		
 				</c:if>
-				<c:if test="${login.UsersID != '' || login.UsersID ne null}">
+				<c:if test="${userid != '' || userid ne null}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;	
 				</c:if>
 				<a id="signUpA" href="#">회원가입</a>
