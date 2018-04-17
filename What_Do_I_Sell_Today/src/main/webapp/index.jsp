@@ -48,45 +48,5 @@
 		<jsp:include page="footer.jsp" />
 	</div>
 
-	<div id="loginModal" class="modal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Login</h5>
-				</div>
-				<div class="modal-body">
-
-					<!-- 부트스트랩 로그인창 -->
-					<!-- 				<div class="form-group">
-						<fieldset>
-							<label class="control-label" for="readOnlyInput">Readonly
-								input</label> <input class="form-control" id="readOnlyInput" type="text"
-								placeholder="Readonly input here…" readonly="">
-						</fieldset>
-					</div>
- -->
-					<div class="form-group has-success">
-						<label class="form-control-label" for="inputSuccess1">ID</label> <input
-							type="text" value="" class="form-control is-valid"
-							id="inputValid" autofocus placeholder="아이디를 입력해주세요">
-						<div class="valid-feedback"></div>
-					</div>
-
-					<div class="form-group has-danger">
-						<label class="form-control-label" for="inputDanger1">Password</label> <input type="text" value=""
-							class="form-control is-invalid" id="inputInvalid" autofocus
-							placeholder="비밀번호를 입력해주세요.">
-						<div class="invalid-feedback"></div>
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" id="loginBtn" class="btn btn-primary">로그인</button>
-					<button type="button" id="closeBtn" class="btn btn-secondary"
-						data-dismiss="modal">취소</button>
-				</div>
-			</div>
-		</div>
-	</div>
 </body>
 </html>

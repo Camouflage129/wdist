@@ -19,7 +19,8 @@
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarColor01">
-				<a id="loginA" href="#">로그인</a>&nbsp;|&nbsp;
+				<!-- <a id="loginA" href="./TestLogin.do">로그인</a>&nbsp;|&nbsp; -->
+				<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;				
 				<a id="signUpA" href="#">회원가입</a>
 			</div>
 		</div>

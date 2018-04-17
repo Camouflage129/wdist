@@ -1,4 +1,4 @@
-package com.wdist.biz.user.dao;
+ï»¿package com.wdist.biz.user.dao;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -37,8 +37,8 @@ public class UserDAOImpl implements UserDAO {
 	public int updateUser(UserVO vo) {
 		return mapper.updateUser(vo);
 	}
-	//µµ´ëÃ¼ ÀÌ ¹Ø¿¡´Â ¹» ÇÏ°í ½Í¾ú´ÂÁö ¸ğ¸£°ÚÀ½... ÇÔ¼ö¹İÈ¯ µ¥ÀÌÅÍÇüÀÌ¶û ÀÌ·±°Å ¾î¶»°Ô ¾µÁö Àß »ı°¢ÇØ¼­ ¼öÁ¤ÇÏ½Ã°í
-	//mapper¿¡ ·Î±×ÀÎ µÎ°³¿´¾î¼­ ¼öÁ¤Çß½À´Ï´Ù.
+	//ë„ëŒ€ì²´ ì´ ë°‘ì—ëŠ” ë­˜ í•˜ê³  ì‹¶ì—ˆëŠ”ì§€ ëª¨ë¥´ê² ìŒ... í•¨ìˆ˜ë°˜í™˜ ë°ì´í„°í˜•ì´ë‘ ì´ëŸ°ê±° ì–´ë–»ê²Œ ì“¸ì§€ ì˜ ìƒê°í•´ì„œ ìˆ˜ì •í•˜ì‹œê³ 
+	//mapperì— ë¡œê·¸ì¸ ë‘ê°œì˜€ì–´ì„œ ìˆ˜ì •í–ˆìŠµë‹ˆë‹¤.
 	
 	@Override
 	public Boolean checkId(String id) {
