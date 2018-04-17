@@ -129,7 +129,7 @@ form input[type='email'], form input[type="text"] {
 	padding: 14px 1em 0px;
 }
 
-form button {
+form input {
 	display: block;
 	margin: 0;
 	padding: .65em 1em 1em;
@@ -188,7 +188,13 @@ form .inputGroup1.focusWithText .helper {
 </head>
 
 <body>
-	<form>
+<form action="/login.do" method="post" id="hiddenForm">
+    <fieldset>
+        <input type="hidden" name="id" />
+        <input type="hidden" name="pw" />
+    </fieldset>
+</form>
+	<form id="loginForm" name="loginForm" method="post" action="/login.do">
 		<div class="svgContainer">
 			<div>
 				<svg class="mySVG" xmlns="http://www.w3.org/2000/svg"
@@ -301,19 +307,55 @@ form .inputGroup1.focusWithText .helper {
 		</div>
 
 		<div class="inputGroup inputGroup1">
-			<label for="email1">Email</label> <input type="text" id="email"
+			<c:choose>
+					<c:when test="${status != null }">
+						<p>${status}</p>
+					</c:when>
+				</c:choose>
+			<label for="email1">ID</label> <input type="text" id="id" name="id"
 				class="email" maxlength="256" />
-			<p class="helper helper1">email@domain.com</p>
+			<p class="helper helper1">ID를 입력해주세요.</p>
 			<span class="indicator"></span>
 		</div>
 		<div class="inputGroup inputGroup2">
-			<label for="password">Password</label> <input type="password"
-				id="password" class="password" />
+			<label for="password">Password</label> <input type="password" 
+				id="pw" name="pw" class="password" />
 		</div>
 		<div class="inputGroup inputGroup3">
-			<button id="login">Log in</button>
+			<input type="submit" value="Login">
 		</div>
 	</form>
 	<script src="./js/login.js"></script>
+	<script src="/js/rsa/jsbn.js"></script>
+<script src="/js/rsa/prng4.js"></script>
+<script src="/js/rsa/rng.js"></script>
+<script src="/js/rsa/rsa.js"></script>
+ 
+ <!-- 실제 서버로 전송되는 form -->
+
+ 
+<!-- 유저 입력 form의 submit event 재정의 -->
+<script>
+    var $id = $("#hiddenForm input[name='id']");
+    var $pw = $("#hiddenForm input[name='pw']");
+ 
+    // Server로부터 받은 공개키 입력
+    var rsa = new RSAKey();
+    rsa.setPublic("${modulus}", "${exponent}");
+ 
+    $("#loginForm").submit(function(e) {
+        // 실제 유저 입력 form은 event 취소
+        // javascript가 작동되지 않는 환경에서는 유저 입력 form이 submit 됨
+        // -> Server 측에서 검증되므로 로그인 불가
+        e.preventDefault();
+ 		alert('내가 실행했음');
+        // 아이디/비밀번호 암호화 후 hidden form으로 submit
+        var id = $(this).find("#id").val();
+        var pw = $(this).find("#pw").val();
+        $id.val(rsa.encrypt(id)); // 아이디 암호화
+        $pw.val(rsa.encrypt(pw)); // 비밀번호 암호화
+        $("#hiddenForm").submit();
+    });
+</script>
 </body>
 </html>

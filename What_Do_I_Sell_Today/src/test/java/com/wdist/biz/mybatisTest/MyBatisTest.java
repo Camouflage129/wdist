@@ -32,23 +32,16 @@ public class MyBatisTest {
 		service = null;
 	}
 	
-	//@Test
+	@Test
 	public void login() {
 		UserVO vo = new UserVO("java01", "1234");
-		System.out.println("����");
+		System.out.println("dscsd");
 		UserVO tmp=userservice.login("java01", "1234");
-		System.out.println(tmp);
+		System.out.println("결과"+tmp);
 		
 	}
 
-	@Test
-	public void shatest() {
-		SHAUtil sha = new SHAUtil();
-		String test1 = sha.encryptSHA("hi");
-		String test2 = sha.encryptSHA("hi");
-		System.out.println(test1);
-		System.out.println(test2);
-	}
+	
 	
 	//@Test
 	public void test() {
