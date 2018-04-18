@@ -16,7 +16,6 @@ import com.wdist.biz.dept.service.DeptService;
 import com.wdist.biz.dept.vo.DeptVO;
 import com.wdist.biz.user.service.UserService;
 import com.wdist.biz.user.vo.UserVO;
-import com.wdist.encryption.SHAUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
@@ -34,13 +33,12 @@ public class MyBatisTest {
 	
 	@Test
 	public void login() {
-		UserVO vo = new UserVO("java01", "1234");
+	//	UserVO vo = new UserVO("java01", "1234");
 		System.out.println("dscsd");
 		UserVO tmp=userservice.login("java01", "1234");
 		System.out.println("결과"+tmp);
 		
 	}
-
 	
 	
 	//@Test

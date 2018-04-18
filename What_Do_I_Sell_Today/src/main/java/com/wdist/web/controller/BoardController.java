@@ -34,8 +34,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO vo) {
-		
-		return "";
+	public String insertBoard(BoardVO boardVO) {	//, FileVO fileVO
+		service.insertBoard(boardVO, null);
+		return "redirect:";
 	}
 }

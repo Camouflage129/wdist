@@ -24,21 +24,26 @@ public interface BoardMapper {
 	@Select("select * from Reply where BoardNum = ?")
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	@Select("select BoardNum from Board where Type = #{Type} and Title = #{Title} and Contents = #{Contents} and UsersID = #{UsersID} and PostDate = #{PostDate}")
+	public int getBoardNum(BoardVO vo);
+	
+	@Select("select FileGroupNum from FileGroup where BoardNum = #{num}")
+	public int getFileGroupNum(int num);
+	
 	@Insert("insert into Board (BoardNum, Type, Title, Contents, UsersID, PostDate)"
 			+ "values ((select nvl(max(num),0)+1 from Board), #{Type}, #{Title}, #{Contents}, #{UsersID}, #{PostDate}")
 	public int insertBoard(BoardVO vo);
 	
 	@Insert("insert into FileGroup (FileGroupNum, BoardNum) values((select nvl(max(num),0)+1 from FileGroup), #{num})")
-	public int insertBoardFileGroup(int num);
-	
-	@Insert("insert into File (FileNum, FileName, HashValue, FileGroupNum, FileSize)"
-			+ "values ((select nvl(max(num),0)+1 from File), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize}")
-	public int insertBoardFile(FileVO vo);
+	public int insertFileGroup(int num);
 	
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
 	@Insert("insert into Reply (ReplyNum, UsersID, Contents, PostDate, ReplyNums, BoardNum)"
 			+ "values ((select nvl(max(num),0)+1 from Reply), #{UsersID}, #{Contents}, #{ReplyNums}, #{BoardNum}")
 	public int insertReply(ReplyVO vo);
+	
+	@Delete("delete from Reply where BoardNum = #{num}")
+	public int deleteReply(int num);
 	
 	@Delete("delete from Board where BoardNum = #{num}")
 	public int deleteBoard(int num);
@@ -51,7 +56,7 @@ public interface BoardMapper {
 			+ "values ((select nvl(max(num),0)+1 from File), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize}")
 	public int insertFile(FileVO vo);
 	
-	@Delete("delete from File where FileNum = #{num}")
+	@Delete("delete from File where FileGroupNum = #{num}")
 	public int deleteFile(int num);
 	
 	@Update("update Board set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize} where FileNum = #{FileNum}")
