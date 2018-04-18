@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class SHAUtil {
 	 public String encryptSHA(String str){
 
-	    	String sha = ""; 
+	    	String sha = "!@%das"; 
 
 	    	try{
 	    		MessageDigest sh = MessageDigest.getInstance("SHA-512"); 

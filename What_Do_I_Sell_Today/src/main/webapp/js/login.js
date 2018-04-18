@@ -39,10 +39,10 @@ var caretPos,
      mouthStatus = "small";
 
 function getCoord(e) {
-     var carPos = id.selectionEnd,
+     var carPos = old_id.selectionEnd,
           div = document.createElement('div'),
           span = document.createElement('span'),
-          copyStyle = getComputedStyle(id),
+          copyStyle = getComputedStyle(old_id),
           idCoords = {},
           caretCoords = {},
           centerCoords = {};
@@ -51,8 +51,8 @@ function getCoord(e) {
      });
      div.style.position = 'absolute';
      document.body.appendChild(div);
-     div.textContent = id.value.substr(0, carPos);
-     span.textContent = id.value.substr(carPos) || '.';
+     div.textContent = old_id.value.substr(0, carPos);
+     span.textContent = old_id.value.substr(carPos) || '.';
      div.appendChild(span);
 
      idCoords = getPosition(id); //console.log("idCoords.x: " + idCoords.x + ", idCoords.y: " + idCoords.y);
@@ -421,11 +421,11 @@ function getPosition(el) {
      };
 }
 
-id.addEventListener('focus', onidFocus);
-id.addEventListener('blur', onidBlur);
-id.addEventListener('input', onidInput);
-pw.addEventListener('focus', onpwFocus);
-pw.addEventListener('blur', onpwBlur);
+old_id.addEventListener('focus', onidFocus);
+old_id.addEventListener('blur', onidBlur);
+old_id.addEventListener('input', onidInput);
+old_pw.addEventListener('focus', onpwFocus);
+old_pw.addEventListener('blur', onpwBlur);
 TweenMax.set(armL, {
      x : -93,
      y : 220,

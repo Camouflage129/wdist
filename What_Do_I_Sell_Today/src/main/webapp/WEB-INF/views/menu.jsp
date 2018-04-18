@@ -24,10 +24,10 @@
 				<c:if test="${userid eq null}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;		
 				</c:if>
-				<c:if test="${userid != '' || userid ne null}">
+				<c:if test="${userid ne '' || userid ne null}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;	
 				</c:if>
-				<a id="signUpA" href="#">회원가입</a>
+				<a id="signUpA" href="/signUp.do">회원가입</a>
 			</div>
 		</div>
 	</nav>
