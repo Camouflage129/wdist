@@ -3,10 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-	crossorigin="anonymous"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/login.css">
 <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
 <link rel="stylesheet"
@@ -188,7 +186,12 @@ form .inputGroup1.focusWithText .helper {
 </head>
 
 <body>
-	<form>
+	<form action="/login.do" method="post" id="hiddenForm">
+		<fieldset>
+			<input type="hidden" name="id" /> <input type="hidden" name="pw" />
+		</fieldset>
+	</form>
+	<form id="loginForm" name="loginForm" method="post" action="/login.do">
 		<div class="svgContainer">
 			<div>
 				<svg class="mySVG" xmlns="http://www.w3.org/2000/svg"
@@ -301,19 +304,76 @@ form .inputGroup1.focusWithText .helper {
 		</div>
 
 		<div class="inputGroup inputGroup1">
-			<label for="email1">Email</label> <input type="text" id="email"
+			<c:choose>
+				<c:when test="${status != null }">
+					<p>${status}</p>
+				</c:when>
+			</c:choose>
+			<label for="email1">ID</label> <input type="text" id="old_id" name="old_id"
 				class="email" maxlength="256" />
-			<p class="helper helper1">email@domain.com</p>
+			<p class="helper helper1">ID를 입력해주세요.</p>
 			<span class="indicator"></span>
 		</div>
 		<div class="inputGroup inputGroup2">
-			<label for="password">Password</label> <input type="password"
-				id="password" class="password" />
+			<label for="password">Password</label> <input type="password" id="old_pw"
+				name="old_pw" class="password" />
 		</div>
+		<div align="center" class="g-recaptcha inputGroup" data-sitekey="${siteKey}" id="g-recaptcha-response"></div>
 		<div class="inputGroup inputGroup3">
-			<button id="login">Log in</button>
+			<button type="button" onclick="login()">Login</button>
 		</div>
+		
 	</form>
 	<script src="./js/login.js"></script>
+	<script src="/js/rsa/jsbn.js"></script>
+	<script src="/js/rsa/prng4.js"></script>
+	<script src="/js/rsa/rng.js"></script>
+	<script src="/js/rsa/rsa.js"></script>
+
+	<!-- 실제 서버로 전송되는 form -->
+
+
+	<!-- 유저 입력 form의 submit event 재정의 -->
+	<script type="text/javascript">
+	var $id = $("#hiddenForm input[name='id']");
+	var $pw = $("#hiddenForm input[name='pw']");
+	
+	// Server로부터 받은 공개키 입력
+	var rsa = new RSAKey();
+	rsa.setPublic("${modulus}", "${exponent}");
+	
+	if(${modulus}=null || ${modulus}==null || ${exponent}=null || ${exponent}==null || ${siteKey}=null || ${siteKey}==null){
+		location.reload(true);
+	}
+	
+	function login() {
+		$.ajax({
+			url : '/recapcha.do',
+			type : 'post',
+			data : {
+				recaptcha : document.getElementById("g-recaptcha-response").value
+			},
+			success : function(data) {
+				if(data.result=='success'){
+				// 아이디/비밀번호 암호화 후 hidden form으로 submit
+				var id = $('#old_id').val();
+				var pw = $('#old_pw').val();
+				$id.val(rsa.encrypt(id)); // 아이디 암호화
+				$pw.val(rsa.encrypt(pw)); // 비밀번호 암호화
+				$("#hiddenForm").submit();
+				}else{
+					alert('자동가입방지 확인해주세요.');
+				}
+			},
+			error : function() {
+	            alert("에러발생");
+	      }
+
+		});
+	}
+	
+
+		
+	</script>
 </body>
 </html>

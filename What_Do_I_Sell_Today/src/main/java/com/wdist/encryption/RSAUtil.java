@@ -54,7 +54,7 @@ public class RSAUtil {
      *  @param privateKey session에 저장된 PrivateKey
      *  @param encryptedText 암호화된 문자열 **/
     public String getDecryptText(PrivateKey privateKey, String encryptedText) throws Exception {
-    	System.out.println(privateKey);
+  //  	System.out.println(privateKey);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] decryptedBytes = cipher.doFinal(hexToByteArray(encryptedText));
         return new String(decryptedBytes, "UTF-8");
