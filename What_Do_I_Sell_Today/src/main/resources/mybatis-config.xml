@@ -6,5 +6,6 @@
 	<mappers>
 		<mapper class="com.wdist.biz.mybatis.mapper.UserMapper"/>
 		<mapper class="com.wdist.biz.mybatis.mapper.DeptMapper"/>
+		<mapper class="com.wdist.biz.mybatis.mapper.BoardMapper"/>
 	</mappers>
 </configuration>

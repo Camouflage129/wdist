@@ -27,7 +27,7 @@
 				<c:if test="${userid != '' || userid ne null}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;	
 				</c:if>
-				<a id="signUpA" href="#">회원가입</a>
+				<a id="signUpA" href="/signUp.do">회원가입</a>
 			</div>
 		</div>
 	</nav>

@@ -72,7 +72,7 @@ public class UserController {
 			ra.addFlashAttribute("result", "success");
 		else
 			ra.addFlashAttribute("result", "fail");
-		return "redirect:/login"; //성공했을경우 어디로 보낼지 적어주세요
+		return "redirect:/login.do"; //성공했을경우 어디로 보낼지 적어주세요
 	}
 
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
