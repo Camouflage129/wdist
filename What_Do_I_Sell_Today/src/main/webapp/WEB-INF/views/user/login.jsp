@@ -342,11 +342,20 @@ form .inputGroup1.focusWithText .helper {
 	var rsa = new RSAKey();
 	rsa.setPublic("${modulus}", "${exponent}");
 	
-	if(${modulus}=null || ${modulus}==null || ${exponent}=null || ${exponent}==null || ${siteKey}=null || ${siteKey}==null){
-		location.reload(true);
-	}
+	var id = $('#old_id').val();
+	
 	
 	function login() {
+		var id = $('#old_id').val();
+		var pw = $('#old_pw').val();
+		//아이디 입력인했을때
+		if(id==''){
+			alert('ID를 입력해주세요');
+		}
+		if(pw=''){
+			alert('비밀번호를 입력해주세요');
+		}
+		
 		$.ajax({
 			url : '/recapcha.do',
 			type : 'post',
@@ -356,8 +365,7 @@ form .inputGroup1.focusWithText .helper {
 			success : function(data) {
 				if(data.result=='success'){
 				// 아이디/비밀번호 암호화 후 hidden form으로 submit
-				var id = $('#old_id').val();
-				var pw = $('#old_pw').val();
+				
 				$id.val(rsa.encrypt(id)); // 아이디 암호화
 				$pw.val(rsa.encrypt(pw)); // 비밀번호 암호화
 				$("#hiddenForm").submit();
@@ -375,5 +383,6 @@ form .inputGroup1.focusWithText .helper {
 
 		
 	</script>
+
 </body>
 </html>

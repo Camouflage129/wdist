@@ -4,7 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- <script type="text/javascript" src="js/signUp.js?ver=2"></script> -->
+ <!-- <script type="text/javascript" src="js/signUp.js?ver=2"></script>  -->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="js/index.js?ver=1"></script>
+<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
+<link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
 <title>SignUp</title>
 </head>
 <body>

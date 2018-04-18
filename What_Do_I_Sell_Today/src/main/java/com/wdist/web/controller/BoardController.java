@@ -1,12 +1,18 @@
 package com.wdist.web.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.wdist.biz.board.service.BoardService;
 import com.wdist.biz.board.vo.BoardVO;
 
 @Controller
 public class BoardController {
+	@Resource(name="BoardService")
+	BoardService service;
+	
 	@RequestMapping(value="/main.do")
 	public String mainDo() {
 		return "index";
@@ -28,8 +34,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO vo) {
-		
-		return "";
+	public String insertBoard(BoardVO boardVO) {	//, FileVO fileVO
+		service.insertBoard(boardVO, null);
+		return "redirect:";
 	}
 }

@@ -7,7 +7,7 @@ public class ReplyVO {
 	private String UsersID;
 	private String Contents;
 	private Date DATE;
-	private String RepliesNum;
+	private String ReplyNums;
 	private int BoardNum;
 	
 	public ReplyVO() {
@@ -18,7 +18,7 @@ public class ReplyVO {
 		UsersID = usersID;
 		Contents = contents;
 		DATE = dATE;
-		RepliesNum = repliesNum;
+		ReplyNums = repliesNum;
 		BoardNum = boardNum;
 	}
 
@@ -54,12 +54,12 @@ public class ReplyVO {
 		DATE = dATE;
 	}
 
-	public String getRepliesNum() {
-		return RepliesNum;
+	public String getReplyNums() {
+		return ReplyNums;
 	}
 
-	public void setRepliesNum(String repliesNum) {
-		RepliesNum = repliesNum;
+	public void getReplyNums(String repliesNum) {
+		ReplyNums = repliesNum;
 	}
 
 	public int getBoardNum() {
@@ -77,7 +77,7 @@ public class ReplyVO {
 		result = prime * result + BoardNum;
 		result = prime * result + ((Contents == null) ? 0 : Contents.hashCode());
 		result = prime * result + ((DATE == null) ? 0 : DATE.hashCode());
-		result = prime * result + ((RepliesNum == null) ? 0 : RepliesNum.hashCode());
+		result = prime * result + ((ReplyNums == null) ? 0 : ReplyNums.hashCode());
 		result = prime * result + ReplyNum;
 		result = prime * result + ((UsersID == null) ? 0 : UsersID.hashCode());
 		return result;
@@ -104,10 +104,10 @@ public class ReplyVO {
 				return false;
 		} else if (!DATE.equals(other.DATE))
 			return false;
-		if (RepliesNum == null) {
-			if (other.RepliesNum != null)
+		if (ReplyNums == null) {
+			if (other.ReplyNums != null)
 				return false;
-		} else if (!RepliesNum.equals(other.RepliesNum))
+		} else if (!ReplyNums.equals(other.ReplyNums))
 			return false;
 		if (ReplyNum != other.ReplyNum)
 			return false;
@@ -122,6 +122,6 @@ public class ReplyVO {
 	@Override
 	public String toString() {
 		return "ReplyVO [ReplyNum=" + ReplyNum + ", UsersID=" + UsersID + ", Contents=" + Contents + ", DATE=" + DATE
-				+ ", RepliesNum=" + RepliesNum + ", BoardNum=" + BoardNum + "]";
+				+ ", RepliesNum=" + ReplyNums + ", BoardNum=" + BoardNum + "]";
 	}
 }

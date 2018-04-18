@@ -100,7 +100,7 @@ public class UserController {
 			ra.addFlashAttribute("result", "success");
 		else
 			ra.addFlashAttribute("result", "fail");
-		return "redirect:/login"; // 성공했을경우 어디로 보낼지 적어주세요
+		return "redirect:/login.do"; //성공했을경우 어디로 보낼지 적어주세요
 	}
 
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
@@ -187,6 +187,13 @@ public class UserController {
 
 	}
 
+    // 로그아웃
+    @RequestMapping("/logout.do")
+    public String logoutProcess(HttpSession session) {
+         session.invalidate();
+         return "redirect:main.do";
+    }
+	
 	@RequestMapping(value = "/userview.do", method = RequestMethod.GET)
 	public String userview(@RequestParam("id") String uid, Model model) {
 		UserVO user = service.getUser(uid);
