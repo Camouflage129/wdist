@@ -348,7 +348,7 @@ form .inputGroup1.focusWithText .helper {
         // javascript가 작동되지 않는 환경에서는 유저 입력 form이 submit 됨
         // -> Server 측에서 검증되므로 로그인 불가
         e.preventDefault();
- 		alert('내가 실행했음');
+// 		alert('내가 실행했음');
         // 아이디/비밀번호 암호화 후 hidden form으로 submit
         var id = $(this).find("#id").val();
         var pw = $(this).find("#pw").val();

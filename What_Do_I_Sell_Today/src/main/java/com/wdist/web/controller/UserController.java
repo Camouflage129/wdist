@@ -161,6 +161,13 @@ public class UserController {
 		
 	}
 
+    // 로그아웃
+    @RequestMapping("/logout.do")
+    public String logoutProcess(HttpSession session) {
+         session.invalidate();
+         return "redirect:main.do";
+    }
+	
 	@RequestMapping(value = "/userview.do", method = RequestMethod.GET)
 	public String userview(@RequestParam("id") String uid, Model model) {
 		UserVO user = service.getUser(uid);
