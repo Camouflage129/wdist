@@ -11,8 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="insertBoard.do" method="post"
-			enctype="multipart/form-data">
+		<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>글쓰기</legend>
 				<input type="hidden" name="Type" value="freeBoard">

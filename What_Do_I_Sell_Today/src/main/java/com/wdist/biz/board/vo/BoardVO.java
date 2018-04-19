@@ -71,7 +71,7 @@ public class BoardVO {
 		UsersID = usersID;
 	}
 
-	public Date getDATE() {
+	public Date getPostDate() {
 		return DATE;
 	}
 

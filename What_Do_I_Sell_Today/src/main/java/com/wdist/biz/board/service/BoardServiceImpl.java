@@ -42,12 +42,14 @@ public class BoardServiceImpl implements BoardService{
 	@Transactional(propagation=Propagation.REQUIRED)
 	public int insertBoard(BoardVO boardVO, FileVO fileVO) {
 		int rows = 0;
-		int boardNum = dao.getBoardNum(boardVO);
+		int boardNum = 0;
 		rows += dao.insertBoard(boardVO);
-		rows += dao.insertFileGroup(boardNum);
-		fileVO.setFileGroupNum(dao.getFileGroupNum(boardNum));
-		if(fileVO != null)
+		if(fileVO != null) {
+			boardNum = dao.getBoardNum(boardVO);
+			rows += dao.insertFileGroup(boardNum);
+			fileVO.setFileGroupNum(dao.getFileGroupNum(boardNum));
 			rows += dao.insertFile(fileVO);
+		}
 		return rows;
 	}
 

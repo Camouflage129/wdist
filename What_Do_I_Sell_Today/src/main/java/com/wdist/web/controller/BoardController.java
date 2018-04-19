@@ -39,7 +39,8 @@ public class BoardController {
 	public String insertBoard(String Type, String Title, String UsersID, String Contents) {	//, FileVO fileVO
 		java.util.Date udate = new java.util.Date();
 		Date date = new Date(udate.getTime());
-		BoardVO boardVO = new BoardVO(Type, Title, UsersID, Contents, date);
+		System.out.println(Contents);
+		BoardVO boardVO = new BoardVO(Type, Title, Contents ,UsersID, date);
 		service.insertBoard(boardVO, null);
 		if(boardVO.getType().equals("freeBoard"))
 			return "redirect:freeBoard.do";
