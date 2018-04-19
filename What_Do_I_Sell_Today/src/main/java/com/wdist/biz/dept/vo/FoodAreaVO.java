@@ -6,7 +6,6 @@ package com.wdist.biz.dept.vo;
 
 public class FoodAreaVO {
 	
-	String FoodTitle;
 	String fstArea;
 	String SndArea;
 	String ThdArea;
@@ -18,14 +17,13 @@ public class FoodAreaVO {
 		super();
 	}
 	
-	public FoodAreaVO(String fstArea, String sndArea, String thdArea, String frthArea, String fthArea, String foodTitle) {
+	public FoodAreaVO(String fstArea, String sndArea, String thdArea, String frthArea, String fthArea) {
 		super();
 		this.fstArea = fstArea;
 		SndArea = sndArea;
 		ThdArea = thdArea;
 		FrthArea = frthArea;
 		FthArea = fthArea;
-		FoodTitle = foodTitle;
 	}
 
 	public String getFstArea() {
@@ -68,14 +66,56 @@ public class FoodAreaVO {
 		FthArea = fthArea;
 	}
 	
-	public String getFoodTitle() {
-		return FoodTitle;
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((FrthArea == null) ? 0 : FrthArea.hashCode());
+		result = prime * result + ((FthArea == null) ? 0 : FthArea.hashCode());
+		result = prime * result + ((SndArea == null) ? 0 : SndArea.hashCode());
+		result = prime * result + ((ThdArea == null) ? 0 : ThdArea.hashCode());
+		result = prime * result + ((fstArea == null) ? 0 : fstArea.hashCode());
+		return result;
 	}
 
-	public void setFoodTitle(String foodTitle) {
-		FoodTitle = foodTitle;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FoodAreaVO other = (FoodAreaVO) obj;
+		if (FrthArea == null) {
+			if (other.FrthArea != null)
+				return false;
+		} else if (!FrthArea.equals(other.FrthArea))
+			return false;
+		if (FthArea == null) {
+			if (other.FthArea != null)
+				return false;
+		} else if (!FthArea.equals(other.FthArea))
+			return false;
+		if (SndArea == null) {
+			if (other.SndArea != null)
+				return false;
+		} else if (!SndArea.equals(other.SndArea))
+			return false;
+		if (ThdArea == null) {
+			if (other.ThdArea != null)
+				return false;
+		} else if (!ThdArea.equals(other.ThdArea))
+			return false;
+		if (fstArea == null) {
+			if (other.fstArea != null)
+				return false;
+		} else if (!fstArea.equals(other.fstArea))
+			return false;
+		return true;
 	}
-
 
 	@Override
 	public String toString() {
@@ -90,6 +130,7 @@ public class FoodAreaVO {
 		str.append(FrthArea);
 		str.append(", FthArea=");
 		str.append(FthArea);
+		str.append("]");
 		
 		return str.toString();
 //		return "FoodAreaVO [fstArea=" + fstArea + ", SndArea=" + SndArea + ", ThdArea=" + ThdArea + ", FrthArea="
