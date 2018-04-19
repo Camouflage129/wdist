@@ -80,7 +80,7 @@ function RSASetPublic(N,E) {
   }
   else{
     /*alert("Invalid RSA public key");*/
-    location.reload(true);
+    
   }
 }
 

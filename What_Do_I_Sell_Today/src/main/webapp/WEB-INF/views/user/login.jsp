@@ -302,13 +302,16 @@ form .inputGroup1.focusWithText .helper {
 				</g> </g> </svg>
 			</div>
 		</div>
-
-		<div class="inputGroup inputGroup1">
 			<c:choose>
 				<c:when test="${status != null }">
-					<p>${status}</p>
+				<div class="inputGroup">
+					<font color="red"><p>${status}</p></font>
+					</div>
 				</c:when>
 			</c:choose>
+			
+		<div class="inputGroup inputGroup1">
+			
 			<label for="email1">ID</label> <input type="text" id="old_id" name="old_id"
 				class="email" maxlength="256" />
 			<p class="helper helper1">ID를 입력해주세요.</p>
@@ -329,7 +332,7 @@ form .inputGroup1.focusWithText .helper {
 	<script src="/js/rsa/prng4.js"></script>
 	<script src="/js/rsa/rng.js"></script>
 	<script src="/js/rsa/rsa.js"></script>
-
+	<script src="/js/sha.min.js"></script>
 	<!-- 실제 서버로 전송되는 form -->
 
 
@@ -342,12 +345,9 @@ form .inputGroup1.focusWithText .helper {
 	var rsa = new RSAKey();
 	rsa.setPublic("${modulus}", "${exponent}");
 	
-	var id = $('#old_id').val();
-	
 	
 	function login() {
-		var id = $('#old_id').val();
-		var pw = $('#old_pw').val();
+		
 		//아이디 입력인했을때
 		if(id==''){
 			alert('ID를 입력해주세요');
@@ -363,11 +363,15 @@ form .inputGroup1.focusWithText .helper {
 				recaptcha : document.getElementById("g-recaptcha-response").value
 			},
 			success : function(data) {
+				var id = $('#old_id').val();
+				var pw = $('#old_pw').val();
+				var shaPw = hex_sha512($('#old_pw').val()).toString();
 				if(data.result=='success'){
 				// 아이디/비밀번호 암호화 후 hidden form으로 submit
-				
+				alert(shaPw);
 				$id.val(rsa.encrypt(id)); // 아이디 암호화
-				$pw.val(rsa.encrypt(pw)); // 비밀번호 암호화
+				$pw.val(rsa.encrypt(shaPw)); // 비밀번호 암호화
+				
 				$("#hiddenForm").submit();
 				}else{
 					alert('자동가입방지 확인해주세요.');

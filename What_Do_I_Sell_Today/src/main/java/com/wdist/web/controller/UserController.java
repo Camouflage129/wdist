@@ -34,7 +34,6 @@ import io.netty.handler.codec.http.HttpRequest;
 public class UserController {
 
 	RSAUtil rsaUtil = new RSAUtil();
-	SHAUtil sha = new SHAUtil();
 
 	@Resource(name = "UserService")
 	UserService service;
@@ -43,14 +42,12 @@ public class UserController {
 	public ModelAndView reCapcha(HttpServletRequest req) {
 		VerifyRecaptcha.setSecretKey("6Ldj51MUAAAAAD1gMJ_ZZhOtpW4xTbNNiCsvgQGW"); // secretKey 세팅
 		String gRecaptchaResponse = req.getParameter("recaptcha"); // recapcha 파라미터 가져오기
-		System.out.println("리캡차 요청");
 		boolean verify = false;
 		try {
 			verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} // 리캡챠 인증 true,false 설공 실패 리턴
-		System.out.println(verify);
 		String result = "fail";
 		if (verify) {
 			result = "success";
@@ -90,7 +87,7 @@ public class UserController {
 		try {
 			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim()));
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
-			vo.setPw(sha.encryptSHA(rsaUtil.getDecryptText(key, vo.getPw())));
+			vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,7 +143,6 @@ public class UserController {
 		model.addAttribute("exponent", rsa.getExponent());
 		model.addAttribute("siteKey", "6Ldj51MUAAAAAMI70zqitVW0e9J9P3ZDdGZ6138Z"); // recap
 		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
-		// System.out.println("키받아 갔어요");
 		return "user/login";
 	}
 
@@ -160,26 +156,24 @@ public class UserController {
 			ra.addFlashAttribute("resultMsg", "비정상적인 접근입니다.");
 			return "user/login";
 		}
-
 		// session에 저장된 개인키 초기화
 		session.removeAttribute("RSAprivateKey");
-		// System.out.println("전 "+vo);
+		//System.out.println("전 "+vo);
 		// 아이디/비밀번호 복호화
 		try {
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
-			vo.setPw(sha.encryptSHA(rsaUtil.getDecryptText(key, vo.getPw())));
+			vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 		} catch (Exception e) {
 			ra.addFlashAttribute("resultMsg", "비정상적인 접근입니다.");
 			e.printStackTrace();
 			return "user/login";
 		}
-
 		// 로그인 로직 실행
 		UserVO user = service.login(vo.getId(), vo.getPw());
 		// System.out.println("후 "+vo);
-		if (user.getId() == null) {
+		if (user == null) {
 			ra.addFlashAttribute("status", "아이디 혹은 비밀번호를 확인해주세요.");
-			return "user/login";
+			return "redirect:login.do";
 		} else {
 			req.getSession().setAttribute("userid", user.getId());
 			return "redirect:main.do";

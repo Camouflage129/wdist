@@ -22,7 +22,7 @@ public class RSAUtil {
     public RSAUtil() {
         try {
             generator = KeyPairGenerator.getInstance("RSA");
-            generator.initialize(1024);
+            generator.initialize(2048);
             keyFactory = KeyFactory.getInstance("RSA");
             cipher = Cipher.getInstance("RSA");
         } catch (Exception e) {

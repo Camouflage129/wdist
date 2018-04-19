@@ -85,7 +85,7 @@ $(function(){
 		  		return;
 		  	}else{
 		  		for(var i in area){			
-					   $(classname).append('<td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">'+area[i]+'</a></td>');
+					   $(classname).append('<td><a href="/areaDesc.do?area='+area[i]+'\">'+area[i]+'</a></td>');
 		 				}
 		  		} 
 		  	
