@@ -6,16 +6,18 @@ public class FileVO {
 	private String HashValue;
 	private int FileGroupNum;
 	private int FileSize;
+	private String Flag;
 	
 	public FileVO() {
 	}
 
-	public FileVO(int fileNum, String fileName, String hashValue, int fileGroupNum, int fileSize) {
+	public FileVO(int fileNum, String fileName, String hashValue, int fileGroupNum, int fileSize, String flag) {
 		FileNum = fileNum;
 		FileName = fileName;
 		HashValue = hashValue;
 		FileGroupNum = fileGroupNum;
 		FileSize = fileSize;
+		Flag = flag;
 	}
 
 	public int getFileNum() {
@@ -58,6 +60,14 @@ public class FileVO {
 		FileSize = fileSize;
 	}
 
+	public String getFlag() {
+		return Flag;
+	}
+
+	public void setFlag(String flag) {
+		Flag = flag;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -66,6 +76,7 @@ public class FileVO {
 		result = prime * result + ((FileName == null) ? 0 : FileName.hashCode());
 		result = prime * result + FileNum;
 		result = prime * result + FileSize;
+		result = prime * result + ((Flag == null) ? 0 : Flag.hashCode());
 		result = prime * result + ((HashValue == null) ? 0 : HashValue.hashCode());
 		return result;
 	}
@@ -90,6 +101,11 @@ public class FileVO {
 			return false;
 		if (FileSize != other.FileSize)
 			return false;
+		if (Flag == null) {
+			if (other.Flag != null)
+				return false;
+		} else if (!Flag.equals(other.Flag))
+			return false;
 		if (HashValue == null) {
 			if (other.HashValue != null)
 				return false;
@@ -101,6 +117,6 @@ public class FileVO {
 	@Override
 	public String toString() {
 		return "FileVO [FileNum=" + FileNum + ", FileName=" + FileName + ", HashValue=" + HashValue + ", FileGroupNum="
-				+ FileGroupNum + ", FileSize=" + FileSize + "]";
+				+ FileGroupNum + ", FileSize=" + FileSize + ", Flag=" + Flag + "]";
 	}
 }
