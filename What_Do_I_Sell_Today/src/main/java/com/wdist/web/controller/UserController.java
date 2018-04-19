@@ -34,7 +34,6 @@ import io.netty.handler.codec.http.HttpRequest;
 public class UserController {
 
 	RSAUtil rsaUtil = new RSAUtil();
-	SHAUtil sha = new SHAUtil();
 
 	@Resource(name = "UserService")
 	UserService service;
@@ -88,7 +87,7 @@ public class UserController {
 		try {
 			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim()));
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
-			vo.setPw(sha.encryptSHA(rsaUtil.getDecryptText(key, vo.getPw())));
+			vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -157,14 +156,13 @@ public class UserController {
 			ra.addFlashAttribute("resultMsg", "비정상적인 접근입니다.");
 			return "user/login";
 		}
-
 		// session에 저장된 개인키 초기화
 		session.removeAttribute("RSAprivateKey");
 		//System.out.println("전 "+vo);
 		// 아이디/비밀번호 복호화
 		try {
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
-			vo.setPw(sha.encryptSHA(rsaUtil.getDecryptText(key, vo.getPw())));
+			vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 		} catch (Exception e) {
 			ra.addFlashAttribute("resultMsg", "비정상적인 접근입니다.");
 			e.printStackTrace();
@@ -172,7 +170,6 @@ public class UserController {
 		}
 		// 로그인 로직 실행
 		UserVO user = service.login(vo.getId(), vo.getPw());
-		System.out.println(user);
 		// System.out.println("후 "+vo);
 		if (user == null) {
 			ra.addFlashAttribute("status", "아이디 혹은 비밀번호를 확인해주세요.");

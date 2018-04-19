@@ -35,6 +35,8 @@ public class BoardController {
 
 	@RequestMapping(value="/insertBoard.do")
 	public String insertBoard(BoardVO boardVO) {	//, FileVO fileVO
+		System.out.println("³»¿ë");
+		System.out.println(boardVO.getContents());
 		service.insertBoard(boardVO, null);
 		return "redirect:";
 	}
