@@ -49,6 +49,8 @@
   	
   	#accordion{
   		width:50%;
+  		margin-left: auto;
+  		margin-right: auto;
   	}
   	
 </style>
@@ -109,9 +111,7 @@ $(function(){
       <div class="card">
       <div class="card-header">
        <!--  <a id="title1" class="collapsed card-link" data-toggle="collapse" href="#collapseOne"> -->
-        <a id="title1" class="card-link" data-toggle="collapse" href="#collapseOne">
-          한식
-        </a>
+        <a id="title1" class="card-link" data-toggle="collapse" href="#collapseOne">한식</a>
       </div>
       <div id="collapseOne" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -126,25 +126,9 @@ $(function(){
       </div>
     </div>
     
-    
-    <!-- <div class="card">
-    <div class="card-header">
-      <a class="card-link" data-toggle="collapse" href="#collapseOne">
-        Collapsible Group Item #1
-      </a>
-    </div>
-    <div id="collapseOne" class="collapse show" data-parent="#accordion">
-      <div class="card-body">
-        Lorem ipsum..
-      </div>
-    </div>
-  </div>  -->
-    
     <div class="card">
       <div class="card-header">
-        <a id="title2" class="card-link" data-toggle="collapse" href="#collapseTwo">
-        일식
-      </a>
+        <a id="title2" class="card-link" data-toggle="collapse" href="#collapseTwo">일식</a>
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -160,9 +144,7 @@ $(function(){
     </div>
     <div class="card">
       <div class="card-header">
-        <a id="title3" class="card-link" data-toggle="collapse" href="#collapseThree">
-          분식
-        </a>
+        <a id="title3" class="card-link" data-toggle="collapse" href="#collapseThree">분식</a>
       </div>
       <div id="collapseThree" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -179,9 +161,7 @@ $(function(){
    
  <div class="card">
       <div class="card-header">
-        <a id="title4" class="card-link" data-toggle="collapse" href="#collapseFour">
-          치킨
-        </a>
+        <a id="title4" class="card-link" data-toggle="collapse" href="#collapseFour">치킨</a>
       </div>
       <div id="collapseFour" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -198,9 +178,7 @@ $(function(){
     
      <div class="card">
       <div class="card-header">
-        <a id="title5" class="card-link" data-toggle="collapse" href="#collapseFive">
-          호프
-        </a>
+        <a id="title5" class="card-link" data-toggle="collapse" href="#collapseFive">호프</a>
       </div>
       <div id="collapseFive" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -217,9 +195,7 @@ $(function(){
     
      <div class="card">
       <div class="card-header">
-        <a id="title6" class="card-link" data-toggle="collapse" href="#collapseSix">
-          중식
-        </a>
+        <a id="title6" class="card-link" data-toggle="collapse" href="#collapseSix">중식</a>
       </div>
       <div id="collapseSix" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -236,9 +212,7 @@ $(function(){
     
      <div class="card">
       <div class="card-header">
-        <a id="title7" class="card-link" data-toggle="collapse" href="#collapseSeven">
-          양식
-        </a>
+        <a id="title7" class="card-link" data-toggle="collapse" href="#collapseSeven">양식</a>
       </div>
       <div id="collapseSeven" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -255,9 +229,7 @@ $(function(){
 
  <div class="card">
       <div class="card-header">
-        <a id="title8" class="card-link" data-toggle="collapse" href="#collapseEight">
-          패스트푸드
-        </a>
+        <a id="title8" class="card-link" data-toggle="collapse" href="#collapseEight">패스트푸드</a>
       </div>
       <div id="collapseEight" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -274,9 +246,7 @@ $(function(){
 
 <div class="card">
       <div class="card-header">
-        <a id="title9" class="card-link" data-toggle="collapse" href="#collapseNine">
-          제과
-        </a>
+        <a id="title9" class="card-link" data-toggle="collapse" href="#collapseNine">제과</a>
       </div>
       <div id="collapseNine" class="collapse" data-parent="#accordion">
         <div class="card-body">
@@ -293,9 +263,7 @@ $(function(){
     
     <div class="card">
       <div class="card-header">
-        <a id="title10" class="card-link" data-toggle="collapse" href="#collapseTen">
-          커피
-        </a>
+        <a id="title10" class="card-link" data-toggle="collapse" href="#collapseTen">커피</a>
       </div>
       <div id="collapseTen" class="collapse" data-parent="#accordion">
         <div class="card-body">

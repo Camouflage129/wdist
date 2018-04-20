@@ -1,6 +1,8 @@
 ﻿package com.wdist.web.controller;
 
 import java.io.IOException;
+
+import java.io.PrintWriter;
 import java.security.PrivateKey;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -101,16 +105,28 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
-	public ModelAndView checkIdDo(String id, HttpSession session) {
-		Map<String, String> map = new HashMap<String, String>();
-		if (service.checkId(id))
-			map.put("result", "success");
+	public void checkIdDo(String id,HttpServletResponse response) {
+		boolean boo = service.checkId(id);
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+	//	System.out.println("ID 중복확인 결과" + boo);
+		if (boo)
+			out.print("true");
 		else
-			map.put("result", "fail");
-		session.setAttribute("checkId", id);
-		return new ModelAndView("jsonView", map);
+			out.print("flase");
+		out.flush();
+		out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
+	
+/*	@RequestMapping(value="/checkId.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody String checkIdDo(String id, Model model) {
+		return service.checkId(id);
+	}
+*/
 	@RequestMapping(value = "/removeuser.do")
 	public String userRemove(String id) {
 		service.deleteAccount(id);
