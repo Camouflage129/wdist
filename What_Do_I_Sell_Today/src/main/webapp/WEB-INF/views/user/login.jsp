@@ -313,7 +313,7 @@ form .inputGroup1.focusWithText .helper {
 		<div class="inputGroup inputGroup1">
 			
 			<label for="email1">ID</label> <input type="text" id="old_id" name="old_id"
-				class="email" maxlength="256" />
+				class="email" maxlength="16" />
 			<p class="helper helper1">ID를 입력해주세요.</p>
 			<span class="indicator"></span>
 		</div>

@@ -9,6 +9,8 @@
 	<title>View Board</title>
 </head>
 <body>
-
+	<div>
+		${board.contents}
+	</div>
 </body>
 </html>
