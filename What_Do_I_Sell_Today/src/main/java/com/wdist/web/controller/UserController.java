@@ -113,7 +113,7 @@ public class UserController {
 		if (boo)
 			out.print("true");
 		else
-			out.print("flase");
+			out.print("false");
 		out.flush();
 		out.close();
 		} catch (IOException e) {
