@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.wdist.biz.food.dao.FoodDAO;
+import com.wdist.biz.food.vo.AreaFoodVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
 
 @Service("FoodService")
@@ -14,7 +15,11 @@ public class FoodServiceImpl implements FoodService{
 	
 	@Override
 	public FoodAreaVO getFoodAreaTitle(String foodtitle) {
-		
 		return dao.getFoodAreaTitle(foodtitle);
+	}
+
+	@Override
+	public AreaFoodVO getAreaFoodTitle(String areatitle) {
+		return dao.getAreaFoodtitle(areatitle);
 	}
 }

@@ -82,59 +82,6 @@ public class AreaFoodVO {
 		FthFood = fthFood;
 	}
 	
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + AreaFoodNum;
-		result = prime * result + ((FrthFood == null) ? 0 : FrthFood.hashCode());
-		result = prime * result + ((FstFood == null) ? 0 : FstFood.hashCode());
-		result = prime * result + ((FthFood == null) ? 0 : FthFood.hashCode());
-		result = prime * result + ((SndFood == null) ? 0 : SndFood.hashCode());
-		result = prime * result + ((ThdFood == null) ? 0 : ThdFood.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AreaFoodVO other = (AreaFoodVO) obj;
-		if (AreaFoodNum != other.AreaFoodNum)
-			return false;
-		if (FrthFood == null) {
-			if (other.FrthFood != null)
-				return false;
-		} else if (!FrthFood.equals(other.FrthFood))
-			return false;
-		if (FstFood == null) {
-			if (other.FstFood != null)
-				return false;
-		} else if (!FstFood.equals(other.FstFood))
-			return false;
-		if (FthFood == null) {
-			if (other.FthFood != null)
-				return false;
-		} else if (!FthFood.equals(other.FthFood))
-			return false;
-		if (SndFood == null) {
-			if (other.SndFood != null)
-				return false;
-		} else if (!SndFood.equals(other.SndFood))
-			return false;
-		if (ThdFood == null) {
-			if (other.ThdFood != null)
-				return false;
-		} else if (!ThdFood.equals(other.ThdFood))
-			return false;
-		return true;
-	}
-
 	@Override
 	public String toString() {
 		
