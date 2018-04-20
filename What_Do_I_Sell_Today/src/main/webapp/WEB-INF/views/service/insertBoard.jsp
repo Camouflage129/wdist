@@ -11,10 +11,10 @@
 </head>
 <body>
 	<div class="container">
-		<form action="insertBoard.do" method="post" enctype="multipart/form-data">
+		<form id="insertForm" action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>글쓰기</legend>
-				<input type="hidden" name="Type" value="freeBoard">
+				<input type="hidden" name="Type" value="${type}">
 				<div class="form-group">
 					제목 : <input type="text" name="Title" class="form-control" id="inputDefault">
 				</div>
@@ -31,7 +31,7 @@
 				</form>
 				<div class="form-group">
 					<button id="cancel" type="button" class="btn btn-danger float-lg-right">취소</button>
-					<button type="submit" class="btn btn-info float-lg-right">글쓰기</button>
+					<button id="submit" type="submit" class="btn btn-info float-lg-right">글쓰기</button>
 				</div>
 			</fieldset>
 		</form>

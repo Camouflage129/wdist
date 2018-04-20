@@ -27,10 +27,11 @@ public class FileVO {
 		this.FileSize = fileSize;
 	}
 
-	public FileVO(String fileName, String hashValue, int fileSize, String flag) {
+	public FileVO(String fileName, String hashValue, int fileGroupNum, int fileSize, String flag) {
 		super();
 		this.FileName = fileName;
 		this.HashValue = hashValue;
+		this.FileGroupNum = fileGroupNum;
 		this.FileSize = fileSize;
 		this.flag = flag;
 	}

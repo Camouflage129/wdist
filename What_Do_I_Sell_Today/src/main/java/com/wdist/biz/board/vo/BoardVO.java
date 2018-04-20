@@ -75,7 +75,7 @@ public class BoardVO {
 		return DATE;
 	}
 
-	public void setDATE(Date dATE) {
+	public void setPostDate(Date dATE) {
 		DATE = dATE;
 	}
 
