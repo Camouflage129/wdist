@@ -1,5 +1,6 @@
 package com.wdist.biz.board.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -24,7 +25,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> viewBoard(int BoardNum) {
+	public BoardVO viewBoard(int BoardNum) {
 		return dao.viewBoard(BoardNum);
 	}
 
@@ -40,15 +41,21 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
-	public int insertBoard(BoardVO boardVO, FileVO fileVO) {
+	public int insertBoard(BoardVO boardVO, String id) {
 		int rows = 0;
 		int boardNum = 0;
 		rows += dao.insertBoard(boardVO);
-		if(fileVO != null) {
+		List<FileVO> files = dao.getFiles(-1, id);
+		System.out.println(files);
+		if(files != null) {
+			Iterator<FileVO> it = files.iterator();
 			boardNum = dao.getBoardNum(boardVO);
 			rows += dao.insertFileGroup(boardNum);
-			fileVO.setFileGroupNum(dao.getFileGroupNum(boardNum));
-			rows += dao.insertFile(fileVO);
+			while(it.hasNext()) {
+				FileVO data = it.next();
+				data.setFileGroupNum(dao.getFileGroupNum(boardNum));
+				dao.modifyFile(data);
+			}
 		}
 		return rows;
 	}
@@ -82,5 +89,17 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int insertFile(FileVO vo) {
 		return dao.insertFile(vo);
+	}
+
+	@Override
+	public int deleteFile(String id) {
+		int rows = 0;
+		List<FileVO> files = dao.getFiles(-1, id);
+		Iterator<FileVO> it = files.iterator();
+		while(it.hasNext()) {
+			FileVO data = it.next();
+			rows += dao.deleteFiles(data.getFileNum());
+		}
+		return rows;
 	}
 }

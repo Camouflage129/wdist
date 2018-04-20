@@ -6,15 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="ckeditor/adapters/jquery.js"></script>
+
 <script type="text/javascript" src="js/insertBoard.js"></script>
 <title>Insert Board</title>
 </head>
 <body>
 	<div class="container">
-		<form action="insertBoard.do" method="post" enctype="multipart/form-data">
+		<form id="insertForm" action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>글쓰기</legend>
-				<input type="hidden" name="Type" value="freeBoard">
+				<input type="hidden" name="Type" value="${type}">
 				<div class="form-group">
 					제목 : <input type="text" name="Title" class="form-control" id="inputDefault">
 				</div>
@@ -29,9 +31,9 @@
 		                CKEDITOR.replace( 'editor1' );
 		            </script>
 				</form>
-				<div class="form-group">
+				<div class="form-group"  style = "padding: 15px;">
 					<button id="cancel" type="button" class="btn btn-danger float-lg-right">취소</button>
-					<button type="submit" class="btn btn-info float-lg-right">글쓰기</button>
+					<button id="submit" type="submit" class="btn btn-info float-lg-right">글쓰기</button>
 				</div>
 			</fieldset>
 		</form>

@@ -55,7 +55,7 @@ function getCoord(e) {
      span.textContent = old_id.value.substr(carPos) || '.';
      div.appendChild(span);
 
-     idCoords = getPosition(id); //console.log("idCoords.x: " + idCoords.x + ", idCoords.y: " + idCoords.y);
+     idCoords = getPosition(old_id); //console.log("idCoords.x: " + idCoords.x + ", idCoords.y: " + idCoords.y);
      caretCoords = getPosition(span); //console.log("caretCoords.x " + caretCoords.x + ", caretCoords.y: " + caretCoords.y);
      centerCoords = getPosition(mySVG); //console.log("centerCoords.x: " + centerCoords.x);
      svgCoords = getPosition(mySVG);
@@ -113,6 +113,7 @@ function getCoord(e) {
      if (chinS > 1) {
           chinS = 1 - (chinS - 1);
      }
+     
      var faceX = mouthX * .3;
      var faceY = mouthY * .4;
      var faceSkew = Math.cos(mouthAngle) * 5;

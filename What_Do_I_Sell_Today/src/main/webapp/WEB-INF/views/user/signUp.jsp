@@ -53,6 +53,32 @@
 			<input id="pw_Check" type="password" class="form-control is-invalid">
 			<small id="pwCheck_feedback" class="form-text text-muted">다시한번 비밀번호를 입력해주세요.</small>
 		</div>			
+
+
+	<div class="pwchkwrap">
+                 <label for="qustPwd">Password Hint</label>
+                     <select id="qustPwd" name="qustPwd" class="custom-select" title="비밀번호 찾기 질문 조회">
+                       
+							<option value="P01"> 첫째 자녀의 이름은?</option>
+							<option value="P02"> 자신의 인생 좌우명은?</option>
+							<option value="P03"> 가장 기억에 남는 선생님 성함은?</option>
+							<option value="P04"> 다시 태어나면 하고 싶은 것은?</option>
+							<option value="P05"> 가장 감명깊게 본 영화는?</option>
+							<option value="P06"> 기억에 남는 추억의 장소는?</option>
+							<option value="P07"> 인상 깊게 읽은 책 이름은?</option>
+							<option value="P08"> 자신의 보물 제1호는??</option>
+							<option value="P09"> 아버지의 성함은?</option>
+							<option value="P11"> 내가 좋아하는 운동은?</option>
+                     </select>
+              </div>
+
+		
+		<div id="nameDiv" class="form-group has-danger">
+			<!-- <label class="form-control-label" for="inputDanger1">Name</label>  -->
+			<input id="ansPwd" type="text" class="form-control is-invalid" name="ansPwd">
+			<div id="ansPwd_feedback" class="ansPwd_feedback">질문에 대한 답변을 입력해주세요.</div>
+		</div>
+
 	
 		<div class="form-group text-center">
 			<button id="signUpBtn" type="submit" class="btn btn-success">회원가입</button>
@@ -77,6 +103,7 @@
 <script src="/js/rsa/prng4.js"></script>
 <script src="/js/rsa/rng.js"></script>
 <script src="/js/rsa/rsa.js"></script>
+ <script src="/js/sha.min.js"></script>
 <script scr="/js/signUp.js"></script>
 
 
@@ -96,10 +123,11 @@
  
         var email = $(this).find("#email").val();
         var pw = $(this).find("#pw").val();
+        var shaPw = hex_sha512(pw).toString();
         var id = $(this).find("#id").val();
         var name = $(this).find("#name").val();
         $email.val(rsa.encrypt(email));
-        $pw.val(rsa.encrypt(pw));
+        $pw.val(rsa.encrypt(shaPw));
         $name.val(rsa.encrypt(name));
         $id.val(rsa.encrypt(id));
         $("#hiddenForm").submit();

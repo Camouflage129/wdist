@@ -11,29 +11,31 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<table class="table table-hover">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
+				<table class="table table-hover" style="text-align:center;">
 				<thead>
 					<tr>
 						<th scope="col">No</th>
 						<th scope="col">제목</th>
-						<th scope="col">내용</th>
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="board" items="${list}">
+						<c:set var="count" value="${count + 1}"/>
 						<tr class="table-primary">
-							<th scope="row">번호</th>
-							<!-- EL태그로 그냥 번호 셀 것 -->
-							<td><a href="findBoard.do?num=${board.BoardNum}">${board.Title}</a></td>
-							<td>${board.Contents}</td>
-							<td>${board.UsersID}</td>
-							<td>${board.PostDate}</td>
+							<th scope="row">${count}</th>
+							<td><a href="/findBoard.do?num=${board.boardNum}">${board.title}</a></td>
+							<td>${board.usersID}</td>
+							<td>${board.postDate}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		<div class="row">
 		<div class="col-sm-3"></div>
