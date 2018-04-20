@@ -368,7 +368,6 @@ form .inputGroup1.focusWithText .helper {
 				var shaPw = hex_sha512($('#old_pw').val()).toString();
 				if(data.result=='success'){
 				// 아이디/비밀번호 암호화 후 hidden form으로 submit
-				alert(shaPw);
 				$id.val(rsa.encrypt(id)); // 아이디 암호화
 				$pw.val(rsa.encrypt(shaPw)); // 비밀번호 암호화
 				

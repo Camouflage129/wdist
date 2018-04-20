@@ -13,6 +13,15 @@ public class BoardVO {
 	public BoardVO() {
 	}
 
+	public BoardVO(String type, String title, String contents, String usersID, Date dATE) {
+		super();
+		Type = type;
+		Title = title;
+		Contents = contents;
+		UsersID = usersID;
+		DATE = dATE;
+	}
+
 	public BoardVO(int boardNum, String type, String title, String contents, String usersID, Date dATE) {
 		BoardNum = boardNum;
 		Type = type;
@@ -62,7 +71,7 @@ public class BoardVO {
 		UsersID = usersID;
 	}
 
-	public Date getDATE() {
+	public Date getPostDate() {
 		return DATE;
 	}
 
