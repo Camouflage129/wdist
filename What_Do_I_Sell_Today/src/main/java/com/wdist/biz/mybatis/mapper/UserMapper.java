@@ -14,7 +14,7 @@ public interface UserMapper {
 	@Select("SELECT NAME FROM USERS WHERE usersid=#{id}")
 	public String checkId(String id);
 
-	@Insert("insert into users (usersid, pw, name, email) values(#{usersid}, #{pw}, #{name}, #{email})")
+	@Insert("insert into users (usersid, pw, name, email, pwdhint) values(#{usersid}, #{pw}, #{name}, #{email}, #{pwdhint})")
 	public int insertUser(UserVO vo);
 
 	@Delete("delete from users where usersid = #{id}")

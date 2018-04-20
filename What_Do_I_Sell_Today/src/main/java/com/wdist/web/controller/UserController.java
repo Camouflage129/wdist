@@ -255,5 +255,13 @@ public class UserController {
 	}
 	
 	
+	// 비밀번호 찾기
+	@RequestMapping(value="/searchpwd.do")
+	public String searchPwd() {
+		return "user/pwdSearch";
+	}
+	
+	
+	
 
 }

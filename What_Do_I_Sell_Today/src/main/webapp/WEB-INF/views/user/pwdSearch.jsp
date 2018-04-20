@@ -1,25 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%> 
+	   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <!-- <script type="text/javascript" src="js/signUp.js?ver=2"></script>  -->
-
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" src="js/index.js?ver=1"></script>
-<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
-<link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
-<title>SignUp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
-<form action="/signUp.do" method="post" id="signForm">
+
+<form action="/searchpwd.do" method="post" id="searchpwdForm">
   <fieldset>
   <div align="center">
-	<legend>회원가입</legend>
+	<legend>비밀번호 변경하기</legend>
   </div>
   <div align="center">
   <div class="col-md-6 col-md-offset-3" align="left">
@@ -87,52 +80,41 @@
 	</div>
 	</fieldset>
 </form>
-<!-- 실제 서버로 전송되는 form -->
-<form action="/signUp.do" method="post" id="hiddenForm">
-    <fieldset>
-        <input type="hidden" name="email" />
-        <input type="hidden" name="id" />
-        <input type="hidden" name="pw" />
-        <input type="hidden" name="name" />
-    </fieldset>
-</form>
-<script type="text/javascript" src="/js/signUp.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="/js/rsa/jsbn.js"></script>
-<script src="/js/rsa/prng4.js"></script>
-<script src="/js/rsa/rng.js"></script>
-<script src="/js/rsa/rsa.js"></script>
- <script src="/js/sha.min.js"></script>
-<script scr="/js/signUp.js"></script>
 
 
-<!-- 유저 입력 form의 submit event 재정의 -->
-<script>
-    var $email = $("#hiddenForm input[name='email']");
-    var $pw = $("#hiddenForm input[name='pw']");
-    var $name = $("#hiddenForm input[name='name']");
-    var $id = $("#hiddenForm input[name='id']");
- 
-    // Server로부터 받은 공개키 입력
-    var rsa = new RSAKey();
-    rsa.setPublic("${modulus}", "${exponent}");
- 
-    $("#signForm").submit(function(e) {
-        e.preventDefault();
- 
-        var email = $(this).find("#email").val();
-        var pw = $(this).find("#pw").val();
-        var shaPw = hex_sha512(pw).toString();
-        var id = $(this).find("#id").val();
-        var name = $(this).find("#name").val();
-        $email.val(rsa.encrypt(email));
-        $pw.val(rsa.encrypt(shaPw));
-        $name.val(rsa.encrypt(name));
-        $id.val(rsa.encrypt(id));
-        $("#hiddenForm").submit();
-    });
-</script>
+<div class="idpwchkwrap">
+                 <h5>비밀번호 찾기</h5>
+                 <label for="qustPwd">아이디/비밀번호 찾기 질문</label>
+                     <select id="qustPwd" name="qustPwd" title="아이디/비밀번호 찾기 질문 조회">
+						
+							<option value="P01"> 첫째 자녀의 이름은?</option>
+						
+							<option value="P02"> 자신의 인생 좌우명은?</option>
+						
+							<option value="P03"> 가장 기억에 남는 선생님 성함은?</option>
+						
+							<option value="P04"> 다시 태어나면 하고 싶은 것은?</option>
+						
+							<option value="P05"> 가장 감명깊게 본 영화는?</option>
+						
+							<option value="P06"> 기억에 남는 추억의 장소는?</option>
+						
+							<option value="P07"> 인상 깊게 읽은 책 이름은?</option>
+						
+							<option value="P08"> 자신의 보물 제1호는??</option>
+						
+							<option value="P09"> 아버지의 성함은?</option>
+						
+							<option value="P11"> 내가 좋아하는 운동은?</option>
+						
+                     </select>
+                 <label for="ansPwd">아이디/비밀번호 찾기 답변</label><input type="text" name="ansPwd" id="ansPwd" class="in_txt" onclick="javascript:onlyCommaExceptOnKeyEnterPress();" onkeypress="javascript:onlyCommaExceptOnKeyEnterPress();">
+                 <label for="propId">아이디</label><input type="text" name="propId" id="propId" class="in_txt01" maxlength="12" style="ime-mode:disabled" onclick="javascript:onlyEngNumOnKeyEnterPress();" onkeypress="javascript:onlyEngNumOnKeyEnterPress();">
+                 <label for="propName">성명</label><input type="text" name="propName" id="propName" class="in_txt01" maxlength="30" style="ime-mode:active">
+                 <input type="image" src="/images/common/btn_ok.gif" class="pwBtn" alt="확인" complete="complete">
+              </div>
+
+
+
 </body>
 </html>
-
-

@@ -6,6 +6,7 @@ public class UserVO {
 	private String pw;
 	private String name;
 	private String email;
+	private String pwdhint;
 
 	public UserVO() {
 	}
@@ -52,6 +53,14 @@ public class UserVO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPwdhint() {
+		return pwdhint;
+	}
+
+	public void setPwdhint(String pwdhint) {
+		this.pwdhint = pwdhint;
 	}
 
 	@Override
