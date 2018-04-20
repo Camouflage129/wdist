@@ -67,6 +67,11 @@ public class UserDAOImpl implements UserDAO {
 		vo.setPw(pw);
 		return mapper.login(vo);
 	}
+
+	@Override
+	public int updateUserPwNull(UserVO vo) {
+		return mapper.updateUserPwNull(vo);
+	}
 	
 	
 	
