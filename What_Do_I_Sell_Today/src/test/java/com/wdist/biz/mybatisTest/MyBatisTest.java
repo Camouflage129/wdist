@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wdist.biz.dept.service.DeptService;
 import com.wdist.biz.dept.vo.DeptVO;
+import com.wdist.biz.food.service.FoodService;
+import com.wdist.biz.food.vo.FoodAreaVO;
 import com.wdist.biz.user.service.UserService;
 import com.wdist.biz.user.vo.UserVO;
 
@@ -22,16 +24,20 @@ import com.wdist.biz.user.vo.UserVO;
 public class MyBatisTest {
 	@Resource(name="deptService")
 	DeptService service;
-
+	
 	@Autowired
 	UserService userservice;
+	
+	//@Autowired
+	@Resource(name="FoodService")
+	FoodService foodservice;
 	
 	@After
 	public void tearDown() throws Exception {
 		service = null;
 	}
 	
-	@Test
+	//@Test
 	public void login() {
 	//	UserVO vo = new UserVO("java01", "1234");
 		System.out.println("dscsd");
@@ -55,5 +61,10 @@ public class MyBatisTest {
 	//@Test
 	public void getNumTest() {
 		System.out.println(service.getNum());
+	}
+	
+	@Test
+	public void getfoodVO() {
+		System.out.println(foodservice.getFoodAreaTitle("한식"));
 	}
 }

@@ -44,64 +44,15 @@
  	 	text-decoration: none;
  	 	  
  	 }
+ 	 
+ 	 #table2{
+ 	 	width:80%;
+ 	 	margin-left: auto; 
+ 	 	margin-right: auto;
+ 	 }
   	
   </style>
   
-  <script type="text/javascript">
-  
-  $(function (){
-	  	var id;
-		var idname;
-		var classname;
-		var title;
-		var area;
-		
-	  $(".button").click(function (){
-		  $("#divToggle").toggle(); 
-		  
-		  id = $(this).attr('id'); 
-			 idname = '#'+id;
-			 classname = "."+id;
-			 
-			/*  alert(id);
-			 alert($(id).text()); */
-			 
-			 //alert("ajax");
-			 $.ajax({
-				type : 'POST',
-				url : 'foodAreaTitle.do',
-				dataType : 'json',
-				data : {
-					"foodtitle" : $(idname).text()
-				},
-				success : function(data) {
-			  	area = data;
-			  	var length = $("#tr").find('td').length;
-			  	
-			  	if(length==5){
-			  		return;
-			  	}else{
-			  		for(var i in area){			
-						   $(classname).append('<td><a href="/areaDesc.do?area='+area[i]+'\">'+area[i]+'</a></td>');
-			 				}
-			  		} 
-			  	
-				},
-				error : function(data) {
-					alert("통신실패 : " + data.message);
-				}
-			}); //end ajax     
-		  }); 
-	
-	  
-	  
-	  
-	  $('tr').has('td').has('a').css('cursor', 'pointer');
-	  
-  });
- 
-    </script>
-    
     <script type="text/javascript">
 $(function(){
 	var id;
@@ -109,8 +60,10 @@ $(function(){
 	var classname;
 	var title;
 	var food;
-	
+	 $('tr').has('td').has('a').css('cursor', 'pointer');
 	 $('.button').click(function(){
+		 $("#divToggle").toggle(); 
+		 
 		 id = $(this).attr('id'); 
 		 idname = '#'+id;
 		 classname = "."+id;
@@ -203,7 +156,7 @@ $(function(){
 
 <div id="divToggle" style="display: none;">
 
-<table class="table table-bordered">
+<table id="table2" class="table table-bordered">
     <tbody>
       <tr id="foodtitle">
       <!--   <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">한식</a></td>
