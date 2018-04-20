@@ -6,11 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.JsonArray;
-import com.wdist.biz.dept.vo.AreaFoodVO;
+import com.wdist.biz.food.vo.AreaFoodVO;
 
 @Controller
 public class AreaController {
@@ -30,17 +29,17 @@ public class AreaController {
 		JsonArray arr = new JsonArray();
 		AreaFoodVO food = new AreaFoodVO();		
 		
-		food.setFood1("한식");
-		food.setFood2("일식");
-		food.setFood3("중식");
-		food.setFood4("카페");
-		food.setFood5("양식");
+		food.setFrthFood("한식");
+		food.setSndFood("일식");
+		food.setThdFood("중식");
+		food.setFrthFood("카페");
+		food.setFthFood("양식");
 		
-		arr.add(food.getFood1());
-		arr.add(food.getFood2());
-		arr.add(food.getFood3());
-		arr.add(food.getFood4());
-		arr.add(food.getFood5());
+		arr.add(food.getFstFood());
+		arr.add(food.getSndFood());
+		arr.add(food.getThdFood());
+		arr.add(food.getFthFood());
+		arr.add(food.getFthFood());
 		
 		try {
 			res.getWriter().write(arr.toString());

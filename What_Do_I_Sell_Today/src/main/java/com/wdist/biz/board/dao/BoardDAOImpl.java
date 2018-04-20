@@ -1,5 +1,6 @@
 package com.wdist.biz.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +31,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<BoardVO> viewBoard(int BoardNum) {
+	public BoardVO viewBoard(int BoardNum) {
 		return mapper.viewBoard(BoardNum);
 	}
 
@@ -95,7 +96,20 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
+	public int deleteFiles(int num) {
+		return mapper.deleteFiles(num);
+	}
+	
+	@Override
 	public int modifyFile(FileVO vo) {
 		return mapper.modifyFile(vo);
+	}
+
+	@Override
+	public List<FileVO> getFiles(int num, String id) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("num", num);
+		map.put("id", id);
+		return mapper.getFiles(map);
 	}
 }

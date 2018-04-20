@@ -9,7 +9,7 @@ import com.wdist.biz.board.vo.ReplyVO;
 public interface BoardDAO {
 	public List<BoardVO> freeOrCsBoard(String Type);
 	
-	public List<BoardVO> viewBoard(int BoardNum);
+	public BoardVO viewBoard(int BoardNum);
 	
 	public List<FileVO> viewBoradFile(int BoardNum);
 	
@@ -37,7 +37,9 @@ public interface BoardDAO {
 	
 	public int deleteFile(int num);
 	
+	public int deleteFiles(int num);
+	
 	public int modifyFile(FileVO vo);
 	
-	
+	public List<FileVO> getFiles(int num, String id);
 }
