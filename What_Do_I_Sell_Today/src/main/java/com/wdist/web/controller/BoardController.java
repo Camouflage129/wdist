@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -68,9 +69,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/findBoard.do")
-	public String findBoard(int num, HttpSession session) {
+	public String findBoard(int num,HttpServletRequest request) {
 		BoardVO board = (BoardVO) service.viewBoard(num);
-		session.setAttribute("board", board);
+		System.out.println(board);
+		request.setAttribute("board", board);
 		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
 	}
 }
