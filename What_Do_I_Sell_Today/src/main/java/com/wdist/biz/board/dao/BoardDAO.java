@@ -38,4 +38,6 @@ public interface BoardDAO {
 	public int deleteFile(int num);
 	
 	public int modifyFile(FileVO vo);
+	
+	
 }

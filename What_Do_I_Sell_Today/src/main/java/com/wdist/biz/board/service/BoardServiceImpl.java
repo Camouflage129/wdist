@@ -78,4 +78,9 @@ public class BoardServiceImpl implements BoardService{
 			rows += dao.modifyFile(fileVO);
 		return rows;
 	}
+
+	@Override
+	public int insertFile(FileVO vo) {
+		return dao.insertFile(vo);
+	}
 }

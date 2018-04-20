@@ -1,5 +1,7 @@
 package com.wdist.web.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.sql.Date;
 
 import javax.annotation.Resource;
@@ -39,7 +41,7 @@ public class BoardController {
 	public String insertBoard(String Type, String Title, String UsersID, String Contents) {	//, FileVO fileVO
 		java.util.Date udate = new java.util.Date();
 		Date date = new Date(udate.getTime());
-		System.out.println(Contents);
+		
 		BoardVO boardVO = new BoardVO(Type, Title, Contents ,UsersID, date);
 		service.insertBoard(boardVO, null);
 		if(boardVO.getType().equals("freeBoard"))

@@ -52,11 +52,14 @@ public interface BoardMapper {
 	public int modifyBoard(BoardVO vo);
 	
 	// 파일 수정의 경우 파일의 개수에 따라 삭제 삽입이 모두 이루어져야한다. 트랜잭션을 통해 컨트롤 해야한다.
-	@Insert("insert into File (FileNum, FileName, HashValue, FileGroupNum, FileSize)"
-			+ "values ((select ifnull(max(FileNum),0)+1 from File f), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize})")
+	/*@Insert("insert into Files (FileName, HashValue, FileGroupNum, FileSize)"
+			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize}, #{flag})")
+	public int insertFile(FileVO vo);*/
+	@Insert("insert into Files (FileName, HashValue, FileSize, flag)"
+			+ "values (#{FileName}, #{HashValue}, #{FileSize}, #{flag})")
 	public int insertFile(FileVO vo);
 	
-	@Delete("delete from File where FileGroupNum = #{num}")
+	@Delete("delete from Files where FileGroupNum = #{num}")
 	public int deleteFile(int num);
 	
 	@Update("update Board set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize} where FileNum = #{FileNum}")

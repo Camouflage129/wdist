@@ -6,18 +6,33 @@ public class FileVO {
 	private String HashValue;
 	private int FileGroupNum;
 	private int FileSize;
-	private String Flag;
+	private String flag;
 	
 	public FileVO() {
 	}
 
-	public FileVO(int fileNum, String fileName, String hashValue, int fileGroupNum, int fileSize, String flag) {
-		FileNum = fileNum;
-		FileName = fileName;
-		HashValue = hashValue;
-		FileGroupNum = fileGroupNum;
-		FileSize = fileSize;
-		Flag = flag;
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public FileVO(int fileNum, String fileName, String hashValue, int fileGroupNum, int fileSize) {
+		this.FileNum = fileNum;
+		this.FileName = fileName;
+		this.HashValue = hashValue;
+		this.FileGroupNum = fileGroupNum;
+		this.FileSize = fileSize;
+	}
+
+	public FileVO(String fileName, String hashValue, int fileSize, String flag) {
+		super();
+		this.FileName = fileName;
+		this.HashValue = hashValue;
+		this.FileSize = fileSize;
+		this.flag = flag;
 	}
 
 	public int getFileNum() {
@@ -60,14 +75,6 @@ public class FileVO {
 		FileSize = fileSize;
 	}
 
-	public String getFlag() {
-		return Flag;
-	}
-
-	public void setFlag(String flag) {
-		Flag = flag;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,8 +83,8 @@ public class FileVO {
 		result = prime * result + ((FileName == null) ? 0 : FileName.hashCode());
 		result = prime * result + FileNum;
 		result = prime * result + FileSize;
-		result = prime * result + ((Flag == null) ? 0 : Flag.hashCode());
 		result = prime * result + ((HashValue == null) ? 0 : HashValue.hashCode());
+		result = prime * result + ((flag == null) ? 0 : flag.hashCode());
 		return result;
 	}
 
@@ -101,15 +108,15 @@ public class FileVO {
 			return false;
 		if (FileSize != other.FileSize)
 			return false;
-		if (Flag == null) {
-			if (other.Flag != null)
-				return false;
-		} else if (!Flag.equals(other.Flag))
-			return false;
 		if (HashValue == null) {
 			if (other.HashValue != null)
 				return false;
 		} else if (!HashValue.equals(other.HashValue))
+			return false;
+		if (flag == null) {
+			if (other.flag != null)
+				return false;
+		} else if (!flag.equals(other.flag))
 			return false;
 		return true;
 	}
@@ -117,6 +124,7 @@ public class FileVO {
 	@Override
 	public String toString() {
 		return "FileVO [FileNum=" + FileNum + ", FileName=" + FileName + ", HashValue=" + HashValue + ", FileGroupNum="
-				+ FileGroupNum + ", FileSize=" + FileSize + ", Flag=" + Flag + "]";
+				+ FileGroupNum + ", FileSize=" + FileSize + ", flag=" + flag + "]";
 	}
+	
 }
