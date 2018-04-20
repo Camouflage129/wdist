@@ -101,7 +101,7 @@ public class UserController {
 			ra.addFlashAttribute("result", "success");
 		else
 			ra.addFlashAttribute("result", "fail");
-		return "redirect:/login.do"; //성공했을경우 어디로 보낼지 적어주세요
+		return "redirect:/login.do"; // 성공했을경우 어디로 보낼지 적어주세요
 	}
 
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
@@ -120,24 +120,6 @@ public class UserController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-/*	@RequestMapping(value="/checkId.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody String checkIdDo(String id, Model model) {
-		return service.checkId(id);
-	}
-*/
-	@RequestMapping(value = "/removeuser.do")
-	public String userRemove(String id) {
-		service.deleteAccount(id);
-		return "redirect:index.jsp";
-	}
-
-	@RequestMapping(value = "/updateuser.do")
-	public String updateuser(UserVO vo) {
-		System.out.println(vo);
-		service.modifyAccount(vo);
-		return "redirect:index.jsp";
 	}
 
 	// 로그인
@@ -174,7 +156,7 @@ public class UserController {
 		}
 		// session에 저장된 개인키 초기화
 		session.removeAttribute("RSAprivateKey");
-		//System.out.println("전 "+vo);
+		// System.out.println("전 "+vo);
 		// 아이디/비밀번호 복호화
 		try {
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
@@ -197,18 +179,81 @@ public class UserController {
 
 	}
 
-    // 로그아웃
-    @RequestMapping("/logout.do")
-    public String logoutProcess(HttpSession session) {
-         session.invalidate();
-         return "redirect:main.do";
-    }
-	
-	@RequestMapping(value = "/userview.do", method = RequestMethod.GET)
-	public String userview(@RequestParam("id") String uid, Model model) {
-		UserVO user = service.getUser(uid);
-		model.addAttribute("user", user);
-		return "user/user_view";
+	// 로그아웃
+	@RequestMapping("/logout.do")
+	public String logoutProcess(HttpSession session) {
+		session.invalidate();
+		return "redirect:main.do";
 	}
+
+	// 회원 정보 보기
+	@RequestMapping(value = "/userview.do", method = RequestMethod.GET)
+	// public String userview(@RequestParam("id") String uid, Model model) {
+	public String userview(HttpSession session, Model model) {
+		// RSA 키 생성
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+		if (key != null) { // 기존 key 파기
+			session.removeAttribute("RSAprivateKey");
+		}
+		RSA rsa = rsaUtil.createRSA();
+		model.addAttribute("modulus", rsa.getModulus());
+		model.addAttribute("exponent", rsa.getExponent());
+		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
+		// UserVO user = service.getUser(uid);
+		UserVO user = service.getUser((String) session.getAttribute("userid"));
+		model.addAttribute("user", user);
+		return "user/userView";
+	}
+
+	// 회원 탈퇴
+	@RequestMapping(value = "/removeuser.do")
+	public String userRemove(HttpSession session) {
+		String id = (String) session.getAttribute("userid");
+		System.out.println(service.deleteAccount(id));
+		session.invalidate();
+		return "redirect:main.do";
+	}
+
+	@RequestMapping(value = "/updateuser.do", method = RequestMethod.POST)
+	public String updateuser(UserVO vo, RedirectAttributes ra, HttpSession session) {
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+
+		if (key == null) {
+			ra.addFlashAttribute("resultMsg", "비정상적인 접근 입니다.");
+			return "index";
+		}
+		session.removeAttribute("RSAprivateKey");
+
+		try {
+			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim()));
+			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
+			if (vo.getPw().length() != 0) {
+				vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
+			}
+			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			ra.addFlashAttribute("result", "fail");
+		}
+		int result = 0;
+		if (vo.getPw().length() == 0) {
+			result = service.updateUserPwNull(vo);
+			System.out.println("비밀번호 없는 녀석이 변경함");
+		}else {
+			result = service.modifyAccount(vo);
+			System.out.println("비밀번호 있는 녀석이 변경함");
+		}
+		 
+		if (result == 1) {
+			ra.addFlashAttribute("result", "success");
+			return "redirect:userview.do";
+		} else {
+			ra.addFlashAttribute("result", "fail");
+			return "redirect:main.do";
+		}
+
+	}
+	
+	
 
 }

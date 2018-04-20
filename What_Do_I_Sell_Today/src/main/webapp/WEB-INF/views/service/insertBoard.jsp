@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="ckeditor/adapters/jquery.js"></script>
+
 <script type="text/javascript" src="js/insertBoard.js"></script>
 <title>Insert Board</title>
 </head>
@@ -29,7 +31,7 @@
 		                CKEDITOR.replace( 'editor1' );
 		            </script>
 				</form>
-				<div class="form-group">
+				<div class="form-group"  style = "padding: 15px;">
 					<button id="cancel" type="button" class="btn btn-danger float-lg-right">취소</button>
 					<button id="submit" type="submit" class="btn btn-info float-lg-right">글쓰기</button>
 				</div>
