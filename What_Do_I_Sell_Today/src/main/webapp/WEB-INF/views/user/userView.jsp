@@ -4,46 +4,67 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
  <!-- <script type="text/javascript" src="js/signUp.js?ver=2"></script>  -->
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="js/index.js?ver=1"></script>
 <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
 <link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
-<title>SignUp</title>
+<link rel="stylesheet" href="./css/disabled.css">
+<title>modifyUser</title>
+
+<script language="JavaScript">
+function userModify() {
+	f.action= "updateuser.do";
+	f.submit();
+	alert('회원정보 수정이 완료되었습니다.')
+}
+
+function userRemove() {
+	if (confirm('정말로 탈퇴 하시겠습니까?')) {
+		f.action= "/removeuser.do";
+		f.submit();
+		alert('회원탈퇴가 성공적으로 처리되었습니다.')
+
+	} else {
+	}
+	
+	
+}
+
+
+</script>
+
 </head>
 <body>
-<form action="/signUp.do" method="post" id="signForm">
+<form action="/updateuser.do" method="post" id="modifyForm" name="f">
   <fieldset>
   <div align="center">
-	<legend>회원가입</legend>
+	<legend>회원 정보 수정</legend>
   </div>
   <div align="center">
   <div class="col-md-6 col-md-offset-3" align="left">
 		<div id="idDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">ID</label> 
-			<input id="id" type="text" class="form-control is-invalid" name="id">
-			<div class="id_feedback"> ID를 입력해주세요.</div>
+			<input id="id" type="text" class="form-control is-invalid.disabled" name="id" value="${user.id }" disabled="disabled">
+
 		</div>
 		
 		<div id="nameDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Name</label> 
-			<input id="name" type="text" class="form-control is-invalid" name="name">
-			<div class="name_feedback">이름을 입력해주세요.</div>
+			<input id="name" type="text" class="form-control is-invalid" name="name" value="${user.name }">
+			<div class="name_feedback">수정하시려면 이름을 입력해주세요.</div>
 		</div>
 			
 		<div id="emailDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Email</label> 
-			<input id="email" type="text" class="form-control is-invalid" name="email">
-			<div class="email_feedback">이메일 주소를 입력해주세요.</div>
+			<input id="email" type="text" class="form-control is-invalid" name="email" value="${user.email }">
+			<div class="email_feedback">수정하시려면 이메일 주소를 입력해주세요.</div>
 		</div>
 					
 		<div id="pwDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password</label> 
 			<input id="pw" type="text" class="form-control is-invalid" name="pw">
-			<div class="pw_feedback">비밀번호를 입력해주세요.</div>
+			<div class="pw_feedback">수정하시려면 비밀번호를 입력해주세요.</div>
 		</div>
 
 		<div id="pwCkDiv" class="form-group has-danger">
@@ -53,15 +74,20 @@
 		</div>			
 	
 		<div class="form-group text-center">
-			<button id="signUpBtn" type="submit" class="btn btn-success">회원가입</button>
-			<button type="button" class="btn btn-warning">가입취소</button>			
+<!-- 			<button id="signUpBtn" type="submit" class="btn btn-success">회원가입</button> -->
+<!--  			<button id="modifyUser" type="submit" class="btn btn-success">수정하기</button> -->
+ 			<button id="modifyUser" type="submit" class="btn btn-success" onclick="userModify()">수정하기</button>
+<!-- 			<input type="button" value="수정" onClick="userModify()"> &nbsp; -->
+ 			<button id="removeUser" type="button" class="btn btn-danger" onclick="userRemove()">탈퇴하기</button>
+<!-- 			<input type="button" value="회원탈퇴" onClick="userRemove()"> &nbsp; -->
+			
 		</div>
 	</div>
 	</div>
 	</fieldset>
 </form>
 <!-- 실제 서버로 전송되는 form -->
-<form action="/signUp.do" method="post" id="hiddenForm">
+<form action="/updateuser.do" method="post" id="hiddenForm">
     <fieldset>
         <input type="hidden" name="email" />
         <input type="hidden" name="id" />
@@ -87,7 +113,7 @@
     var rsa = new RSAKey();
     rsa.setPublic("${modulus}", "${exponent}");
  
-    $("#signForm").submit(function(e) {
+    $("#modifyForm").submit(function(e) {
         e.preventDefault();
  
         var email = $(this).find("#email").val();
@@ -96,7 +122,11 @@
         var id = $(this).find("#id").val();
         var name = $(this).find("#name").val();
         $email.val(rsa.encrypt(email));
-        $pw.val(rsa.encrypt(shaPw));
+        if(pw==''){
+        	$pw.val('');
+        }else{
+        	$pw.val(rsa.encrypt(shaPw));
+        }
         $name.val(rsa.encrypt(name));
         $id.val(rsa.encrypt(id));
         $("#hiddenForm").submit();
