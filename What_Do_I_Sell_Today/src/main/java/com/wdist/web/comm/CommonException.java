@@ -1,4 +1,4 @@
-package com.wdist.web.comm;
+/*package com.wdist.web.comm;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,3 +15,4 @@ public class CommonException {
 		return mav;
 	}
 }
+*/

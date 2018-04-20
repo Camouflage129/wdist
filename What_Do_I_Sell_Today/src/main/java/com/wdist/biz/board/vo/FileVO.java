@@ -6,16 +6,33 @@ public class FileVO {
 	private String HashValue;
 	private int FileGroupNum;
 	private int FileSize;
+	private String flag;
 	
 	public FileVO() {
 	}
 
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
 	public FileVO(int fileNum, String fileName, String hashValue, int fileGroupNum, int fileSize) {
-		FileNum = fileNum;
-		FileName = fileName;
-		HashValue = hashValue;
-		FileGroupNum = fileGroupNum;
-		FileSize = fileSize;
+		this.FileNum = fileNum;
+		this.FileName = fileName;
+		this.HashValue = hashValue;
+		this.FileGroupNum = fileGroupNum;
+		this.FileSize = fileSize;
+	}
+
+	public FileVO(String fileName, String hashValue, int fileSize, String flag) {
+		super();
+		this.FileName = fileName;
+		this.HashValue = hashValue;
+		this.FileSize = fileSize;
+		this.flag = flag;
 	}
 
 	public int getFileNum() {

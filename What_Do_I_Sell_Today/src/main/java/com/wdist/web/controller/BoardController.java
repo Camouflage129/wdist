@@ -1,5 +1,9 @@
 package com.wdist.web.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.sql.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -34,10 +38,15 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO boardVO) {	//, FileVO fileVO
-		System.out.println("³»¿ë");
-		System.out.println(boardVO.getContents());
+	public String insertBoard(String Type, String Title, String UsersID, String Contents) {	//, FileVO fileVO
+		java.util.Date udate = new java.util.Date();
+		Date date = new Date(udate.getTime());
+		
+		BoardVO boardVO = new BoardVO(Type, Title, Contents ,UsersID, date);
 		service.insertBoard(boardVO, null);
-		return "redirect:";
+		if(boardVO.getType().equals("freeBoard"))
+			return "redirect:freeBoard.do";
+		else
+			return "redirect:csBoard.do";
 	}
 }

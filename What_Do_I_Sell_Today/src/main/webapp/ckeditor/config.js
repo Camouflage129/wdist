@@ -9,7 +9,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
 };
 CKEDITOR.editorConfig = function( config ) {
-	config.filebrowserUploadUrl = 'test';
+	config.filebrowserUploadUrl = '/community/imageUpload.do';
+	
 	config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },

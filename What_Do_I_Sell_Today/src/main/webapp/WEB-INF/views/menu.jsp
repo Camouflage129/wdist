@@ -20,11 +20,10 @@
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarColor01">
-				<!-- <a id="loginA" href="./TestLogin.do">로그인</a>&nbsp;|&nbsp; -->
-				<c:if test="${userid eq null}">
+				<c:if test="${empty userid}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;		
 				</c:if>
-				<c:if test="${userid ne '' || userid ne null}">
+				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;	
 				</c:if>
 				<a id="signUpA" href="/signUp.do">회원가입</a>

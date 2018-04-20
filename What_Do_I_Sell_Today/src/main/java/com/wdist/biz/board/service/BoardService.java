@@ -23,4 +23,6 @@ public interface BoardService {
 	public int deleteBoard(int num);
 	
 	public int modifyBoard(BoardVO vo, FileVO fileVO);
+	
+	public int insertFile(FileVO vo);
 }

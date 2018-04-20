@@ -46,7 +46,7 @@ public class ReplyVO {
 		Contents = contents;
 	}
 
-	public Date getDATE() {
+	public Date getPostDate() {
 		return DATE;
 	}
 
