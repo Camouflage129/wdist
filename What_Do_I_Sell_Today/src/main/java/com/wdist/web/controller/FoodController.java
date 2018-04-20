@@ -50,4 +50,12 @@ public class FoodController {
 				e.printStackTrace();
 			}
 	}
+	
+	@RequestMapping(value="/areaDesc.do")
+	public String areadesc(HttpServletRequest request) {
+		String area = request.getParameter("area");
+		System.out.println(area);
+		//service돌려서 해당지역 데이터 받아오는 컨트롤러
+		return "index.jsp?content=/WEB-INF/views/food/area_desc";
+	}
 }	

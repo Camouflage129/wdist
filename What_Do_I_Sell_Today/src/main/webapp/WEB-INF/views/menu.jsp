@@ -14,17 +14,16 @@
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">	<!-- WEB-INF 있는 부분 나중에 .do로 실행시켜서 처리해야함. -->
 					<li class="nav-item"><a class="nav-link" href="/foodArea.do">업종별 검색</a></li>
-					<li class="nav-item"><a class="nav-link" href="index.jsp?content=WEB-INF/views/area/area.jsp">지역별 검색</a></li>
+					<li class="nav-item"><a class="nav-link" href="/areaFood.do">지역별 검색</a></li>
 					<li class="nav-item"><a class="nav-link" href="index.jsp?content=WEB-INF/views/sale/sale.jsp">매출 랭킹</a></li>
 					<li class="nav-item"><a class="nav-link" href="index.jsp?content=WEB-INF/views/success/success.jsp">성공 확률 예측</a></li>
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarColor01">
-				<!-- <a id="loginA" href="./TestLogin.do">로그인</a>&nbsp;|&nbsp; -->
-				<c:if test="${userid eq null}">
+				<c:if test="${empty userid}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;		
 				</c:if>
-				<c:if test="${userid ne '' || userid ne null}">
+				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;	
 				</c:if>
 				<a id="signUpA" href="/signUp.do">회원가입</a>

@@ -332,7 +332,7 @@ form .inputGroup1.focusWithText .helper {
 	<script src="/js/rsa/prng4.js"></script>
 	<script src="/js/rsa/rng.js"></script>
 	<script src="/js/rsa/rsa.js"></script>
-
+	<script src="/js/sha.min.js"></script>
 	<!-- 실제 서버로 전송되는 form -->
 
 
@@ -365,11 +365,11 @@ form .inputGroup1.focusWithText .helper {
 			success : function(data) {
 				var id = $('#old_id').val();
 				var pw = $('#old_pw').val();
-			
+				var shaPw = hex_sha512($('#old_pw').val()).toString();
 				if(data.result=='success'){
 				// 아이디/비밀번호 암호화 후 hidden form으로 submit
 				$id.val(rsa.encrypt(id)); // 아이디 암호화
-				$pw.val(rsa.encrypt(pw)); // 비밀번호 암호화
+				$pw.val(rsa.encrypt(shaPw)); // 비밀번호 암호화
 				
 				$("#hiddenForm").submit();
 				}else{

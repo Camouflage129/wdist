@@ -48,15 +48,105 @@
   </style>
   
   <script type="text/javascript">
+  
   $(function (){
+	  	var id;
+		var idname;
+		var classname;
+		var title;
+		var area;
+		
 	  $(".button").click(function (){
 		  $("#divToggle").toggle(); 
+		  
+		  id = $(this).attr('id'); 
+			 idname = '#'+id;
+			 classname = "."+id;
+			 
+			/*  alert(id);
+			 alert($(id).text()); */
+			 
+			 //alert("ajax");
+			 $.ajax({
+				type : 'POST',
+				url : 'foodAreaTitle.do',
+				dataType : 'json',
+				data : {
+					"foodtitle" : $(idname).text()
+				},
+				success : function(data) {
+			  	area = data;
+			  	var length = $("#tr").find('td').length;
+			  	
+			  	if(length==5){
+			  		return;
+			  	}else{
+			  		for(var i in area){			
+						   $(classname).append('<td><a href="/areaDesc.do?area='+area[i]+'\">'+area[i]+'</a></td>');
+			 				}
+			  		} 
+			  	
+				},
+				error : function(data) {
+					alert("통신실패 : " + data.message);
+				}
+			}); //end ajax     
 		  }); 
+	
+	  
+	  
 	  
 	  $('tr').has('td').has('a').css('cursor', 'pointer');
-	  });
+	  
+  });
  
     </script>
+    
+    <script type="text/javascript">
+$(function(){
+	var id;
+	var idname;
+	var classname;
+	var title;
+	var food;
+	
+	 $('.button').click(function(){
+		 id = $(this).attr('id'); 
+		 idname = '#'+id;
+		 classname = "."+id;
+		 
+		/*  alert(id);
+		 alert($(id).text()); */
+		 
+		 //alert("ajax");
+		 $.ajax({
+			type : 'POST',
+			url : 'areaFoodTitle.do',
+			dataType : 'json',
+			data : {
+				"areatitle" : $(idname).text()
+			},
+			success : function(data) {
+		  	food = data;
+		  	var length = $("#foodtitle").find('td').length;
+		  	
+		  	if(length==5){
+		  		return;
+		  	}else{
+		  		for(var i in food){			
+					   $("#foodtitle").append('<td><a href="/menuDesc.do?food='+food[i]+'\">'+food[i]+'</a></td>');
+		 				}
+		  		} 
+		  	
+			},
+			error : function(data) {
+				alert("통신실패 : " + data.message);
+			}
+		}); //end ajax     
+		 
+	 });
+});
+</script>
 </head>
 <body>
 
@@ -73,38 +163,38 @@
     </thead> -->
     <tbody>
       <tr>
-        <td><a class="button">강남구</a></td>
-        <td><a class="button">강동구</a></td>
-        <td><a class="button">강북구</a></td>
-        <td><a class="button">강서구</a></td>
-        <td><a class="button">관악구</a></td>
-        <td><a class="button">광진구</a></td>
-        <td><a class="button">구로구</a></td>
+        <td><a id="area1" class="button">강남구</a></td>
+        <td><a id="area2" class="button">강동구</a></td>
+        <td><a id="area3" class="button">강북구</a></td>
+        <td><a id="area4" class="button">강서구</a></td>
+        <td><a id="area5" class="button">관악구</a></td>
+        <td><a id="area6" class="button">광진구</a></td>
+        <td><a id="area7" class="button">구로구</a></td>
       </tr>
       <tr>
-        <td><a class="button">금천구</a></td>
-        <td><a class="button">노원구</a></td>
-        <td><a class="button">도봉구</a></td>
-        <td><a class="button">동대문구</a></td>
-        <td><a class="button">동작구</a></td>
-        <td><a class="button">마포구</a></td>
-        <td><a class="button">서대문구</a></td>
+        <td><a id="area8" class="button">금천구</a></td>
+        <td><a id="area9" class="button">노원구</a></td>
+        <td><a id="area10" class="button">도봉구</a></td>
+        <td><a id="area11" class="button">동대문구</a></td>
+        <td><a id="area12" class="button">동작구</a></td>
+        <td><a id="area13" class="button">마포구</a></td>
+        <td><a id="area14" class="button">서대문구</a></td>
       </tr>
       <tr>
-        <td><a class="button">서초구</a></td>
-        <td><a class="button">성동구</a></td>
-        <td><a class="button">성북구</a></td>
-        <td><a class="button">송파구</a></td>
-        <td><a class="button">양천구</a></td>
-        <td><a class="button">영등포구</a></td>
-        <td><a class="button">용산구</a></td>
+        <td><a id="area15" class="button">서초구</a></td>
+        <td><a id="area16" class="button">성동구</a></td>
+        <td><a id="area17" class="button">성북구</a></td>
+        <td><a id="area18" class="button">송파구</a></td>
+        <td><a id="area19" class="button">양천구</a></td>
+        <td><a id="area20" class="button">영등포구</a></td>
+        <td><a id="area21" class="button">용산구</a></td>
       </tr>
       <tr>
-        <td><a class="button">은평구</a></td>
-        <td><a class="button">종로구</a></td>
-        <td><a class="button">도봉구</a></td>
-        <td><a class="button">중구</a></td>
-        <td><a class="button">중랑구</a></td>
+        <td><a id="area22" class="button">은평구</a></td>
+        <td><a id="area23" class="button">종로구</a></td>
+        <td><a id="area24" class="button">도봉구</a></td>
+        <td><a id="area25" class="button">중구</a></td>
+        <td><a id="area26" class="button">중랑구</a></td>
       </tr>
     </tbody>
   </table>
@@ -115,12 +205,12 @@
 
 <table class="table table-bordered">
     <tbody>
-      <tr>
-        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">한식</a></td>
+      <tr id="foodtitle">
+      <!--   <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">한식</a></td>
         <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">일식</a></td>
         <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">중식</a></td>
         <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">카페</a></td>
-        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">양식</a></td>
+        <td><a href="index.jsp?content=WEB-INF/views/area/menu_desc.jsp">양식</a></td> -->
       </tr>
       </tbody>
 </table>
