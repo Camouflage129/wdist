@@ -36,7 +36,7 @@
 						src="./image/card2.jpg" alt="Card image">
 					<div class="card-body">
 						<h5 class="card-title">자유게시판</h5>
-						<a href="/freeBoard.do" class="btn btn-primary float-lg-right">보러 가기</a>
+						<a href="/freeBoard.do?num=1" class="btn btn-primary float-lg-right">보러 가기</a>
 					</div>
 				</div>
 			</div>

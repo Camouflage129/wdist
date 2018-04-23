@@ -16,7 +16,7 @@
 		<form id="insertForm" action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>글쓰기</legend>
-				<input type="hidden" name="Type" value="${type}">
+				<input id="type" type="hidden" name="Type" value="${type}">
 				<div class="form-group">
 					제목 : <input type="text" name="Title" class="form-control" id="inputDefault">
 				</div>
