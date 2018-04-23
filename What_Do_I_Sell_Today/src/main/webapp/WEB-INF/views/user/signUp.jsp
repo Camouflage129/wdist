@@ -26,32 +26,33 @@
   <div class="col-md-6 col-md-offset-3" align="left">
 		<div id="idDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">ID</label> 
-			<input id="id" type="text" class="form-control is-invalid" name="id" onblur="onblur_event()">
-			<div id="id_feedback" class="id_feedback"> 첫글자는 영문, 4~16자 이내로 입력해주세요.</div>
+			<!-- <input id="id" type="text" class="form-control is-invalid" name="id" onblur="onblur_event()"> -->
+			<input id="id" type="text" class="form-control is-invalid" name="id">
+			<small id="id_feedback" class="form-text text-muted">첫글자는 영문, 4~16자 이내로 입력해주세요.</small>
 		</div>
 		
 		<div id="nameDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Name</label> 
 			<input id="name" type="text" class="form-control is-invalid" name="name">
-			<div id="name_feedback" class="name_feedback">이름을 입력해주세요.</div>
+			<small id="name_feedback" class="form-text text-muted"> 이름을 2자 이상 입력해주세요.</small>
 		</div>
 			
 		<div id="emailDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Email</label> 
 			<input id="email" type="email" class="form-control is-invalid" name="email">
-			<div id="email_feedback" class="email_feedback">이메일 주소를 입력해주세요.</div>
+			<small id="email_feedback" class="form-text text-muted">형식) abcde1@gmail.com</small>
 		</div>
 					
 		<div id="pwDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password</label> 
 			<input id="pw" type="password" class="form-control is-invalid" name="pw">
-			<div id="pw_feedback" class="pw_feedback">4~15글자 이내로 입력하셔야 가입이 가능합니다.</div>
+			<small id="pw_feedback" class="form-text text-muted">영문, 숫자를 포함해서 4~15글자 이내로 입력해주세요.</small>
 		</div>
 
 		<div id="pwCkDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password Check</label> 
 			<input id="pw_Check" type="password" class="form-control is-invalid">
-			<div id="pwCheck_feedback" class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
+			<small id="pwCheck_feedback" class="form-text text-muted">다시한번 비밀번호를 입력해주세요.</small>
 		</div>			
 
 
