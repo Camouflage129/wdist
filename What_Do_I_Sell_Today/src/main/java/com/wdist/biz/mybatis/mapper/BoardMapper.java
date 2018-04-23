@@ -12,7 +12,7 @@ import com.wdist.biz.board.vo.FileVO;
 import com.wdist.biz.board.vo.ReplyVO;
 
 public interface BoardMapper {
-	@Select("select * from Board where Type = #{Type}")
+	@Select("select * from Board where Type = #{Type} order by PostDate DESC")
 	public List<BoardVO> freeOrCsBoard(String Type);
 	
 	@Select("select * from Board where BoardNum = #{BoardNum}")
