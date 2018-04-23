@@ -29,7 +29,7 @@
 						<c:set var="count" value="${count - 1}"/>
 						<tr class="table-primary">
 							<th scope="row">${count}</th>
-							<td><a href="/findBoard.do?num=${board.boardNum}">${board.title}</a></td>
+							<td><a href="findBoard.do?num=${board.boardNum}">${board.title}</a></td>
 							<td>${board.usersID}</td>
 							<td>${board.postDate}</td>
 						</tr>
