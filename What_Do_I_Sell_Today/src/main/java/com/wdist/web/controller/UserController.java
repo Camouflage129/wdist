@@ -94,6 +94,9 @@ public class UserController {
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
 			vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
+			vo.setPwdhint(rsaUtil.getDecryptText(key, vo.getPwdhint()));
+			vo.setPwdans(rsaUtil.getDecryptText(key, vo.getPwdans()));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			ra.addFlashAttribute("result", "fail");
@@ -115,7 +118,7 @@ public class UserController {
 		if (boo)
 			out.print("true");
 		else
-			out.print("flase");
+			out.print("false");
 		out.flush();
 		out.close();
 		} catch (IOException e) {

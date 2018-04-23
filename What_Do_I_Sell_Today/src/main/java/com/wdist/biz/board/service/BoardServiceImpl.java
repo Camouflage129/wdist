@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wdist.biz.board.dao.BoardDAO;
+import com.wdist.biz.board.util.BoardFileManager;
 import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
 import com.wdist.biz.board.vo.ReplyVO;
@@ -18,7 +19,9 @@ import com.wdist.biz.board.vo.ReplyVO;
 public class BoardServiceImpl implements BoardService{
 	@Resource(name="BoardDAO")
 	BoardDAO dao;
-
+	
+	BoardFileManager bfm = new BoardFileManager();
+	
 	@Override
 	public List<BoardVO> freeOrCsBoard(String Type) {
 		return dao.freeOrCsBoard(Type);
@@ -68,11 +71,13 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
-	public int deleteBoard(int num) {
+	public int deleteBoard(int num, String content, String filePath) {
 		int rows = 0;
-		rows += dao.deleteFile(dao.getFileGroupNum(num));
+		if(dao.getFileGroupNum(num) != -1)
+			rows += dao.deleteFile(dao.getFileGroupNum(num));
 		rows += dao.deleteReply(num);
 		rows += dao.deleteBoard(num);
+		bfm.contentsFileDelect(content, filePath);
 		return rows;
 	}
 

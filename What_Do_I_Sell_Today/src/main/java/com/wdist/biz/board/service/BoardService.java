@@ -20,7 +20,7 @@ public interface BoardService {
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
 	public int insertReply(ReplyVO vo);
 	
-	public int deleteBoard(int num);
+	public int deleteBoard(int num, String content, String filePath);
 	
 	public int modifyBoard(BoardVO vo, FileVO fileVO);
 	

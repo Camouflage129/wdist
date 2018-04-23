@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/index.js?ver=1"></script>
 <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
 <link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
+
 <title>SignUp</title>
 </head>
 <body>
@@ -25,32 +26,33 @@
   <div class="col-md-6 col-md-offset-3" align="left">
 		<div id="idDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">ID</label> 
-			<input id="id" type="text" class="form-control is-invalid" name="id" onblur="onblur_event()">
-			<div id="id_feedback" class="id_feedback"> 첫글자는 영문, 4~16자 이내로 입력해주세요.</div>
+			<!-- <input id="id" type="text" class="form-control is-invalid" name="id" onblur="onblur_event()"> -->
+			<input id="id" type="text" class="form-control is-invalid" name="id">
+			<small id="id_feedback" class="form-text text-muted">첫글자는 영문, 4~16자 이내로 입력해주세요.</small>
 		</div>
 		
 		<div id="nameDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Name</label> 
 			<input id="name" type="text" class="form-control is-invalid" name="name">
-			<div id="name_feedback" class="name_feedback">이름을 입력해주세요.</div>
+			<small id="name_feedback" class="form-text text-muted"> 이름을 2자 이상 입력해주세요.</small>
 		</div>
 			
 		<div id="emailDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Email</label> 
 			<input id="email" type="email" class="form-control is-invalid" name="email">
-			<div id="email_feedback" class="email_feedback">이메일 주소를 입력해주세요.</div>
+			<small id="email_feedback" class="form-text text-muted">형식) abcde1@gmail.com</small>
 		</div>
 					
 		<div id="pwDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password</label> 
 			<input id="pw" type="password" class="form-control is-invalid" name="pw">
-			<div id="pw_feedback" class="pw_feedback">4~15글자 이내로 입력하셔야 가입이 가능합니다.</div>
+			<small id="pw_feedback" class="form-text text-muted">영문, 숫자를 포함해서 4~15글자 이내로 입력해주세요.</small>
 		</div>
 
 		<div id="pwCkDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password Check</label> 
 			<input id="pw_Check" type="password" class="form-control is-invalid">
-			<div id="pwCheck_feedback" class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
+			<small id="pwCheck_feedback" class="form-text text-muted">다시한번 비밀번호를 입력해주세요.</small>
 		</div>			
 
 
@@ -94,6 +96,8 @@
         <input type="hidden" name="id" />
         <input type="hidden" name="pw" />
         <input type="hidden" name="name" />
+        <input type="hidden" name="pwdhint" />
+        <input type="hidden" name="pwdans" />
     </fieldset>
 </form>
 <script type="text/javascript" src="/js/signUp.js"></script>
@@ -108,29 +112,53 @@
 
 <!-- 유저 입력 form의 submit event 재정의 -->
 <script>
+	function signUp() {	
+		
+		 	var email = $(this).find("#email").val();
+	        var pw = $(this).find("#pw").val();
+	        var shaPw = hex_sha512(pw).toString();
+	        var id = $(this).find("#id").val();
+	        var name = $(this).find("#name").val();
+	        var pwq = $(this).find("#pwdhint").val();
+	        var pwa = $(this).find("#pwdans").val();
+	        $email.val(rsa.encrypt(email));
+	        $pw.val(rsa.encrypt(shaPw));
+	        $name.val(rsa.encrypt(name));
+	        $id.val(rsa.encrypt(id));
+	        $pwq.val(rsa.encrypt(pwq));
+	        $pwa.val(rsa.encrypt(pwa));
+	        var formData = $("#hiddenForm").serialize();
+		
+	$.ajax({
+		url : '/signUp.do',
+		type : 'post',
+		data : formData,
+		success : function(data) {
+			if(data.result == 'success'){
+				alert('회원가입이 완료되었습니다.');
+			} else{
+				alert('회원가입에 실패했습니다.');
+			}			
+		},
+		error : function() {
+            alert("에러발생");
+      }
+
+	});
+}
+
+
     var $email = $("#hiddenForm input[name='email']");
     var $pw = $("#hiddenForm input[name='pw']");
     var $name = $("#hiddenForm input[name='name']");
     var $id = $("#hiddenForm input[name='id']");
- 
+ 	var $pwdhint = $("#hiddenForm input[name='pwdhint']");
+ 	var $pwdhans = $("#hiddenForm input[name='pwdhans']");
     // Server로부터 받은 공개키 입력
     var rsa = new RSAKey();
     rsa.setPublic("${modulus}", "${exponent}");
  
-    $("#signForm").submit(function(e) {
-        e.preventDefault();
- 
-        var email = $(this).find("#email").val();
-        var pw = $(this).find("#pw").val();
-        var shaPw = hex_sha512(pw).toString();
-        var id = $(this).find("#id").val();
-        var name = $(this).find("#name").val();
-        $email.val(rsa.encrypt(email));
-        $pw.val(rsa.encrypt(shaPw));
-        $name.val(rsa.encrypt(name));
-        $id.val(rsa.encrypt(id));
-        $("#hiddenForm").submit();
-    });
+    
 </script>
 </body>
 </html>
