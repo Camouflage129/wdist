@@ -1,10 +1,8 @@
 package com.wdist.biz.mybatis.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Select;
 
-import com.wdist.biz.board.vo.BoardVO;
+import com.wdist.biz.food.vo.AreaFoodVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
 
 public interface FoodMapper {
@@ -18,8 +16,8 @@ public interface FoodMapper {
 	@Select("SELECT * FROM foodarea WHERE foodtitle = #{foodtitle}")
 	public FoodAreaVO getFoodAreaTitle(String foodtitle);
 	
-	/*@Select("SELECT NAME FROM USERS WHERE usersid=#{id}")
-	public String checkId(String id);*/
+	@Select("SELECT * FROM areafood WHERE areatitle = #{areatitle}")
+	public AreaFoodVO getAreaFoodTitle(String areatitle);
 	
 	
 }

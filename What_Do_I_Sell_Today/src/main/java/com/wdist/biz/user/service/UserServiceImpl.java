@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService {
 		return dao.login(id, pw);
 	}
 
+	@Override
+	public int updateUserPwNull(UserVO vo) {
+		return dao.updateUserPwNull(vo);
+	}
+
 	
 	
 	
