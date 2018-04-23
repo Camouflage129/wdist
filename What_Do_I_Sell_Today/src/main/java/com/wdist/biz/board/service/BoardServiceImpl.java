@@ -73,8 +73,10 @@ public class BoardServiceImpl implements BoardService{
 	@Transactional(propagation=Propagation.REQUIRED)
 	public int deleteBoard(int num, String content, String filePath) {
 		int rows = 0;
-		if(dao.getFileGroupNum(num) != -1)
+		if(dao.getFileGroupNum(num) != -1) {
 			rows += dao.deleteFile(dao.getFileGroupNum(num));
+			rows += dao.deleteFileGroup(num);
+		}
 		rows += dao.deleteReply(num);
 		rows += dao.deleteBoard(num);
 		bfm.contentsFileDelect(content, filePath);

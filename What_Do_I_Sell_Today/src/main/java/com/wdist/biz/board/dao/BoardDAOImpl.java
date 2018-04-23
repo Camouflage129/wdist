@@ -66,6 +66,11 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
+	public int deleteFileGroup(int num) {
+		return mapper.deleteFileGroup(num);
+	}
+	
+	@Override
 	public int insertReply(ReplyVO vo) {
 		return mapper.insertReply(vo);
 	}

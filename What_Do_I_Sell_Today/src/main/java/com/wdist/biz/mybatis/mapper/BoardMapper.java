@@ -37,6 +37,9 @@ public interface BoardMapper {
 	@Insert("insert into FileGroup (FileGroupNum, BoardNum) values((select ifnull(max(FileGroupNum),0)+1 from FileGroup f), #{num})")
 	public int insertFileGroup(int num);
 	
+	@Delete("delete from FileGroup where BoardNum = #{num}")
+	public int deleteFileGroup(int num);
+	
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
 	@Insert("insert into Reply (ReplyNum, UsersID, Contents, PostDate, ReplyNums, BoardNum)"
 			+ "values ((select ifnull(max(BoardNum),0)+1 from Board b), #{UsersID}, #{Contents}, #{DATE}, #{ReplyNums}, #{BoardNum}")
