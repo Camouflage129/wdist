@@ -11,5 +11,6 @@ public interface UserService {
 	public UserVO getUser(String uid);
 	public UserVO login(String id, String pw);
 	public int modifyNewPwd(UserVO vo);
+	public UserVO pwSearchUser(UserVO vo);
 
 }

@@ -5,13 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 
 <form action="/signUpNewPwd.do" method="post" id="searchpwdForm">
   <fieldset>
   <div align="center">
-	<legend>비밀번호 변경하기</legend>
+	<legend>새비밀번호 설정하기</legend>
   </div>
   <div align="center">
   <div class="col-md-6 col-md-offset-3" align="left">
@@ -38,6 +41,46 @@
 	</div>
 	</fieldset>
 </form>
+
+<!-- 실제 서버로 전송되는 form -->
+<form action="/signUpNewPwd.do" method="post" id="hiddenForm">
+    <fieldset>
+
+        <input type="hidden" name="pw" />
+
+    </fieldset>
+</form>
+
+<script src="/js/rsa/jsbn.js"></script>
+<script src="/js/rsa/prng4.js"></script>
+<script src="/js/rsa/rng.js"></script>
+<script src="/js/rsa/rsa.js"></script>
+ <script src="/js/sha.min.js"></script>
+
+
+
+<!-- 유저 입력 form의 submit event 재정의 -->
+<script>
+
+    var $pw = $("#hiddenForm input[name='pw']");
+
+
+ 
+    // Server로부터 받은 공개키 입력
+    var rsa = new RSAKey();
+    rsa.setPublic("${modulus}", "${exponent}");
+ 
+    $("#searchpwdForm").submit(function(e) {
+        e.preventDefault();
+ 
+
+        var pw = $(this).find("#pw").val();
+		var shaPw = hex_sha512($('#pw').val()).toString();
+        $pw.val(rsa.encrypt(shaPw));
+        $("#hiddenForm").submit();
+    });
+</script>
+
 
 
 </body>

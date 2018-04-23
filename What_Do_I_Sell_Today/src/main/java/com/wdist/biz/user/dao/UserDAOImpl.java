@@ -77,6 +77,11 @@ public class UserDAOImpl implements UserDAO {
 	public int modifyNewPwd(UserVO vo) {
 		return mapper.modifyNewPwd(vo);
 	}
+
+	@Override
+	public UserVO pwSearchUser(UserVO vo) {
+		return mapper.pwSearchUser(vo);
+	}
 	
 	
 	

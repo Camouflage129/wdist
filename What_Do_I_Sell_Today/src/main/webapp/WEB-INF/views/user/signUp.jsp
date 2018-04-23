@@ -8,12 +8,13 @@
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"
 	type="text/javascript" charset="utf-8"></script>
+
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="js/index.js?ver=1"></script>
 <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
 <link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <title>SignUp</title>
 </head>
 <body>
@@ -58,7 +59,7 @@
 
 	<div class="pwchkwrap">
                  <label for="qustPwd">Password Hint</label>
-                     <select id="qustPwd" name="qustPwd" class="custom-select" title="비밀번호 찾기 질문 조회">
+                     <select id="pwdhint" name="pwdhint" class="custom-select" title="비밀번호 찾기 질문 조회">
                        
 							<option value="P01"> 첫째 자녀의 이름은?</option>
 							<option value="P02"> 자신의 인생 좌우명은?</option>
@@ -76,13 +77,13 @@
 		
 		<div id="nameDiv" class="form-group has-danger">
 			<!-- <label class="form-control-label" for="inputDanger1">Name</label>  -->
-			<input id="ansPwd" type="text" class="form-control is-invalid" name="ansPwd">
+			<input id="pwdans" type="text" class="form-control is-invalid" name="pwdans">
 			<div id="ansPwd_feedback" class="ansPwd_feedback">질문에 대한 답변을 입력해주세요.</div>
 		</div>
 
 	
 		<div class="form-group text-center">
-			<button id="signUpBtn" type="submit" class="btn btn-success">회원가입</button>
+			<button id="signUpBtn" type="button" class="btn btn-success" onclick="signUp()">회원가입</button>
 			<button type="button" class="btn btn-warning">가입취소</button>			
 		</div>
 	</div>
@@ -113,20 +114,19 @@
 <!-- 유저 입력 form의 submit event 재정의 -->
 <script>
 	function signUp() {	
-		
-		 	var email = $(this).find("#email").val();
-	        var pw = $(this).find("#pw").val();
+		 	var email = $('#email').val();
+	        var pw = $('#pw').val();
 	        var shaPw = hex_sha512(pw).toString();
-	        var id = $(this).find("#id").val();
-	        var name = $(this).find("#name").val();
-	        var pwq = $(this).find("#pwdhint").val();
-	        var pwa = $(this).find("#pwdans").val();
+	        var id = $('#id').val();
+	        var name = $('#name').val();
+	        var pwdhint = $('#pwdhint').val();
+	        var pwdans = $('#pwdans').val();
 	        $email.val(rsa.encrypt(email));
 	        $pw.val(rsa.encrypt(shaPw));
 	        $name.val(rsa.encrypt(name));
 	        $id.val(rsa.encrypt(id));
-	        $pwq.val(rsa.encrypt(pwq));
-	        $pwa.val(rsa.encrypt(pwa));
+	        $pwdhint.val(rsa.encrypt(pwdhint));
+	        $pwdans.val(rsa.encrypt(pwdans));
 	        var formData = $("#hiddenForm").serialize();
 		
 	$.ajax({
@@ -134,8 +134,9 @@
 		type : 'post',
 		data : formData,
 		success : function(data) {
-			if(data.result == 'success'){
+			if(data == 'success'){
 				alert('회원가입이 완료되었습니다.');
+				location.href="login.do";
 			} else{
 				alert('회원가입에 실패했습니다.');
 			}			
@@ -153,7 +154,7 @@
     var $name = $("#hiddenForm input[name='name']");
     var $id = $("#hiddenForm input[name='id']");
  	var $pwdhint = $("#hiddenForm input[name='pwdhint']");
- 	var $pwdhans = $("#hiddenForm input[name='pwdhans']");
+ 	var $pwdans = $("#hiddenForm input[name='pwdans']");
     // Server로부터 받은 공개키 입력
     var rsa = new RSAKey();
     rsa.setPublic("${modulus}", "${exponent}");

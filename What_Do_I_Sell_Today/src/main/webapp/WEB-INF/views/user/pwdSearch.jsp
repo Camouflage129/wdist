@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>새로운 비밀번호 설정</title>
 <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
-<form action="/signUpNewPwd.do" method="post" id="searchpwdForm">
+<form action="/searchPwd.do" method="post" id="searchpwdForm">
   <fieldset>
   <div align="center">
-	<legend>비밀번호 변경하기</legend>
+	<legend>비밀번호 찾기</legend>
   </div>
   <div align="center">
   <div class="col-md-6 col-md-offset-3" align="left">
@@ -50,7 +50,7 @@
 
 
 	<div class="pwchkwrap">
-                 <label for="qustPwd">Password Hint</label>
+                 <label for="qustpwd">Password Hint</label>
                      <select id="pwdhint" name="pwdhint" class="custom-select" title="비밀번호 찾기 질문 조회">
                        
 							<option value="P01"> 첫째 자녀의 이름은?</option>
@@ -66,10 +66,9 @@
                      </select>
               </div>
 
-		
 		<div id="nameDiv" class="form-group has-danger">
 			<!-- <label class="form-control-label" for="inputDanger1">Name</label>  -->
-			<input id="pwdhint" type="text" class="form-control is-invalid" name="pwdhint">
+			<input id="pwdans" type="text" class="form-control is-invalid" name="pwdans">
 			<div id="ansPwd_feedback" class="ansPwd_feedback">질문에 대한 답변을 입력해주세요.</div>
 		</div>
 
@@ -82,8 +81,52 @@
 	</div>
 	</fieldset>
 </form>
+<!-- 실제 서버로 전송되는 form -->
+<form action="/searchPwd.do" method="post" id="hiddenForm">
+    <fieldset>
+        <input type="hidden" name="email" />
+        <input type="hidden" name="id" />
+        <input type="hidden" name="name" />
+        <input type="hidden" name="pwdhint" />
+        <input type="hidden" name="pwdans" />
+    </fieldset>
+</form>
+
+<script src="/js/rsa/jsbn.js"></script>
+<script src="/js/rsa/prng4.js"></script>
+<script src="/js/rsa/rng.js"></script>
+<script src="/js/rsa/rsa.js"></script>
+ <script src="/js/sha.min.js"></script>
 
 
+<!-- 유저 입력 form의 submit event 재정의 -->
+<script>
+    var $email = $("#hiddenForm input[name='email']");
+    var $pwdhint = $("#hiddenForm input[name='pwdhint']");
+    var $pwdans = $("#hiddenForm input[name='pwdans']");
+    var $name = $("#hiddenForm input[name='name']");
+    var $id = $("#hiddenForm input[name='id']");
+ 
+    // Server로부터 받은 공개키 입력
+    var rsa = new RSAKey();
+    rsa.setPublic("${modulus}", "${exponent}");
+ 
+    $("#searchpwdForm").submit(function(e) {
+        e.preventDefault();
+ 
+        var email = $(this).find("#email").val();
+        var pwdhint = $(this).find("#pwdhint").val();
+        var pwdans = $(this).find("#pwdans").val();
+        var id = $(this).find("#id").val();
+        var name = $(this).find("#name").val();
+        $email.val(rsa.encrypt(email));
+        $pwdhint.val(rsa.encrypt(pwdhint));
+        $pwdans.val(rsa.encrypt(pwdans));
+        $name.val(rsa.encrypt(name));
+        $id.val(rsa.encrypt(id));
+        $("#hiddenForm").submit();
+    });
+</script>
 
 
 

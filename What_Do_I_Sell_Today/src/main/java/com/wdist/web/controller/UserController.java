@@ -80,12 +80,16 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
-	public String signUpDo(HttpSession session, RedirectAttributes ra, UserVO vo) {
+	public void signUpDo(HttpSession session, RedirectAttributes ra, UserVO vo, HttpServletResponse response) {
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
-
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		if (key == null) {
 			ra.addFlashAttribute("resultMsg", "비정상 적인 접근 입니다.");
-			return "index";
 		}
 		session.removeAttribute("RSAprivateKey");
 
@@ -99,13 +103,13 @@ public class UserController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			ra.addFlashAttribute("result", "fail");
+			out.print("fail");
 		}
-		if (service.insertAccount(vo) == 1)
-			ra.addFlashAttribute("result", "success");
+		if (service.insertAccount(vo) == 1) {
+			out.print("success");
+		}
 		else
-			ra.addFlashAttribute("result", "fail");
-		return "redirect:/login.do"; // 성공했을 경우 어디로 보낼지 적어주세요
+			out.print("fail");
 	}
 
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
@@ -275,7 +279,7 @@ public class UserController {
 	}
 	
 	// ID, Name, Email, PwAns, PwHint 체크
-	@RequestMapping(value="infoCheck.do", method=RequestMethod.POST)
+	@RequestMapping(value="searchPwd.do", method=RequestMethod.POST)
 	public String infoCheck(HttpSession session, RedirectAttributes ra , UserVO vo, HttpServletRequest req) {
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 
@@ -295,8 +299,8 @@ public class UserController {
 			e.printStackTrace();
 			ra.addFlashAttribute("result", "fail");
 		}
-		if (service.modifyNewPwd(vo) == 1) {		
-			req.getSession().setAttribute("id", vo.getName());
+		if (service.pwSearchUser(vo) != null) {		
+			req.getSession().setAttribute("id", vo.getId());
 			req.getSession().setAttribute("info", sha.encryptSHA(vo.getPwdans()+vo.getPwdhint()));
 			ra.addFlashAttribute("result", "success");
 		}
@@ -305,6 +309,9 @@ public class UserController {
 		return "redirect:/signUpNewPwd.do"; // 성공했을 경우 어디로 보낼지 적어주세요
 	}
 	
+	
+	
+	// 새로운 비밀번호 설정
 	@RequestMapping(value="/signUpNewPwd.do", method=RequestMethod.GET)
 	public String modifyNewPwd(HttpSession session, Model model) {
 		
@@ -328,14 +335,20 @@ public class UserController {
 			ra.addFlashAttribute("resultMsg", "비정상적인 접근 입니다.");
 			return "index";
 		}
-		
+		String pw = vo.getPw();
 		session.removeAttribute("RSAprivateKey");
 		vo.setId((String)session.getAttribute("id"));
-		vo = service.getUser(vo.getId());
+		System.out.println(vo.getId());
 		String info = (String)session.getAttribute("info");
+		System.out.println(info);
+		vo = service.getUser(vo.getId());
+		System.out.println(vo);
+		System.out.println(vo.getPwdhint());
+		System.out.println(vo.getPwdans());
 		if(info.equals(sha.encryptSHA(vo.getPwdans()+vo.getPwdhint()))) {
 			try {
-				vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
+				vo.setPw(rsaUtil.getDecryptText(key, pw));
+				service.modifyNewPwd(vo);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
