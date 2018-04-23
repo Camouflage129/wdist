@@ -7,6 +7,7 @@ public class UserVO {
 	private String name;
 	private String email;
 	private String pwdhint;
+	private String pwdans;
 
 	public UserVO() {
 	}
@@ -21,6 +22,18 @@ public class UserVO {
 		this.pw = pw;
 		this.name = name;
 		this.email = email;
+	}
+	
+	
+
+	public UserVO(String usersid, String pw, String name, String email, String pwdhint, String pwdans) {
+		super();
+		this.usersid = usersid;
+		this.pw = pw;
+		this.name = name;
+		this.email = email;
+		this.pwdhint = pwdhint;
+		this.pwdans = pwdans;
 	}
 
 	public String getId() {
@@ -61,6 +74,14 @@ public class UserVO {
 
 	public void setPwdhint(String pwdhint) {
 		this.pwdhint = pwdhint;
+	}
+
+	public String getPwdans() {
+		return pwdans;
+	}
+
+	public void setPwdans(String pwdans) {
+		this.pwdans = pwdans;
 	}
 
 	@Override

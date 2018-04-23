@@ -5,14 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>새로운 비밀번호 설정</title>
+<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
-<form action="/searchpwd.do" method="post" id="searchpwdForm">
+<form action="/searchPwd.do" method="post" id="searchpwdForm">
   <fieldset>
   <div align="center">
-	<legend>비밀번호 변경하기</legend>
+	<legend>비밀번호 찾기</legend>
   </div>
   <div align="center">
   <div class="col-md-6 col-md-offset-3" align="left">
@@ -27,14 +29,14 @@
 			<input id="name" type="text" class="form-control is-invalid" name="name">
 			<div id="name_feedback" class="name_feedback">이름을 입력해주세요.</div>
 		</div>
-			
+ 			
 		<div id="emailDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Email</label> 
 			<input id="email" type="email" class="form-control is-invalid" name="email">
 			<div id="email_feedback" class="email_feedback">이메일 주소를 입력해주세요.</div>
 		</div>
 					
-		<div id="pwDiv" class="form-group has-danger">
+<!-- 		<div id="pwDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password</label> 
 			<input id="pw" type="password" class="form-control is-invalid" name="pw">
 			<div id="pw_feedback" class="pw_feedback">4~15글자 이내로 입력하셔야 가입이 가능합니다.</div>
@@ -44,12 +46,12 @@
 			<label class="form-control-label" for="inputDanger1">Password Check</label> 
 			<input id="pw_Check" type="password" class="form-control is-invalid">
 			<div id="pwCheck_feedback" class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
-		</div>			
+		</div>			 -->
 
 
 	<div class="pwchkwrap">
-                 <label for="qustPwd">Password Hint</label>
-                     <select id="qustPwd" name="qustPwd" class="custom-select" title="비밀번호 찾기 질문 조회">
+                 <label for="qustpwd">Password Hint</label>
+                     <select id="pwdhint" name="pwdhint" class="custom-select" title="비밀번호 찾기 질문 조회">
                        
 							<option value="P01"> 첫째 자녀의 이름은?</option>
 							<option value="P02"> 자신의 인생 좌우명은?</option>
@@ -64,55 +66,67 @@
                      </select>
               </div>
 
-		
 		<div id="nameDiv" class="form-group has-danger">
 			<!-- <label class="form-control-label" for="inputDanger1">Name</label>  -->
-			<input id="ansPwd" type="text" class="form-control is-invalid" name="ansPwd">
+			<input id="pwdans" type="text" class="form-control is-invalid" name="pwdans">
 			<div id="ansPwd_feedback" class="ansPwd_feedback">질문에 대한 답변을 입력해주세요.</div>
 		</div>
 
 	
 		<div class="form-group text-center">
-			<button id="signUpBtn" type="submit" class="btn btn-success">회원가입</button>
+			<button id="newPwdBtn" type="submit" class="btn btn-success">새비밀번호 설정</button>
 			<button type="button" class="btn btn-warning">가입취소</button>			
 		</div>
 	</div>
 	</div>
 	</fieldset>
 </form>
+<!-- 실제 서버로 전송되는 form -->
+<form action="/searchPwd.do" method="post" id="hiddenForm">
+    <fieldset>
+        <input type="hidden" name="email" />
+        <input type="hidden" name="id" />
+        <input type="hidden" name="name" />
+        <input type="hidden" name="pwdhint" />
+        <input type="hidden" name="pwdans" />
+    </fieldset>
+</form>
+
+<script src="/js/rsa/jsbn.js"></script>
+<script src="/js/rsa/prng4.js"></script>
+<script src="/js/rsa/rng.js"></script>
+<script src="/js/rsa/rsa.js"></script>
+ <script src="/js/sha.min.js"></script>
 
 
-<div class="idpwchkwrap">
-                 <h5>비밀번호 찾기</h5>
-                 <label for="qustPwd">아이디/비밀번호 찾기 질문</label>
-                     <select id="qustPwd" name="qustPwd" title="아이디/비밀번호 찾기 질문 조회">
-						
-							<option value="P01"> 첫째 자녀의 이름은?</option>
-						
-							<option value="P02"> 자신의 인생 좌우명은?</option>
-						
-							<option value="P03"> 가장 기억에 남는 선생님 성함은?</option>
-						
-							<option value="P04"> 다시 태어나면 하고 싶은 것은?</option>
-						
-							<option value="P05"> 가장 감명깊게 본 영화는?</option>
-						
-							<option value="P06"> 기억에 남는 추억의 장소는?</option>
-						
-							<option value="P07"> 인상 깊게 읽은 책 이름은?</option>
-						
-							<option value="P08"> 자신의 보물 제1호는??</option>
-						
-							<option value="P09"> 아버지의 성함은?</option>
-						
-							<option value="P11"> 내가 좋아하는 운동은?</option>
-						
-                     </select>
-                 <label for="ansPwd">아이디/비밀번호 찾기 답변</label><input type="text" name="ansPwd" id="ansPwd" class="in_txt" onclick="javascript:onlyCommaExceptOnKeyEnterPress();" onkeypress="javascript:onlyCommaExceptOnKeyEnterPress();">
-                 <label for="propId">아이디</label><input type="text" name="propId" id="propId" class="in_txt01" maxlength="12" style="ime-mode:disabled" onclick="javascript:onlyEngNumOnKeyEnterPress();" onkeypress="javascript:onlyEngNumOnKeyEnterPress();">
-                 <label for="propName">성명</label><input type="text" name="propName" id="propName" class="in_txt01" maxlength="30" style="ime-mode:active">
-                 <input type="image" src="/images/common/btn_ok.gif" class="pwBtn" alt="확인" complete="complete">
-              </div>
+<!-- 유저 입력 form의 submit event 재정의 -->
+<script>
+    var $email = $("#hiddenForm input[name='email']");
+    var $pwdhint = $("#hiddenForm input[name='pwdhint']");
+    var $pwdans = $("#hiddenForm input[name='pwdans']");
+    var $name = $("#hiddenForm input[name='name']");
+    var $id = $("#hiddenForm input[name='id']");
+ 
+    // Server로부터 받은 공개키 입력
+    var rsa = new RSAKey();
+    rsa.setPublic("${modulus}", "${exponent}");
+ 
+    $("#searchpwdForm").submit(function(e) {
+        e.preventDefault();
+ 
+        var email = $(this).find("#email").val();
+        var pwdhint = $(this).find("#pwdhint").val();
+        var pwdans = $(this).find("#pwdans").val();
+        var id = $(this).find("#id").val();
+        var name = $(this).find("#name").val();
+        $email.val(rsa.encrypt(email));
+        $pwdhint.val(rsa.encrypt(pwdhint));
+        $pwdans.val(rsa.encrypt(pwdans));
+        $name.val(rsa.encrypt(name));
+        $id.val(rsa.encrypt(id));
+        $("#hiddenForm").submit();
+    });
+</script>
 
 
 

@@ -50,6 +50,17 @@ public class UserServiceImpl implements UserService {
 		return dao.updateUserPwNull(vo);
 	}
 
+	@Override
+	public int modifyNewPwd(UserVO vo) {
+
+		return dao.modifyNewPwd(vo);
+	}
+
+	@Override
+	public UserVO pwSearchUser(UserVO vo) {
+		return dao.pwSearchUser(vo);
+	}
+
 	
 	
 	

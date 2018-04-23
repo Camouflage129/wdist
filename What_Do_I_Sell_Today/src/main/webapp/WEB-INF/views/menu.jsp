@@ -22,13 +22,14 @@
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<c:if test="${empty userid}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;
-					<a id="searchPw" href="/searchpwd.do">비밀번호 찾기</a>&nbsp;|&nbsp;
+					<a id="searchPw" href="/searchPwd.do">비밀번호 찾기</a>&nbsp;|&nbsp;
+					<a id="signUpA" href="/signUp.do">회원가입</a>
 				</c:if>
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
-					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;	
+					<a id="modifyUser" href="userview.do">회원정보수정</a>	
 				</c:if>
-				<a id="signUpA" href="/signUp.do">회원가입</a>
+				
 			</div>
 		</div>
 	</nav>
