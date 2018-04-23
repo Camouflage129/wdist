@@ -2,14 +2,17 @@ package com.wdist.web.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.wdist.biz.board.service.BoardService;
 import com.wdist.biz.board.vo.BoardVO;
@@ -66,9 +69,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/insertBoard.do")
-	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpServletRequest request) { // ,
-																														// FileVO
-																														// fileVO
+	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
 		java.util.Date udate = new java.util.Date();
 		Date date = new Date(udate.getTime());
 		BoardVO boardVO = new BoardVO(Type, Title, Contents, UsersID, date);
@@ -92,15 +93,39 @@ public class BoardController {
 	@RequestMapping(value = "/findBoard.do")
 	public String findBoard(int num, HttpServletRequest request) {
 		BoardVO board = (BoardVO) service.viewBoard(num);
+		List<BoardVO> list = service.freeOrCsBoard(board.getType());
+		int beforeNum = -1, afterNum = -1;
+		for(int i=0; i < list.size(); i++) {
+			if(list.get(i).getBoardNum() == num) {
+				if(i - 1 >= 0)
+					beforeNum = list.get(i - 1).getBoardNum();
+				if(i + 1 < list.size())
+					afterNum = list.get(i + 1).getBoardNum();
+				break;
+			}
+		}
+		request.setAttribute("beforeNum", beforeNum);
+		request.setAttribute("afterNum", afterNum);
 		request.setAttribute("board", board);
 		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
 	}
+	
 	@RequestMapping(value="/deleteBoard.do")
-	public String deledtBoard(int num,HttpSession session,HttpServletRequest request) {
+	public String deledtBoard(int num, HttpSession session, HttpServletRequest request) {
 		BoardVO vo = service.viewBoard(num);
 		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
 		System.out.println(service.deleteBoard(num,vo.getContents(),filepath));
 		
 		return "redirect:freeBoard.do";
+	}
+	
+	@RequestMapping(value="/checkBoard.do")
+	public ModelAndView checkBoard(int num) {
+		HashMap<String, String> map = new HashMap<>();
+		if(service.viewBoard(num) != null)
+			map.put("result", "success");
+		else
+			map.put("result", "fail");
+		return new ModelAndView("jsonView", map);
 	}
 }
