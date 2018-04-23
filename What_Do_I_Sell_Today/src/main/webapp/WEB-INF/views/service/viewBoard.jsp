@@ -13,8 +13,36 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="./css/style.css">
 <title>View Board</title>
+<script type="text/javascript">
+function delete() {
+	$.ajax({
+		url : '/recapcha.do',
+		type : 'post',
+		data : {
+			recaptcha : document.getElementById("g-recaptcha-response").value
+		},
+		success : function(data) {
+			var id = $('#old_id').val();
+			var pw = $('#old_pw').val();
+			var shaPw = hex_sha512($('#old_pw').val()).toString();
+			if(data.result=='success'){
+			// 아이디/비밀번호 암호화 후 hidden form으로 submit
+			$id.val(rsa.encrypt(id)); // 아이디 암호화
+			$pw.val(rsa.encrypt(shaPw)); // 비밀번호 암호화
+			
+			$("#hiddenForm").submit();
+			}else{
+				alert('자동가입방지 확인해주세요.');
+			}
+		},
+		error : function() {
+            alert("에러발생");
+      }
 
-
+	});
+}
+</script>
+	
 </head>
 <body>
 	<div class="container">
@@ -42,7 +70,7 @@
 		</ul>
 		<ul class="bo_v_com list-inline pull-right">
             <li class="zero-padding"><a href="링크" class="btn btn-default">수정</a></li>
-            <li class="zero-padding"><a href="링크" class="btn btn-default" onclick="del(this.href); return false;">삭제</a></li>
+            <li class="zero-padding"><a href="deleteBoard.do?num=${board.boardNum }" class="btn btn-danger link-btn">삭제</a></li>
             <li class="zero-padding"><a href="링크" class="btn btn-default">검색</a></li>
             <li class="zero-padding"><a href="링크" class="btn btn-default">목록</a></li>
             <li class="zero-padding"><a href="링크" class="btn btn-primary link-btn">글쓰기</a></li>

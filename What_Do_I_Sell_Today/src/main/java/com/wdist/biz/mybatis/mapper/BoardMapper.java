@@ -27,7 +27,7 @@ public interface BoardMapper {
 	@Select("select BoardNum from Board where Type = #{Type} and Title = #{Title} and Contents = #{Contents} and UsersID = #{UsersID} and PostDate = #{DATE}")
 	public int getBoardNum(BoardVO vo);
 	
-	@Select("select FileGroupNum from FileGroup where BoardNum = #{num}")
+	@Select("select ifnull(FileGroupNum, -1) from FileGroup where BoardNum = #{num}")
 	public int getFileGroupNum(int num);
 	
 	@Insert("insert into Board (BoardNum, Type, Title, Contents, UsersID, PostDate)"

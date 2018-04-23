@@ -37,7 +37,7 @@ public class MyBatisTest {
 		service = null;
 	}
 	
-	//@Test
+	@Test
 	public void login() {
 	//	UserVO vo = new UserVO("java01", "1234");
 		System.out.println("dscsd");

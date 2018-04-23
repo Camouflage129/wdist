@@ -61,6 +61,7 @@ public class BoardController {
 	public String deleteFiles(HttpSession session) {
 		String type = (String) session.getAttribute("type");
 		String id = (String) session.getAttribute("userid");
+		
 		System.out.println(service.deleteFile(id));
 		if(type.equals("freeBoard"))
 			return "redirect:freeBoard.do";
@@ -74,5 +75,13 @@ public class BoardController {
 		System.out.println(board);
 		request.setAttribute("board", board);
 		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
+	}
+	@RequestMapping(value="/deleteBoard.do")
+	public String deledtBoard(int num,HttpSession session,HttpServletRequest request) {
+		BoardVO vo = service.viewBoard(num);
+		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
+		System.out.println(service.deleteBoard(num,vo.getContents(),filepath));
+		
+		return "redirect:freeBoard.do";
 	}
 }
