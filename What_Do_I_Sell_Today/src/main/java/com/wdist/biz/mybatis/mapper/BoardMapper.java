@@ -24,6 +24,9 @@ public interface BoardMapper {
 	@Select("select * from Reply where BoardNum = #{BoardNum}")
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	@Select("select * from Board where Type = #{Type} and ${searchTitle} like '%#{text}%'")
+	public List<BoardVO> searchBoard(HashMap<String, String> map);
+	
 	@Select("select BoardNum from Board where Type = #{Type} and Title = #{Title} and Contents = #{Contents} and UsersID = #{UsersID} and PostDate = #{DATE}")
 	public int getBoardNum(BoardVO vo);
 	

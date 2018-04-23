@@ -15,11 +15,11 @@ import com.wdist.biz.board.vo.ReplyVO;
 import com.wdist.biz.mybatis.mapper.BoardMapper;
 
 @Component("BoardDAO")
-public class BoardDAOImpl implements BoardDAO{
-	@Resource(name="sqlSessionTemplateWindow")
+public class BoardDAOImpl implements BoardDAO {
+	@Resource(name = "sqlSessionTemplateWindow")
 	SqlSession mybatis;
 	BoardMapper mapper;
-	
+
 	@PostConstruct
 	public void init() {
 		mapper = (BoardMapper) mybatis.getMapper(BoardMapper.class);
@@ -44,17 +44,27 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<ReplyVO> viewBoardReply(int BoardNum) {
 		return mapper.viewBoardReply(BoardNum);
 	}
-	
+
+	@Override
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("Type", Type);
+		map.put("searchTitle", searchTitle);
+		map.put("text", text);
+		System.out.println(map);
+		return mapper.searchBoard(map);
+	}
+
 	@Override
 	public int getBoardNum(BoardVO vo) {
 		return mapper.getBoardNum(vo);
 	}
-	
+
 	@Override
 	public int getFileGroupNum(int num) {
 		return mapper.getFileGroupNum(num);
 	}
-	
+
 	@Override
 	public int insertBoard(BoardVO vo) {
 		return mapper.insertBoard(vo);
@@ -74,7 +84,7 @@ public class BoardDAOImpl implements BoardDAO{
 	public int deleteReply(int num) {
 		return mapper.deleteReply(num);
 	}
-	
+
 	@Override
 	public int deleteBoard(int num) {
 		return mapper.deleteBoard(num);
@@ -99,7 +109,7 @@ public class BoardDAOImpl implements BoardDAO{
 	public int deleteFiles(int num) {
 		return mapper.deleteFiles(num);
 	}
-	
+
 	@Override
 	public int modifyFile(FileVO vo) {
 		return mapper.modifyFile(vo);
