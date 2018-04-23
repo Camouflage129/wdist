@@ -26,7 +26,9 @@ public interface UserMapper {
 	@Update("update users set name = #{name}, email = #{email} where usersid = #{id}")
 	public int updateUserPwNull(UserVO vo);
 
-	@Select("select * from users where usersid = #{id}")
+	@Select("SELECT USERSID, NAME, EMAIL FROM USERS WHERE = #{id}")
 	public UserVO getuser(String uid);
-
+	
+	@Update("update users set pw=#{pw} where usersid = #{id}")
+	public int modifyNewPwd(UserVO vo);
 }

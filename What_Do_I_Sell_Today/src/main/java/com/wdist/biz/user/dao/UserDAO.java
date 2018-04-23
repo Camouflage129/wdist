@@ -10,4 +10,5 @@ public interface UserDAO {
 	public Boolean checkId(String id);
     public UserVO getUser(String uid);
     public UserVO login(String id, String pw);
+    public int modifyNewPwd(UserVO vo);
 }

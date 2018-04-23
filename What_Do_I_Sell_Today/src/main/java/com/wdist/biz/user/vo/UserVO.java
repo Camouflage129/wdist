@@ -7,6 +7,7 @@ public class UserVO {
 	private String name;
 	private String email;
 	private String pwdhint;
+	private String pwdans;
 
 	public UserVO() {
 	}
@@ -61,6 +62,14 @@ public class UserVO {
 
 	public void setPwdhint(String pwdhint) {
 		this.pwdhint = pwdhint;
+	}
+
+	public String getPwdans() {
+		return pwdans;
+	}
+
+	public void setPwdans(String pwdans) {
+		this.pwdans = pwdans;
 	}
 
 	@Override

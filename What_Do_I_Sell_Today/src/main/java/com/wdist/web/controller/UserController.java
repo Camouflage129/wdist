@@ -36,7 +36,8 @@ import io.netty.handler.codec.http.HttpRequest;
 
 @Controller
 public class UserController {
-
+	
+	SHAUtil sha = new SHAUtil();
 	RSAUtil rsaUtil = new RSAUtil();
 
 	@Resource(name = "UserService")
@@ -101,7 +102,7 @@ public class UserController {
 			ra.addFlashAttribute("result", "success");
 		else
 			ra.addFlashAttribute("result", "fail");
-		return "redirect:/login.do"; // 성공했을경우 어디로 보낼지 적어주세요
+		return "redirect:/login.do"; // 성공했을 경우 어디로 보낼지 적어주세요
 	}
 
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
@@ -254,14 +255,94 @@ public class UserController {
 
 	}
 	
-	
-	// 비밀번호 찾기
-	@RequestMapping(value="/searchpwd.do")
-	public String searchPwd() {
+	// 비밀번호 찾기 페이지
+	@RequestMapping(value="/searchPwd.do", method=RequestMethod.GET)
+	public String searchPwdForm(HttpSession session, Model model) {
+		
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+		if (key != null) { // 기존 key 파기
+			session.removeAttribute("RSAprivateKey");
+		}
+		RSA rsa = rsaUtil.createRSA();
+		model.addAttribute("modulus", rsa.getModulus());
+		model.addAttribute("exponent", rsa.getExponent());
+		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
+		
 		return "user/pwdSearch";
 	}
 	
-	
-	
+	// ID, Name, Email, PwAns, PwHint 체크
+	@RequestMapping(value="infoCheck.do", method=RequestMethod.POST)
+	public String infoCheck(HttpSession session, RedirectAttributes ra , UserVO vo, HttpServletRequest req) {
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 
+		if (key == null) {
+			ra.addFlashAttribute("resultMsg", "비정상 적인 접근 입니다.");
+			return "index";
+		}
+		session.removeAttribute("RSAprivateKey");
+
+		try {
+			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
+			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
+			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail()));
+			vo.setPwdhint(rsaUtil.getDecryptText(key, vo.getPwdhint()));
+			vo.setPwdans(rsaUtil.getDecryptText(key, vo.getPwdans()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			ra.addFlashAttribute("result", "fail");
+		}
+		if (service.modifyNewPwd(vo) == 1) {		
+			req.getSession().setAttribute("id", vo.getName());
+			req.getSession().setAttribute("info", sha.encryptSHA(vo.getPwdans()+vo.getPwdhint()));
+			ra.addFlashAttribute("result", "success");
+		}
+		else
+			ra.addFlashAttribute("result", "fail");
+		return "redirect:/signUpNewPwd.do"; // 성공했을 경우 어디로 보낼지 적어주세요
+	}
+	
+	@RequestMapping(value="/signUpNewPwd.do", method=RequestMethod.GET)
+	public String modifyNewPwd(HttpSession session, Model model) {
+		
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+		if (key != null) { // 기존 key 파기
+			session.removeAttribute("RSAprivateKey");
+		}
+		RSA rsa = rsaUtil.createRSA();
+		model.addAttribute("modulus", rsa.getModulus());
+		model.addAttribute("exponent", rsa.getExponent());
+		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
+		
+		return "user/pwdModify";
+	}
+	
+	@RequestMapping(value="/signUpNewPwd.do", method=RequestMethod.POST)
+	public String modifyNewPwd(HttpSession session, RedirectAttributes ra, UserVO vo) {
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+
+		if (key == null) {
+			ra.addFlashAttribute("resultMsg", "비정상적인 접근 입니다.");
+			return "index";
+		}
+		
+		session.removeAttribute("RSAprivateKey");
+		vo.setId((String)session.getAttribute("id"));
+		vo = service.getUser(vo.getId());
+		String info = (String)session.getAttribute("info");
+		if(info.equals(sha.encryptSHA(vo.getPwdans()+vo.getPwdhint()))) {
+			try {
+				vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else {
+			ra.addFlashAttribute("resultMsg", "비정상적인 접근 입니다.");
+		}
+			session.removeAttribute("info");
+			session.removeAttribute("id");
+			
+		return "redirect:main.do";
+
+	}
 }
