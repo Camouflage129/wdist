@@ -110,6 +110,38 @@
 
 <!-- 유저 입력 form의 submit event 재정의 -->
 <script>
+	function signUp() {	
+		
+		 	var email = $(this).find("#email").val();
+	        var pw = $(this).find("#pw").val();
+	        var shaPw = hex_sha512(pw).toString();
+	        var id = $(this).find("#id").val();
+	        var name = $(this).find("#name").val();
+	        $email.val(rsa.encrypt(email));
+	        $pw.val(rsa.encrypt(shaPw));
+	        $name.val(rsa.encrypt(name));
+	        $id.val(rsa.encrypt(id));
+	        var formData = $("#hiddenForm").serialize();
+		
+	$.ajax({
+		url : '/signUp.do',
+		type : 'post',
+		data : formData,
+		success : function(data) {
+			if(data.result == 'success'){
+				alert('회원가입이 완료되었습니다.');
+			} else{
+				alert('회원가입에 실패했습니다.');
+			}			
+		},
+		error : function() {
+            alert("에러발생");
+      }
+
+	});
+}
+
+
     var $email = $("#hiddenForm input[name='email']");
     var $pw = $("#hiddenForm input[name='pw']");
     var $name = $("#hiddenForm input[name='name']");
