@@ -57,8 +57,8 @@ public interface BoardMapper {
 	@Update("update Board set Title = #{Title}, Contents = #{Contents}, where BoardNum = #{BoardNum}")
 	public int modifyBoard(BoardVO vo);
 	
-	@Insert("insert into Files (FileNum, FileName, HashValue, FileGroupNum, FileSize, flag)"
-			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize}, #{flag})")
+	@Insert("insert into Files (FileNum, FileName, HashValue, FileSize, flag)"
+			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileSize}, #{flag})")
 	public int insertFile(FileVO vo);
 	
 	@Delete("delete from Files where FileGroupNum = #{num}")
@@ -67,9 +67,9 @@ public interface BoardMapper {
 	@Delete("delete from Files where FileNum = #{num}")
 	public int deleteFiles(int num);
 	
-	@Update("update Files set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize} where FileNum = #{FileNum}")
+	@Update("update Files set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize}, FLAG = #{flag} where FileNum = #{FileNum}")
 	public int modifyFile(FileVO vo);
 	
-	@Select("select * from Files where FileGroupNum = #{num} and flag = #{id}")
+	@Select("select * from Files where flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
 }

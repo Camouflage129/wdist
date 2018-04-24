@@ -53,7 +53,8 @@ public class BoardServiceImpl implements BoardService{
 		int rows = 0;
 		int boardNum = 0;
 		rows += dao.insertBoard(boardVO);
-		List<FileVO> files = dao.getFiles(-1, id);
+		System.out.println(id);
+		List<FileVO> files = dao.getFiles(id);
 		System.out.println(files);
 		if(files != null) {
 			Iterator<FileVO> it = files.iterator();
@@ -62,6 +63,7 @@ public class BoardServiceImpl implements BoardService{
 			while(it.hasNext()) {
 				FileVO data = it.next();
 				data.setFileGroupNum(dao.getFileGroupNum(boardNum));
+				data.setFlag("");
 				dao.modifyFile(data);
 			}
 		}
@@ -106,7 +108,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int deleteFile(String id) {
 		int rows = 0;
-		List<FileVO> files = dao.getFiles(-1, id);
+		List<FileVO> files = dao.getFiles(id);
 		Iterator<FileVO> it = files.iterator();
 		while(it.hasNext()) {
 			FileVO data = it.next();

@@ -45,5 +45,5 @@ public interface BoardDAO {
 	
 	public int modifyFile(FileVO vo);
 	
-	public List<FileVO> getFiles(int num, String id);
+	public List<FileVO> getFiles(String id);
 }

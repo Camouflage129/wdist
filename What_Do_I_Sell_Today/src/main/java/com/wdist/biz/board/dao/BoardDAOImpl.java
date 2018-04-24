@@ -121,9 +121,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<FileVO> getFiles(int num, String id) {
+	public List<FileVO> getFiles(String id) {
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("num", num);
 		map.put("id", id);
 		return mapper.getFiles(map);
 	}
