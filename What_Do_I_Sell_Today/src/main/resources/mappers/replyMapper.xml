@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wdist.biz.reply.dao.ReplyDAO">
+
+	<select id="replyList" resultType="ReplyVO">
+		select * from reply where BoardNum = #{num}
+	</select>
+
+	<insert id="insertReply" parameterType="ReplyVO">
+		insert into reply (replyNum, ParentNum, UsersID, Contents, PostDate, BoardNum)
+		values ((select ifnull(replyNum,0)+1 from reply), #{ParentNum}, #{UsersID}, #{Contents}, #{PostDate}, #{BoardNum})
+	</insert>
+	
+	<insert id="insertReReply" parameterType="ReplyVO">
+		insert into reply (replyNum, ParentNum, Count, UsersID, Contents, PostDate, BoardNum)
+		values ((select ifnull(replyNum,0)+1 from reply), #{ParentNum}, #{Count}, #{UsersID}, #{Contents}, #{PostDate}, #{BoardNum})
+	</insert>
+	
+	<update id="modifyParentReply" parameterType="ReplyVO">
+		update reply set ChildCount = #{ChildCount} where ParentNum = #{ParentNum}
+	</update>
+	
+	<update id="modifyReply" parameterType="ReplyVO">
+		update reply set Contents = #{Contents} where replyNum = #{replyNum}
+	</update>
+	
+	<delete id="deleteReply">
+		delete from reply where replyNum = #{replyNum}
+	</delete>
+	
+</mapper>
