@@ -12,7 +12,7 @@ import com.wdist.biz.board.vo.ReplyVO;
 @Component("ReplyDAO")
 public class ReplyDAOImpl implements ReplyDAO{
 	
-	@Resource(name="sqlSessionWindow")
+	@Resource(name="sqlSessionTemplateWindow")
 	private SqlSession sqlSession;
 	
 	@Override
