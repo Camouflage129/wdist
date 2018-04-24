@@ -59,14 +59,23 @@ public class FoodController {
 		}
 	}
 	
-	@RequestMapping(value="/areaDesc.do")
-	public String areadesc(HttpServletRequest request) {
-		String area = request.getParameter("area");
+	@RequestMapping(value="/areaDesc.do",method = RequestMethod.POST)
+	public void areadesc(String area, HttpServletRequest request, HttpServletResponse res) {
+		System.out.println("areaDescController진입");
+		
+		res.setContentType("application/json;charset=UTF-8");
+		//String area = request.getParameter("area");
 		System.out.println(area);
 		
+		JsonArray arr = new JsonArray();
+		arr.add("ajax결과 분석 값");
 		
-		//service돌려서 해당지역 상세 데이터 받아오는 컨트롤러
-		return "index.jsp?content=/WEB-INF/views/food/area_desc";
+		try {
+			res.getWriter().write(arr.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

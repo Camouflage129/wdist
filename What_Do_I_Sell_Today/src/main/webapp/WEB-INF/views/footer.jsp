@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>footer</title>
+<style>
+/* 	body{
+		clear: both;
+	} */
+</style>
 </head>
 <body>
 	<div class="container">

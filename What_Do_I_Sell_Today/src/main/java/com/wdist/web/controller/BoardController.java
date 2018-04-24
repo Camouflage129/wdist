@@ -112,6 +112,26 @@ public class BoardController {
 		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
 	}
 	
+	@RequestMapping(value = "/editBoard.do", method=RequestMethod.GET)
+	public String editBoard(int num, HttpServletRequest request) {
+		BoardVO board = (BoardVO) service.viewBoard(num);
+		request.setAttribute("board", board);
+		request.setAttribute("num", num);
+		
+		return "index.jsp?content=/WEB-INF/views/service/editBoard";
+	}
+	@RequestMapping(value = "/editBoard.do", method=RequestMethod.POST)
+	public String updateBoard(int num, String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
+		BoardVO vo = new BoardVO();
+		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
+		vo.setBoardNum(num);
+		vo.setContents(Contents);
+		vo.setTitle(Title);
+		service.modifyBoard(vo, Contents, filepath);
+		return "redirect:findBoard.do?num="+num;
+	}
+	
+	
 	@RequestMapping(value="/deleteBoard.do")
 	public String deledtBoard(int num, HttpSession session, HttpServletRequest request) {
 		BoardVO vo = service.viewBoard(num);

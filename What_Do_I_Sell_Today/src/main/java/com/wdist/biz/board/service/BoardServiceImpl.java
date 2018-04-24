@@ -1,5 +1,7 @@
 package com.wdist.biz.board.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,12 +18,12 @@ import com.wdist.biz.board.vo.FileVO;
 import com.wdist.biz.board.vo.ReplyVO;
 
 @Service("BoardService")
-public class BoardServiceImpl implements BoardService{
-	@Resource(name="BoardDAO")
+public class BoardServiceImpl implements BoardService {
+	@Resource(name = "BoardDAO")
 	BoardDAO dao;
-	
+
 	BoardFileManager bfm = new BoardFileManager();
-	
+
 	@Override
 	public List<BoardVO> freeOrCsBoard(String Type) {
 		return dao.freeOrCsBoard(Type);
@@ -43,6 +45,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<BoardVO> searchBoard(String Type, String searchTitle, String text) {
 		return dao.searchBoard(Type, searchTitle, text);
 	}
@@ -70,14 +73,14 @@ public class BoardServiceImpl implements BoardService{
 		return rows;
 	}
 
-	//레스트 풀로 처리하자
+	// 레스트 풀로 처리하자
 	@Override
 	public int insertReply(ReplyVO vo) {
 		return dao.insertReply(vo);
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public int deleteBoard(int num, String content, String filePath) {
 		int rows = 0;
 		if(dao.getFileGroupNum(num) != -1) {
@@ -86,17 +89,55 @@ public class BoardServiceImpl implements BoardService{
 		}
 		rows += dao.deleteReply(num);
 		rows += dao.deleteBoard(num);
-		bfm.contentsFileDelect(content, filePath);
+		ArrayList<String> list = bfm.contentsFileDelect(content);
+		int testcount = 0;
+		if (list.size() > 0) {
+			for (String str : list) {
+				if (dao.filecount(str) == 1) {
+					bfm.filedelete(str, filePath);
+					testcount++;
+				}
+			}
+		}
+		System.out.println("검색된 파일 " + list.size() + "개, 실제 삭제파일 " + testcount+"개");
 		return rows;
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
-	public int modifyBoard(BoardVO vo, FileVO fileVO) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public int modifyBoard(BoardVO vo, String id, String filePath) {
 		int rows = 0;
+		int boardNum = vo.getBoardNum();
+		HashSet<String> set = bfm.contentsUpdateFile(vo.getContents(), filePath);
+		List<FileVO> newfiles = dao.getFiles(id);
+		if (newfiles != null) {
+			Iterator<FileVO> it = newfiles.iterator();
+			rows += dao.insertFileGroup(boardNum);
+			int filegnum = 0;
+			if (it.hasNext())
+				filegnum = dao.getFileGroupNum(boardNum);
+			while (it.hasNext()) {
+				FileVO data = it.next();
+				data.setFileGroupNum(filegnum);
+				dao.modifyFile(data);
+			}
+		}
+		ArrayList<FileVO> deletelist = new ArrayList<FileVO>();
+		Iterator<FileVO> deleteit = deletelist.iterator();
+		int testcount = 0, tc2 = 0;
+		while (deleteit.hasNext()) {
+			FileVO deletefile = deleteit.next();
+			if (!(set.contains(deletefile.getHashValue()))) {
+				dao.deleteFiles(deletefile.getFileNum());
+				testcount++;
+				if (dao.filecount(deletefile.getHashValue()) == 1) {
+					tc2++;
+					bfm.filedelete(deletefile.getHashValue(), filePath);
+				}
+			}
+		}
+		System.out.println("내용에서 없어진 파일 " + testcount + "개, 실제 삭제파일 " + tc2 + "개");
 		rows += dao.modifyBoard(vo);
-		if(fileVO != null)
-			rows += dao.modifyFile(fileVO);
 		return rows;
 	}
 
@@ -110,7 +151,7 @@ public class BoardServiceImpl implements BoardService{
 		int rows = 0;
 		List<FileVO> files = dao.getFiles(id);
 		Iterator<FileVO> it = files.iterator();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			FileVO data = it.next();
 			rows += dao.deleteFiles(data.getFileNum());
 		}

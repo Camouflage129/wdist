@@ -1,5 +1,6 @@
 package com.wdist.biz.board.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -126,4 +127,15 @@ public class BoardDAOImpl implements BoardDAO {
 		map.put("id", id);
 		return mapper.getFiles(map);
 	}
+
+	@Override
+	public ArrayList<FileVO> fileGroupSelect(int groupnum) {
+		return mapper.fileGroupSelect(groupnum);
+	}
+
+	@Override
+	public int filecount(String HashValue) {
+		return mapper.filecount(HashValue);
+	}
+
 }

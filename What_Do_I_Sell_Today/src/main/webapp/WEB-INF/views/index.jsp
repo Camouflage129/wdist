@@ -12,6 +12,11 @@
 <script type="text/javascript" src="js/index.js?ver=1"></script>
 <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
 <link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
+<style>
+	.footer{
+		clear:both;
+	}
+</style>
 <title>오늘 뭐 팔지?</title>
 </head>
 <body>
@@ -43,8 +48,10 @@
 		</c:otherwise>
 	</c:choose>
 
-	<hr>
+
 	<div class="footer">
+	<br>
+		<hr>
 		<jsp:include page="footer.jsp" />
 	</div>
 

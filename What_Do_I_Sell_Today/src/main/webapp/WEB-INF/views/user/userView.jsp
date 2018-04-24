@@ -46,31 +46,30 @@ function userRemove() {
 		<div id="idDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">ID</label> 
 			<input id="id" type="text" class="form-control is-invalid.disabled" name="id" value="${user.id }" disabled="disabled">
-
 		</div>
 		
-		<div id="nameDiv" class="form-group has-danger">
+		<div id="ModifyNameDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Name</label> 
-			<input id="name" type="text" class="form-control is-invalid" name="name" value="${user.name }">
-			<div class="name_feedback">수정하시려면 이름을 입력해주세요.</div>
+			<input id="ModifyName" type="text" class="form-control is-invalid" name="name" value="${user.name }">
+			<small id="ModifyName_feedback" class="form-text text-muted"> 수정하시려면 이름을 입력해주세요.</small>
 		</div>
 			
-		<div id="emailDiv" class="form-group has-danger">
+		<div id="ModifyEmailDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Email</label> 
-			<input id="email" type="text" class="form-control is-invalid" name="email" value="${user.email }">
-			<div class="email_feedback">수정하시려면 이메일 주소를 입력해주세요.</div>
+			<input id="ModifyEmail" type="text" class="form-control is-invalid" name="email" value="${user.email }">
+			<small id="ModifyEmail_feedback" class="form-text text-muted">수정하시려면 이메일 주소를 입력해주세요.</small>
 		</div>
 					
-		<div id="pwDiv" class="form-group has-danger">
+		<div id="ModifyPwDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password</label> 
-			<input id="pw" type="text" class="form-control is-invalid" name="pw">
-			<div class="pw_feedback">수정하시려면 비밀번호를 입력해주세요.</div>
+			<input id="ModifyPw" type="text" class="form-control is-invalid" name="pw">
+			<small id=ModifyPw_feedback class="form-text text-muted">수정하시려면 비밀번호를 입력해주세요.</small>
 		</div>
 
-		<div id="pwCkDiv" class="form-group has-danger">
+		<div id="ModifyPwCkDiv" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password Check</label> 
-			<input id="pw_Check" type="text" class="form-control is-invalid">
-			<div class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
+			<input id="ModifyPw_Check" type="text" class="form-control is-invalid">
+			<small id="ModifyPwCheck_feedback" class="form-text text-muted">다시한번 비밀번호를 입력해주세요.</small>
 		</div>			
 	
 		<div class="form-group text-center">
@@ -95,6 +94,7 @@ function userRemove() {
         <input type="hidden" name="name" />
     </fieldset>
 </form>
+<script type="text/javascript" src="/js/userView.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="/js/rsa/jsbn.js"></script>
 <script src="/js/rsa/prng4.js"></script>

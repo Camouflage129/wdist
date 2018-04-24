@@ -2292,6 +2292,14 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #FF7851;
 }
 
+.customvalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 80%;
+  color: #666666;
+}
+
 .invalid-tooltip {
   position: absolute;
   top: 100%;

@@ -12,6 +12,8 @@ import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
 import com.wdist.biz.board.vo.ReplyVO;
 
+import it.unimi.dsi.fastutil.Hash;
+
 public interface BoardMapper {
 	@Select("select * from Board where Type = #{Type} order by PostDate DESC")
 	public List<BoardVO> freeOrCsBoard(String Type);
@@ -55,7 +57,7 @@ public interface BoardMapper {
 	@Delete("delete from Board where BoardNum = #{num}")
 	public int deleteBoard(int num);
 	
-	@Update("update Board set Title = #{Title}, Contents = #{Contents}, where BoardNum = #{BoardNum}")
+	@Update("update Board set Title = #{Title}, Contents = #{Contents} where BoardNum = #{BoardNum}")
 	public int modifyBoard(BoardVO vo);
 	
 	@Insert("insert into Files (FileNum, FileName, HashValue, FileSize, flag)"
@@ -77,4 +79,9 @@ public interface BoardMapper {
 	@Select("select contents from BOARD where usersid = #{id}")
 	public ArrayList<String> userAllFileSelect(String id);
 	
+	@Select("SELECT FILENUM, HASHVALUE FROM FILES WHERE FILEGROUPNUM = #{FileGroupNum}")
+	public ArrayList<FileVO> fileGroupSelect(int groupnum);
+	
+	@Select("SELECT COUNT(*) FROM FILES WHERE HASHVALUE = #{HashValue}")
+	public int filecount(String HashValue);
 }
