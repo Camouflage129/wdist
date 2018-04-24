@@ -1,8 +1,14 @@
 $(function(){
+	
+	
 	$("#deleteBtn").click(function(){
 		var data = confirm("정말 삭제하시겠습니까?");
 		if(data)
 			location.href="/deleteBoard.do?num="+$("#boardNum").val();
+	});
+	
+	$("#editBtn").click(function(){
+			location.href="/editBoard.do?num="+$("#boardNum").val();
 	});
 	
 	$("#beforePost").click(function(){

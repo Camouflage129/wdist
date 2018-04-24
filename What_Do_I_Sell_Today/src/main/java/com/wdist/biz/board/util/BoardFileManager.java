@@ -29,6 +29,7 @@ public class BoardFileManager {
 	}
 	public HashSet<String> contentsUpdateFile(String content, String filePath){
 		HashSet<String> set = new HashSet<String>();
+		System.out.println("글내용 "+content);
 		matcher = pattern.matcher(content);
 		try{
 		while(matcher.find()) {

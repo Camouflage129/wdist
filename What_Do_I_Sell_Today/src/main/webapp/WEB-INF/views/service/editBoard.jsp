@@ -9,14 +9,16 @@
 <script type="text/javascript" src="ckeditor/adapters/jquery.js"></script>
 
 <script type="text/javascript" src="js/insertBoard.js"></script>
-<title>Insert Board</title>
+<title>글수정</title>
 </head>
 <body>
 	<div class="container">
-		<form id="insertForm" action="insertBoard.do" method="post" enctype="multipart/form-data">
+		<form id="editForm" action="editBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
-				<legend>글쓰기</legend>
+				<legend>글수정</legend>
 				<input id="type" type="hidden" name="Type" value="${type}">
+				<input id="type" type="hidden" name="num" value="${num}">
+				
 				<div class="form-group">
 					제목 : <input type="text" name="Title" class="form-control" id="inputDefault" value="${board.title }">
 				</div>
