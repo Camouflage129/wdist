@@ -203,13 +203,13 @@ public class UserController {
 	}
 
 	// 회원 탈퇴
-	@RequestMapping(value = "/removeuser.do")
+/*	@RequestMapping(value = "/removeuser.do")
 	public String userRemove(HttpSession session) {
 		String id = (String) session.getAttribute("userid");
 		System.out.println(service.deleteAccount(id));
 		session.invalidate();
 		return "redirect:main.do";
-	}
+	}*/
 
 	@RequestMapping(value = "/updateuser.do", method = RequestMethod.POST)
 	public String updateuser(UserVO vo, RedirectAttributes ra, HttpSession session) {

@@ -1,5 +1,6 @@
 package com.wdist.biz.mybatis.mapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
@@ -10,6 +11,8 @@ import org.apache.ibatis.annotations.Update;
 import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
 import com.wdist.biz.board.vo.ReplyVO;
+
+import it.unimi.dsi.fastutil.Hash;
 
 public interface BoardMapper {
 	@Select("select * from Board where Type = #{Type} order by PostDate DESC")
@@ -57,8 +60,8 @@ public interface BoardMapper {
 	@Update("update Board set Title = #{Title}, Contents = #{Contents}, where BoardNum = #{BoardNum}")
 	public int modifyBoard(BoardVO vo);
 	
-	@Insert("insert into Files (FileNum, FileName, HashValue, FileGroupNum, FileSize, flag)"
-			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize}, #{flag})")
+	@Insert("insert into Files (FileNum, FileName, HashValue, FileSize, flag)"
+			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileSize}, #{flag})")
 	public int insertFile(FileVO vo);
 	
 	@Delete("delete from Files where FileGroupNum = #{num}")
@@ -67,9 +70,15 @@ public interface BoardMapper {
 	@Delete("delete from Files where FileNum = #{num}")
 	public int deleteFiles(int num);
 	
-	@Update("update Files set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize} where FileNum = #{FileNum}")
+	@Update("update Files set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize}, FLAG = #{flag} where FileNum = #{FileNum}")
 	public int modifyFile(FileVO vo);
 	
-	@Select("select * from Files where FileGroupNum = #{num} and flag = #{id}")
+	@Select("select * from Files where flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
+	
+	@Select("SELECT FILENUM, HASHVALUE FROM FILES WHERE FILEGROUPNUM = #{FileGroupNum}")
+	public ArrayList<FileVO> fileGroupSelect(int groupnum);
+	
+	@Select("SELECT COUNT(*) FROM FILES WHERE HASHVALUE = #{HashValue}")
+	public int filecount(String HashValue);
 }

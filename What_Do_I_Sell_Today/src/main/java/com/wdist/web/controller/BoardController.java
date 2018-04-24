@@ -71,11 +71,11 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/insertBoard.do")
-	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
+	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpSession session) {
 		java.util.Date udate = new java.util.Date();
 		Date date = new Date(udate.getTime());
 		BoardVO boardVO = new BoardVO(Type, Title, Contents, UsersID, date);
-		service.insertBoard(boardVO, (String) request.getAttribute("userid"));
+		service.insertBoard(boardVO, (String)session.getAttribute("userid"));
 		if (boardVO.getType().equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
 		else
@@ -83,8 +83,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/deleteFiles.do")
-	public String deleteFiles(@RequestParam("type") String type, HttpServletRequest request) {
-		String id = (String) request.getAttribute("userid");
+	public String deleteFiles(@RequestParam("type") String type, HttpSession session) {
+		String id = (String) session.getAttribute("userid");
 		System.out.println(service.deleteFile(id));
 		if (type.equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
@@ -111,6 +111,22 @@ public class BoardController {
 		request.setAttribute("board", board);
 		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
 	}
+	
+	@RequestMapping(value = "/editBoard.do", method=RequestMethod.GET)
+	public String editBoard(int num, HttpServletRequest request) {
+		BoardVO board = (BoardVO) service.viewBoard(num);
+		request.setAttribute("board", board);
+		return "service/viewBoard";
+	}
+	@RequestMapping(value = "/editBoard.do", method=RequestMethod.POST)
+	public String updateBoard(int num, String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
+		BoardVO vo = new BoardVO();
+		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
+		vo.setBoardNum(num);
+		service.modifyBoard(vo, Contents, filepath);
+		return null;
+	}
+	
 	
 	@RequestMapping(value="/deleteBoard.do")
 	public String deledtBoard(int num, HttpSession session, HttpServletRequest request) {

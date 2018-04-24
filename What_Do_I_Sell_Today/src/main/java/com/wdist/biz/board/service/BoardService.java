@@ -1,5 +1,6 @@
 package com.wdist.biz.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.wdist.biz.board.vo.BoardVO;
@@ -24,7 +25,7 @@ public interface BoardService {
 	
 	public int deleteBoard(int num, String content, String filePath);
 	
-	public int modifyBoard(BoardVO vo, FileVO fileVO);
+	public int modifyBoard(BoardVO vo, String content, String filePath);
 	
 	public int insertFile(FileVO vo);
 	

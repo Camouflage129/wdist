@@ -66,6 +66,7 @@
 				${board.contents}
 			</div>
 		</div>
+		
 	</div>
 </body>
 </html>
