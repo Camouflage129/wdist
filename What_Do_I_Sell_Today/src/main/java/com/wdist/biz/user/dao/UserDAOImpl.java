@@ -82,6 +82,11 @@ public class UserDAOImpl implements UserDAO {
 	public UserVO pwSearchUser(UserVO vo) {
 		return mapper.pwSearchUser(vo);
 	}
+
+	@Override
+	public UserVO searchId(UserVO vo) {
+		return mapper.searchId(vo);
+	}
 	
 	
 	

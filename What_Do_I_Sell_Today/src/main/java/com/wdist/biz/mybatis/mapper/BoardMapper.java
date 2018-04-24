@@ -1,5 +1,6 @@
 package com.wdist.biz.mybatis.mapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
@@ -72,4 +73,8 @@ public interface BoardMapper {
 	
 	@Select("select * from Files where flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
+	
+	@Select("select contents from BOARD where usersid = #{id}")
+	public ArrayList<String> userAllFileSelect(String id);
+	
 }
