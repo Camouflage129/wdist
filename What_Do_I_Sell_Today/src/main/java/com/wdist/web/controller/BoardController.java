@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -109,6 +110,22 @@ public class BoardController {
 		request.setAttribute("board", board);
 		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
 	}
+	
+	@RequestMapping(value = "/editBoard.do", method=RequestMethod.GET)
+	public String editBoard(int num, HttpServletRequest request) {
+		BoardVO board = (BoardVO) service.viewBoard(num);
+		request.setAttribute("board", board);
+		return "service/viewBoard";
+	}
+	@RequestMapping(value = "/editBoard.do", method=RequestMethod.POST)
+	public String updateBoard(int num, String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
+		BoardVO vo = new BoardVO();
+		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
+		vo.setBoardNum(num);
+		service.modifyBoard(vo, Contents, filepath);
+		return null;
+	}
+	
 	
 	@RequestMapping(value="/deleteBoard.do")
 	public String deledtBoard(int num, HttpSession session, HttpServletRequest request) {

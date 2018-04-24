@@ -1,5 +1,6 @@
 package com.wdist.biz.mybatis.mapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
@@ -10,6 +11,8 @@ import org.apache.ibatis.annotations.Update;
 import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
 import com.wdist.biz.board.vo.ReplyVO;
+
+import it.unimi.dsi.fastutil.Hash;
 
 public interface BoardMapper {
 	@Select("select * from Board where Type = #{Type} order by PostDate DESC")
@@ -66,4 +69,10 @@ public interface BoardMapper {
 	
 	@Select("select * from Files where FileGroupNum = #{num} and flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
+	
+	@Select("SELECT FILENUM, HASHVALUE FROM FILES WHERE FILEGROUPNUM = #{FileGroupNum}")
+	public ArrayList<FileVO> fileGroupSelect(int groupnum);
+	
+	@Select("SELECT COUNT(*) FROM FILES WHERE HASHVALUE = #{HashValue}")
+	public int filecount(String HashValue);
 }
