@@ -1,5 +1,6 @@
 package com.wdist.biz.board.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.wdist.biz.board.vo.BoardVO;
@@ -45,5 +46,9 @@ public interface BoardDAO {
 	
 	public int modifyFile(FileVO vo);
 	
+	
+	public ArrayList<FileVO> fileGroupSelect(int groupnum);
+	
+	public int filecount(String HashValue);
 	public List<FileVO> getFiles(String id);
 }
