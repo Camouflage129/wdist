@@ -33,6 +33,20 @@
   	height:100%;
   	}
   	
+  	button{
+  	/* display:block;
+  	width:100%;
+  	height:100%; */
+  	
+  	background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  	}
+  	
  	 a:link {
  	 	text-decoration: none;
  	 	
@@ -60,8 +74,11 @@ $(function(){
 	var classname;
 	var title;
 	var food;
+	
 	 $('tr').has('td').has('a').css('cursor', 'pointer');
+	 
 	 $('.button').click(function(){
+		 
 		 $("#divToggle").toggle(); 
 		 
 		 id = $(this).attr('id'); 
@@ -116,38 +133,38 @@ $(function(){
     </thead> -->
     <tbody>
       <tr>
-        <td><a id="area1" class="button">강남구</a></td>
-        <td><a id="area2" class="button">강동구</a></td>
-        <td><a id="area3" class="button">강북구</a></td>
-        <td><a id="area4" class="button">강서구</a></td>
-        <td><a id="area5" class="button">관악구</a></td>
-        <td><a id="area6" class="button">광진구</a></td>
-        <td><a id="area7" class="button">구로구</a></td>
+        <td><button id="area1" class="button">강남구</button></td>
+        <td><button id="area2" class="button">강동구</button></td>
+        <td><button id="area3" class="button">강북구</button></td>
+        <td><button id="area4" class="button">강서구</button></td>
+        <td><button id="area5" class="button">관악구</button></td>
+        <td><button id="area6" class="button">광진구</button></td>
+        <td><button id="area7" class="button">구로구</button></td>
       </tr>
       <tr>
-        <td><a id="area8" class="button">금천구</a></td>
-        <td><a id="area9" class="button">노원구</a></td>
-        <td><a id="area10" class="button">도봉구</a></td>
-        <td><a id="area11" class="button">동대문구</a></td>
-        <td><a id="area12" class="button">동작구</a></td>
-        <td><a id="area13" class="button">마포구</a></td>
-        <td><a id="area14" class="button">서대문구</a></td>
+        <td><button id="area8" class="button">금천구</button></td>
+        <td><button id="area9" class="button">노원구</button></td>
+        <td><button id="area10" class="button">도봉구</button></td>
+        <td><button id="area11" class="button">동대문구</button></td>
+        <td><button id="area12" class="button">동작구</button></td>
+        <td><button id="area13" class="button">마포구</button></td>
+        <td><button id="area14" class="button">서대문구</button></td>
       </tr>
       <tr>
-        <td><a id="area15" class="button">서초구</a></td>
-        <td><a id="area16" class="button">성동구</a></td>
-        <td><a id="area17" class="button">성북구</a></td>
-        <td><a id="area18" class="button">송파구</a></td>
-        <td><a id="area19" class="button">양천구</a></td>
-        <td><a id="area20" class="button">영등포구</a></td>
-        <td><a id="area21" class="button">용산구</a></td>
+        <td><button id="area15" class="button">서초구</button></td>
+        <td><button id="area16" class="button">성동구</button></td>
+        <td><button id="area17" class="button">성북구</button></td>
+        <td><button id="area18" class="button">송파구</button></td>
+        <td><button id="area19" class="button">양천구</button></td>
+        <td><button id="area20" class="button">영등포구</button></td>
+        <td><button id="area21" class="button">용산구</button></td>
       </tr>
       <tr>
-        <td><a id="area22" class="button">은평구</a></td>
-        <td><a id="area23" class="button">종로구</a></td>
-        <td><a id="area24" class="button">도봉구</a></td>
-        <td><a id="area25" class="button">중구</a></td>
-        <td><a id="area26" class="button">중랑구</a></td>
+        <td><button id="area22" class="button">은평구</button></td>
+        <td><button id="area23" class="button">종로구</button></td>
+        <td><button id="area24" class="button">도봉구</button></td>
+        <td><button id="area25" class="button">중구</button></td>
+        <td><button id="area26" class="button">중랑구</button></td>
       </tr>
     </tbody>
   </table>

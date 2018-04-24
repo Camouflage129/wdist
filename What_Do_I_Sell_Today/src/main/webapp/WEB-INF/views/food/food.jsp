@@ -33,10 +33,32 @@
 	table,tr,td{
   		text-align:center;
   	}
-  	table td a{
+  	
+  	/* table td a{
   	display:block;
   	width:100%;
   	height:100%;
+  	} */
+  	
+  	/* table td button{
+  	display:block;
+  	width:100%;
+  	height:100%;
+  	} 
+  	 */
+  	
+  	button{
+  	/* display:block;
+  	width:100%;
+  	height:100%; */
+  	
+  	background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   	}
   	
  	 a:link {text-decoration: none;}
@@ -48,30 +70,40 @@
  	}
   	
   	#accordion{
-  		width:50%;
-  		margin-left: auto;
-  		margin-right: auto;
+  		width:40%;
+  		/* margin-left: auto; */
+  		/* margin-right: auto; */
+  		/* hieght:200px; */
+  		 float: left;  	
   	}
   	
+  	#result{
+  		float: left; 
+  		width:400px;
+  		/*height:200px; */
+  		padding-left: 30px;
+  	}
 </style>
 
 <script type="text/javascript">
 $(function(){
+	 alert("start");
+	
 	var id;
 	var idname;
 	var classname;
 	var title;
 	var area;
+	var result;
 	
+	/*  $('tr').has('td').has('a').css('cursor', 'pointer');  */
+	 
 	 $('.card-link').click(function(){
+		 alert("click");
 		 id = $(this).attr('id'); 
 		 idname = '#'+id;
 		 classname = "."+id;
 		 
-		/*  alert(id);
-		 alert($(id).text()); */
-		 
-		 //alert("ajax");
 		 $.ajax({
 			type : 'POST',
 			url : 'foodAreaTitle.do',
@@ -87,7 +119,9 @@ $(function(){
 		  		return;
 		  	}else{
 		  		for(var i in area){			
-					   $(classname).append('<td><a href="/areaDesc.do?area='+area[i]+'\">'+area[i]+'</a></td>');
+					   /* $(classname).append('<td><a id="areadesc" href="/areaDesc.do?area='+area[i]+'\">'+area[i]+'</a></td>'); */
+					   /* $(classname).append('<td><a class="areadesc">'+area[i]+'</a></td>'); */
+					   $(classname).append('<td><button class="areadesc">'+area[i]+'</button></td>');
 		 				}
 		  		} 
 		  	
@@ -98,16 +132,39 @@ $(function(){
 		}); //end ajax     
 		 
 	 });
+	 
+	 
+	 $(document).on("click",".areadesc",function(){
+		
+		 	$.ajax({
+		 		type : 'POST',
+				url : 'areaDesc.do',
+				dataType : 'json',
+				data : {
+					 "area" : $(this).text() 
+				},  
+				success : function(data) {
+					alert("success");
+			  		result = data;
+			  		$("#resultcontent").html(result);
+				},
+				error : function(data) {
+					alert("통신실패 : " + data.message);
+				}
+		 	
+		 	});
+	 });
 });
 </script>
-
 </head>
 <body>
 
 <div class="container">
-  <h2>업종별 검색</h2>
-  <br>
+  
   <div id="accordion">
+  <br>
+  <h3>업종별 검색</h3>
+  <br>
       <div class="card">
       <div class="card-header">
        <!--  <a id="title1" class="collapsed card-link" data-toggle="collapse" href="#collapseOne"> -->
@@ -278,7 +335,20 @@ $(function(){
       </div>
     </div>
   </div>
+  
+ <div id="result">
+ <br>
+	<h3>업종 분석 결과</h3>
+	<br>
+	<div id="resultcontent">
+	
+	</div>
+</div>
+
 </div>
     
 </body>
+
+
+
 </html>
