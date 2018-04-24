@@ -1,5 +1,6 @@
 package com.wdist.biz.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.wdist.biz.board.vo.BoardVO;
@@ -15,6 +16,8 @@ public interface BoardService {
 	
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text);
+	
 	public int insertBoard(BoardVO boardVO, String string);
 	
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
@@ -22,7 +25,7 @@ public interface BoardService {
 	
 	public int deleteBoard(int num, String content, String filePath);
 	
-	public int modifyBoard(BoardVO vo, FileVO fileVO);
+	public int modifyBoard(BoardVO vo, String content, String filePath);
 	
 	public int insertFile(FileVO vo);
 	

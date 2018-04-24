@@ -51,8 +51,7 @@
 			</ul>
 			<ul class="bo_v_com list-inline pull-right">
 				<li class="zero-padding"><a href="링크" class="btn btn-default">수정</a></li>
-				<li class="zero-padding"><a id="deleteBtn" href=""
-					class="btn btn-danger link-btn">삭제</a></li>
+				<li class="zero-padding"><button id="deleteBtn" class="btn btn-danger link-btn">삭제</button></li>
 				<li class="zero-padding"><a href="freeBoard.do?num=1"
 					class="btn btn-default">목록</a></li>
 				<li class="zero-padding"><a
@@ -67,6 +66,7 @@
 				${board.contents}
 			</div>
 		</div>
+		
 	</div>
 </body>
 </html>
