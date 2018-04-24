@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
-	   
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>새로운 비밀번호 설정</title>
-<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./css/bootstrap.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
@@ -16,38 +14,38 @@
   <div align="center">
 	<legend>비밀번호 찾기</legend>
   </div>
-  <div align="center">
-  <div class="col-md-6 col-md-offset-3" align="left">
-		<div id="idDiv" class="form-group has-danger">
+    <div align="center">
+  	<div class="col-md-6 col-md-offset-3" align="left">
+  	
+		<!-- <div id="idDiv5" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">ID</label> 
-			<input id="id" type="text" class="form-control is-invalid" name="id" onblur="onblur_event()">
-			<div id="id_feedback" class="id_feedback"> 첫글자는 영문, 4~16자 이내로 입력해주세요.</div>
+			<input id="id5" type="text" class="form-control is-invalid" name="id5">
+			<small id="id_feedback5" class="form-text text-muted">첫글자는 영문, 4~16자 이내로 입력해주세요.</small>
+		</div> -->
+<!--   <div align="center">
+  <div class="col-md-6 col-md-offset-3" align="left">
+		<div id="idDiv5" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">ID</label> 
+			<input id="id5" type="text" class="form-control is-invalid" name="id5">
+			<small id="id_feedback5" class="form-text text-muted">ID를 입력해주세요.</small>
+		</div> -->
+		<div id="idDiv5" class="form-group has-danger">
+			<label class="form-control-label" for="inputDanger1">ID</label> 
+			<input id="id5" type="text" class="form-control is-invalid" name="id5">
+			<small id="id_feedback5" class="form-text text-muted">ID를 입력해주세요.</small>
 		</div>
-		
-		<div id="nameDiv" class="form-group has-danger">
+		<div id="nameDiv2" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Name</label> 
-			<input id="name" type="text" class="form-control is-invalid" name="name">
-			<div id="name_feedback" class="name_feedback">이름을 입력해주세요.</div>
+			<input id="name2" type="text" class="form-control is-invalid" name="name2">
+			<small id="name_feedback2" class="form-text text-muted">이름을 입력해주세요.</small>
 		</div>
  			
-		<div id="emailDiv" class="form-group has-danger">
+		<div id="emailDiv2" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Email</label> 
-			<input id="email" type="email" class="form-control is-invalid" name="email">
-			<div id="email_feedback" class="email_feedback">이메일 주소를 입력해주세요.</div>
+			<input id="email2" type="email" class="form-control is-invalid" name="email2">
+			<small id="email_feedback2" class="form-text text-muted">이메일 주소를 입력해주세요.</small>
 		</div>
-					
-<!-- 		<div id="pwDiv" class="form-group has-danger">
-			<label class="form-control-label" for="inputDanger1">Password</label> 
-			<input id="pw" type="password" class="form-control is-invalid" name="pw">
-			<div id="pw_feedback" class="pw_feedback">4~15글자 이내로 입력하셔야 가입이 가능합니다.</div>
-		</div>
-
-		<div id="pwCkDiv" class="form-group has-danger">
-			<label class="form-control-label" for="inputDanger1">Password Check</label> 
-			<input id="pw_Check" type="password" class="form-control is-invalid">
-			<div id="pwCheck_feedback" class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
-		</div>			 -->
-
+		
 
 	<div class="pwchkwrap">
                  <label for="qustpwd">Password Hint</label>
@@ -66,16 +64,16 @@
                      </select>
               </div>
 
-		<div id="nameDiv" class="form-group has-danger">
+		<div id="pwdAnsDiv" class="form-group has-danger">
 			<!-- <label class="form-control-label" for="inputDanger1">Name</label>  -->
-			<input id="pwdans" type="text" class="form-control is-invalid" name="pwdans">
-			<div id="ansPwd_feedback" class="ansPwd_feedback">질문에 대한 답변을 입력해주세요.</div>
+			<input id="pwdAns" type="text" class="form-control is-invalid" name="pwdans">
+			<small id="pwdAns_feedback" class="form-text text-muted">질문에 대한 답변을 입력해주세요.</small>
 		</div>
 
 	
 		<div class="form-group text-center">
 			<button id="newPwdBtn" type="submit" class="btn btn-success">새비밀번호 설정</button>
-			<button type="button" class="btn btn-warning">가입취소</button>			
+			<button type="reset" class="btn btn-warning">입력취소</button>			
 		</div>
 	</div>
 	</div>
@@ -92,6 +90,7 @@
     </fieldset>
 </form>
 
+<script type="text/javascript" src="/js/pwdSearch.js"></script>
 <script src="/js/rsa/jsbn.js"></script>
 <script src="/js/rsa/prng4.js"></script>
 <script src="/js/rsa/rng.js"></script>

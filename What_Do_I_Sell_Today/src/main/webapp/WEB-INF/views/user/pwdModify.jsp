@@ -19,16 +19,16 @@
   <div align="center">
   <div class="col-md-6 col-md-offset-3" align="left">
 					
-		<div id="pwDiv" class="form-group has-danger">
+		<div id="pwDiv3" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password</label> 
-			<input id="pw" type="password" class="form-control is-invalid" name="pw">
-			<div id="pw_feedback" class="pw_feedback">4~15글자 이내로 입력하셔야 가입이 가능합니다.</div>
+			<input id="pw3" type="password" class="form-control is-invalid" name="pw">
+			<small id="pw_feedback3" class="form-text text-muted">4~15글자 이내로 입력해주세요.</small>
 		</div>
 
-		<div id="pwCkDiv" class="form-group has-danger">
+		<div id="pwCkDiv3" class="form-group has-danger">
 			<label class="form-control-label" for="inputDanger1">Password Check</label> 
-			<input id="pw_Check" type="password" class="form-control is-invalid">
-			<div id="pwCheck_feedback" class="pwCheck_feedback">다시한번 비밀번호를 입력해주세요.</div>
+			<input id="pw_Check3" type="password" class="form-control is-invalid">
+			<small id="pwCheck_feedback3" class="form-text text-muted">다시한번 비밀번호를 입력해주세요.</small>
 		</div>			
 
 
@@ -51,6 +51,7 @@
     </fieldset>
 </form>
 
+<script type="text/javascript" src="/js/pwdModify.js"></script>
 <script src="/js/rsa/jsbn.js"></script>
 <script src="/js/rsa/prng4.js"></script>
 <script src="/js/rsa/rng.js"></script>
