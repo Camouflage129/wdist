@@ -15,6 +15,8 @@ public interface BoardDAO {
 	
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text);
+	
 	public int getBoardNum(BoardVO vo);
 	
 	public int getFileGroupNum(int num);

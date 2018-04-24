@@ -43,6 +43,11 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text) {
+		return dao.searchBoard(Type, searchTitle, text);
+	}
+	
+	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public int insertBoard(BoardVO boardVO, String id) {
 		int rows = 0;
