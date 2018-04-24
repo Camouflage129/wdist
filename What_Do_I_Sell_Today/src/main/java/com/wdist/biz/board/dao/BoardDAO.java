@@ -16,6 +16,8 @@ public interface BoardDAO {
 	
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text);
+	
 	public int getBoardNum(BoardVO vo);
 	
 	public int getFileGroupNum(int num);
@@ -23,6 +25,8 @@ public interface BoardDAO {
 	public int insertBoard(BoardVO vo);
 	
 	public int insertFileGroup(int num);
+	
+	public int deleteFileGroup(int num);
 	
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
 	public int insertReply(ReplyVO vo);
@@ -42,9 +46,9 @@ public interface BoardDAO {
 	
 	public int modifyFile(FileVO vo);
 	
-	public List<FileVO> getFiles(int num, String id);
 	
 	public ArrayList<FileVO> fileGroupSelect(int groupnum);
 	
 	public int filecount(String HashValue);
+	public List<FileVO> getFiles(String id);
 }

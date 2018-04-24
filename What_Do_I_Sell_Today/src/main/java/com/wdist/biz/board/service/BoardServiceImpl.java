@@ -46,21 +46,27 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text) {
+		return dao.searchBoard(Type, searchTitle, text);
+	}
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public int insertBoard(BoardVO boardVO, String id) {
 		int rows = 0;
 		int boardNum = 0;
 		rows += dao.insertBoard(boardVO);
-		List<FileVO> files = dao.getFiles(-1, id);
-		if (files != null) {
+		System.out.println(id);
+		List<FileVO> files = dao.getFiles(id);
+		System.out.println(files);
+		if(files != null) {
 			Iterator<FileVO> it = files.iterator();
 			boardNum = dao.getBoardNum(boardVO);
 			rows += dao.insertFileGroup(boardNum);
-			int filegnum = 0;
-			if (it.hasNext())
-				filegnum = dao.getFileGroupNum(boardNum);
-			while (it.hasNext()) {
+			while(it.hasNext()) {
 				FileVO data = it.next();
-				data.setFileGroupNum(filegnum);
+				data.setFileGroupNum(dao.getFileGroupNum(boardNum));
+				data.setFlag("");
 				dao.modifyFile(data);
 			}
 		}
@@ -77,8 +83,10 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public int deleteBoard(int num, String content, String filePath) {
 		int rows = 0;
-		if (dao.getFileGroupNum(num) != -1)
+		if(dao.getFileGroupNum(num) != -1) {
 			rows += dao.deleteFile(dao.getFileGroupNum(num));
+			rows += dao.deleteFileGroup(num);
+		}
 		rows += dao.deleteReply(num);
 		rows += dao.deleteBoard(num);
 		ArrayList<String> list = bfm.contentsFileDelect(content);
@@ -101,7 +109,7 @@ public class BoardServiceImpl implements BoardService {
 		int rows = 0;
 		int boardNum = vo.getBoardNum();
 		HashSet<String> set = bfm.contentsUpdateFile(vo.getContents(), filePath);
-		List<FileVO> newfiles = dao.getFiles(-1, id);
+		List<FileVO> newfiles = dao.getFiles(id);
 		if (newfiles != null) {
 			Iterator<FileVO> it = newfiles.iterator();
 			rows += dao.insertFileGroup(boardNum);
@@ -142,7 +150,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int deleteFile(String id) {
 		int rows = 0;
-		List<FileVO> files = dao.getFiles(-1, id);
+		List<FileVO> files = dao.getFiles(id);
 		Iterator<FileVO> it = files.iterator();
 		while (it.hasNext()) {
 			FileVO data = it.next();

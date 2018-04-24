@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,11 +71,11 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/insertBoard.do")
-	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
+	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpSession session) {
 		java.util.Date udate = new java.util.Date();
 		Date date = new Date(udate.getTime());
 		BoardVO boardVO = new BoardVO(Type, Title, Contents, UsersID, date);
-		service.insertBoard(boardVO, (String) request.getAttribute("userid"));
+		service.insertBoard(boardVO, (String)session.getAttribute("userid"));
 		if (boardVO.getType().equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
 		else
@@ -82,8 +83,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/deleteFiles.do")
-	public String deleteFiles(@RequestParam("type") String type, HttpServletRequest request) {
-		String id = (String) request.getAttribute("userid");
+	public String deleteFiles(@RequestParam("type") String type, HttpSession session) {
+		String id = (String) session.getAttribute("userid");
 		System.out.println(service.deleteFile(id));
 		if (type.equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
@@ -144,5 +145,33 @@ public class BoardController {
 		else
 			map.put("result", "fail");
 		return new ModelAndView("jsonView", map);
+	}
+	
+	@RequestMapping(value="/searchBoard.do", method=RequestMethod.POST)
+	public String searchBoard(int num, String Type, String searchTitle, String text, Model model) {
+		List<BoardVO> list = service.searchBoard(Type, searchTitle, text);
+		List<BoardVO> clist = new ArrayList<BoardVO>();
+		int postnum = 0;
+		int count = 0;
+		int pageNum = 0;
+		for (int i = ((num - 1) * 10); i < list.size(); i++) {
+			if (count == 10)
+				break;
+			clist.add(list.get(i));
+			count++;
+		}
+		if (list.size() % 10 == 0)
+			pageNum = list.size() / 10;
+		else
+			pageNum = list.size() / 10 + 1;
+		postnum = list.size() + 10 - pageNum * 10;
+		postnum = (pageNum - num) * 10 + postnum;
+		model.addAttribute("type", Type);
+		model.addAttribute("searchTitle",searchTitle);
+		model.addAttribute("text",text);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("list", clist);
+		model.addAttribute("postnum", postnum);
+		return "index.jsp?content=/WEB-INF/views/service/searchBoard";
 	}
 }

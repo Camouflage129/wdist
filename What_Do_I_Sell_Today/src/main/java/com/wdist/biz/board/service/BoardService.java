@@ -16,6 +16,8 @@ public interface BoardService {
 	
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	public List<BoardVO> searchBoard(String Type, String searchTitle, String text);
+	
 	public int insertBoard(BoardVO boardVO, String string);
 	
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.

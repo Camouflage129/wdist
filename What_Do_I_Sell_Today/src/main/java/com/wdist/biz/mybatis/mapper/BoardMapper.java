@@ -27,6 +27,9 @@ public interface BoardMapper {
 	@Select("select * from Reply where BoardNum = #{BoardNum}")
 	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
+	@Select("select * from Board where Type = #{Type} and ${searchTitle} like '%#{text}%'")
+	public List<BoardVO> searchBoard(HashMap<String, String> map);
+	
 	@Select("select BoardNum from Board where Type = #{Type} and Title = #{Title} and Contents = #{Contents} and UsersID = #{UsersID} and PostDate = #{DATE}")
 	public int getBoardNum(BoardVO vo);
 	
@@ -39,6 +42,9 @@ public interface BoardMapper {
 	
 	@Insert("insert into FileGroup (FileGroupNum, BoardNum) values((select ifnull(max(FileGroupNum),0)+1 from FileGroup f), #{num})")
 	public int insertFileGroup(int num);
+	
+	@Delete("delete from FileGroup where BoardNum = #{num}")
+	public int deleteFileGroup(int num);
 	
 	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
 	@Insert("insert into Reply (ReplyNum, UsersID, Contents, PostDate, ReplyNums, BoardNum)"
@@ -54,8 +60,8 @@ public interface BoardMapper {
 	@Update("update Board set Title = #{Title}, Contents = #{Contents}, where BoardNum = #{BoardNum}")
 	public int modifyBoard(BoardVO vo);
 	
-	@Insert("insert into Files (FileNum, FileName, HashValue, FileGroupNum, FileSize, flag)"
-			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileGroupNum}, #{FileSize}, #{flag})")
+	@Insert("insert into Files (FileNum, FileName, HashValue, FileSize, flag)"
+			+ "values ((select ifnull(max(FileNum),0)+1 from Files f), #{FileName}, #{HashValue}, #{FileSize}, #{flag})")
 	public int insertFile(FileVO vo);
 	
 	@Delete("delete from Files where FileGroupNum = #{num}")
@@ -64,10 +70,10 @@ public interface BoardMapper {
 	@Delete("delete from Files where FileNum = #{num}")
 	public int deleteFiles(int num);
 	
-	@Update("update Files set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize} where FileNum = #{FileNum}")
+	@Update("update Files set FileName = #{FileName}, HashValue = #{HashValue}, FileGroupNum = #{FileGroupNum}, FileSize = #{FileSize}, FLAG = #{flag} where FileNum = #{FileNum}")
 	public int modifyFile(FileVO vo);
 	
-	@Select("select * from Files where FileGroupNum = #{num} and flag = #{id}")
+	@Select("select * from Files where flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
 	
 	@Select("SELECT FILENUM, HASHVALUE FROM FILES WHERE FILEGROUPNUM = #{FileGroupNum}")

@@ -67,7 +67,7 @@ public class FileController {
 			printWriter.println(jobj1.toString());
 			printWriter.flush();
 			String flag = (String) session.getAttribute("userid");
-			FileVO vo = new FileVO(fileUrl,hash,-1,bytes.length,flag);
+			FileVO vo = new FileVO(fileUrl,hash,bytes.length,flag);
 			
 			service.insertFile(vo);
 			
