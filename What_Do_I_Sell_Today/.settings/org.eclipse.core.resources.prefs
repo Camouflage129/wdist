@@ -1,5 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/wdist/web/controller/UserController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/FileUploadDone.jsp=UTF-8
+<<<<<<< HEAD
+=======
 encoding/<project>=UTF-8
 separateDerivedEncodings=true
+>>>>>>> branch 'master' of https://github.com/Camouflage129/wdist.git
