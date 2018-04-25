@@ -61,6 +61,11 @@ public class UserServiceImpl implements UserService {
 		return dao.pwSearchUser(vo);
 	}
 
+	@Override
+	public UserVO searchId(UserVO vo) {
+		return dao.searchId(vo);
+	}
+
 	
 	
 	

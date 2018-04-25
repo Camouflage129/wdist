@@ -121,7 +121,6 @@ public class BoardServiceImpl implements BoardService {
 				data.setFileGroupNum(filegnum);
 				dao.modifyFile(data);
 			}
-
 		}
 		ArrayList<FileVO> deletelist = new ArrayList<FileVO>();
 		Iterator<FileVO> deleteit = deletelist.iterator();

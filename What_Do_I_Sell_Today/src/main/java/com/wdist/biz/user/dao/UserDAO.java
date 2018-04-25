@@ -12,4 +12,5 @@ public interface UserDAO {
     public UserVO login(String id, String pw);
     public int modifyNewPwd(UserVO vo);
     public UserVO pwSearchUser(UserVO vo);
+    public UserVO searchId(UserVO vo);
 }

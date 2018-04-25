@@ -57,7 +57,7 @@ public interface BoardMapper {
 	@Delete("delete from Board where BoardNum = #{num}")
 	public int deleteBoard(int num);
 	
-	@Update("update Board set Title = #{Title}, Contents = #{Contents}, where BoardNum = #{BoardNum}")
+	@Update("update Board set Title = #{Title}, Contents = #{Contents} where BoardNum = #{BoardNum}")
 	public int modifyBoard(BoardVO vo);
 	
 	@Insert("insert into Files (FileNum, FileName, HashValue, FileSize, flag)"
@@ -75,6 +75,9 @@ public interface BoardMapper {
 	
 	@Select("select * from Files where flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
+	
+	@Select("select contents from BOARD where usersid = #{id}")
+	public ArrayList<String> userAllFileSelect(String id);
 	
 	@Select("SELECT FILENUM, HASHVALUE FROM FILES WHERE FILEGROUPNUM = #{FileGroupNum}")
 	public ArrayList<FileVO> fileGroupSelect(int groupnum);
