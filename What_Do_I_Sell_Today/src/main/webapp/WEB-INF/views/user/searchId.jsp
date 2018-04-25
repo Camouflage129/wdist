@@ -108,7 +108,10 @@
 				</div>
 			</div>
 		</fieldset>
-  
+	
+		
+	<script type="text/javascript" src="/js/searchId.js"></script>
+<!-- 	<script scr="/js/searchId.js"></script> -->
 	
 </body>
 </html>
