@@ -50,10 +50,10 @@
 						class="btn btn-info">다음글</button></li>
 			</ul>
 			<ul class="bo_v_com list-inline pull-right">
-				<li class="zero-padding"><button id="editBtn"
-						class="btn btn-default">수정</button></li>
-				<li class="zero-padding"><button id="deleteBtn"
-						class="btn btn-danger link-btn">삭제</button></li>
+				<c:if test="${userid == board.usersID}">
+					<li class="zero-padding"><button id="editBtn" class="btn btn-default">수정</button></li>
+					<li class="zero-padding"><button id="deleteBtn" class="btn btn-danger link-btn">삭제</button></li>
+				</c:if>
 				<li class="zero-padding"><a href="freeBoard.do?num=1"
 					class="btn btn-default">목록</a></li>
 				<li class="zero-padding"><a

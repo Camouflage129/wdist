@@ -35,6 +35,6 @@ public interface UserMapper {
 	@Update("update users set pw=#{pw} where usersid = #{id}")
 	public int modifyNewPwd(UserVO vo);
 	
-	@Select("select usersid from users where name={name}, email={email}")
+	@Select("select usersid from users where name=#{name} and email=#{email}")
 	public UserVO searchId(UserVO vo);
 }
