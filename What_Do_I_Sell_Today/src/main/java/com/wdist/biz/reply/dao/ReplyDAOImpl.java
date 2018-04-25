@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import com.wdist.biz.board.vo.ReplyVO;
+import com.wdist.biz.reply.vo.ReplyVO;
 
 @Component("ReplyDAO")
 public class ReplyDAOImpl implements ReplyDAO{
