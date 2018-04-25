@@ -2,7 +2,7 @@ package com.wdist.biz.reply.service;
 
 import java.util.List;
 
-import com.wdist.biz.board.vo.ReplyVO;
+import com.wdist.biz.reply.vo.ReplyVO;
 
 public interface ReplyService {
 	public List<ReplyVO> replyList(int BoardNum);

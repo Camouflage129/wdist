@@ -247,7 +247,9 @@ public class UserController {
 		if (result == 1) {
 			ra.addFlashAttribute("result", "success");
 			return "redirect:userview.do";
-		} else {
+		}/* else if(vo.get == "" ) {
+			
+		}*/ else {
 			ra.addFlashAttribute("result", "fail");
 			return "redirect:main.do";
 		}

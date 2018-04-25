@@ -50,8 +50,10 @@
 						class="btn btn-info">다음글</button></li>
 			</ul>
 			<ul class="bo_v_com list-inline pull-right">
-				<li class="zero-padding"><button id="editBtn" class="btn btn-default">수정</button></li>
-				<li class="zero-padding"><button id="deleteBtn" class="btn btn-danger link-btn">삭제</button></li>
+				<c:if test="${userid == board.usersID}">
+					<li class="zero-padding"><button id="editBtn" class="btn btn-default">수정</button></li>
+					<li class="zero-padding"><button id="deleteBtn" class="btn btn-danger link-btn">삭제</button></li>
+				</c:if>
 				<li class="zero-padding"><a href="freeBoard.do?num=1"
 					class="btn btn-default">목록</a></li>
 				<li class="zero-padding"><a
@@ -72,7 +74,7 @@
         <label for="content">comment</label>
         <form name="commentInsertForm">
             <div class="input-group">
-               <input type="hidden" name="bno" value="${detail.bno}"/>
+               <input type="hidden" name="boardNum" value="${board.boardNum}"/>
                <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
                <span class="input-group-btn">
                     <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
@@ -85,7 +87,6 @@
     <hr>
         <div class="commentList"></div>
     </div>
-
-
+    <%@ include file="comment.jsp" %>
 </body>
 </html>

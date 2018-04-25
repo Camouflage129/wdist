@@ -2,7 +2,7 @@ package com.wdist.biz.reply.dao;
 
 import java.util.List;
 
-import com.wdist.biz.board.vo.ReplyVO;
+import com.wdist.biz.reply.vo.ReplyVO;
 
 public interface ReplyDAO {
 	public List<ReplyVO> replyList(int BoardNum);
