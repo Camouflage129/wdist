@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -384,30 +386,20 @@ public class UserController {
 	
 	// ID 찾기
 	@RequestMapping(value="/searchId.do", method=RequestMethod.POST)
-	public String searchId(HttpSession session, RedirectAttributes ra , UserVO vo, HttpServletRequest req) {
-		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
-
-		if (key == null) {
-			ra.addFlashAttribute("resultMsg", "비정상 적인 접근 입니다.");
-			return "index";
-		}
-		session.removeAttribute("RSAprivateKey");
-
-		try {
-			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
-			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail()));
-		} catch (Exception e) {
-			e.printStackTrace();
-			ra.addFlashAttribute("result", "fail");
-		}
-		if (service.searchId(vo) != null) {		
-			req.getSession().setAttribute("name", vo.getName());
-			req.getSession().setAttribute("email", vo.getEmail());
-			ra.addFlashAttribute("result", "success");
+	public void searchId(UserVO vo, HttpServletResponse response) {
+//		System.out.println("요청 name"+vo.getName()+" 메일 "+vo.getEmail());
+		JSONObject json = new JSONObject();
+		UserVO uvo = service.searchId(vo);
+		if (uvo != null) {
+			json.put("result", uvo.getId());
 		}
 		else
-			ra.addFlashAttribute("result", "fail");
-		return "redirect:login.do"; // 성공했을 경우 어디로 보낼지 적어주세요
+			json.put("result", "fail");
+		try {
+			response.getWriter().print(json.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}	
 	
 	

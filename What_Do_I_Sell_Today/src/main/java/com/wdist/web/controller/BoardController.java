@@ -138,7 +138,7 @@ public class BoardController {
 		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
 		System.out.println(service.deleteBoard(num,vo.getContents(),filepath));
 		
-		return "redirect:freeBoard.do";
+		return "redirect:freeBoard.do?num=1";
 	}
 	
 	@RequestMapping(value="/checkBoard.do")
