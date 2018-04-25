@@ -5539,7 +5539,17 @@ button.close {
   z-index: 1040;
   background-color: #000;
 }
-
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.modal-backdrop.in {
+  opacity: 0.5;
+}
 .modal-backdrop.fade {
   opacity: 0;
 }

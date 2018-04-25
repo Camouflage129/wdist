@@ -326,7 +326,7 @@ form .inputGroup1.focusWithText .helper {
 		<div class="inputGroup" align="center" style="font-size: medium;">
 <!-- 			<div><a href="searchId.do" class="btn btn-success" style="width: 100%;">ID 찾기</a></div>
 			<div><a href="searchPwd.do" class="btn btn-warning" style="width: 100%;">PW 찾기</a></div> -->
- 			<a href="searchId.do" >ID 찾기</a> / <a href="searchPwd.do">PW 찾기</a> 
+ 			<a href="searchId.do" class="font-weight-bold" >ID 찾기</a> / <a href="searchPwd.do" class="font-weight-bold">PW 찾기</a> 
 		</div>
 		
 		<div class="inputGroup inputGroup3">
