@@ -203,13 +203,14 @@ public class UserController {
 	}
 
 	// 회원 탈퇴
-/*	@RequestMapping(value = "/removeuser.do")
+	@RequestMapping(value = "/removeuser.do")
 	public String userRemove(HttpSession session) {
 		String id = (String) session.getAttribute("userid");
 		System.out.println(service.deleteAccount(id));
+	
 		session.invalidate();
 		return "redirect:main.do";
-	}*/
+	}
 
 	@RequestMapping(value = "/updateuser.do", method = RequestMethod.POST)
 	public String updateuser(UserVO vo, RedirectAttributes ra, HttpSession session) {
@@ -350,4 +351,58 @@ public class UserController {
 		return "redirect:main.do";
 
 	}
+	
+	
+	// ID 찾기 폼으로 이동
+	@RequestMapping(value="/searchId.do", method=RequestMethod.GET)
+	public String searchIdForm(HttpSession session, Model model) {
+		
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+		if (key != null) { // 기존 key 파기
+			session.removeAttribute("RSAprivateKey");
+		}
+		RSA rsa = rsaUtil.createRSA();
+		model.addAttribute("modulus", rsa.getModulus());
+		model.addAttribute("exponent", rsa.getExponent());
+		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
+		
+		return "user/searchId";
+		
+	}
+	
+	// ID 찾기
+	@RequestMapping(value="/searchId.do", method=RequestMethod.POST)
+	public String searchId(HttpSession session, RedirectAttributes ra , UserVO vo, HttpServletRequest req) {
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+
+		if (key == null) {
+			ra.addFlashAttribute("resultMsg", "비정상 적인 접근 입니다.");
+			return "index";
+		}
+		session.removeAttribute("RSAprivateKey");
+
+		try {
+			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
+			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			ra.addFlashAttribute("result", "fail");
+		}
+		if (service.searchId(vo) != null) {		
+			req.getSession().setAttribute("name", vo.getName());
+			req.getSession().setAttribute("email", vo.getEmail());
+			ra.addFlashAttribute("result", "success");
+		}
+		else
+			ra.addFlashAttribute("result", "fail");
+		return "redirect:login.do"; // 성공했을 경우 어디로 보낼지 적어주세요
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
 }

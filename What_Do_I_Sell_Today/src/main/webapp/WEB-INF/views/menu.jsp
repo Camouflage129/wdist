@@ -6,6 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
+
+<script language="JavaScript">
+
+
+function userRemove() {
+	if (confirm('정말로 탈퇴 하시겠습니까?')) {
+		f.action= "/removeuser.do";
+/* 		f.submit(); */
+		alert('회원탈퇴가 성공적으로 처리되었습니다.')
+
+	} else {
+	}
+	
+	
+}
+
+
+</script>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,13 +41,11 @@
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<c:if test="${empty userid}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;
-					<a id="searchPw" href="/searchPwd.do">비밀번호 찾기</a>&nbsp;|&nbsp;
 					<a id="signUpA" href="/signUp.do">회원가입</a>
 				</c:if>
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
 					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;
-					<a id="deleteUser" href="removeuser.do">회원탈퇴</a>	
 				</c:if>
 				
 			</div>

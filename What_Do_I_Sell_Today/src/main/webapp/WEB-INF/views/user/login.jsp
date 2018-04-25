@@ -322,9 +322,17 @@ form .inputGroup1.focusWithText .helper {
 				name="old_pw" class="password" />
 		</div>
 		<div align="center" class="g-recaptcha inputGroup" data-sitekey="${siteKey}" id="g-recaptcha-response"></div>
+		
+		<div class="inputGroup" align="center" style="font-size: medium;">
+<!-- 			<div><a href="searchId.do" class="btn btn-success" style="width: 100%;">ID 찾기</a></div>
+			<div><a href="searchPwd.do" class="btn btn-warning" style="width: 100%;">PW 찾기</a></div> -->
+ 			<a href="searchId.do" >ID 찾기</a> / <a href="searchPwd.do">PW 찾기</a> 
+		</div>
+		
 		<div class="inputGroup inputGroup3">
 			<button type="button" onclick="login()">Login</button>
 		</div>
+		
 		
 	</form>
 	<script src="./js/login.js"></script>

@@ -35,10 +35,10 @@
 	});
 
 	$("#ModifyPw").blur(function() {
-		var ch = /[a-z0-9_-]{4,15}/;
-		var pw = $("#ModifyPw").val();
+		var mCh = /[a-z0-9_-]{4,15}/;
+		var mPw = $("#ModifyPw").val();
 		
-		if( pw == "" || !ch.test(pw) ) {
+		if( mPw == "" || !mCh.test(mPw) ) {
 			$("#ModifyPwDiv").attr("class", "form-group has-danger");
 			$(this).attr("class","form-control is-invalid");
 			$("#ModifyPw_feedback").attr("class","invalid-feedback");
@@ -52,15 +52,15 @@
 	});
 
 	$("#ModifyPw_Check").keyup(function() {
-		var check = /[a-z0-9_-]{4,15}/;
-		var pwch = $("#ModifyPw_Check").val();
+		var mCheck = /[a-z0-9_-]{4,15}/;
+		var mPwch = $("#ModifyPw_Check").val();
 		
-		if( pwch == $("#ModifyPw").val()) {
+		if( mPwch == $("#ModifyPw").val()) {
 			$("#ModifyPwCkDiv").attr("class", "form-group has-success");
 			$(this).attr("class","form-control is-valid");
 			$("#ModifyPwCheck_feedback").attr("class","valid-feedback");
 			$("#ModifyPwCheck_feedback").html("비밀번호가 일치합니다.");
-		} else if ( pw == "" || !check.test(pwch)) {
+		} else if ( $("#ModifyPw").val()  == "" || !mCheck.test(mPwch)) {
 			$("#ModifyPwCkDiv").attr("class", "form-group has-danger");
 			$(this).attr("class","form-control is-invalid");
 			$("#ModifyPwCheck_feedback").attr("class","invalid-feedback");

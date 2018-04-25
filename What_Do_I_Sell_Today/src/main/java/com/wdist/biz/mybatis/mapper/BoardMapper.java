@@ -66,6 +66,9 @@ public interface BoardMapper {
 	@Select("select * from Files where flag = #{id}")
 	public List<FileVO> getFiles(HashMap<String, Object> map);
 	
+	@Select("select contents from BOARD where usersid = #{id}")
+	public ArrayList<String> userAllFileSelect(String id);
+	
 	@Select("SELECT FILENUM, HASHVALUE FROM FILES WHERE FILEGROUPNUM = #{FileGroupNum}")
 	public ArrayList<FileVO> fileGroupSelect(int groupnum);
 	
