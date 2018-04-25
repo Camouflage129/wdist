@@ -15,7 +15,6 @@ import com.wdist.biz.board.dao.BoardDAO;
 import com.wdist.biz.board.util.BoardFileManager;
 import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
-import com.wdist.biz.board.vo.ReplyVO;
 
 @Service("BoardService")
 public class BoardServiceImpl implements BoardService {
@@ -37,11 +36,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<FileVO> viewBoradFile(int BoardNum) {
 		return dao.viewBoradFile(BoardNum);
-	}
-
-	@Override
-	public List<ReplyVO> viewBoardReply(int BoardNum) {
-		return dao.viewBoardReply(BoardNum);
 	}
 
 	@Override
@@ -71,12 +65,6 @@ public class BoardServiceImpl implements BoardService {
 			}
 		}
 		return rows;
-	}
-
-	// 레스트 풀로 처리하자
-	@Override
-	public int insertReply(ReplyVO vo) {
-		return dao.insertReply(vo);
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.wdist.biz.mybatis.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -10,9 +11,6 @@ import org.apache.ibatis.annotations.Update;
 
 import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
-import com.wdist.biz.board.vo.ReplyVO;
-
-import it.unimi.dsi.fastutil.Hash;
 
 public interface BoardMapper {
 	@Select("select * from Board where Type = #{Type} order by PostDate DESC")
@@ -23,9 +21,6 @@ public interface BoardMapper {
 	
 	@Select("select f.FileName, f.HashValue from File f, FileGroup fg where f.FileGroupNum = fg.FileGroupNum and BoardNum = #{BoardNum}")
 	public List<FileVO> viewBoradFile(int BoardNum);
-	
-	@Select("select * from Reply where BoardNum = #{BoardNum}")
-	public List<ReplyVO> viewBoardReply(int BoardNum);
 	
 	@Select("select * from Board where Type = #{Type} and ${searchTitle} like '%#{text}%'")
 	public List<BoardVO> searchBoard(HashMap<String, String> map);
@@ -45,11 +40,6 @@ public interface BoardMapper {
 	
 	@Delete("delete from FileGroup where BoardNum = #{num}")
 	public int deleteFileGroup(int num);
-	
-	// 덧글을 더 다는 경우에 어떻게 될지 생각해서 수정해야 할 수 있다.
-	@Insert("insert into Reply (ReplyNum, UsersID, Contents, PostDate, ReplyNums, BoardNum)"
-			+ "values ((select ifnull(max(BoardNum),0)+1 from Board b), #{UsersID}, #{Contents}, #{DATE}, #{ReplyNums}, #{BoardNum}")
-	public int insertReply(ReplyVO vo);
 	
 	@Delete("delete from Reply where BoardNum = #{num}")
 	public int deleteReply(int num);

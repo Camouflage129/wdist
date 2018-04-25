@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.wdist.biz.board.vo.ReplyVO;
 import com.wdist.biz.reply.dao.ReplyDAO;
+import com.wdist.biz.reply.vo.ReplyVO;
 
 @Service("ReplyService")
 public class ReplyServiceImpl implements ReplyService{
