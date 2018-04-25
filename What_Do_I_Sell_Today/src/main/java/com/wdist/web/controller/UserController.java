@@ -188,6 +188,7 @@ public class UserController {
 	// public String userview(@RequestParam("id") String uid, Model model) {
 	public String userview(HttpSession session, Model model) {
 		// RSA 키 생성
+		
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 		if (key != null) { // 기존 key 파기
 			session.removeAttribute("RSAprivateKey");
@@ -198,10 +199,14 @@ public class UserController {
 		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
 		// UserVO user = service.getUser(uid);
 		UserVO user = service.getUser((String) session.getAttribute("userid"));
+		
+		///////UserVO 확인
+		System.out.println("userVO : "+user);
+		
 		model.addAttribute("user", user);
 		return "user/userView";
 	}
-
+	
 	// 회원 탈퇴
 	@RequestMapping(value = "/removeuser.do")
 	public String userRemove(HttpSession session) {
@@ -211,7 +216,8 @@ public class UserController {
 		session.invalidate();
 		return "redirect:main.do";
 	}
-
+	
+	//회원정보수정
 	@RequestMapping(value = "/updateuser.do", method = RequestMethod.POST)
 	public String updateuser(UserVO vo, RedirectAttributes ra, HttpSession session) {
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
@@ -223,12 +229,16 @@ public class UserController {
 		session.removeAttribute("RSAprivateKey");
 
 		try {
-			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim()));
+			System.out.println(vo.getEmail().trim());
+			
+			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim())); 
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
 			if (vo.getPw().length() != 0) {
 				vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 			}
 			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
+			vo.setPwdhint(rsaUtil.getDecryptText(key, vo.getPwdhint()));
+			vo.setPwdans(rsaUtil.getDecryptText(key, vo.getPwdans()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			ra.addFlashAttribute("result", "fail");
