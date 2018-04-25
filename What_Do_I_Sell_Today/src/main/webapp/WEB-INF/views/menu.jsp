@@ -45,7 +45,7 @@ function userRemove() {
 				</c:if>
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
-					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;
+					<a id="modifyUser" href="userview.do">회원정보수정</a>
 				</c:if>
 				
 			</div>
