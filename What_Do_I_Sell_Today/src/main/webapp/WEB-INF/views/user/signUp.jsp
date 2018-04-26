@@ -122,12 +122,12 @@
     var $id = $("#hiddenForm input[name='id']");
  	var $pwdhint = $("#hiddenForm input[name='pwdhint']");
  	var $pwdans = $("#hiddenForm input[name='pwdans']");
-// 	var $pwCheack = $("#hiddenForm input[name='pw_Check']");
     // Server로부터 받은 공개키 입력
     var rsa = new RSAKey();
     rsa.setPublic("${modulus}", "${exponent}");
     
 	function signUp() {
+		alert("회원가입 버튼 동작 확인");
 		if(result()){
 		 	var email = $('#email').val();
 	        var pw = $('#pw').val();
@@ -136,12 +136,14 @@
 	        var name = $('#name').val();
 	        var pwdhint = $('#pwdhint').val();
 	        var pwdans = $('#pwdans').val();
+	        
 	        $email.val(rsa.encrypt(email));
 	        $pw.val(rsa.encrypt(shaPw));
 	        $name.val(rsa.encrypt(name));
 	        $id.val(rsa.encrypt(id));
 	        $pwdhint.val(rsa.encrypt(pwdhint));
 	        $pwdans.val(rsa.encrypt(pwdans));
+	        
 	        var formData = $("#hiddenForm").serialize();
 		
 	$.ajax({
