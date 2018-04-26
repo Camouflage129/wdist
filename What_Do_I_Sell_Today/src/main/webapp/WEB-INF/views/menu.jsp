@@ -28,14 +28,10 @@
 				</c:if>
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
-<<<<<<< HEAD
 					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;
 				</c:if>				
-=======
-					<a id="modifyUser" href="userview.do">회원정보수정</a>
-				</c:if>
+	
 				
->>>>>>> branch 'master' of https://github.com/Camouflage129/wdist.git
 			</div>
 		</div>
 	</nav>
