@@ -12,12 +12,11 @@ public class AuthenticInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		HttpSession session = request.getSession();
 		String requestUrl = request.getRequestURL().toString();
-		System.out.println(requestUrl);
 		if(requestUrl.equals("http://localhost:9000/") || requestUrl.contains("/login.do") || requestUrl.contains("/logout.do") 
 				|| requestUrl.contains("/searchPwd.do") || requestUrl.contains("/main.do") || requestUrl.contains("/signUpNewPwd.do")
 				|| requestUrl.contains("/checkId.do") || requestUrl.contains("/searchId.do") || requestUrl.contains("/interceptor.do") 
 				|| requestUrl.contains("/signUp.do") || requestUrl.contains("/recapcha.do") || requestUrl.contains("/signUpNewPwd.do") 
-				|| requestUrl.contains("/userview.do") || session.getAttribute("login") != null ){
+				|| requestUrl.contains("/userview.do") || session.getAttribute("userid") != null ){
 			return true;
 		}
 		else {
