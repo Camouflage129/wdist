@@ -179,4 +179,13 @@ public class BoardController {
 		model.addAttribute("postnum", postnum);
 		return "index.jsp?content=/WEB-INF/views/service/searchBoard";
 	}
+	
+	
+	@RequestMapping(value="/intro.do", method=RequestMethod.GET)
+	public String introService() {
+
+		
+		return "index.jsp?content=/WEB-INF/views/service/intro";		
+	}
+	
 }
