@@ -53,8 +53,8 @@
 						src="./image/card3.png" alt="Card image">
 					<div class="card-body">
 						<h5 class="card-title">고객지원센터</h5>
-						<a href="/csBoard.do" class="btn btn-primary float-lg-right">보러
-							가기</a>
+						<a href="/csBoard.do?num=1" 
+							class="btn btn-primary float-lg-right">보러 가기</a>
 					</div>
 				</div>
 			</div>
