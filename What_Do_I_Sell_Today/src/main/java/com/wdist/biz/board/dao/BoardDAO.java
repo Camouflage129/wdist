@@ -9,6 +9,8 @@ import com.wdist.biz.board.vo.FileVO;
 public interface BoardDAO {
 	public List<BoardVO> freeOrCsBoard(String Type);
 	
+	public int getRepliesCount(int BoardNum);
+	
 	public BoardVO viewBoard(int BoardNum);
 	
 	public List<FileVO> viewBoradFile(int BoardNum);

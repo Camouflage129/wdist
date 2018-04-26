@@ -127,4 +127,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return mapper.deleteReply(num);
 	}
 
+	@Override
+	public int getRepliesCount(int num) {
+		return mapper.getRepliesCount(num);
+	}
+
 }

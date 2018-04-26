@@ -15,6 +15,13 @@ public class ReplyVO {
 	public ReplyVO() {
 	}
 
+	public ReplyVO(String usersID, String contents, Date postDate, int boardNum) {
+		this.usersID = usersID;
+		this.contents = contents;
+		this.postDate = postDate;
+		this.boardNum = boardNum;
+	}
+
 	public ReplyVO(int replyNum, int parentNum, int count, int childCount, String usersID, String contents,
 			Date postDate, int boardNum) {
 		this.replyNum = replyNum;

@@ -106,6 +106,7 @@ public class BoardController {
 				break;
 			}
 		}
+		request.setAttribute("repliesCount", service.getRepliesCount(num));
 		request.setAttribute("beforeNum", beforeNum);
 		request.setAttribute("afterNum", afterNum);
 		request.setAttribute("board", board);
@@ -138,7 +139,7 @@ public class BoardController {
 		String filepath = request.getSession().getServletContext().getRealPath("/upload/");
 		System.out.println(service.deleteBoard(num,vo.getContents(),filepath));
 		
-		return "redirect:freeBoard.do";
+		return "redirect:freeBoard.do?num=1";
 	}
 	
 	@RequestMapping(value="/checkBoard.do")

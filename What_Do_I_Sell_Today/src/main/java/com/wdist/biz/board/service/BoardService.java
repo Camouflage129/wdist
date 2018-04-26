@@ -8,6 +8,8 @@ import com.wdist.biz.board.vo.FileVO;
 public interface BoardService {
 	public List<BoardVO> freeOrCsBoard(String Type);
 	
+	public int getRepliesCount(int BoardNum);
+	
 	public BoardVO viewBoard(int BoardNum);
 	
 	public List<FileVO> viewBoradFile(int BoardNum);

@@ -50,7 +50,6 @@ public class BoardServiceImpl implements BoardService {
 		int rows = 0;
 		int boardNum = 0;
 		rows += dao.insertBoard(boardVO);
-		System.out.println(id);
 		List<FileVO> files = dao.getFiles(id);
 		System.out.println(files);
 		if(files != null) {
@@ -70,6 +69,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public int deleteBoard(int num, String content, String filePath) {
+		System.out.println(num);
 		int rows = 0;
 		if(dao.getFileGroupNum(num) != -1) {
 			rows += dao.deleteFile(dao.getFileGroupNum(num));
@@ -144,5 +144,10 @@ public class BoardServiceImpl implements BoardService {
 			rows += dao.deleteFiles(data.getFileNum());
 		}
 		return rows;
+	}
+
+	@Override
+	public int getRepliesCount(int BoardNum) {
+		return dao.getRepliesCount(BoardNum);
 	}
 }
