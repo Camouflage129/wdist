@@ -65,7 +65,6 @@
 					<div class="pwchkwrap">
 						<label for="qustPwd">Password Hint</label> <select id="pwdhint"
 							name="pwdhint" class="custom-select" title="비밀번호 찾기 질문 조회">
-
 							<option value="P01">첫째 자녀의 이름은?</option>
 							<option value="P02">자신의 인생 좌우명은?</option>
 							<option value="P03">가장 기억에 남는 선생님 성함은?</option>
@@ -79,12 +78,10 @@
 						</select>
 					</div>
 
-
-					<div id="nameDiv" class="form-group has-danger">
-						<!-- <label class="form-control-label" for="inputDanger1">Name</label>  -->
+					<div id="pwdansDiv" class="form-group has-danger">
 						<input id="pwdans" type="text" class="form-control is-invalid"
 							name="pwdans">
-						<div id="ansPwd_feedback" class="ansPwd_feedback">질문에 대한 답변을
+						<div id="pwdans_feedback" class="ansPwd_feedback">질문에 대한 답변을
 							입력해주세요.</div>
 					</div>
 
@@ -117,9 +114,21 @@
 	<script scr="/js/signUp.js"></script>
 
 
-	<!-- 유저 입력 form의 submit event 재정의 -->
+	 <!-- 유저 입력 form의 submit event 재정의 -->
 	<script>
-	function signUp() {	
+	var $email = $("#hiddenForm input[name='email']");
+    var $pw = $("#hiddenForm input[name='pw']");
+    var $name = $("#hiddenForm input[name='name']");
+    var $id = $("#hiddenForm input[name='id']");
+ 	var $pwdhint = $("#hiddenForm input[name='pwdhint']");
+ 	var $pwdans = $("#hiddenForm input[name='pwdans']");
+    // Server로부터 받은 공개키 입력
+    var rsa = new RSAKey();
+    rsa.setPublic("${modulus}", "${exponent}");
+    
+	function signUp() {
+		alert("회원가입 버튼 동작 확인");
+		if(result()){
 		 	var email = $('#email').val();
 	        var pw = $('#pw').val();
 	        var shaPw = hex_sha512(pw).toString();
@@ -127,12 +136,14 @@
 	        var name = $('#name').val();
 	        var pwdhint = $('#pwdhint').val();
 	        var pwdans = $('#pwdans').val();
+	        
 	        $email.val(rsa.encrypt(email));
 	        $pw.val(rsa.encrypt(shaPw));
 	        $name.val(rsa.encrypt(name));
 	        $id.val(rsa.encrypt(id));
 	        $pwdhint.val(rsa.encrypt(pwdhint));
 	        $pwdans.val(rsa.encrypt(pwdans));
+	        
 	        var formData = $("#hiddenForm").serialize();
 		
 	$.ajax({
@@ -150,22 +161,16 @@
 		error : function() {
             alert("에러발생");
       }
-
 	});
-}
 
-
-    var $email = $("#hiddenForm input[name='email']");
-    var $pw = $("#hiddenForm input[name='pw']");
-    var $name = $("#hiddenForm input[name='name']");
-    var $id = $("#hiddenForm input[name='id']");
- 	var $pwdhint = $("#hiddenForm input[name='pwdhint']");
- 	var $pwdans = $("#hiddenForm input[name='pwdans']");
-    // Server로부터 받은 공개키 입력
-    var rsa = new RSAKey();
-    rsa.setPublic("${modulus}", "${exponent}");
- 
+		}else{
+			return;
+		}
+	}
+		 	
     
+	
+	
 </script>
 </body>
 </html>

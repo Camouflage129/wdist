@@ -69,24 +69,23 @@
 			</div>
 		</div>
 	</div>
-	 <div class="container">
-	<hr>
-        <label for="content">comment</label>
-        <form name="commentInsertForm">
-            <div class="input-group">
-               <input type="hidden" name="boardNum" value="${board.boardNum}"/>
-               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
-               <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
-               </span>
-              </div>
-        </form>
-    </div>
-    
-    <div class="container">
-    <hr>
-        <div class="commentList"></div>
-    </div>
-    <%@ include file="comment.jsp" %>
+	<div class="container">
+		<hr>
+		<label for="content">comment</label>
+		<div class="input-group">
+			<input type="hidden" name="boardNum" value="${board.boardNum}" /> <input
+				id="content" type="text" class="form-control" id="content"
+				name="content" placeholder="내용을 입력하세요."> <span
+				class="input-group-btn">
+				<button id="commentInsertBtn" class="btn btn-default" type="button">등록</button>
+			</span>
+		</div>
+	</div>
+
+	<div class="container">
+		<hr>
+		<div class="commentList"></div>
+	</div>
+	<%@ include file="comment.jsp"%>
 </body>
 </html>

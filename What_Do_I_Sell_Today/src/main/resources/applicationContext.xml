@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
@@ -19,7 +17,7 @@
 		<property name="username" value="hive"></property>
 		<property name="password" value="1234"></property>
 	</bean>
-	
+
 	<!-- MyBatis -->
 	<bean id="sqlSessionLinux" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSourceLinux"></property>
@@ -34,7 +32,7 @@
 		<property name="username" value="wdist"></property>
 		<property name="password" value="1234"></property>
 	</bean>
-	
+
 	<!-- MyBatis -->
 	<bean id="sqlSessionWindow" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSourceWindow"></property>
@@ -43,22 +41,26 @@
 	<bean id="sqlSessionTemplateWindow" class="org.mybatis.spring.SqlSessionTemplate"
 		c:sqlSessionFactory-ref="sqlSessionWindow"></bean>
 
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSourceWindow"/>
-    </bean>
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceWindow" />
+	</bean>
 
-    <tx:advice id="txAdvice" transaction-manager="txManager">
-        <tx:attributes>
-            <tx:method name="select*" read-only="true" />
-            <tx:method name="insert*" propagation="REQUIRED"/>
-            <tx:method name="modify*" propagation="REQUIRED"/>
-            <tx:method name="delete*" propagation="REQUIRED"/>
-            <tx:method name="*" rollback-for="Exception"/>
-        </tx:attributes>
-    </tx:advice>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="*" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
 
-    <aop:config>
-        <aop:pointcut id="requiredTx" expression="execution(* com.wdist.biz.board.service.*Impl.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
-    </aop:config>
+	<aop:config>
+		<aop:pointcut id="requiredTx"
+			expression="execution(* com.wdist.biz.board.service.*Impl.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
+	</aop:config>
+
+	
 </beans>

@@ -7,23 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 
-<script language="JavaScript">
-
-
-function userRemove() {
-	if (confirm('정말로 탈퇴 하시겠습니까?')) {
-		f.action= "/removeuser.do";
-/* 		f.submit(); */
-		alert('회원탈퇴가 성공적으로 처리되었습니다.')
-
-	} else {
-	}
-	
-	
-}
-
-
-</script>
 
 </head>
 <body>
@@ -45,7 +28,7 @@ function userRemove() {
 				</c:if>
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
-					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;
+					<a id="modifyUser" href="userview.do">회원정보수정</a>
 				</c:if>
 				
 			</div>
