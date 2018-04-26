@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.nhncorp.lucy.security.xss.XssPreventer;
 import com.wdist.biz.board.service.BoardService;
 import com.wdist.biz.board.vo.BoardVO;
 
@@ -90,9 +91,11 @@ public class BoardController {
 
 	@RequestMapping(value = "/insertBoard.do")
 	public String insertBoard(String Type, String Title, String UsersID, String Contents, HttpSession session) {
+		String clean = XssPreventer.escape(Title);
+		System.out.println(clean);
 		java.util.Date udate = new java.util.Date();
 		Date date = new Date(udate.getTime());
-		BoardVO boardVO = new BoardVO(Type, Title, Contents, UsersID, date);
+		BoardVO boardVO = new BoardVO(Type, clean, Contents, UsersID, date);
 		service.insertBoard(boardVO, (String)session.getAttribute("userid"));
 		if (boardVO.getType().equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
