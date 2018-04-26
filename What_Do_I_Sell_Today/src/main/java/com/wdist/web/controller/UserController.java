@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,6 +33,11 @@ public class UserController {
 	@Resource(name = "UserService")
 	UserService service;
 
+	@RequestMapping(value="/interceptor.do")
+	public String interceptor() {
+		return "interceptor";
+	}
+	
 	@RequestMapping(value = "/recapcha.do", method = RequestMethod.POST)
 	public ModelAndView reCapcha(HttpServletRequest req) {
 		VerifyRecaptcha.setSecretKey("6Ldj51MUAAAAAD1gMJ_ZZhOtpW4xTbNNiCsvgQGW"); // secretKey 세팅
@@ -283,7 +287,7 @@ public class UserController {
 	}
 	
 	// ID, Name, Email, PwAns, PwHint 체크
-	@RequestMapping(value="searchPwd.do", method=RequestMethod.POST)
+	@RequestMapping(value="/searchPwd.do", method=RequestMethod.POST)
 	public String infoCheck(HttpSession session, RedirectAttributes ra , UserVO vo, HttpServletRequest req) {
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 

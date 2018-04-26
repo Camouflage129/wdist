@@ -61,6 +61,4 @@
 			expression="execution(* com.wdist.biz.board.service.*Impl.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
 	</aop:config>
-
-	
 </beans>
