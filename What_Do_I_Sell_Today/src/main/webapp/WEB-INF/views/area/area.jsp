@@ -32,6 +32,15 @@
   	width:100%;
   	height:100%;
   	}
+  	h2{
+  		text-align: center;
+  	}
+  	
+  	#table2{
+  	width:80%;
+  	margin-left: auto;
+  	margin-right: auto;
+  	}
   	
   	button{
   	/* display:block;
@@ -56,15 +65,7 @@
 	 }
  	 a:hover {
  	 	text-decoration: none;
- 	 	  
  	 }
- 	 
- 	 #table2{
- 	 	width:80%;
- 	 	margin-left: auto; 
- 	 	margin-right: auto;
- 	 }
-  	
   </style>
   
     <script type="text/javascript">
@@ -121,6 +122,7 @@ $(function(){
 <body>
 
 <div class="container">
+<br>
   <h2>지역별 검색</h2>
   <br>
   <table class="table table-bordered">
@@ -172,7 +174,9 @@ $(function(){
 
 
 <div id="divToggle" style="display: none;">
-
+<br>
+<h2>지역별 업종 분석</h2>
+<br>
 <table id="table2" class="table table-bordered">
     <tbody>
       <tr id="foodtitle">
