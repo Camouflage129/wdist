@@ -16,7 +16,7 @@
 
 <script language="JavaScript">
 	function findid() {
-		$('#myModal').modal('show');
+	 $('#myModal').modal('show');
 	 $.ajax({
 		url : '/searchId.do',
 		type : 'post',

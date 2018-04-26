@@ -31,7 +31,7 @@
 						src="./image/card1.jpg" alt="Card image">
 					<div class="card-body">
 						<h5 class="card-title">우리의 서비스를 소개합니다.</h5>
-						<a href="index.jsp?content=WEB-INF/views/service/intro.jsp"
+						<a href="/intro.do"
 							class="btn btn-primary float-lg-right">보러 가기</a>
 					</div>
 				</div>

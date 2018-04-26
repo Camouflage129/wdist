@@ -29,10 +29,13 @@
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
 					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;
-				</c:if>
-				
+				</c:if>				
 			</div>
 		</div>
 	</nav>
+	
+	
+	
+	
 </body>
 </html>
