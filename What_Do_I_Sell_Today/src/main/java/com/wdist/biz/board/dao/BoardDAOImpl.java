@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import com.wdist.biz.board.vo.BoardVO;
 import com.wdist.biz.board.vo.FileVO;
-import com.wdist.biz.board.vo.ReplyVO;
 import com.wdist.biz.mybatis.mapper.BoardMapper;
 
 @Component("BoardDAO")
@@ -39,11 +38,6 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<FileVO> viewBoradFile(int BoardNum) {
 		return mapper.viewBoradFile(BoardNum);
-	}
-
-	@Override
-	public List<ReplyVO> viewBoardReply(int BoardNum) {
-		return mapper.viewBoardReply(BoardNum);
 	}
 
 	@Override
@@ -81,16 +75,6 @@ public class BoardDAOImpl implements BoardDAO {
 		return mapper.deleteFileGroup(num);
 	}
 	
-	@Override
-	public int insertReply(ReplyVO vo) {
-		return mapper.insertReply(vo);
-	}
-
-	@Override
-	public int deleteReply(int num) {
-		return mapper.deleteReply(num);
-	}
-
 	@Override
 	public int deleteBoard(int num) {
 		return mapper.deleteBoard(num);
@@ -136,6 +120,16 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int filecount(String HashValue) {
 		return mapper.filecount(HashValue);
+	}
+
+	@Override
+	public int deleteReply(int num) {
+		return mapper.deleteReply(num);
+	}
+
+	@Override
+	public int getRepliesCount(int num) {
+		return mapper.getRepliesCount(num);
 	}
 
 }

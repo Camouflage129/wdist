@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,11 @@ public class UserController {
 	@Resource(name = "UserService")
 	UserService service;
 
+	@RequestMapping(value="/interceptor.do")
+	public String interceptor() {
+		return "interceptor";
+	}
+	
 	@RequestMapping(value = "/recapcha.do", method = RequestMethod.POST)
 	public ModelAndView reCapcha(HttpServletRequest req) {
 		VerifyRecaptcha.setSecretKey("6Ldj51MUAAAAAD1gMJ_ZZhOtpW4xTbNNiCsvgQGW"); // secretKey 세팅
@@ -188,6 +194,7 @@ public class UserController {
 	// public String userview(@RequestParam("id") String uid, Model model) {
 	public String userview(HttpSession session, Model model) {
 		// RSA 키 생성
+		
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 		if (key != null) { // 기존 key 파기
 			session.removeAttribute("RSAprivateKey");
@@ -198,19 +205,25 @@ public class UserController {
 		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
 		// UserVO user = service.getUser(uid);
 		UserVO user = service.getUser((String) session.getAttribute("userid"));
+		
+		///////UserVO 확인
+		System.out.println("userVO : "+user);
+		
 		model.addAttribute("user", user);
 		return "user/userView";
 	}
-
+	
 	// 회원 탈퇴
-/*	@RequestMapping(value = "/removeuser.do")
+	@RequestMapping(value = "/removeuser.do")
 	public String userRemove(HttpSession session) {
 		String id = (String) session.getAttribute("userid");
 		System.out.println(service.deleteAccount(id));
+	
 		session.invalidate();
 		return "redirect:main.do";
-	}*/
-
+	}
+	
+	//회원정보수정
 	@RequestMapping(value = "/updateuser.do", method = RequestMethod.POST)
 	public String updateuser(UserVO vo, RedirectAttributes ra, HttpSession session) {
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
@@ -222,12 +235,16 @@ public class UserController {
 		session.removeAttribute("RSAprivateKey");
 
 		try {
-			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim()));
+			System.out.println(vo.getEmail().trim());
+			
+			vo.setEmail(rsaUtil.getDecryptText(key, vo.getEmail().trim())); 
 			vo.setId(rsaUtil.getDecryptText(key, vo.getId()));
 			if (vo.getPw().length() != 0) {
 				vo.setPw(rsaUtil.getDecryptText(key, vo.getPw()));
 			}
 			vo.setName(rsaUtil.getDecryptText(key, vo.getName()));
+			vo.setPwdhint(rsaUtil.getDecryptText(key, vo.getPwdhint()));
+			vo.setPwdans(rsaUtil.getDecryptText(key, vo.getPwdans()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			ra.addFlashAttribute("result", "fail");
@@ -244,7 +261,9 @@ public class UserController {
 		if (result == 1) {
 			ra.addFlashAttribute("result", "success");
 			return "redirect:userview.do";
-		} else {
+		}/* else if(vo.get == "" ) {
+			
+		}*/ else {
 			ra.addFlashAttribute("result", "fail");
 			return "redirect:main.do";
 		}
@@ -268,7 +287,7 @@ public class UserController {
 	}
 	
 	// ID, Name, Email, PwAns, PwHint 체크
-	@RequestMapping(value="searchPwd.do", method=RequestMethod.POST)
+	@RequestMapping(value="/searchPwd.do", method=RequestMethod.POST)
 	public String infoCheck(HttpSession session, RedirectAttributes ra , UserVO vo, HttpServletRequest req) {
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 
@@ -350,4 +369,48 @@ public class UserController {
 		return "redirect:main.do";
 
 	}
+	
+	
+	// ID 찾기 폼으로 이동
+	@RequestMapping(value="/searchId.do", method=RequestMethod.GET)
+	public String searchIdForm(HttpSession session, Model model) {
+		
+		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
+		if (key != null) { // 기존 key 파기
+			session.removeAttribute("RSAprivateKey");
+		}
+		RSA rsa = rsaUtil.createRSA();
+		model.addAttribute("modulus", rsa.getModulus());
+		model.addAttribute("exponent", rsa.getExponent());
+		session.setAttribute("RSAprivateKey", rsa.getPrivateKey());
+		
+		return "user/searchId";
+		
+	}
+	
+	// ID 찾기
+	@RequestMapping(value="/searchId.do", method=RequestMethod.POST)
+	public void searchId(UserVO vo, HttpServletResponse response) {
+//		System.out.println("요청 name"+vo.getName()+" 메일 "+vo.getEmail());
+		JSONObject json = new JSONObject();
+		UserVO uvo = service.searchId(vo);
+		if (uvo != null) {
+			json.put("result", uvo.getId());
+		}
+		else
+			json.put("result", "fail");
+		try {
+			response.getWriter().print(json.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
 }

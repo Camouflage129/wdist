@@ -29,29 +29,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <!-- modal -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 <style>
 	table,tr,td{
   		text-align:center;
+  		
   	}
   	
-  	/* table td a{
-  	display:block;
-  	width:100%;
-  	height:100%;
-  	} */
-  	
-  	/* table td button{
-  	display:block;
-  	width:100%;
-  	height:100%;
-  	} 
-  	 */
-  	
   	button{
-  	/* display:block;
-  	width:100%;
-  	height:100%; */
-  	
   	background: none;
     color: inherit;
     border: none;
@@ -60,6 +51,27 @@
     cursor: pointer;
     outline: inherit;
   	}
+  	
+  	h2{
+    text-align: center;
+  	}
+  	
+  	.table.table-bordered{
+  		width:80%;
+  		margin-left: auto;
+  		margin-right: auto;
+  		table-layout: fixed;
+  	}
+  	
+  .btn.btn-primary{
+  	background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  	} 
   	
  	 a:link {text-decoration: none;}
 	 a:visited {text-decoration: none;}
@@ -87,7 +99,6 @@
 
 <script type="text/javascript">
 $(function(){
-	 alert("start");
 	
 	var id;
 	var idname;
@@ -95,33 +106,36 @@ $(function(){
 	var title;
 	var area;
 	var result;
+	var foodtitle;
 	
-	/*  $('tr').has('td').has('a').css('cursor', 'pointer');  */
-	 
-	 $('.card-link').click(function(){
-		 alert("click");
-		 id = $(this).attr('id'); 
-		 idname = '#'+id;
-		 classname = "."+id;
+	
+	$('#h2title').hide();
+	
+	 $('.foodTitle').click(function(){
+		 
+		 foodtitle = $(this).children().text();
+		 alert(foodtitle);
 		 
 		 $.ajax({
 			type : 'POST',
 			url : 'foodAreaTitle.do',
 			dataType : 'json',
 			data : {
-				"foodtitle" : $(idname).text()
+				"foodtitle" : foodtitle
 			},
 			success : function(data) {
+			alert("ajax success");
 		  	area = data;
-		  	var length = $(classname).find('td').length;
+		  	var length = $('#areaTitle').find('td').length;
+		  	
+		  	$('#h2title').show();
 		  	
 		  	if(length==5){
 		  		return;
 		  	}else{
 		  		for(var i in area){			
-					   /* $(classname).append('<td><a id="areadesc" href="/areaDesc.do?area='+area[i]+'\">'+area[i]+'</a></td>'); */
-					   /* $(classname).append('<td><a class="areadesc">'+area[i]+'</a></td>'); */
-					   $(classname).append('<td><button class="areadesc">'+area[i]+'</button></td>');
+					   $('#araTitle').append('<td><button type="button" class="btn btn-primary"'+ 
+							   ' data-toggle="modal" data-target="#myModal">'+area[i]+'</button></td>');
 		 				}
 		  		} 
 		  	
@@ -133,8 +147,7 @@ $(function(){
 		 
 	 });
 	 
-	 
-	 $(document).on("click",".areadesc",function(){
+	 $(document).on("click",".btn.btn-primary",function(){
 		
 		 	$.ajax({
 		 		type : 'POST',
@@ -144,9 +157,9 @@ $(function(){
 					 "area" : $(this).text() 
 				},  
 				success : function(data) {
-					alert("success");
+					alert("ajax success");
 			  		result = data;
-			  		$("#resultcontent").html(result);
+			  		$(".modal-body").html(result);
 				},
 				error : function(data) {
 					alert("통신실패 : " + data.message);
@@ -160,195 +173,72 @@ $(function(){
 <body>
 
 <div class="container">
+<br>
+  <h2>키워드 분석</h2>
+  <br>
+  <!-- Button to Open the Modal -->
+   <!-- <button id="button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
   
-  <div id="accordion">
-  <br>
-  <h3>업종별 검색</h3>
-  <br>
-      <div class="card">
-      <div class="card-header">
-       <!--  <a id="title1" class="collapsed card-link" data-toggle="collapse" href="#collapseOne"> -->
-        <a id="title1" class="card-link" data-toggle="collapse" href="#collapseOne">한식</a>
-      </div>
-      <div id="collapseOne" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-         <table class="table table-bordered">
-        	 <tbody>
-     		 	<tr class="title1">	  	
-        			
-      			</tr>
-    		</tbody>
-    	</table>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <a id="title2" class="card-link" data-toggle="collapse" href="#collapseTwo">일식</a>
-      </div>
-      <div id="collapseTwo" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title2">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <a id="title3" class="card-link" data-toggle="collapse" href="#collapseThree">분식</a>
-      </div>
-      <div id="collapseThree" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title3">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
-      </div>
-    </div>
-   
- <div class="card">
-      <div class="card-header">
-        <a id="title4" class="card-link" data-toggle="collapse" href="#collapseFour">치킨</a>
-      </div>
-      <div id="collapseFour" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-       <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title4">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
-      </div>
-    </div>
-    
-     <div class="card">
-      <div class="card-header">
-        <a id="title5" class="card-link" data-toggle="collapse" href="#collapseFive">호프</a>
-      </div>
-      <div id="collapseFive" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title5">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
-      </div>
-    </div>
-    
-     <div class="card">
-      <div class="card-header">
-        <a id="title6" class="card-link" data-toggle="collapse" href="#collapseSix">중식</a>
-      </div>
-      <div id="collapseSix" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-       <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title6">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
-      </div>
-    </div>
-    
-     <div class="card">
-      <div class="card-header">
-        <a id="title7" class="card-link" data-toggle="collapse" href="#collapseSeven">양식</a>
-      </div>
-      <div id="collapseSeven" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title7">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
-      </div>
-    </div>
-
- <div class="card">
-      <div class="card-header">
-        <a id="title8" class="card-link" data-toggle="collapse" href="#collapseEight">패스트푸드</a>
-      </div>
-      <div id="collapseEight" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title8">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
-      </div>
-    </div>
-
-<div class="card">
-      <div class="card-header">
-        <a id="title9" class="card-link" data-toggle="collapse" href="#collapseNine">제과</a>
-      </div>
-      <div id="collapseNine" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title9">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <a id="title10" class="card-link" data-toggle="collapse" href="#collapseTen">커피</a>
-      </div>
-      <div id="collapseTen" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        <table class="table table-bordered">
-        	<tbody>
-     		 	<tr class="title10">
-        			
-      			</tr>
-    		</tbody>
-    	</table>
-        </div>
+        
       </div>
     </div>
   </div>
   
- <div id="result">
- <br>
-	<h3>업종 분석 결과</h3>
-	<br>
-	<div id="resultcontent">
+</div>
 	
-	</div>
-</div>
-
-</div>
+        <table class="table table-bordered">
+        	 <tbody>
+     		 	<tr class="title1">	  	
+        		  <td class="foodTitle"><button id="b1">한식</button></td>
+				  <td class="foodTitle"><button>일식</button></td>
+				  <td class="foodTitle"><button>분식</button></td>
+				  <td class="foodTitle"><button>치킨</button></td>
+				  <td class="foodTitle"><button>호프</button></td>
+      			</tr>
+      			<tr>
+      			  <td class="foodTitle"><button>중식</button></td>
+				  <td class="foodTitle"><button>양식</button></td>
+				  <td class="foodTitle"><button>패스트푸드</button></td>
+				  <td class="foodTitle"><button>제과</button></td>
+				  <td class="foodTitle"><button>커피</button></td>
+      			</tr>
+    		</tbody>
+    	</table>
+    	
+ <div id="area">
+ <h2 id="h2title">키워드 지역분석</h2>
+ <br>
+  	<table class="table table-bordered">
+  		<tbody>
+  			<tr id="araTitle">
+  			
+  			</tr>
+  		</tbody>
+  	</table>
+  </div>
+       
     
 </body>
-
-
-
 </html>

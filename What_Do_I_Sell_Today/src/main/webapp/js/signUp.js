@@ -1,9 +1,12 @@
+var signup='';
+
 $("#id").blur(function(){
 	if($("#id").val() == ""){
 		$("#idDiv").attr("class", "form-group has-danger");
 		$(this).attr("class","form-control is-invalid");
 		$("#id_feedback").attr("class","invalid-feedback");
 		$("#id_feedback").html("공백은 입력하실 수 없습니다. ID를 입력해주세요.");
+		
 	}else if(!($("#id").val()).match(/[0-9]|[a-z]|[A-Z]/)){
 		$("#idDiv").attr("class", "form-group has-danger");
 		$(this).attr("class","form-control is-invalid");
@@ -27,7 +30,8 @@ $("#id").blur(function(){
 					$("#idDiv").attr("class", "form-group has-success");
 					$("#id").attr("class", "form-control is-valid");
 					$("#id_feedback").attr("class", "valid-feedback");
-					$("#id_feedback").html("사용할 수 있는 ID 입니다.");				
+					$("#id_feedback").html("사용할 수 있는 ID 입니다.");
+					signup += '1';
 				}				
 			}						
 		})
@@ -49,6 +53,7 @@ $("#id").blur(function(){
 			$(this).attr("class", "form-control is-valid");
 			$("#name_feedback").attr("class", "valid-feedback");
 			$("#name_feedback").html("입력완료");		
+			signup += '1';
 		}		
 	});
 
@@ -66,7 +71,8 @@ $("#id").blur(function(){
 				$("#emailDiv").attr("class", "form-group has-success");
 				$(this).attr("class", "form-control is-valid");
 				$("#email_feedback").attr("class", "valid-feedback");
-				$("#email_feedback").html("입력완료");		
+				$("#email_feedback").html("입력완료");
+				signup += '1';
 			}
 	});
 
@@ -84,6 +90,7 @@ $("#id").blur(function(){
 			$(this).attr("class","form-control is-valid");
 			$("#pw_feedback").attr("class","valid-feedback");
 			$("#pw_feedback").html("입력완료.");
+			signup += '1';
 		}
 	});
 
@@ -96,6 +103,7 @@ $("#id").blur(function(){
 			$(this).attr("class","form-control is-valid");
 			$("#pwCheck_feedback").attr("class","valid-feedback");
 			$("#pwCheck_feedback").html("비밀번호가 일치합니다.");
+			signup += '1';
 		} else if ( pw == "" || !check.test(pwch)) {
 			$("#pwCkDiv").attr("class", "form-group has-danger");
 			$(this).attr("class","form-control is-invalid");
@@ -107,13 +115,36 @@ $("#id").blur(function(){
 				$("#pwCheck_feedback").attr("class","invalid-feedback");
 				$("#pwCheck_feedback").html("비밀번호가 일치하지 않습니다.");
 			}					
+	});	
+	
+	/**
+	 * 영문, 한글, 숫자 혼합 글자수 2~15자로 제한.
+	 */
+	$("#pwdans").blur(function() {
+		var ansCheck = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]{2,15}$/
+		
+		if( $("#pwdans").val() == "" || !ansCheck.test($("#pwdans").val()) ) {
+			$("#pwdansDiv").attr("class", "form-group has-danger");
+			$(this).attr("class","form-control is-invalid");
+			$("#pwdans_feedback").attr("class","invalid-feedback");
+			$("#pwdans_feedback").html("답변을 입력해주세요.");
+		} else{
+			$("#pwdansDiv").attr("class", "form-group has-success");
+			$(this).attr("class","form-control is-valid");
+			$("#pwdans_feedback").attr("class","valid-feedback");
+			$("#pwdans_feedback").html("입력완료.");
+			signup += '1';
+		}
 	});
 	
+	
 
-
-
-
-
-
+	function result(){
+		if(signup == '111111'){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 

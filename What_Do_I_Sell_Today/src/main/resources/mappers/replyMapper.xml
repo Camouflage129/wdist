@@ -8,15 +8,19 @@
 	<select id="replyList" resultType="ReplyVO">
 		select * from reply where BoardNum = #{num}
 	</select>
+	
+	<delete id="deleteChild">
+		delete from reply where ParentNum = #{num}
+	</delete>
 
 	<insert id="insertReply" parameterType="ReplyVO">
-		insert into reply (replyNum, ParentNum, UsersID, Contents, PostDate, BoardNum)
-		values ((select ifnull(replyNum,0)+1 from reply), #{ParentNum}, #{UsersID}, #{Contents}, #{PostDate}, #{BoardNum})
+		insert into reply (replyNum, UsersID, Contents, PostDate, BoardNum)
+		values ((select ifnull(max(r.replyNum),0)+1 from reply r), #{usersID}, #{contents}, #{postDate}, #{boardNum})
 	</insert>
 	
 	<insert id="insertReReply" parameterType="ReplyVO">
-		insert into reply (replyNum, ParentNum, Count, UsersID, Contents, PostDate, BoardNum)
-		values ((select ifnull(replyNum,0)+1 from reply), #{ParentNum}, #{Count}, #{UsersID}, #{Contents}, #{PostDate}, #{BoardNum})
+		insert into reply (replyNum, ParentNum, Count, ChildCount, UsersID, Contents, PostDate, BoardNum)
+		values ((select ifnull(max(r.replyNum),0)+1 from reply r), #{parentNum}, #{count}, #{childCount}, #{usersID}, #{contents}, #{postDate}, #{boardNum})
 	</insert>
 	
 	<update id="modifyParentReply" parameterType="ReplyVO">
@@ -24,10 +28,10 @@
 	</update>
 	
 	<update id="modifyReply" parameterType="ReplyVO">
-		update reply set Contents = #{Contents} where replyNum = #{replyNum}
+		update reply set Contents = #{contents} where replyNum = #{replyNum}
 	</update>
 	
-	<delete id="deleteReply">
+	<delete id="removeReply">
 		delete from reply where replyNum = #{replyNum}
 	</delete>
 	

@@ -7,41 +7,46 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import com.wdist.biz.board.vo.ReplyVO;
+import com.wdist.biz.reply.vo.ReplyVO;
 
 @Component("ReplyDAO")
 public class ReplyDAOImpl implements ReplyDAO{
 	
 	@Resource(name="sqlSessionTemplateWindow")
-	private SqlSession sqlSession;
+	SqlSession mybatis;
 	
 	@Override
 	public List<ReplyVO> replyList(int BoardNum) {
-		return sqlSession.selectList("replyList", BoardNum);
+		return mybatis.selectList("replyList", BoardNum);
 	}
 
 	@Override
 	public int insertReply(ReplyVO vo) {
-		return sqlSession.insert("insertReply", vo);
+		return mybatis.insert("insertReply", vo);
 	}
 
 	@Override
 	public int insertReReply(ReplyVO vo) {
-		return sqlSession.insert("insertReReply", vo);
+		return mybatis.insert("insertReReply", vo);
 	}
 
 	@Override
 	public int modifyParentReply(ReplyVO vo) {
-		return sqlSession.update("modifyParentReply", vo);
+		return mybatis.update("modifyParentReply", vo);
 	}
 
 	@Override
 	public int modifyReply(ReplyVO vo) {
-		return sqlSession.update("modifyReply", vo);
+		return mybatis.update("modifyReply", vo);
 	}
 
 	@Override
 	public int deleteReply(int replyNum) {
-		return sqlSession.delete("deleteReply", replyNum);
+		return mybatis.delete("removeReply", replyNum);
+	}
+
+	@Override
+	public int deleteChild(int ParentNum) {
+		return mybatis.delete("deleteChild", ParentNum);
 	}
 }

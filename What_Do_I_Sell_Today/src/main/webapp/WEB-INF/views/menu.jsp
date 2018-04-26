@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
+
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -15,24 +17,27 @@
 				<ul class="navbar-nav mr-auto">	<!-- WEB-INF 있는 부분 나중에 .do로 실행시켜서 처리해야함. -->
 					<li class="nav-item"><a class="nav-link" href="/foodArea.do">업종별 검색</a></li>
 					<li class="nav-item"><a class="nav-link" href="/areaFood.do">지역별 검색</a></li>
-					<li class="nav-item"><a class="nav-link" href="index.jsp?content=WEB-INF/views/sale/sale.jsp">매출 랭킹</a></li>
-					<li class="nav-item"><a class="nav-link" href="index.jsp?content=WEB-INF/views/success/success.jsp">성공 확률 예측</a></li>
+					<li class="nav-item"><a class="nav-link" href="/salePage.do">매출 랭킹</a></li>
+					<li class="nav-item"><a class="nav-link" href="/successPage.do">성공 확률 예측</a></li>
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<c:if test="${empty userid}">
 					<a id="loginA" href="/login.do">로그인</a>&nbsp;|&nbsp;
-					<a id="searchPw" href="/searchPwd.do">비밀번호 찾기</a>&nbsp;|&nbsp;
 					<a id="signUpA" href="/signUp.do">회원가입</a>
 				</c:if>
 				<c:if test="${!empty userid}">
 					<a id="loginA" href="/logout.do">로그아웃</a>&nbsp;|&nbsp;
 					<a id="modifyUser" href="userview.do">회원정보수정</a>&nbsp;|&nbsp;
-					<a id="deleteUser" href="removeuser.do">회원탈퇴</a>	
-				</c:if>
+				</c:if>				
+	
 				
 			</div>
 		</div>
 	</nav>
+	
+	
+	
+	
 </body>
 </html>
