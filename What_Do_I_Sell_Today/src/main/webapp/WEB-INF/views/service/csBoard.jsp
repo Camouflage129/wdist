@@ -41,7 +41,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-4"></div>
-				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
 				<div id="center">
 					<ul class="pagination pagination-sm">
 						<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
