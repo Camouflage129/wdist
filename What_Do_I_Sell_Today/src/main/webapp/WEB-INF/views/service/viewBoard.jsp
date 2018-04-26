@@ -35,7 +35,7 @@
 				<li><i class="fa fa-fw fa-calendar"></i> <span
 					class="sr-only sound_only">작성일</span> <b>${board.postDate}</b></li>
 				<li><i class="fa fa-fw fa-comments-o"></i> <span
-					class="sr-only sound_only">댓글</span> <b>댓글 x건</b></li>
+					class="sr-only sound_only">댓글</span> <b>댓글 ${repliesCount}건</b></li>
 			</ul>
 		</div>
 		<input id="beforeNum" type="hidden" name="beforeNum"

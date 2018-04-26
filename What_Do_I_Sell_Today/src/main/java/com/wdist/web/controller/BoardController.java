@@ -106,6 +106,7 @@ public class BoardController {
 				break;
 			}
 		}
+		request.setAttribute("repliesCount", service.getRepliesCount(num));
 		request.setAttribute("beforeNum", beforeNum);
 		request.setAttribute("afterNum", afterNum);
 		request.setAttribute("board", board);

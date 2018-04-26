@@ -145,4 +145,9 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return rows;
 	}
+
+	@Override
+	public int getRepliesCount(int BoardNum) {
+		return dao.getRepliesCount(BoardNum);
+	}
 }

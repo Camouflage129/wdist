@@ -16,6 +16,9 @@ public interface BoardMapper {
 	@Select("select * from Board where Type = #{Type} order by PostDate DESC")
 	public List<BoardVO> freeOrCsBoard(String Type);
 	
+	@Select("select count(*) from Reply where BoardNum = #{num}")
+	public int getRepliesCount(int num);
+	
 	@Select("select * from Board where BoardNum = #{BoardNum}")
 	public BoardVO viewBoard(int BoardNum);
 	
