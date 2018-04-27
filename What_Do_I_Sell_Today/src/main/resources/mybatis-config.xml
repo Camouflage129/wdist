@@ -4,14 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
- 		<typeAlias type="com.wdist.biz.reply.vo.ReplyVO" alias="ReplyVO"></typeAlias>
- 	</typeAliases>
+		<typeAlias type="com.wdist.biz.reply.vo.ReplyVO" alias="ReplyVO"></typeAlias>
+	</typeAliases>
 
 	<mappers>
-		<mapper resource="./mappers/replyMapper.xml"/>
-		<mapper class="com.wdist.biz.mybatis.mapper.UserMapper"/>
-		<mapper class="com.wdist.biz.mybatis.mapper.DeptMapper"/>
-		<mapper class="com.wdist.biz.mybatis.mapper.BoardMapper"/>
-		<mapper class="com.wdist.biz.mybatis.mapper.FoodMapper"/>
+		<mapper resource="./mappers/replyMapper.xml" />
+		<mapper class="com.wdist.biz.mybatis.mapper.UserMapper" />
+		<mapper class="com.wdist.biz.mybatis.mapper.BoardMapper" />
+		<mapper class="com.wdist.biz.mybatis.mapper.FoodMapper" />
 	</mappers>
 </configuration>
