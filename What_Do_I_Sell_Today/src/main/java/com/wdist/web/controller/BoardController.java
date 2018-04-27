@@ -206,7 +206,7 @@ public class BoardController {
 	public String introService() {
 
 		
-		return "index.jsp?content=/WEB-INF/views/service/intro";		
+		return "service/intro";		
 	}
 	
 }
