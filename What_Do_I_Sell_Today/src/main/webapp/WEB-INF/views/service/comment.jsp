@@ -87,7 +87,6 @@
 	//대댓글 등록
 	function commentReInsert(replyNum) {
 		var updateContent = $('[name=recontent_' + replyNum + ']').val();
-		alert('요청받음 : '+updateContent+' 글번호'+replyNum);
 		$.ajax({
 			type : 'POST',
 			url : '/insertReReply',
