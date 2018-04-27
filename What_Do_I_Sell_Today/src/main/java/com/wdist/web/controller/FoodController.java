@@ -30,7 +30,7 @@ public class FoodController {
 	public String foodarea() {
 		return "food/food";
 /*		return "index.jsp?content=/WEB-INF/views/food/food";
-*/		//return "food/food";
+*/		
 	}
 	
 	@RequestMapping(value="/foodAreaTitle.do", method = RequestMethod.POST)

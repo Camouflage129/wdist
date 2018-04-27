@@ -13,7 +13,6 @@
               <c:if test="${empty userid}">
               <ul>
                 <li><a id="signUpA" href="/signUp.do" data-toggle="modal"><i class="icon-user"></i> 회원가입</a></li>
-<!--                 <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> 회원가입</a></li> -->
                 <li><a id="loginA" href="/login.do">로그인</a></li>
               </ul>
               </c:if>
@@ -23,7 +22,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="css/img/logo.png" alt="" class="logo" /></a>
+              <a href="/main.do"><img src="css/img/logo.png" alt="" class="logo" /></a>
               <!-- <h1>Flat and trendy bootstrap template</h1> -->
             </div>
           </div>
