@@ -1,26 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <head>
+  <meta charset="utf-8">
+  <title>오늘 뭐 팔지?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="new/css/bootstrap.css" rel="stylesheet" />
-  <link href="new/css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="new/css/fancybox/jquery.fancybox.css" rel="stylesheet">
-  <link href="new/css/jcarousel.css" rel="stylesheet" />
-  <link href="new/css/flexslider.css" rel="stylesheet" />
-  <link href="new/css/style.css" rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="css/jcarousel.css" rel="stylesheet" />
+  <link href="css/flexslider.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
   <!-- Theme skin -->
-  <link href="new/skins/default.css" rel="stylesheet" />
-  
-<link rel="stylesheet" href="./css/style.css">
-<script type="text/javascript" src="js/viewBoard.js"></script>
-<title>View Board</title>
+  <link href="skins/default.css" rel="stylesheet" />
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="ico/favicon.png" />
+  <link href="css/font-awesome.css" rel="stylesheet" />
+
 </head>
 <body>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<div class="container">
 		<div class="col-xs-12">
 			<h4 id="bo_v_title">
@@ -86,5 +94,6 @@
 		<div class="commentList"></div>
 	</div>
 	<%@ include file="comment.jsp"%>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
