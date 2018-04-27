@@ -23,25 +23,22 @@ public class MyBatisTest {
 		foodservice = null;
 	}
 		
-<<<<<<< HEAD
-	}
-	
-	
-	//@Test
-	public void test() {
-		System.out.println(service.getDept());
-		List<DeptVO> table = service.getDept();
-		Iterator<DeptVO> it = table.iterator();
-		while(it.hasNext()) {
-			DeptVO data = it.next();
-			System.out.println(data);
-		}
-	}
-	
-	//@Test
-	public void getNumTest() {
-		System.out.println(service.getNum());
-	}
+//	
+//	//@Test
+//	public void test() {
+//		System.out.println(service.getDept());
+//		List<DeptVO> table = service.getDept();
+//		Iterator<DeptVO> it = table.iterator();
+//		while(it.hasNext()) {
+//			DeptVO data = it.next();
+//			System.out.println(data);
+//		}
+//	}
+//	
+//	//@Test
+//	public void getNumTest() {
+//		System.out.println(service.getNum());
+//	}
 	
 	/*@Test
 =======
