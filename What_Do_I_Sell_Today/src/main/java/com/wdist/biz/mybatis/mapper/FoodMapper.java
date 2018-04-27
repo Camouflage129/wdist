@@ -1,5 +1,7 @@
 package com.wdist.biz.mybatis.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Select;
 
 import com.wdist.biz.food.vo.AreaFoodVO;
@@ -21,25 +23,25 @@ public interface FoodMapper {
 	public AreaFoodVO getAreaFoodTitle(String areatitle);*/
 	
 	@Select("select sale_species, avg(area_sales) as asale from SALES" + 
-			"where area = #{areatitle} and quarters IN (201702, 201703, 201704)" + 
+			" where area = #{areatitle} and quarters IN (201702, 201703, 201704)" + 
 			" group by sale_species")
-	public SaleAvgVO fstSaleAvg(String areatitle);
+	public List<SaleAvgVO> fstSaleAvg(String areatitle);
 
 	@Select("select sale_species, avg(area_sales) as asale from SALES" + 
-			"where area = #{areatitle} and quarters IN (201705, 201706, 201707)" + 
+			" where area = #{areatitle} and quarters IN (201705, 201706, 201707)" + 
 			" group by sale_species")
-	public SaleAvgVO sndSaleAvg(String areatitle);
+	public List<SaleAvgVO> sndSaleAvg(String areatitle);
 	
 
 	@Select("select sale_species, avg(area_sales) as asale from SALES" + 
 			" where area = #{areatitle} and quarters IN (201708, 201709, 2017010)" +
 			" group by sale_species")
-	public SaleAvgVO thrdSaleAvg(String areatitle);
+	public List<SaleAvgVO> thrdSaleAvg(String areatitle);
 	
 	@Select("select sale_species, avg(area_sales) as asale from SALES" + 
 			" where area = #{areatitle} and quarters IN (2017011, 2017012, 201801)" + 
 			" group by sale_species")
-	public SaleAvgVO frthSaleAvg(String areatitle);
+	public List<SaleAvgVO> frthSaleAvg(String areatitle);
 	
 	
 }
