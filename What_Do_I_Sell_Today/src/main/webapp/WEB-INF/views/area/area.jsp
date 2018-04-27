@@ -65,6 +65,7 @@ td {
   vertical-align: middle;
 }
 #forpadding {
+	padding-top : 2em;
     padding-bottom: 3em;
 }
  #table {
@@ -308,9 +309,9 @@ h4 {
 
 <div id="forpadding">
 	<div class="container">
-		<br>
+		<!-- <br>
 		<h2>지역별 검색</h2>
-		<br>
+		<br> -->
 		<table class="table table-bordered">
 			<tbody>
 				<tr>
