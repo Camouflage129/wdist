@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<footer>
+  </div>
+        </div>
+ <footer>
       <div class="container">
         <div class="row">
           <div class="span3">
