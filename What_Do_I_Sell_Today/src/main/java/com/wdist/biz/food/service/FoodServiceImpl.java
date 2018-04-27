@@ -10,6 +10,7 @@ import com.wdist.biz.food.dao.FoodDAO;
 import com.wdist.biz.food.vo.AreaFoodVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.food.vo.WordCountVO;
 
 @Service("FoodService")
 public class FoodServiceImpl implements FoodService{
@@ -45,6 +46,11 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public List<SaleAvgVO> frthSaleAvg(String areatitle) {
 		return dao.frthSaleAvg(areatitle);
+	}
+
+	@Override
+	public List<WordCountVO> getWords(String word) {
+		return dao.getWords(word);
 	}
 	
 	

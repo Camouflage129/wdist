@@ -1,15 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <head>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="js/food.js"></script>
 	<link rel="stylesheet" href="./css/food.css?ver=0" media="screen">
 	<title>Food</title>
 </head>
 <body>
+	<jsp:include page="../header.jsp"></jsp:include>
+	<section id="inner-headline">
+		<div class="container">
+			<div class="row">
+				<div class="span4">
+					<div class="inner-heading">
+						<h2>업종별 검색</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<div class="container">
 		<div class="row">
 			<br>
@@ -35,7 +46,7 @@
 			</table>
 		</div>
 	</div>
-	<div class="modal" id="foodModal">
+	<div class="modal fade" id="foodModal" role="dialog">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -49,17 +60,15 @@
 						<div class="col-sm-8">
 							<table class="table table-hover">
 								<tr>
-									<th>1 분기</th>
-									<th>2 분기</th>
-									<th>3 분기</th>
-									<th>4 분기</th>
+									<th>분기</th>
+									<th>순위</th>
+									<th>단어</th>
 								</tr>
 								<c:forEach var="data" items="${list}">
 									<tr class="table-primary">
-										<td>${data.one}</td>
-										<td>${data.two}</td>
-										<td>${data.three}</td>
-										<td>${data.four}</td>
+										<td>${data.quater}</td>
+										<td>${data.rank}</td>
+										<td>${data.word}</td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -75,5 +84,9 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
+
+
+
