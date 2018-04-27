@@ -23,8 +23,28 @@ public class MyBatisTest {
 		foodservice = null;
 	}
 		
+	
+	/*
+	//@Test
+	public void test() {
+		System.out.println(service.getDept());
+		List<DeptVO> table = service.getDept();
+		Iterator<DeptVO> it = table.iterator();
+		while(it.hasNext()) {
+			DeptVO data = it.next();
+			System.out.println(data);
+		}
+	}
+	*/
+	/*//@Test
+	public void getNumTest() {
+		System.out.println(service.getNum());
+	}
+	*/
+	/*@Test
 	@Test
+>>>>>>> branch 'master' of https://github.com/Camouflage129/wdist.git
 	public void getfoodVO() {
 		System.out.println(foodservice.getFoodAreaTitle("한식"));
-	}
+	}*/
 }
