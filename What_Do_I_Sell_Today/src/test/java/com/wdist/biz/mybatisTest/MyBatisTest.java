@@ -63,8 +63,8 @@ public class MyBatisTest {
 		System.out.println(service.getNum());
 	}
 	
-	@Test
+	/*@Test
 	public void getfoodVO() {
 		System.out.println(foodservice.getFoodAreaTitle("한식"));
-	}
+	}*/
 }

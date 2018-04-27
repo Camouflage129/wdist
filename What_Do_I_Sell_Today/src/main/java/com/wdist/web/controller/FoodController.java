@@ -15,6 +15,7 @@ import com.google.gson.JsonArray;
 import com.wdist.biz.food.service.FoodService;
 import com.wdist.biz.food.vo.AreaFoodVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
+import com.wdist.biz.food.vo.SaleAvgVO;
 
 @Controller
 public class FoodController {
@@ -38,7 +39,7 @@ public class FoodController {
 		System.out.println(foodtitle);
 		
 		JsonArray arr = new JsonArray();
-		System.out.println("service : "+service.getFoodAreaTitle(foodtitle));
+		/*System.out.println("service : "+service.getFoodAreaTitle(foodtitle));
 		FoodAreaVO area = service.getFoodAreaTitle(foodtitle);
 		System.out.println("area : "+area);
 		
@@ -56,7 +57,7 @@ public class FoodController {
 			}
 		}else {
 			return;
-		}
+		}*/
 	}
 	
 	@RequestMapping(value="/areaDesc.do",method = RequestMethod.POST)
@@ -100,9 +101,9 @@ public class FoodController {
 		System.out.println(areatitle);
 		
 		JsonArray arr = new JsonArray();
-		AreaFoodVO food = new AreaFoodVO();		
+		SaleAvgVO vo = new SaleAvgVO();
 		
-		food = service.getAreaFoodTitle(areatitle);
+		/*food = service.getAreaFoodTitle(areatitle);
 		System.out.println(food);
 		
 		if(food != null) {
@@ -120,7 +121,7 @@ public class FoodController {
 			}
 		}else {
 			return;
-		}
+		}*/
 	}
 	
 	@RequestMapping(value="/menuDesc.do")
