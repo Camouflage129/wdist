@@ -1,8 +1,8 @@
 package com.wdist.web.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,12 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.JsonArray;
 import com.wdist.biz.food.service.FoodService;
 import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.food.vo.WordCountVO;
 import com.wdist.biz.rserve.RServe;
 
 @Controller
 public class FoodController {
-	
-	
 	@Resource(name="FoodService")
 	FoodService service;
 		
@@ -38,10 +37,11 @@ public class FoodController {
 		HashMap<String, Object> map = new HashMap<>();
 		System.out.println(foodtitle);
 		new RServe().getWordCloud(foodtitle);
+		List<WordCountVO> list = service.getWords(foodtitle);
 		map.put("result", "success");
-		request.setAttribute("list", "");
+		request.setAttribute("list", list);
 		request.setAttribute("wordcloud", foodtitle);
-		map.put("list","");
+		map.put("list", list);
 		map.put("wordcloud",foodtitle);
 		return new ModelAndView("jsonView", map);
 	}

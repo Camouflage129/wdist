@@ -89,6 +89,7 @@
 						<div class="col-sm-8">
 							<table class="table table-hover">
 								<tr>
+									<th>순위</th>
 									<th>1 분기</th>
 									<th>2 분기</th>
 									<th>3 분기</th>
