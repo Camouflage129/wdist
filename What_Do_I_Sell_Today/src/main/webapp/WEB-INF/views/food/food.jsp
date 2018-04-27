@@ -2,37 +2,8 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<meta charset="utf-8">
-<title>오늘 뭐 팔지?</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-
-<!-- css -->
-<link
-	href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
-	rel="stylesheet">
-<link href="css/bootstrap.css" rel="stylesheet" />
-<link href="css/bootstrap-responsive.css" rel="stylesheet" />
-<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link href="css/jcarousel.css" rel="stylesheet" />
-<link href="css/flexslider.css" rel="stylesheet" />
-<link href="css/style.css" rel="stylesheet" />
-<!-- Theme skin -->
-<link href="skins/default.css" rel="stylesheet" />
-<!-- Fav and touch icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="ico/apple-touch-icon-144-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="ico/apple-touch-icon-114-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="ico/apple-touch-icon-72-precomposed.png" />
-<link rel="apple-touch-icon-precomposed"
-	href="ico/apple-touch-icon-57-precomposed.png" />
-<link rel="shortcut icon" href="ico/favicon.png" />
-<link href="css/font-awesome.css" rel="stylesheet" />
-
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="js/food.js"></script>
 	<link rel="stylesheet" href="./css/food.css?ver=0" media="screen">
 	<title>Food</title>
@@ -89,18 +60,15 @@
 						<div class="col-sm-8">
 							<table class="table table-hover">
 								<tr>
+									<th>분기</th>
 									<th>순위</th>
-									<th>1 분기</th>
-									<th>2 분기</th>
-									<th>3 분기</th>
-									<th>4 분기</th>
+									<th>단어</th>
 								</tr>
 								<c:forEach var="data" items="${list}">
 									<tr class="table-primary">
-										<td>${data.one}</td>
-										<td>${data.two}</td>
-										<td>${data.three}</td>
-										<td>${data.four}</td>
+										<td>${data.quater}</td>
+										<td>${data.rank}</td>
+										<td>${data.word}</td>
 									</tr>
 								</c:forEach>
 							</table>

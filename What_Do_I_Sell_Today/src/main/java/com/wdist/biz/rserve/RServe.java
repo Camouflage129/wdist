@@ -17,7 +17,7 @@ public class RServe {
 			conn.eval("library(Rserve)");
 			conn.eval("library(ggplot2)");
 			conn.eval("con <- dbConnect(MySQL(), host = '70.12.109.53', dbname = 'project', user = 'root', password = 'bigdata', port = 3306)");
-			conn.eval("wordcount <- dbGetQuery(con, 'SELECT word, tfidf FROM wordcount WHERE searchword = "+species+"tfidf > (SELECT AVG(tfidf) FROM wordcount)')");
+			conn.eval("wordcount <- dbGetQuery(con, 'SELECT word, tfidf FROM wordcount WHERE searchword = "+species+" and tfidf > (SELECT AVG(tfidf) FROM wordcount)')");
 			conn.eval("palete<-brewer.pal(9,'Set1')");
 			conn.eval("jpeg(filename = '/home/hadoop/rServeTmp/"+species+".jpeg',width = 400, height = 400)");
 			conn.eval("wordcloud(wordcount$word, wordcount$tfidf, max.words=Inf, random.order=FALSE, rot.per=.15, colors=palete)");

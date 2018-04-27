@@ -5,18 +5,17 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet"
-	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-	crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="js/ckeditor.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="new/css/bootstrap.css" rel="stylesheet" />
+  <link href="new/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="new/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="new/css/jcarousel.css" rel="stylesheet" />
+  <link href="new/css/flexslider.css" rel="stylesheet" />
+  <link href="new/css/style.css" rel="stylesheet" />
+  <!-- Theme skin -->
+  <link href="new/skins/default.css" rel="stylesheet" />
+  
 <link rel="stylesheet" href="./css/style.css">
 <script type="text/javascript" src="js/viewBoard.js"></script>
 <title>View Board</title>
