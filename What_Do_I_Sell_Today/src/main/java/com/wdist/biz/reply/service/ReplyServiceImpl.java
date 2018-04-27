@@ -27,7 +27,7 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Override
 	public int insertReReply(ReplyVO vo) {
-		return dao.insertReply(vo);
+		return dao.insertReReply(vo);
 	}
 
 	@Override
@@ -45,4 +45,22 @@ public class ReplyServiceImpl implements ReplyService{
 		int rows = dao.deleteChild(replyNum);
 		return rows + dao.deleteReply(replyNum);
 	}
+
+	@Override
+	public int selectchicout(ReplyVO vo) {
+		return dao.selectchicout(vo);
+	}
+
+	@Override
+	public ReplyVO selecyChild(ReplyVO vo) {
+		return dao.selecyChild(vo);
+	}
+
+	@Override
+	public int updateParentReply(ReplyVO vo) {
+		return dao.updateParentReply(vo);
+	}
+
+	
+	
 }

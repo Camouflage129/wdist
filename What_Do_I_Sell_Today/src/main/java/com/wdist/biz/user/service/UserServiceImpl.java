@@ -52,7 +52,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int modifyNewPwd(UserVO vo) {
-
 		return dao.modifyNewPwd(vo);
 	}
 
@@ -65,9 +64,4 @@ public class UserServiceImpl implements UserService {
 	public UserVO searchId(UserVO vo) {
 		return dao.searchId(vo);
 	}
-
-	
-	
-	
-	
 }

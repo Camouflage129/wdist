@@ -27,16 +27,19 @@ public class ReplyDAOImpl implements ReplyDAO{
 
 	@Override
 	public int insertReReply(ReplyVO vo) {
+		System.out.println("dao : "+vo);
 		return mybatis.insert("insertReReply", vo);
 	}
 
 	@Override
 	public int modifyParentReply(ReplyVO vo) {
+
 		return mybatis.update("modifyParentReply", vo);
 	}
 
 	@Override
 	public int modifyReply(ReplyVO vo) {
+		
 		return mybatis.update("modifyReply", vo);
 	}
 
@@ -49,4 +52,21 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public int deleteChild(int ParentNum) {
 		return mybatis.delete("deleteChild", ParentNum);
 	}
+
+	@Override
+	public int selectchicout(ReplyVO vo) {
+		return mybatis.selectOne("selectchicout", vo);
+	}
+
+	@Override
+	public ReplyVO selecyChild(ReplyVO vo) {
+		return mybatis.selectOne("selecyChild",vo);
+	}
+
+	@Override
+	public int updateParentReply(ReplyVO vo) {
+		// TODO Auto-generated method stub
+		return mybatis.update("updateParentReply", vo);
+	}
+	
 }
