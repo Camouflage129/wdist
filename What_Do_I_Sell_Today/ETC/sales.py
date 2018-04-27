@@ -41,8 +41,8 @@ import pymysql
 
 species_name = ["한식","중국집","일식","양식집","분식집","패스트푸드","치킨집","제과점","커피","호프집"]
 species_code = ["CS100001","CS100002","CS100003","CS100004","CS100005","CS100006","CS100007","CS100008","CS100009","CS100010"]
-area_name = ["강남구","강북구","강동구","강서구","관악구","광진구","구로구","금천구","원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"]
-area_code = [11680,11305,11740,11500,11620,11215,11530,11545,11350,11230,11590,11440,11410,11650,11200,11290,11710,11470,11560,11170,11380,11110,11140,11260]
+area_name = ["강남구","강북구","강동구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"]
+area_code = [11680,11305,11740,11500,11620,11215,11530,11545,11350,11320,11230,11590,11440,11410,11650,11200,11290,11710,11470,11560,11170,11380,11110,11140,11260]
 
 conn = pymysql.connect(host='70.12.109.53', port=3306, user='root', passwd='bigdata', db='project', charset ='utf8')
 cur = conn.cursor()
@@ -61,9 +61,9 @@ for species in species_code :
            data = json.load(json_file)
 
         # with open(area_name[i]+"_"+species_name[j]+'_sales_result.txt', 'w', encoding='utf-8') as json_file:
-        #     for temp in data['rpct020309']['rows']:
-        #         json_file.write(area_name[i]+", "+species_name[j]+", "+temp['stdrYmCd'] + ", " + str(temp['signguSelngAmt']) + ", " + str(temp['allSelngAmt'])+"\n")
-        for temp in data['rpct020309']['rows']:
+        #     for temp in data['rpct020311']['rows']:
+        #         print(area_name[i]+", "+species_name[j]+", "+temp['stdrYmCd'] + ", " + str(temp['signguSelngAmt']) + ", " + str(temp['allSelngAmt'])+"\n")
+        for temp in data['rpct020311']['rows']:
             sql = "INSERT INTO SALES (NUM, AREA, SALE_SPECIES, QUARTERS, AREA_SALES, SEOUL_SALES) VALUES (" + str(count) + "," +"\'"+ area_name[i] +"\'"+","+"\'"+ species_name[j] +"\'"+ "," + str(temp['stdrYmCd']) + "," + str(temp['signguSelngAmt']) + "," + str(temp['allSelngAmt']) + ")"
             try:
                 cur.execute(sql)

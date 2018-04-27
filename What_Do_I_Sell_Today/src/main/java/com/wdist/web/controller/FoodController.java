@@ -1,7 +1,9 @@
 package com.wdist.web.controller;
 
-
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
 import com.wdist.biz.food.service.FoodService;
-import com.wdist.biz.food.vo.AreaFoodVO;
-import com.wdist.biz.food.vo.FoodAreaVO;
+import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.rserve.RServe;
 
 @Controller
 public class FoodController {
@@ -26,37 +29,19 @@ public class FoodController {
 	@RequestMapping(value="/foodArea.do")
 	public String foodarea() {
 		return "index.jsp?content=/WEB-INF/views/food/food";
-		//return "food/food";
 	}
 	
-	
 	@RequestMapping(value="/foodAreaTitle.do", method = RequestMethod.POST)
-	public void foodareatitle(String foodtitle, HttpServletRequest req, HttpServletResponse res){
-		res.setContentType("application/json;charset=UTF-8");		
-		
-		System.out.println("foodAreaTitle.do controller진입");
+	public ModelAndView foodareatitle(String foodtitle, HttpServletRequest request){
+		HashMap<String, Object> map = new HashMap<>();
 		System.out.println(foodtitle);
-		
-		JsonArray arr = new JsonArray();
-		System.out.println("service : "+service.getFoodAreaTitle(foodtitle));
-		FoodAreaVO area = service.getFoodAreaTitle(foodtitle);
-		System.out.println("area : "+area);
-		
-		if(area != null) {
-			arr.add(area.getFrthArea());
-			arr.add(area.getSndArea());
-			arr.add(area.getThdArea());
-			arr.add(area.getFrthArea());
-			arr.add(area.getFthArea());
-			
-			try {
-				res.getWriter().write(arr.toString());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}else {
-			return;
-		}
+		new RServe().getWordCloud(foodtitle);
+		map.put("result", "success");
+		request.setAttribute("list", "");
+		request.setAttribute("wordcloud", foodtitle);
+		map.put("list","");
+		map.put("wordcloud",foodtitle);
+		return new ModelAndView("jsonView", map);
 	}
 	
 	@RequestMapping(value="/areaDesc.do",method = RequestMethod.POST)
@@ -100,17 +85,18 @@ public class FoodController {
 		System.out.println(areatitle);
 		
 		JsonArray arr = new JsonArray();
-		AreaFoodVO food = new AreaFoodVO();		
+		List<SaleAvgVO> list = new ArrayList<SaleAvgVO>();
+		SaleAvgVO vo = new SaleAvgVO();
 		
-		food = service.getAreaFoodTitle(areatitle);
-		System.out.println(food);
+		list.addAll(service.fstSaleAvg(areatitle));
+		list.addAll(service.sndSaleAvg(areatitle));
+		list.addAll(service.thrdSaleAvg(areatitle));
+		list.addAll(service.frthSaleAvg(areatitle));
 		
-		if(food != null) {
-			arr.add(food.getFstFood());
-			arr.add(food.getSndFood());
-			arr.add(food.getThdFood());
-			arr.add(food.getFthFood());
-			arr.add(food.getFthFood());
+		System.out.println(list);
+		
+		/*if(list != null) {
+			arr.
 			
 			try {
 				res.getWriter().write(arr.toString());
@@ -120,7 +106,7 @@ public class FoodController {
 			}
 		}else {
 			return;
-		}
+		}*/
 	}
 	
 	@RequestMapping(value="/menuDesc.do")
