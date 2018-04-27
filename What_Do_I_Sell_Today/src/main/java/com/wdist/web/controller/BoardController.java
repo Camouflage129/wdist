@@ -53,6 +53,7 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("list", clist);
 		request.setAttribute("postnum", postnum);
+	//	return "service/freeBoard";
 		return "index.jsp?content=/WEB-INF/views/service/freeBoard";
 	}
 
@@ -79,6 +80,7 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("list", clist);
 		request.setAttribute("postnum", postnum);
+	//	return "service/csBoard";
 		return "index.jsp?content=/WEB-INF/views/service/csBoard";
 	}
 
