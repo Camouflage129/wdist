@@ -23,10 +23,8 @@ public class MyBatisTest {
 		foodservice = null;
 	}
 		
-<<<<<<< HEAD
-	}
 	
-	
+	/*
 	//@Test
 	public void test() {
 		System.out.println(service.getDept());
@@ -37,14 +35,13 @@ public class MyBatisTest {
 			System.out.println(data);
 		}
 	}
-	
-	//@Test
+	*/
+	/*//@Test
 	public void getNumTest() {
 		System.out.println(service.getNum());
 	}
-	
+	*/
 	/*@Test
-=======
 	@Test
 >>>>>>> branch 'master' of https://github.com/Camouflage129/wdist.git
 	public void getfoodVO() {
