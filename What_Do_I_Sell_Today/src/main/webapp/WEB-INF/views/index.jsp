@@ -61,7 +61,7 @@
               <!-- Slide #1 caption -->
               <div class="nivo-caption" id="caption-1">
                 <div>
-                  <h2>Awesome <strong>features</strong></h2>
+                  <h2>창업 알아보고계세요?</h2>
                   <p>
                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
                   </p>
@@ -71,7 +71,7 @@
               <!-- Slide #2 caption -->
               <div class="nivo-caption" id="caption-2">
                 <div>
-                  <h2>Fully <strong>responsive</strong></h2>
+                  <h2>그렇다면 우리의 서비스를 주목하세요.</h2>
                   <p>
                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
                   </p>
@@ -81,7 +81,7 @@
               <!-- Slide #3 caption -->
               <div class="nivo-caption" id="caption-3">
                 <div>
-                  <h2>Very <strong>customizable</strong></h2>
+                  <h2>당신의 창업 준비에 큰 도움이 될 것입니다.</h2>
                   <p>
                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
                   </p>
@@ -105,11 +105,11 @@
                     <i class="icon-briefcase icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Corporate business</h6>
+                    <h6>우리 서비스를 소개합니다.</h6>
                     <p>
                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/intro.do">보러 가기</a>
                   </div>
                 </div>
               </div>
@@ -119,11 +119,11 @@
                     <i class="icon-desktop icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Responsive theme</h6>
+                    <h6>업종별 검색</h6>
                     <p>
                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/foodArea.do">보러 가기</a>
                   </div>
                 </div>
               </div>
@@ -133,11 +133,11 @@
                     <i class="icon-beaker icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Coded carefully</h6>
+                    <h6>지역별 검색</h6>
                     <p>
                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/areaFood.do">보러 가기</a>
                   </div>
                 </div>
               </div>
@@ -147,11 +147,11 @@
                     <i class="icon-coffee icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Sit and enjoy</h6>
+                    <h6>고객지원센터</h6>
                     <p>
                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/csBoard.do?num=1">보러 가기</a>
                   </div>
                 </div>
               </div>

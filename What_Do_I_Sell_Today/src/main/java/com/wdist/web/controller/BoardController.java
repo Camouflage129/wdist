@@ -81,7 +81,7 @@ public class BoardController {
 		request.setAttribute("list", clist);
 		request.setAttribute("postnum", postnum);
 	//	return "service/csBoard";
-		return "index.jsp?content=/WEB-INF/views/service/csBoard";
+		return "service/csBoard";
 	}
 
 	@RequestMapping(value = "/insertBoardGo.do")
