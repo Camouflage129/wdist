@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.wdist.biz.food.vo.AreaFoodVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
+import com.wdist.biz.food.vo.SaleAvgVO;
 import com.wdist.biz.mybatis.mapper.FoodMapper;
 
 @Component("FoodDAO")
@@ -20,8 +21,9 @@ public class FoodDAOImpl implements FoodDAO{
 	public void init() {
 		mapper = (FoodMapper) mybatis.getMapper(FoodMapper.class);
 	}
+
 	
-	@Override
+	/*@Override
 	public FoodAreaVO getFoodAreaTitle(String foodtitle) {
 		return mapper.getFoodAreaTitle(foodtitle);
 	}
@@ -29,5 +31,31 @@ public class FoodDAOImpl implements FoodDAO{
 	@Override
 	public AreaFoodVO getAreaFoodtitle(String areatitle) {
 		return mapper.getAreaFoodTitle(areatitle);
+	}*/
+	
+	
+	@Override
+	public SaleAvgVO fstSaleAvg(String areatitle) {
+		return mapper.fstSaleAvg(areatitle);
 	}
+
+	@Override
+	public SaleAvgVO sndSaleAvg(String areatitle) {
+		return mapper.sndSaleAvg(areatitle);
+	}
+
+	@Override
+	public SaleAvgVO thrdSaleAvg(String areatitle) {
+		return mapper.thrdSaleAvg(areatitle);
+	}
+
+	@Override
+	public SaleAvgVO frthSaleAvg(String areatitle) {
+		return mapper.frthSaleAvg(areatitle);
+	}
+	
+	
+	
+	
+	
 }
