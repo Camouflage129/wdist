@@ -10,10 +10,13 @@
         <div class="row nomargin">
           <div class="span12">
             <div class="headnav">
+              <c:if test="${empty userid}">
               <ul>
-                <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> 회원가입</a></li>
-                <li><a href="#mySignin" data-toggle="modal">로그인</a></li>
+                <li><a id="signUpA" href="/signUp.do" data-toggle="modal"><i class="icon-user"></i> 회원가입</a></li>
+<!--                 <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> 회원가입</a></li> -->
+                <li><a id="loginA" href="/login.do">로그인</a></li>
               </ul>
+              </c:if>
             </div>
           </div>
         </div>
@@ -21,7 +24,7 @@
           <div class="span4">
             <div class="logo">
               <a href="index.html"><img src="css/img/logo.png" alt="" class="logo" /></a>
-              <h1>Flat and trendy bootstrap template</h1>
+              <!-- <h1>Flat and trendy bootstrap template</h1> -->
             </div>
           </div>
           <div class="span8">
@@ -30,37 +33,15 @@
                 <nav>
                   <ul class="nav topnav">
                     <li>
-                      <a href="contact.html">링크1 </a>
+                      <a href="/intro.do"> 소개 </a>
                     </li>
                     <li class="dropdown">
                       <a href="#">분석서비스 <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                        <li><a href="about.html">분석1</a></li>
-                        <li><a href="pricingbox.html">분석2</a></li>
-                        <li><a href="testimonials.html">분석3</a></li>
-                        <li><a href="404.html">404</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#">Portfolio <i class="icon-angle-down"></i></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="portfolio-2cols.html">Portfolio 2 columns</a></li>
-                        <li><a href="portfolio-3cols.html">Portfolio 3 columns</a></li>
-                        <li><a href="portfolio-4cols.html">Portfolio 4 columns</a></li>
-                        <li><a href="portfolio-detail.html">Portfolio detail</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#">Blog <i class="icon-angle-down"></i></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                        <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
-                        <li><a href="post-left-sidebar.html">Post left sidebar</a></li>
-                        <li><a href="post-right-sidebar.html">Post right sidebar</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="contact.html">Contact </a>
+                        <li><a class="nav-link" href="/foodArea.do">업종별 검색</a></li>
+                        <li><a class="nav-link" href="/areaFood.do">지역별 검색</a></li>
+<!--                         <li><a href="pricingbox.html">지역별 검색</a></li> -->
+                       </ul>
                     </li>
                   </ul>
                 </nav>
@@ -70,5 +51,15 @@
           </div>
         </div>
       </div>
+      
     </header>
+    <div class="container">
+          <div class="row">
+            
+         
+    
+    
+    
+    
+    
     

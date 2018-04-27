@@ -10,9 +10,10 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="js/index.js?ver=1"></script>
-<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
-<link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <link href="css/old_bootstrap.css" rel="stylesheet" />
+  
+  
 <title>SignUp</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
 					<div id="idDiv" class="form-group has-danger">
 						<label class="form-control-label" for="inputDanger1">ID</label>
 						<!-- <input id="id" type="text" class="form-control is-invalid" name="id" onblur="onblur_event()"> -->
-						<input id="id" type="text" class="form-control is-invalid"
+						<input id="id" type="text" class="form-control is-invalid input-lg" 
 							name="id"> <small id="id_feedback"
 							class="form-text text-muted">첫글자는 영문, 4~16자 이내로 입력해주세요.</small>
 					</div>

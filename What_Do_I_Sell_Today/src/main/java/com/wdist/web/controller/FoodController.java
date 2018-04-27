@@ -27,7 +27,9 @@ public class FoodController {
 		
 	@RequestMapping(value="/foodArea.do")
 	public String foodarea() {
-		return "index.jsp?content=/WEB-INF/views/food/food";
+		return "food/food";
+/*		return "index.jsp?content=/WEB-INF/views/food/food";
+*/		//return "food/food";
 	}
 	
 	@RequestMapping(value="/foodAreaTitle.do", method = RequestMethod.POST)
@@ -74,8 +76,9 @@ public class FoodController {
 	
 	@RequestMapping(value="/areaFood.do")
 	public String areafood() {
-		return "index.jsp?content=/WEB-INF/views/area/area";	
-	}
+		return "area/area";	
+/*		return "index.jsp?content=/WEB-INF/views/area/area";	
+*/	}
 	
 	@RequestMapping(value="/areaFoodTitle.do")
 	public void areafoodtitle(String areatitle, HttpServletRequest req, HttpServletResponse res) {
