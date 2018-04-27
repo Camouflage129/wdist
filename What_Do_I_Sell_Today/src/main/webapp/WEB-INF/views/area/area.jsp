@@ -64,25 +64,26 @@ td {
   text-align: center;
   vertical-align: middle;
 }
-
-#table {
+#forpadding {
+    padding-bottom: 3em;
+}
+ #table {
     width: 100%;
     border: 1px solid #444444;
-  }
-.nonetd{
-	border-left: hidden;
-	border-bottom: hidden;
+  } 
+#myModal{
+	width: max-content;
 }
 
-/* table td a {
-	display: block;
-	width: 100%;
-	height: 100%;
-} */
 h2 {
 	text-align: center;
 }
-
+h3{
+	text-align: center;
+    margin-bottom: auto;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
 h4 {
 	text-align: center;
 }
@@ -101,10 +102,14 @@ h4 {
 
 #salearea {
 	float: left;
+	padding-left: 4em;
+    padding-right: 1em;
 }
 
 #dangerarea {
 	float: left;
+	padding-left: 4em;
+	padding-right: 4em;
 }
 </style>
 
@@ -184,16 +189,16 @@ h4 {
  -->
 		<!-- Modal -->
 		
-		<div class="modal fade" id="myModal" role="dialog">
-		<div id="modal" class="modal-dialog modal-lg">
+		<div class="modal fade" id="myModal" role="dialog" sytle:"width=90%;">
+		<div id="modal" class="modal-dialog modal-lg" >
 			<div class="modal-content">
 				<div class="modal-header">
 					<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-					<h4 class="modal-title">지역별 업종 분석</h4>
+					<h3 class="modal-title">지역별 업종 분석</h3>
 				</div>
 				<div class="modal-body">
 					<div id="salearea">
-						업종별 매출액
+						<h4>업종별 매출액</h4>
 						<table class="table">
 							<thead>
 								<tr>
@@ -301,7 +306,7 @@ h4 {
 	</div>
 </div>
 
-
+<div id="forpadding">
 	<div class="container">
 		<br>
 		<h2>지역별 검색</h2>
@@ -373,6 +378,8 @@ h4 {
 			</tbody>
 		</table>
 	</div>
+</div>
+	
 	<jsp:include page="../footer.jsp"></jsp:include>
 	
 </body>
