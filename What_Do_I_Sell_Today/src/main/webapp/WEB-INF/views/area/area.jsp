@@ -112,6 +112,7 @@ h4 {
 					"areatitle" : $(this).text()
 				},
 				success : function(data) {
+					alert(data);
 					food = data;
 					var length = $(".tr").find('td').length;
 
@@ -121,6 +122,15 @@ h4 {
 						for (var i in food) {
 							/* $(".modal-body").append('<td><a href="/menuDesc.do?food=' + food[i] + '\">' + food[i] + '</a></td>');*/
 							$("#tr1").append('<td>'+food[i]+'</td>');							
+							$("#tr2").append('<td>'+food[i]+'</td>');							
+							$("#tr3").append('<td>'+food[i]+'</td>');							
+							$("#tr4").append('<td>'+food[i]+'</td>');							
+							$("#tr5").append('<td>'+food[i]+'</td>');							
+							$("#tr6").append('<td>'+food[i]+'</td>');							
+							$("#tr7").append('<td>'+food[i]+'</td>');							
+							$("#tr8").append('<td>'+food[i]+'</td>');							
+							$("#tr9").append('<td>'+food[i]+'</td>');							
+							$("#tr10").append('<td>'+food[i]+'</td>');							
  						}
 					}
 
@@ -199,7 +209,8 @@ h4 {
 
 						</div>
 						<div id="dangerarea">창업위험도</div>
-					</div>
+								
+						</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>

@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.wdist.biz.food.service.FoodService;
+import com.wdist.biz.food.vo.DangerVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
 
 @Controller
@@ -101,18 +104,33 @@ public class FoodController {
 		System.out.println(areatitle);
 		
 		JsonArray arr = new JsonArray();
+		JsonArray arr2 = new JsonArray();
+		JsonObject obj = new JsonObject();
 		List<SaleAvgVO> list = new ArrayList<SaleAvgVO>();
-		SaleAvgVO vo = new SaleAvgVO();
+		DangerVO da = new DangerVO();
 		
 		list.addAll(service.fstSaleAvg(areatitle));
 		list.addAll(service.sndSaleAvg(areatitle));
 		list.addAll(service.thrdSaleAvg(areatitle));
 		list.addAll(service.frthSaleAvg(areatitle));
 		
+		
 		System.out.println(list);
 		
-		/*if(list != null) {
-			arr.
+		if(list != null && da != null) {
+			for(SaleAvgVO vo: list) {
+				arr.add(vo.getSale_species());
+				arr.add(vo.getAsale());
+			}
+			da = service.warninglever(areatitle);
+			arr2.add(da.getArea());
+			arr2.add(da.getLevel());
+			arr2.add(da.getFail());
+			
+			obj.add("list",arr);
+			obj.add("danger",arr2);
+			
+			System.out.println(obj);
 			
 			try {
 				res.getWriter().write(arr.toString());
@@ -122,7 +140,7 @@ public class FoodController {
 			}
 		}else {
 			return;
-		}*/
+		}
 	}
 	
 	@RequestMapping(value="/menuDesc.do")

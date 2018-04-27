@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wdist.biz.food.dao.FoodDAO;
 import com.wdist.biz.food.vo.AreaFoodVO;
+import com.wdist.biz.food.vo.DangerVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
 
@@ -45,6 +46,12 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public List<SaleAvgVO> frthSaleAvg(String areatitle) {
 		return dao.frthSaleAvg(areatitle);
+	}
+
+	@Override
+	public DangerVO warninglever(String areatitle) {
+		// TODO Auto-generated method stub
+		return dao.warninglever(areatitle);
 	}
 	
 	

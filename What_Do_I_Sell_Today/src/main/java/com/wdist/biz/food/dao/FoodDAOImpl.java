@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
+import com.wdist.biz.food.vo.DangerVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
 import com.wdist.biz.mybatis.mapper.FoodMapper;
 
@@ -44,6 +45,12 @@ public class FoodDAOImpl implements FoodDAO{
 	public List<SaleAvgVO> frthSaleAvg(String areatitle) {
 		// TODO Auto-generated method stub
 		return mapper.frthSaleAvg(areatitle);
+	}
+
+	@Override
+	public DangerVO warninglever(String areatitle) {
+		// TODO Auto-generated method stub
+		return mapper.warninglever(areatitle);
 	}
 
 	

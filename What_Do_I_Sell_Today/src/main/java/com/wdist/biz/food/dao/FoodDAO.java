@@ -2,6 +2,7 @@ package com.wdist.biz.food.dao;
 
 import java.util.List;
 
+import com.wdist.biz.food.vo.DangerVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
 
 public interface FoodDAO {
@@ -17,4 +18,7 @@ public interface FoodDAO {
 	public List<SaleAvgVO> thrdSaleAvg(String areatitle);
 	
 	public List<SaleAvgVO> frthSaleAvg(String areatitle);
+	
+	public DangerVO warninglever(String areatitle);
 }
+
