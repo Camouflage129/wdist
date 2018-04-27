@@ -170,7 +170,7 @@ h4 {
 			<div class="row">
 				<div class="span4">
 					<div class="inner-heading">
-						<h2>상권 분석 서비스란?</h2>
+						<h2>지역별 검색</h2>
 					</div>
 				</div>
 			</div>

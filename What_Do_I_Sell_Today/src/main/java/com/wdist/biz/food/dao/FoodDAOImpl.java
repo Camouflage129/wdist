@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.wdist.biz.food.vo.DangerVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.food.vo.WordCountVO;
 import com.wdist.biz.mybatis.mapper.FoodMapper;
 
 @Component("FoodDAO")
@@ -51,6 +52,12 @@ public class FoodDAOImpl implements FoodDAO{
 	public DangerVO warninglever(String areatitle) {
 		// TODO Auto-generated method stub
 		return mapper.warninglever(areatitle);
+	}
+		
+	@Override	
+	public List<WordCountVO> getWords(String word) {
+		// TODO Auto-generated method stub
+		return mapper.getWords(word);
 	}
 
 	
