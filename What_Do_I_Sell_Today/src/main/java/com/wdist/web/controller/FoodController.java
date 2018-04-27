@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.wdist.biz.food.service.FoodService;
+import com.wdist.biz.food.vo.DangerVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
 import com.wdist.biz.food.vo.WordCountVO;
 import com.wdist.biz.rserve.RServe;
@@ -83,31 +87,90 @@ public class FoodController {
 	@RequestMapping(value="/areaFoodTitle.do")
 	public void areafoodtitle(String areatitle, HttpServletRequest req, HttpServletResponse res) {
 		res.setContentType("application/json;charset=UTF-8");
-		
+		Gson gson = new Gson();
 		System.out.println("areaFoodTitle.do controller진입");
 		System.out.println(areatitle);
 		
-		JsonArray arr = new JsonArray();
-		List<SaleAvgVO> list = new ArrayList<SaleAvgVO>();
-		SaleAvgVO vo = new SaleAvgVO();
+		JsonArray arr1 = new JsonArray();
+		JsonArray arr2 = new JsonArray();
+		JsonArray arr3 = new JsonArray();
+		JsonArray arr4 = new JsonArray();
+		JsonArray arr5 = new JsonArray();
 		
-		list.addAll(service.fstSaleAvg(areatitle));
-		list.addAll(service.sndSaleAvg(areatitle));
-		list.addAll(service.thrdSaleAvg(areatitle));
-		list.addAll(service.frthSaleAvg(areatitle));
+		JsonObject obj = new JsonObject();
+		List<SaleAvgVO> list1 = new ArrayList<SaleAvgVO>();
+		List<SaleAvgVO> list2 = new ArrayList<SaleAvgVO>();
+		List<SaleAvgVO> list3 = new ArrayList<SaleAvgVO>();
+		List<SaleAvgVO> list4= new ArrayList<SaleAvgVO>();
+		DangerVO da = new DangerVO();
 		
-		System.out.println(list);
+		list1 = service.fstSaleAvg(areatitle);
+		list2 = service.sndSaleAvg(areatitle);
+		list3 = service.thrdSaleAvg(areatitle);
+		list4 = service.frthSaleAvg(areatitle);
+		System.out.println("list : "+list1);
+		JsonArray jsona = new JsonArray();
+		JsonObject jsono = new JsonObject();
+		JsonObject jsono2 = new JsonObject();
 		
-		/*if(list != null) {
-			arr.
+		JsonArray jaA = new Gson().toJsonTree(list1).getAsJsonArray();
+		JsonArray jaB = new Gson().toJsonTree(list2).getAsJsonArray();
+		JsonArray jaC = new Gson().toJsonTree(list3).getAsJsonArray();
+		JsonArray jaD = new Gson().toJsonTree(list4).getAsJsonArray();
+		System.out.println("jaA : "+jaA);
+		da = service.warninglever(areatitle);
+		
+		String json = gson.toJson(da);
+		System.out.println("dda : "+json);
+		//System.out.println("da : "+jsona.toString());
+		jsono.add("list1", jaA);
+		jsono.add("list2", jaB);
+		jsono.add("list3", jaC);
+		jsono.add("list4", jaD);
+		jsono.addProperty("danger",json);
+		
+		
+		/*
+		if(list1 != null && da != null) {
+			for(SaleAvgVO vo: list1) {
+				arr1.add(vo.getSale_species());
+				arr1.add(vo.getAsale());
+			}
+			
+			for(SaleAvgVO vo: list2) {
+				arr2.add(vo.getSale_species());
+				arr2.add(vo.getAsale());
+			}
+			
+			for(SaleAvgVO vo: list3) {
+				arr3.add(vo.getSale_species());
+				arr3.add(vo.getAsale());
+			}
+			
+			for(SaleAvgVO vo: list4) {
+				arr4.add(vo.getSale_species());
+				arr4.add(vo.getAsale());
+			}
+			da = service.warninglever(areatitle);
+			arr5.add(da.getArea());
+			arr5.add(da.getLevel());
+			arr5.add(da.getFail());
+			
+			obj.add("list1",arr1);
+			obj.add("list2",arr1);
+			obj.add("list3",arr1);
+			obj.add("list4",arr1);
+			obj.add("danger",arr5);
+			
+*/			System.out.println(jsono.toString());
 			
 			try {
-				res.getWriter().write(arr.toString());
+				res.getWriter().write(jsono.toString());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else {
+		/*}else {
 			return;
 		}*/
 	}

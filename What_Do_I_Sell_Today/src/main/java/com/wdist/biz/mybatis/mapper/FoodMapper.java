@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.wdist.biz.food.vo.DangerVO;
+
+import com.wdist.biz.food.vo.AreaFoodVO;
+import com.wdist.biz.food.vo.DangerVO;
+import com.wdist.biz.food.vo.FoodAreaVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
 import com.wdist.biz.food.vo.WordCountVO;
 
@@ -42,6 +47,11 @@ public interface FoodMapper {
 			" group by sale_species")
 	public List<SaleAvgVO> frthSaleAvg(String areatitle);
 	
+
+	@Select("select * from WARNINGLEVEL where area = #{areatitle}")
+	public DangerVO warninglever(String areatitle);
+	
+
 	@Select("SELECT\r\n" + 
 			"        quarter, n as rank, word, searchword, tfidf\r\n" + 
 			"    FROM\r\n" + 
