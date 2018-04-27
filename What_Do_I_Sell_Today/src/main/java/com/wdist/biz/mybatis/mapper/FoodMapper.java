@@ -42,9 +42,20 @@ public interface FoodMapper {
 			" group by sale_species")
 	public List<SaleAvgVO> frthSaleAvg(String areatitle);
 	
-	@Select("SELECT quarter, n, word, searchword, tfidf "
-			+ "FROM ( SELECT  @prev := '', @n := 0 ) init "
-			+ "JOIN ( SELECT  @n := if(quarter != @prev, 1, @n + 1) AS n, @prev := quarter, quarter, word, searchword, tfidf "
-			+ "FROM  wordcount ORDER BY quarter   ASC, tfidf DESC) x WHERE searchword like '%#{word}%' and n <= 10 ORDER BY  quarter, n;")
+	@Select("SELECT\r\n" + 
+			"        quarter, n as rank, word, searchword, tfidf\r\n" + 
+			"    FROM\r\n" + 
+			"      ( SELECT  @prev := '', @n := 0 ) init\r\n" + 
+			"    JOIN\r\n" + 
+			"      ( SELECT  @n := if(quarter != @prev, 1, @n + 1) AS n,\r\n" + 
+			"                @prev := quarter,\r\n" + 
+			"                quarter, word, searchword, tfidf\r\n" + 
+			"            FROM  wordcount\r\n" + 
+			"            ORDER BY\r\n" + 
+			"                quarter   ASC,\r\n" + 
+			"                tfidf DESC\r\n" + 
+			"      ) x\r\n" + 
+			"    WHERE searchword like '%#{word}%' and n <= 10\r\n" + 
+			"    ORDER BY  quarter, n;")
 	public List<WordCountVO> getWords(String word);
 }

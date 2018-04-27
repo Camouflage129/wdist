@@ -6,16 +6,18 @@ public class WordCountVO {
 	private String quater;
 	private int count;
 	private double tfidf;
+	private int rank;
 	
 	public WordCountVO() {
 	}
 
-	public WordCountVO(String word, String searchword, String quater, int count, double tfidf) {
+	public WordCountVO(String word, String searchword, String quater, int count, double tfidf, int rank) {
 		this.word = word;
 		this.searchword = searchword;
 		this.quater = quater;
 		this.count = count;
 		this.tfidf = tfidf;
+		this.rank = rank;
 	}
 
 	public String getWord() {
@@ -58,9 +60,17 @@ public class WordCountVO {
 		this.tfidf = tfidf;
 	}
 
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	@Override
 	public String toString() {
 		return "WordCountVO [word=" + word + ", searchword=" + searchword + ", quater=" + quater + ", count=" + count
-				+ ", tfidf=" + tfidf + "]";
+				+ ", tfidf=" + tfidf + ", rank=" + rank + "]";
 	}
 }
