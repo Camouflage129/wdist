@@ -57,10 +57,28 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/csBoard.do")
-	public String csBoardDo(HttpServletRequest request) {
+	public String csBoardDo(@RequestParam("num") int num , HttpServletRequest request) {
 		List<BoardVO> list = service.freeOrCsBoard("csBoard");
+		List<BoardVO> clist = new ArrayList<BoardVO>();
+		int postnum = 0;
+		int count = 0;
+		int pageNum = 0;
+		for ( int i = ((num - 1) * 10); i < list.size(); i++) {
+			if ( count == 10)
+				break;
+			clist.add(list.get(i));
+			count++;
+		}
+		if (list.size() % 10 ==0)
+			pageNum = list.size() / 10;
+		else
+			pageNum = list.size() / 10 + 1;
+		postnum = list.size() + 10 - pageNum * 10;
+		postnum = ( pageNum - num) * 10 + postnum;
 		request.setAttribute("type", "csBoard");
-		request.setAttribute("list", list);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("list", clist);
+		request.setAttribute("postnum", postnum);
 		return "index.jsp?content=/WEB-INF/views/service/csBoard";
 	}
 
@@ -82,7 +100,7 @@ public class BoardController {
 		if (boardVO.getType().equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
 		else
-			return "redirect:csBoard.do";
+			return "redirect:csBoard.do?num=1";
 	}
 
 	@RequestMapping(value = "/deleteFiles.do")
