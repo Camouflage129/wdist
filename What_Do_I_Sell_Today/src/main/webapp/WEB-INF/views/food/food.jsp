@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="js/food.js"></script>
 	<link rel="stylesheet" href="./css/food.css?ver=0" media="screen">
@@ -49,18 +50,15 @@
 						<div class="col-sm-8">
 							<table class="table table-hover">
 								<tr>
+									<th>분기</th>
 									<th>순위</th>
-									<th>1 분기</th>
-									<th>2 분기</th>
-									<th>3 분기</th>
-									<th>4 분기</th>
+									<th>단어</th>
 								</tr>
 								<c:forEach var="data" items="${list}">
 									<tr class="table-primary">
-										<td>${data.one}</td>
-										<td>${data.two}</td>
-										<td>${data.three}</td>
-										<td>${data.four}</td>
+										<td>${data.quater}</td>
+										<td>${data.rank}</td>
+										<td>${data.word}</td>
 									</tr>
 								</c:forEach>
 							</table>

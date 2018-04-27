@@ -55,7 +55,7 @@ public interface FoodMapper {
 			"                quarter   ASC,\r\n" + 
 			"                tfidf DESC\r\n" + 
 			"      ) x\r\n" + 
-			"    WHERE searchword like '%#{word}%' and n <= 10\r\n" + 
+			"    WHERE searchword like '%#{word}%' and n <= 5\r\n" + 
 			"    ORDER BY  quarter, n;")
 	public List<WordCountVO> getWords(String word);
 }
