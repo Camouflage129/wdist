@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <header>
       <div class="container ">
         <!-- hidden top area toggle link -->
@@ -18,7 +20,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="img/logo.png" alt="" class="logo" /></a>
+              <a href="index.html"><img src="css/img/logo.png" alt="" class="logo" /></a>
               <h1>Flat and trendy bootstrap template</h1>
             </div>
           </div>
@@ -69,3 +71,4 @@
         </div>
       </div>
     </header>
+    

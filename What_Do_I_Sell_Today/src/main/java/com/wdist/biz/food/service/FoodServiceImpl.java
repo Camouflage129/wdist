@@ -1,5 +1,7 @@
 package com.wdist.biz.food.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,22 +28,22 @@ public class FoodServiceImpl implements FoodService{
 	
 	
 	@Override
-	public SaleAvgVO fstSaleAvg(String areatitle) {
+	public List<SaleAvgVO> fstSaleAvg(String areatitle) {
 		return dao.fstSaleAvg(areatitle);
 	}
 
 	@Override
-	public SaleAvgVO sndSaleAvg(String areatitle) {
+	public List<SaleAvgVO> sndSaleAvg(String areatitle) {
 		return dao.sndSaleAvg(areatitle);
 	}
 
 	@Override
-	public SaleAvgVO thrdSaleAvg(String areatitle) {
+	public List<SaleAvgVO> thrdSaleAvg(String areatitle) {
 		return dao.thrdSaleAvg(areatitle);
 	}
 
 	@Override
-	public SaleAvgVO frthSaleAvg(String areatitle) {
+	public List<SaleAvgVO> frthSaleAvg(String areatitle) {
 		return dao.frthSaleAvg(areatitle);
 	}
 	

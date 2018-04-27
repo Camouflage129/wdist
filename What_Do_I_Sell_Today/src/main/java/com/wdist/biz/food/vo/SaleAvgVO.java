@@ -5,6 +5,7 @@ public class SaleAvgVO {
 	int asale;
 	
 	
+	
 	public SaleAvgVO() {
 		super();
 	}
@@ -29,4 +30,9 @@ public class SaleAvgVO {
 	public String toString() {
 		return "SaleAvgVO [sale_species=" + sale_species + ", asale=" + asale + "]";
 	}
+	
+	
+	
+	
+	
 }

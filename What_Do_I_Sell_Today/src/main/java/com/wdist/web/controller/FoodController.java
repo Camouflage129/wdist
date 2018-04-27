@@ -2,6 +2,8 @@ package com.wdist.web.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +30,6 @@ public class FoodController {
 	public String foodarea() {
 		return "index.jsp?content=/WEB-INF/views/food/food";
 	}
-	
 	
 	@RequestMapping(value="/foodAreaTitle.do", method = RequestMethod.POST)
 	public ModelAndView foodareatitle(String foodtitle, HttpServletRequest request){
@@ -84,17 +85,18 @@ public class FoodController {
 		System.out.println(areatitle);
 		
 		JsonArray arr = new JsonArray();
+		List<SaleAvgVO> list = new ArrayList<SaleAvgVO>();
 		SaleAvgVO vo = new SaleAvgVO();
 		
-		/*food = service.getAreaFoodTitle(areatitle);
-		System.out.println(food);
+		list.addAll(service.fstSaleAvg(areatitle));
+		list.addAll(service.sndSaleAvg(areatitle));
+		list.addAll(service.thrdSaleAvg(areatitle));
+		list.addAll(service.frthSaleAvg(areatitle));
 		
-		if(food != null) {
-			arr.add(food.getFstFood());
-			arr.add(food.getSndFood());
-			arr.add(food.getThdFood());
-			arr.add(food.getFthFood());
-			arr.add(food.getFthFood());
+		System.out.println(list);
+		
+		/*if(list != null) {
+			arr.
 			
 			try {
 				res.getWriter().write(arr.toString());
