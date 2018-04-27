@@ -5,6 +5,7 @@ import java.util.List;
 import com.wdist.biz.food.vo.AreaFoodVO;
 import com.wdist.biz.food.vo.FoodAreaVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.food.vo.WordCountVO;
 
 public interface FoodService {
 	
@@ -19,4 +20,5 @@ public interface FoodService {
 	
 	public List<SaleAvgVO> frthSaleAvg(String areatitle);
 	
+	public List<WordCountVO> getWords(String word);
 }

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.food.vo.WordCountVO;
 import com.wdist.biz.mybatis.mapper.FoodMapper;
 
 @Component("FoodDAO")
@@ -44,6 +45,12 @@ public class FoodDAOImpl implements FoodDAO{
 	public List<SaleAvgVO> frthSaleAvg(String areatitle) {
 		// TODO Auto-generated method stub
 		return mapper.frthSaleAvg(areatitle);
+	}
+
+	@Override
+	public List<WordCountVO> getWords(String word) {
+		// TODO Auto-generated method stub
+		return mapper.getWords(word);
 	}
 
 	

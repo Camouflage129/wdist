@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.wdist.biz.food.vo.AreaFoodVO;
-import com.wdist.biz.food.vo.FoodAreaVO;
 import com.wdist.biz.food.vo.SaleAvgVO;
+import com.wdist.biz.food.vo.WordCountVO;
 
 public interface FoodMapper {
 	
@@ -43,5 +42,9 @@ public interface FoodMapper {
 			" group by sale_species")
 	public List<SaleAvgVO> frthSaleAvg(String areatitle);
 	
-	
+	@Select("SELECT quarter, n, word, searchword, tfidf "
+			+ "FROM ( SELECT  @prev := '', @n := 0 ) init "
+			+ "JOIN ( SELECT  @n := if(quarter != @prev, 1, @n + 1) AS n, @prev := quarter, quarter, word, searchword, tfidf "
+			+ "FROM  wordcount ORDER BY quarter   ASC, tfidf DESC) x WHERE searchword like '%#{word}%' and n <= 10 ORDER BY  quarter, n;")
+	public List<WordCountVO> getWords(String word);
 }
