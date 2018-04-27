@@ -1,44 +1,44 @@
-¼­¿ï ¸ğµç ±¸/µ¿ À§Çèµµ
+ï»¿ì„œìš¸ ëª¨ë“  êµ¬/ë™ ìœ„í—˜ë„
 https://golmok.seoul.go.kr/sgmc/trdarstatis/get_RPCT030400.json
 
-¼­¿ï Á¾·ù, ±¸º° ¸ÅÃâ¾×
+ì„œìš¸ ì¢…ë¥˜, êµ¬ë³„ ë§¤ì¶œì•¡
 https://golmok.seoul.go.kr/sgmc/trdarstatis/get_rpct0203.json?svcIndutyCd=CS100001&upperSvcIndutyCd=CS100000&stdrYmCd=201802&signguEmdGb=signgu&svcStdrMm=02&signguCd=11680&adstrdCd=
 
-rpct020309
+rpct020311 
 
-ÇÑ½Ä CS100001
-Áß±¹Áı CS100002
-ÀÏ½Ä CS100003
-¾ç½ÄÁı CS100004
-ºĞ½ÄÁı CS100005
-ÆĞ½ºÆ®Çªµå CS100006
-Ä¡Å²Áı CS100007
-Á¦°úÁ¡ CS100008
-Ä¿ÇÇ CS100009
-È£ÇÁÁı CS100010
+í•œì‹ CS100001
+ì¤‘êµ­ì§‘ CS100002
+ì¼ì‹ CS100003
+ì–‘ì‹ì§‘ CS100004
+ë¶„ì‹ì§‘ CS100005
+íŒ¨ìŠ¤íŠ¸í‘¸ë“œ CS100006
+ì¹˜í‚¨ì§‘ CS100007
+ì œê³¼ì  CS100008
+ì»¤í”¼ CS100009
+í˜¸í”„ì§‘ CS100010
 
-°­³²±¸ signguCd=11680
-°­ºÏ±¸ signguCd=11305
-°­µ¿±¸ signguCd=11740
-°­¼­±¸ signguCd=11500
-°ü¾Ç±¸ signguCd=11620
-±¤Áø±¸ signguCd=11215
-±¸·Î±¸ signguCd=11530
-±İÃµ±¸ signguCd=11545
-³ë¿ø±¸ signguCd=11350
-µµºÀ±¸ signguCd=11320
-µ¿´ë¹®±¸ signguCd=11230
-µ¿ÀÛ±¸ signguCd=11590
-¸¶Æ÷±¸ signguCd=11440
-¼­´ë¹®±¸ signguCd=11410
-¼­ÃÊ±¸ signguCd=11650
-¼ºµ¿±¸ signguCd=11200
-¼ººÏ±¸ signguCd=11290
-¼ÛÆÄ±¸ signguCd=11710
-¾çÃµ±¸ signguCd=11470
-¿µµîÆ÷±¸ signguCd=11560
-¿ë»ê±¸ signguCd=11170
-ÀºÆò±¸ signguCd=11380
-Á¾·Î±¸ signguCd=11110
-Áß±¸ signguCd=11140
-Áß¶û±¸ signguCd=11260
+ê°•ë‚¨êµ¬ signguCd=11680
+ê°•ë¶êµ¬ signguCd=11305
+ê°•ë™êµ¬ signguCd=11740
+ê°•ì„œêµ¬ signguCd=11500
+ê´€ì•…êµ¬ signguCd=11620
+ê´‘ì§„êµ¬ signguCd=11215
+êµ¬ë¡œêµ¬ signguCd=11530
+ê¸ˆì²œêµ¬ signguCd=11545
+ë…¸ì›êµ¬ signguCd=11350
+ë„ë´‰êµ¬ signguCd=11320
+ë™ëŒ€ë¬¸êµ¬ signguCd=11230
+ë™ì‘êµ¬ signguCd=11590
+ë§ˆí¬êµ¬ signguCd=11440
+ì„œëŒ€ë¬¸êµ¬ signguCd=11410
+ì„œì´ˆêµ¬ signguCd=11650
+ì„±ë™êµ¬ signguCd=11200
+ì„±ë¶êµ¬ signguCd=11290
+ì†¡íŒŒêµ¬ signguCd=11710
+ì–‘ì²œêµ¬ signguCd=11470
+ì˜ë“±í¬êµ¬ signguCd=11560
+ìš©ì‚°êµ¬ signguCd=11170
+ì€í‰êµ¬ signguCd=11380
+ì¢…ë¡œêµ¬ signguCd=11110
+ì¤‘êµ¬ signguCd=11140
+ì¤‘ë‘êµ¬ signguCd=11260
