@@ -89,7 +89,7 @@ public class BoardController {
 	public String insertBoardGo(@RequestParam("type") String type, HttpServletRequest request) {
 		System.out.println(type);
 		request.setAttribute("type", type);
-		return "index.jsp?content=/WEB-INF/views/service/insertBoard";
+		return "service/insertBoard";
 	}
 
 	@RequestMapping(value = "/insertBoard.do")
@@ -134,7 +134,7 @@ public class BoardController {
 		request.setAttribute("beforeNum", beforeNum);
 		request.setAttribute("afterNum", afterNum);
 		request.setAttribute("board", board);
-		return "index.jsp?content=/WEB-INF/views/service/viewBoard";
+		return "service/viewBoard";
 	}
 	
 	@RequestMapping(value = "/editBoard.do", method=RequestMethod.GET)
