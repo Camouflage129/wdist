@@ -13,7 +13,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="span6">
+			<div class="span6" align="right" >
 					<ul class="social-network">
 						<li><a href="#" data-placement="bottom" title="Facebook"><i
 								class="icon-facebook icon-square"></i></a></li>

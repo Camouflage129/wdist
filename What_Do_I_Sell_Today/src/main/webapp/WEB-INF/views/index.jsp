@@ -61,9 +61,10 @@
               <!-- Slide #1 caption -->
               <div class="nivo-caption" id="caption-1">
                 <div>
-                  <h2>창업 알아보고계세요?</h2>
+                  <h2>혹시, 새로운 창업을 준비중 이신가요?</h2>
                   <p>
-                    Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
+<!--                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus. -->
+					새로운 사업 및 창업 아이템으로는 수많은 종류가 있습니다. 그리고 어떤 지역으로 선택할 것인지도 쉽지 않은 문제입니다. 그것들 중에서 유망한 지역이나 서비스들을 선별해내기란 여간 어려운 것이 아닙니다.
                   </p>
                   <a href="#" class="btn btn-theme">Read More</a>
                 </div>
@@ -71,9 +72,10 @@
               <!-- Slide #2 caption -->
               <div class="nivo-caption" id="caption-2">
                 <div>
-                  <h2>그렇다면 우리의 서비스를 주목하세요.</h2>
+                  <h2>그렇다면 우리의 서비스를 주목해주세요.</h2>
                   <p>
-                    Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
+<!--                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus. -->
+					방대한 분량의 공공데이터와 사람들의 SNS(페이스북, 인스타그램, 트위터 등 )에서 자주 언급하는 키워드 및 해시태그(#)를 접목하여 빅데이터 기반으로 유망한 업종 및 지역을 알려줍니다.
                   </p>
                   <a href="#" class="btn btn-theme">Read More</a>
                 </div>
@@ -83,7 +85,8 @@
                 <div>
                   <h2>당신의 창업 준비에 큰 도움이 될 것입니다.</h2>
                   <p>
-                    Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
+<!--                     Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus. -->
+					이와 같은 우리의 서비스들을 잘 활용한다면, 상권 정보와 함께 사람들의 관심사 및 트렌드를 손쉽게 파악할 수 있기 때문에 시작과 동시에 사업이 망하는 확률은 확연히 줄어들게 될 것입니다.
                   </p>
                   <a href="#" class="btn btn-theme">Read More</a>
                 </div>
@@ -106,9 +109,10 @@
                     <i class="icon-home icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>우리 서비스를 소개합니다.</h6>
+                    <h6>서비스 소개</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+<!--                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis. -->
+					우리가 어떤 서비스들을 제공하는지에 대해서 궁금하다면 아래의 버튼을 눌러주세요.
                     </p>
                     <a href="/intro.do">보러 가기</a>
                   </div>
@@ -123,7 +127,8 @@
                   <div class="text">
                     <h6>업종별 검색</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+<!--                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis. -->
+					업종별로 어떤 서비스가 유망한지에 대해서 궁금하다면 아래의 버튼을 눌러주세요.
                     </p>
                     <a href="/foodArea.do">보러 가기</a>
                   </div>
@@ -137,7 +142,8 @@
                   <div class="text">
                     <h6>지역별 검색</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+<!--                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis. -->
+					지역별로 어떤 서비스가 유망한지에 대해서 궁금하다면 아래의 버튼을 눌러주세요.
                     </p>
                     <a href="/areaFood.do">보러 가기</a>
                   </div>
@@ -151,7 +157,8 @@
                   <div class="text">
                     <h6>고객지원센터</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+<!--                       Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis. -->
+					궁금한 사항 및 문의사항이 있다면 <br>아래의 버튼을 눌러주세요.
                     </p>
                     <a href="/csBoard.do?num=1">보러 가기</a>
                   </div>
