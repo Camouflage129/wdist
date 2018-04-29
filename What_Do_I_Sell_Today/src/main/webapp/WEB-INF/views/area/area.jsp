@@ -25,6 +25,9 @@
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png" />
   <link rel="shortcut icon" href="ico/favicon.png" />
   <link href="css/font-awesome.css" rel="stylesheet" />
+  
+  <!-- font awsome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
   <!-- =======================================================
     Theme Name: Flattern
@@ -43,15 +46,25 @@ td {
   vertical-align: middle;
 }
 #forpadding {
-	padding-top : 2em;
+	/* padding-top : 2em; */
     padding-bottom: 3em;
+}
+.container{
+	padding-bottom:0;
+}
+.subtitle{
+	text-align:left;
+	padding-left:4em;
 }
  #table {
     width: 100%;
     border: 1px solid #444444;
   } 
+  .mark{
+  	text-align:right;
+  }
 #myModal{
-	width: max-content;
+	 width: max-content; 
 }
 
 h2 {
@@ -80,16 +93,19 @@ h4 {
 
 
 #salearea {
-	float: left;
-	padding-left: 4em;
-    padding-right: 1em;
+	float: left;  
+	/* padding-left: 4em;
+    padding-right: 1em;  */
+    width:30em;
 }
 
 #dangerarea {
-	float: left;
+	float: left; 
 	padding-left: 4em;
-	padding-right: 4em;
+	/*padding-right: 4em;*/ 
+	/* width:10em;  */
 }
+
 </style>
 
 <script type="text/javascript">
@@ -101,6 +117,10 @@ h4 {
 		var food;
 		var list;
 		var danger;
+		
+		function numberWithCommas(x) {
+		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
 
 		$('.btn.btn-info.btn-lg').click(function() {
 
@@ -113,30 +133,60 @@ h4 {
 				},
 				success : function(data) {
 					
+					var commawon;
+					
 					for (var i = 0; i<data.list1.length;i++) {
 						var plus = i+1;
 						/* alert(data.list1[i].asale); */
-						$('#a'+plus).html(data.list1[i].asale);
+						commawon = numberWithCommas(data.list1[i].asale);
+						/* $('#a'+plus).html(data.list1[i].asale); */
+						 $('#a'+plus).html(commawon); 
 					}
 					for (var i = 0; i<data.list2.length;i++) {
 						var plus = i+1;
-						$('#b'+plus).html(data.list2[i].asale);
+						commawon = numberWithCommas(data.list2[i].asale);
+						$('#b'+plus).html(commawon);
 					}
 					for (var i = 0; i<data.list3.length;i++) {
 						var plus = i+1;
-						$('#c'+plus).html(data.list3[i].asale);
+						commawon = numberWithCommas(data.list3[i].asale);
+						$('#c'+plus).html(commawon);
 					}
 					for (var i = 0; i<data.list4.length;i++) {
 						var plus = i+1;
-						$('#d'+plus).html(data.list4[i].asale);
+						commawon = numberWithCommas(data.list4[i].asale);
+						$('#d'+plus).html(commawon);
 					}
 					var da = data.danger
 					var obj = JSON.parse(data.danger);
+					
 						$('#td1').html(obj.area);
 						$('#wheregu').html(obj.area);
-						$('#td2').html(obj.level);
-						$('#td3').html(obj.fail);
+					
 						
+						$('#td2').html('<i id="i" class=\"fas fa-leaf\"></i>'+" "+ obj.level);
+						if(obj.level == "주의"){
+							$("#i").css({color:'blue'});
+						}else if(obj.level == "의심"){
+							$("#i").css({color:'yellow'});
+						}else if(obj.level == "위험"){
+							$("#i").css({color:'orange'});
+						}else {
+							$("#i").css({color:'red'});
+						}
+						$('#td3').html("폐업률 : "+obj.fail);
+			
+					
+						/* modal-center */		
+						$("#myModal").modal('show').css({
+							   /*  'margin-top': function () { //vertical centering
+							        return -($(this).height() / 2);
+							    }, */
+							    'margin-left': function () { //Horizontal centering
+							        return -($(this).width() / 2);
+							    }
+							});		
+				
 				},
 				error : function(data) {
 					alert("통신실패 : " + data.message);
@@ -168,17 +218,21 @@ h4 {
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>
  -->
 		<!-- Modal -->
-		
-		<div id="myModal" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
-		<div id="modal" class="modal-dialog modal-lg" >
+  <!-- 
+   <div id="myModal" class="modal modal-center styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+  <div id="modal" class="modal-dialog modal-center modal-lg" role="document"> -->
+ 
+		 <div id="myModal" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+		<div id="modal" class="modal-dialog modal-lg" > 
 			<div class="modal-content">
 				<div class="modal-header">
 					<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-					<h4 id="myModalLabel">지역별 업종 분석 <strong id="wheregu"></strong></h4>
+					<h4 id="myModalLabel"><strong id="wheregu"></strong></h4>
 				</div>
 				<div class="modal-body">
 					<div id="salearea">
 						<h4>업종별 매출액</h4>
+						<p class="mark">(분기별매출액 : 만원)</p>
 						<table class="table">
 							<thead>
 								<tr>
@@ -269,10 +323,37 @@ h4 {
 					</div>
 					<div id="dangerarea">
 						<h4>창업위험도</h4>
+						<br>
 						<table id="table">
-							<tr><td id="td1"></td><td id="td2"></td><td id="td3"></td></tr>
+							<tr>
+								<td>
+									<p id="td1"></p>
+								</td>
+								<td>
+									<p id="td2">
+									
+									</p>
+								</td>
+								<td>
+									<p id="td3"></p>
+								</td>
+							</tr>
 						</table>
-						
+						<br>
+						<div class="descmark">
+							<p>신규 창업위험도</p>
+							<small>출처( 우리마을 가게 상권분석 서비스 : http://golmok.seoul.go.kr/)</small><br>
+							<small>해당 행정구역 내 43개 생활밀착형 업종 기준 신규 창업 시 <br>
+							위험도를 폐업률과 3년 생존율로 결합(0~100으로 환산) 하여 만든 지표입니다.<br>
+							* 표준화구간(2년)을 이용하여 (횡적+종적) 상대화 지수를 구현</small><br>
+							
+								<ul>
+									<li>주의 :  창업 시 주의가 필요합니다.</li>
+									<li>의심 :  창업 시 위험이 있어 의사결정에 신중해야 하는 지역입니다.</li>
+									<li>위험 :  창업 시 상당한 위험이 있는 지역입니다. </li>
+									<li>고위험 : 창업 시 높은 위험이 있는 지역입니다.</li>
+								</ul> 
+							</div>
 						</div>
 				</div>		
 			</div>
@@ -287,10 +368,9 @@ h4 {
 </div>
 
 <div id="forpadding">
+<h3 class="subtitle">서울 상권 분석</h3>
 	<div class="container">
-		<!-- <br>
-		<h2>지역별 검색</h2>
-		<br> -->
+	
 		<table class="table table-bordered">
 			<tbody>
 				<tr>
