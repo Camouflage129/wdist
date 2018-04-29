@@ -49,11 +49,11 @@
       <div id="nivo-slider">
         <div class="nivo-slider">
           <!-- Slide #1 image -->
-          <img src="img/slides/nivo/bg-1.jpg" alt="" title="#caption-1" />
+          <img src="img/slides/nivo/plan_1900x600.jpg" alt="" title="#caption-1" />
           <!-- Slide #2 image -->
-          <img src="img/slides/nivo/bg-2.jpg" alt="" title="#caption-2" />
+          <img src="img/slides/nivo/bar_1900x600.jpg" alt="" title="#caption-2" />
           <!-- Slide #3 image -->
-          <img src="img/slides/nivo/bg-3.jpg" alt="" title="#caption-3" />
+          <img src="img/slides/nivo/brickwall_1900x600.jpg" alt="" title="#caption-3" />
         </div>
         <div class="container">
           <div class="row">
@@ -102,7 +102,8 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-briefcase icon-circled icon-64 active"></i>
+                   <!--  <i class="icon-briefcase icon-circled icon-64 active"></i> -->
+                    <i class="icon-home icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
                     <h6>우리 서비스를 소개합니다.</h6>
@@ -116,7 +117,8 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-desktop icon-circled icon-64 active"></i>
+                   <!--  <i class="icon-desktop icon-circled icon-64 active"></i> -->
+                   <i class="icon-food icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
                     <h6>업종별 검색</h6>
@@ -130,7 +132,7 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-beaker icon-circled icon-64 active"></i>
+                    <i class="icon-flag icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
                     <h6>지역별 검색</h6>
