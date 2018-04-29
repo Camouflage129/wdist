@@ -23,7 +23,7 @@
     <mvc:resources mapping="/img/**" location="/img/" />
     <mvc:resources mapping="/ico/**" location="/ico/" />
     <mvc:resources mapping="/contactform/**" location="/contactform/" />
-
+<mvc:resources mapping="/ckeditor/**" location="/ckeditor/" />
 	
 	<mvc:annotation-driven>
 		<mvc:message-converters>

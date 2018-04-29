@@ -1,17 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>오늘 뭐 팔지?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<!-- css -->
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
+	rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/bootstrap-responsive.css" rel="stylesheet" />
+<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="css/jcarousel.css" rel="stylesheet" />
+<link href="css/flexslider.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+
+<!-- Theme skin -->
+<link href="skins/default.css" rel="stylesheet" />
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="ico/apple-touch-icon-144-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="ico/apple-touch-icon-114-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="ico/apple-touch-icon-72-precomposed.png" />
+<link rel="apple-touch-icon-precomposed"
+	href="ico/apple-touch-icon-57-precomposed.png" />
+<link rel="shortcut icon" href="ico/favicon.png" />
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="ckeditor/adapters/jquery.js"></script>
-
 <script type="text/javascript" src="js/insertBoard.js"></script>
+
 <title>Insert Board</title>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 	<div class="container">
 		<form id="insertForm" action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<fieldset>
@@ -38,5 +66,30 @@
 			</fieldset>
 		</form>
 	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
+	<a href="#" class="scrollup"><i
+		class="icon-chevron-up icon-square icon-32 active"></i></a>
+	<!-- javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jcarousel/jquery.jcarousel.min.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/jquery.fancybox-media.js"></script>
+	<script src="js/google-code-prettify/prettify.js"></script>
+	<script src="js/portfolio/jquery.quicksand.js"></script>
+	<script src="js/portfolio/setting.js"></script>
+	<script src="js/jquery.flexslider.js"></script>
+	<script src="js/jquery.nivo.slider.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/jquery.ba-cond.min.js"></script>
+	<script src="js/jquery.slitslider.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/freeBoard.js"></script>
+	
+	<!-- Template Custom JavaScript File -->
+	<script src="js/custom.js"></script>
 </body>
 </html>

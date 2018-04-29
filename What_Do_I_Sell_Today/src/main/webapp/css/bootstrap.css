@@ -1091,9 +1091,9 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
+  /* height: 20px; */
   padding: 4px 6px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-size: 14px;
   line-height: 20px;
   color: #555555;
@@ -4964,7 +4964,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .pagination {
-  margin: 20px 0;
+  /* margin: 20px 0; */}
 }
 
 .pagination ul {
@@ -5618,6 +5618,23 @@ a.thumbnail:focus {
   margin-left: 0;
   list-style: none;
 }
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  float:left; list-style:none; margin:1px;
+
+
+}
+
+.list-inline-item {
+  display: inline-block;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
 
 .label,
 .badge {
