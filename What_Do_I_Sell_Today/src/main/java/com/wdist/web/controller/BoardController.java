@@ -81,6 +81,7 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("list", clist);
 		request.setAttribute("postnum", postnum);
+		request.setAttribute("thispage",num);
 	//	return "service/csBoard";
 		return "service/csBoard";
 	}
