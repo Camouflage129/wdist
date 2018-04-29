@@ -45,11 +45,11 @@
 						a += '<div class="commentInfo' + value.replyNum + '">' + '작성자 : ' + value.usersID;
 						a += '<div style="float:right;">'
 						if(value.parentNum==0){
-						a += '<button type="button" class="btn btn-primary btn-xs" onclick="commentReInsertForm(' + value.replyNum + ');"> 답글</button>';
+						a += '<button type="button" class="btn btn-theme btn-xs" onclick="commentReInsertForm(' + value.replyNum + ');"> 답글</button>';
 						}
 						if('${userid}' == value.usersID) {
-							a += '<button type="button" class="btn btn-default btn-xs" onclick="commentUpdate(' + value.replyNum + ',\'' + value.contents + '\');"> 수정 </button>';
-							a += '<button type="button" class="btn btn-danger btn-xs" onclick="commentDelete(' + value.replyNum + ');"> 삭제 </button>';
+							a += '<button type="button" class="btn btn-green btn-xs" onclick="commentUpdate(' + value.replyNum + ',\'' + value.contents + '\');"> 수정 </button>';
+							a += '<button type="button" class="btn btn-red btn-xs" onclick="commentDelete(' + value.replyNum + ');"> 삭제 </button>';
 						}
 						a += '</div></div> <div class="commentContent' + value.replyNum + '"> <p> 내용 : ' + value.contents + '</p>';
 						a += '</div><div class="recome'+value.replyNum+'" id="recom'+value.replyNum+'"></div></div>';
