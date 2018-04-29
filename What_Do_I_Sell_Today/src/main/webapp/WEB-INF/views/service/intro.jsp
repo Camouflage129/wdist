@@ -81,12 +81,11 @@
 
 
 					<div class="list-group">
-						<a class="list-group-item list-group-item-action"
-							style="color: black;">제공하는 서비스 </a><br>
-
+<!-- 						<a class="list-group-item list-group-item-action"
+							style="color: black;">제공하는 서비스 </a><br> -->
+						<h2 class="display-6">제공하는 서비스</h2>
+						<hr class="my-4">
 						<ul>
-							<li><a href="/foodArea.do"
-								class="list-group-item list-group-item-action">업종별 검색 </a></li>
 							<li><a href="/foodArea.do"
 								class="list-group-item list-group-item-action">업종별 검색 </a></li>
 							<li><a href="/areaFood.do"
