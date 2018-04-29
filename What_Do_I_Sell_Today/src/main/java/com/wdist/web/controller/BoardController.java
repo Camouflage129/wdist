@@ -144,7 +144,7 @@ public class BoardController {
 		request.setAttribute("board", board);
 		request.setAttribute("num", num);
 		
-		return "index.jsp?content=/WEB-INF/views/service/editBoard";
+		return "service/editBoard";
 	}
 	@RequestMapping(value = "/editBoard.do", method=RequestMethod.POST)
 	public String updateBoard(int num, String Type, String Title, String UsersID, String Contents, HttpServletRequest request) {
@@ -202,7 +202,7 @@ public class BoardController {
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("list", clist);
 		model.addAttribute("postnum", postnum);
-		return "index.jsp?content=/WEB-INF/views/service/searchBoard";
+		return "service/searchBoard";
 	}
 	
 	
