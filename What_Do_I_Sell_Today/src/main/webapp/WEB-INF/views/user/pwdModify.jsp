@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
+<!-- <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen"> -->
+<link rel="stylesheet" href="./css/old_bootstrap.css" media="screen">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
@@ -13,6 +14,7 @@
 
 <form action="/signUpNewPwd.do" method="post" id="searchpwdForm">
   <fieldset>
+  <br>
   <div align="center">
 	<legend>새비밀번호 설정하기</legend>
   </div>

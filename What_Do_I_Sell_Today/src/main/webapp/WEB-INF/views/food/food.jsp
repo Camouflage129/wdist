@@ -2,6 +2,14 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="js/food.js"></script>
+	<link rel="stylesheet" href="./css/food.css?ver=0" media="screen">
+	
+	<title>Food</title>
+
   <meta charset="utf-8">
   <title>오늘 뭐 팔지?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

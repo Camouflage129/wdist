@@ -19,6 +19,7 @@
 <body>
 	<form action="/signUp.do" method="post" id="signForm">
 		<fieldset>
+		<br>
 			<div align="center">
 				<legend>회원가입</legend>
 			</div>
