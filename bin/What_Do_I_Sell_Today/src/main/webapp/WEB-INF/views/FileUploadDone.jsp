@@ -1,0 +1,1 @@
+window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '');

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wdist.biz.reply.dao.ReplyDAO">
+
+	<select id="replyList" resultType="ReplyVO">
+		select * from reply where BoardNum = #{num}
+	</select>
+	
+	<delete id="deleteChild">
+		delete from reply where ParentNum = #{num}
+	</delete>
+
+	<insert id="insertReply" parameterType="ReplyVO">
+		insert into reply (replyNum, UsersID, Contents, PostDate, BoardNum)
+		values ((select ifnull(max(r.replyNum),0)+1 from reply r), #{usersID}, #{contents}, #{postDate}, #{boardNum})
+	</insert>
+	
+	<insert id="insertReReply" parameterType="ReplyVO">
+		insert into reply (replyNum, parentNum, Count, UsersID, Contents, PostDate, BoardNum)
+		values ((select ifnull(max(r.replyNum),0)+1 from reply r), #{parentNum}, #{count}, #{usersID}, #{contents}, #{postDate}, #{boardNum})
+	</insert>
+	
+	<select id="selectchicout" parameterType="ReplyVO" resultType="int">
+		select count(*) from reply where ParentNum = #{parentNum}
+	</select>
+	
+	<update id="modifyParentReply" parameterType="ReplyVO">
+		update reply set ChildCount = ChildCount + 1 where replyNum = #{parentNum}
+	</update>
+	
+	<update id="modifyReply" parameterType="ReplyVO">
+		update reply set Contents = #{contents} where replyNum = #{replyNum}
+	</update>
+	
+	<delete id="removeReply">
+		delete from reply where replyNum = #{replyNum}
+	</delete>
+	
+	<select id="selecyChild" parameterType="ReplyVO" resultType="ReplyVO">
+		select * from reply where replyNum = #{replyNum} and parentNum != 0
+	</select>
+	
+	<update id="updateParentReply" parameterType="ReplyVO">
+		update reply set ChildCount = ChildCount - 1 where replyNum = #{parentNum}
+	</update>
+	
+</mapper>

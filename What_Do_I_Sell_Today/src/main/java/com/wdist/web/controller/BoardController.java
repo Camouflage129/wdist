@@ -53,8 +53,9 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("list", clist);
 		request.setAttribute("postnum", postnum);
-	//	return "service/freeBoard";
-		return "index.jsp?content=/WEB-INF/views/service/freeBoard";
+		request.setAttribute("thispage",num);
+		return "service/freeBoard";
+		//return "index.jsp?content=/WEB-INF/views/service/freeBoard";
 	}
 
 	@RequestMapping(value = "/csBoard.do")
