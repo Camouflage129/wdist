@@ -133,9 +133,10 @@ h4 {
 					var da = data.danger
 					var obj = JSON.parse(data.danger);
 						$('#td1').html(obj.area);
+						$('#wheregu').html(obj.area);
 						$('#td2').html(obj.level);
 						$('#td3').html(obj.fail);
-					
+						
 				},
 				error : function(data) {
 					alert("통신실패 : " + data.message);
@@ -168,12 +169,12 @@ h4 {
  -->
 		<!-- Modal -->
 		
-		<div class="modal fade" id="myModal" role="dialog" sytle:"width=90%;">
+		<div id="myModal" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
 		<div id="modal" class="modal-dialog modal-lg" >
 			<div class="modal-content">
 				<div class="modal-header">
 					<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-					<h3 class="modal-title">지역별 업종 분석</h3>
+					<h4 id="myModalLabel">지역별 업종 분석 <strong id="wheregu"></strong></h4>
 				</div>
 				<div class="modal-body">
 					<div id="salearea">
@@ -360,6 +361,27 @@ h4 {
 </div>
 	
 	<jsp:include page="../footer.jsp"></jsp:include>
-	
+	<a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+  <!-- javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/jcarousel/jquery.jcarousel.min.js"></script>
+  <script src="js/jquery.fancybox.pack.js"></script>
+  <script src="js/jquery.fancybox-media.js"></script>
+  <script src="js/google-code-prettify/prettify.js"></script>
+  <script src="js/portfolio/jquery.quicksand.js"></script>
+  <script src="js/portfolio/setting.js"></script>
+  <script src="js/jquery.flexslider.js"></script>
+  <script src="js/jquery.nivo.slider.js"></script>
+  <script src="js/modernizr.custom.js"></script>
+  <script src="js/jquery.ba-cond.min.js"></script>
+  <script src="js/jquery.slitslider.js"></script>
+  <script src="js/animate.js"></script>
+
+  <!-- Template Custom JavaScript File -->
+  <script src="js/custom.js"></script>
 </body>
 </html>

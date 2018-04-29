@@ -55,7 +55,7 @@
 				<div class="row">
 					<div class="span4">
 						<div class="inner-heading">
-							<h2>공지사항</h2>
+							<h2>고객지원</h2>
 						</div>
 					</div>
 				</div>
