@@ -5,9 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- <!-- <script type="text/javascript" src="js/signUp.js?ver=2"></script>  -->
+<script type="text/javascript" src="js/signUp.js?ver=2"></script>
 <script type="text/javascript" src="js/index.js?ver=1"></script>
-<link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen">
+<!-- <link rel="stylesheet" href="./css/bootstrap.css?ver=0" media="screen"> -->
+<link rel="stylesheet" href="./css/old_bootstrap.css" media="screen">
 <link rel="stylesheet" href="./css/index.css?ver=0" media="screen">
 <link rel="stylesheet" href="./css/disabled.css">
 <title>modifyUser</title>
@@ -33,10 +34,12 @@ function userRemove() {
 <body>
 <form action="/updateuser.do" method="post" id="modifyForm" name="modifyForm">
   <fieldset>
+  <br>
   <div align="center">
 	<legend>회원 정보 수정</legend>
   </div>
   <div align="center">
+ 
   <div class="col-md-6 col-md-offset-3" align="left">
 		<div id="idDiv" class="form-group has-success">
 			<label class="form-control-label" for="inputDanger1">ID</label> 

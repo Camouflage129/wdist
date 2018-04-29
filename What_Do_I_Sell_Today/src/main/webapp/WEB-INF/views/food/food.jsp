@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="js/food.js"></script>
 	<link rel="stylesheet" href="./css/food.css?ver=0" media="screen">
+	
 	<title>Food</title>
 </head>
 <body>

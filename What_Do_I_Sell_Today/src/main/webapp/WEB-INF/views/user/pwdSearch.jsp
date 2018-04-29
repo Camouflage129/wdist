@@ -4,13 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="./css/bootstrap.css">
+<!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
+<link rel="stylesheet" href="./css/old_bootstrap.css" media="screen">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
 <form action="/searchPwd.do" method="post" id="searchpwdForm">
   <fieldset>
+  <br>
   <div align="center">
 	<legend>비밀번호 찾기</legend>
   </div>
