@@ -41,12 +41,15 @@ public class FoodController {
 		HashMap<String, Object> map = new HashMap<>();
 		System.out.println(foodtitle);
 		new RServe().getWordCloud(foodtitle);
+		System.out.println("이게뭘까?");
 		List<WordCountVO> list = service.getWords(foodtitle);
+		System.out.println(list);
 		map.put("result", "success");
 		request.setAttribute("list", list);
 		request.setAttribute("wordcloud", foodtitle);
 		map.put("list", list);
 		map.put("wordcloud",foodtitle);
+		System.out.println("수행 끝");
 		return new ModelAndView("jsonView", map);
 	}
 	

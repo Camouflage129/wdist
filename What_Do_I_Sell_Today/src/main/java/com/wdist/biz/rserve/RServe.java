@@ -41,11 +41,10 @@ public class RServe {
         util.init(host, userName, password, port);
         
 		String fileName=species+".jpeg";
-		String saveDir="C:/Users/User/git/wdist/What_Do_I_Sell_Today/src/main/webapp/image/"+fileName;
+		String saveDir="C:/git/wdist/What_Do_I_Sell_Today/src/main/webapp/image/"+fileName;
 
         util.download(dir, fileName, saveDir);
 
         util.disconnection();
-        System.exit(0);
 	}
 }
