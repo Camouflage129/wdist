@@ -78,7 +78,7 @@
 						<button id="editBtn" class="btn btn-green">수정</button>
 						<button id="deleteBtn" class="btn btn-red link-btn">삭제</button>
 					</c:if>
-					<button type="button" onclick="location.href='freeBoard.do?num=1'"
+					<button type="button" onclick="location.href='${board.type}.do?num=1'"
 						class="btn btn-blue">목록</button>
 					<button type="button"
 						onclick="location.href='insertBoardGo.do?type=${board.type}'"

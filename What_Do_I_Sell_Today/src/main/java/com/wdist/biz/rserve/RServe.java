@@ -8,7 +8,7 @@ public class RServe {
 		RConnection conn = null;
 		System.out.println("species : "+species);
 		try {
-			conn = new RConnection("70.12.109.77",6312);
+			conn = new RConnection("70.12.109.77",6311);
 			System.out.println("RServe 연동, conn: "+conn);
 			conn.eval("library(RColorBrewer)");
 			conn.eval("library(DBI)");
@@ -40,7 +40,7 @@ public class RServe {
         SFTPUtil util = new SFTPUtil();
         util.init(host, userName, password, port);
         
-		String fileName=species;
+		String fileName=species+".jpeg";
 		String saveDir="C:/Users/User/git/wdist/What_Do_I_Sell_Today/src/main/webapp/image/"+fileName;
 
         util.download(dir, fileName, saveDir);

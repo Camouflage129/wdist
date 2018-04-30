@@ -114,7 +114,7 @@ public class BoardController {
 		if (type.equals("freeBoard"))
 			return "redirect:freeBoard.do?num=1";
 		else
-			return "redirect:csBoard.do";
+			return "redirect:csBoard.do?num=1";
 	}
 
 	@RequestMapping(value = "/findBoard.do")

@@ -29,12 +29,9 @@
 		
 	<bean id="dataSourceMariadb" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://mrsshr.net:15411/project"></property>
-		<!-- <property name="url" value="jdbc:mysql://70.12.109.53:3306/project"></property> -->
-		<!-- <property name="username" value="root"></property>
-		<property name="password" value="bigdata"></property> -->
-		<property name="username" value="wdist"></property>
-		<property name="password" value="wjdqhqhdks1!"></property>
+		<property name="url" value="jdbc:mysql://70.12.109.53:3306/project"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="bigdata"></property>
 	</bean>
 	
 	<!-- Mybatis Maridb -->
@@ -48,11 +45,9 @@
 
 	<bean id="dataSourceWindow" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://mrsshr.net:15411/wdist"></property>
-		<!-- <property name="url" value="jdbc:mysql://70.12.109.78:3306/wdist"></property> -->
+		<property name="url" value="jdbc:mysql://70.12.109.78:3306/wdist"></property>
 		<property name="username" value="wdist"></property>
-<!-- 		<property name="password" value="1234"></property> -->
-		<property name="password" value="wjdqhqhdks1!"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 
 	<!-- MyBatis -->
