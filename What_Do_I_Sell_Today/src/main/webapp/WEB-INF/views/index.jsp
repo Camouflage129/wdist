@@ -152,7 +152,7 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-coffee icon-64 active"></i>
+                    <i class="icon-coffee icon-circled icon-64 active"></i>
                   
                   </div>
                   <div class="text">
