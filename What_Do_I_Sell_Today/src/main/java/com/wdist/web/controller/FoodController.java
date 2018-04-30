@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.wdist.biz.food.service.FoodService;
 import com.wdist.biz.food.vo.DangerVO;
@@ -43,10 +42,8 @@ public class FoodController {
 		new RServe().getWordCloud(foodtitle);
 		System.out.println("이게뭘까?");
 		List<WordCountVO> list = service.getWords(foodtitle);
-		System.out.println(list);
+		System.out.println("test" + list);
 		map.put("result", "success");
-		request.setAttribute("list", list);
-		request.setAttribute("wordcloud", foodtitle);
 		map.put("list", list);
 		map.put("wordcloud",foodtitle);
 		System.out.println("수행 끝");
