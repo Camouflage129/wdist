@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</section>
-		<section id="content">
+		<section id="content" style="left: 5px;">
 
 			<div class="container col-sm-11.5">
 				<div class="row">
@@ -121,7 +121,7 @@
 							</div>
 						</td>
 
-						<td>
+						<td style="padding-left: 10em;">
 							<div class="col-md-7">
 								<form action="searchBoard.do" method="post"
 									style="margin-bottom: 0px; padding-right: 0px;">
@@ -141,7 +141,7 @@
 						</td>
 
 						<td>
-							<div class="col-md-1">
+							<div class="col-md-1" style="margin-left: 0px;">
 								<button id="insertBoard" type="button" class="btn btn-theme">글쓰기</button>
 							</div>
 						</td>

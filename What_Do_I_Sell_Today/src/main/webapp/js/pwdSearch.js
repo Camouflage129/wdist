@@ -52,3 +52,20 @@ $("#email2").blur(function() {
 		$("#email_feedback2").html("입력완료");
 	}
 });
+
+$("#pwdans").blur(function() {
+	var ansCheck = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]{2,15}$/
+	
+	if( $("#pwdAnsDiv").val() == "" || !ansCheck.test($("#pwdans").val()) ) {
+		$("#pwdAnsDiv").attr("class", "form-group has-danger");
+		$(this).attr("class","form-control is-invalid");
+		$("#pwdAns_feedback").attr("class","invalid-feedback");
+		$("#pwdAns_feedback").html("답변을 입력해주세요.");
+	} else{
+		$("#pwdAnsDiv").attr("class", "form-group has-success");
+		$(this).attr("class","form-control is-valid");
+		$("#pwdAns_feedback").attr("class","valid-feedback");
+		$("#pwdAns_feedback").html("입력완료.");
+		signup += '1';
+	}
+});

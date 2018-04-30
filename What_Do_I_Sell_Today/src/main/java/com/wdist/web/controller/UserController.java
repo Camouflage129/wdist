@@ -273,7 +273,6 @@ public class UserController {
 	// 비밀번호 찾기 페이지
 	@RequestMapping(value="/searchPwd.do", method=RequestMethod.GET)
 	public String searchPwdForm(HttpSession session, Model model) {
-		
 		PrivateKey key = (PrivateKey) session.getAttribute("RSAprivateKey");
 		if (key != null) { // 기존 key 파기
 			session.removeAttribute("RSAprivateKey");

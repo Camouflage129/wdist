@@ -106,7 +106,7 @@
     var $pwdhint = $("#hiddenForm input[name='pwdhint']");
     var $pwdans = $("#hiddenForm input[name='pwdans']");
     var $name = $("#hiddenForm input[name='name']");
-    var $id = $("#hiddenForm input[name='id']");
+    var $id5 = $("#hiddenForm input[name='id']");
  
     // Server로부터 받은 공개키 입력
     var rsa = new RSAKey();
@@ -115,11 +115,11 @@
     $("#searchpwdForm").submit(function(e) {
         e.preventDefault();
  
-        var email = $(this).find("#email").val();
+        var email = $(this).find("#email2").val();
         var pwdhint = $(this).find("#pwdhint").val();
         var pwdans = $(this).find("#pwdans").val();
-        var id = $(this).find("#id").val();
-        var name = $(this).find("#name").val();
+        var id = $(this).find("#id5").val();
+        var name = $(this).find("#name2").val();
         $email.val(rsa.encrypt(email));
         $pwdhint.val(rsa.encrypt(pwdhint));
         $pwdans.val(rsa.encrypt(pwdans));
