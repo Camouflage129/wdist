@@ -1,11 +1,19 @@
 $(function() {
+	/*var total_time = 5000;
+	var current_time = 0;
+	var refresh_interval = 50;
+	var timer;*/
 	$(".ui-dialog-titlebar-close").hide();
-	$("button").click(function(){
+	$("button").click(function() {
 		var btn = $(this).attr("id");
 		var species = $(this).html();
-		if(btn == "closeBtn" || btn == "closeBtn2")
-			$("#foodModal").dialog("close");
-		else {
+/*		$("#progressbar").progressbar({
+			max : total_time,
+			value : current_time
+		});
+		timer = setInterval(refresh_bar, refresh_interval);*/
+		if (btn == "closeBtn" || btn == "closeBtn2")
+			$("#foodModal").dialog("close");else {
 			$.ajax({
 				type : 'POST',
 				url : 'foodAreaTitle.do',
@@ -14,6 +22,7 @@ $(function() {
 					"foodtitle" : species
 				},
 				success : function(data) {
+
 					$("#foodModal").dialog();
 				},
 				error : function(data) {
@@ -22,4 +31,11 @@ $(function() {
 			})
 		}
 	})
+	function refresh_bar() {
+		$("#progressbar").progressbar({
+			value : current_time
+		});
+		current_time += refresh_interval;
+		if (current_time > total_time) clearInterval(timer);
+	}
 })
