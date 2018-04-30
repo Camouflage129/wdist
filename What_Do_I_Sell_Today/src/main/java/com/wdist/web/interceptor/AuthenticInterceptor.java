@@ -10,6 +10,7 @@ public class AuthenticInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		System.out.println(request.getRequestURI());
 		HttpSession session = request.getSession();
 		String requestUrl = request.getRequestURL().toString();
 		if(requestUrl.equals("http://localhost:9000/") || requestUrl.contains("/login.do") || requestUrl.contains("/logout.do") 

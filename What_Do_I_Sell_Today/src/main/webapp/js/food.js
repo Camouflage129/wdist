@@ -7,11 +7,6 @@ $(function() {
 	$("button").click(function() {
 		var btn = $(this).attr("id");
 		var species = $(this).html();
-		/*		$("#progressbar").progressbar({
-					max : total_time,
-					value : current_time
-				});
-				timer = setInterval(refresh_bar, refresh_interval);*/
 		if (btn == "closeBtn" || btn == "closeBtn2")
 			$("#foodModal").hide();else {
 			$.ajax({
@@ -22,6 +17,8 @@ $(function() {
 					"foodtitle" : species
 				},
 				success : function(data) {
+					var list = data.list;
+					
 					var a = '';
 					a += '<img alt="wordcloud" src="/image/' + data.wordcloud + '.jpeg">';
 					$('#wordcloudImg').html(a);

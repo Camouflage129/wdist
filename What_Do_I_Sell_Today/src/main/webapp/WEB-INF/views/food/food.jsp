@@ -61,44 +61,51 @@ table>tbody>tr>td {
 }
 
 td {
-  text-align: center;
-  vertical-align: middle;
+	text-align: center;
+	vertical-align: middle;
 }
+
 #forpadding {
 	/* padding-top : 2em; */
-    padding-bottom: 3em;
+	padding-bottom: 3em;
 }
-.container{
-	padding-bottom:0;
+
+.container {
+	padding-bottom: 0;
 }
-.subtitle{
-	text-align:left;
-	padding-left:4em;
+
+.subtitle {
+	text-align: left;
+	padding-left: 4em;
 }
- #table {
-    width: 100%;
-    border: 1px solid #444444;
-  } 
-  .mark{
-  	text-align:right;
-  }
-#myModal{
-	 width: max-content; 
+
+#table {
+	width: 100%;
+	border: 1px solid #444444;
+}
+
+.mark {
+	text-align: right;
+}
+
+#myModal {
+	width: max-content;
 }
 
 h2 {
 	text-align: center;
 }
-h3{
+
+h3 {
 	text-align: center;
-    margin-bottom: auto;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;
+	margin-bottom: auto;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
 }
+
 h4 {
 	text-align: center;
 }
-
 
 .btn.btn-info.btn-lg {
 	background: none;
@@ -110,21 +117,19 @@ h4 {
 	outline: inherit;
 }
 
-
 #salearea {
-	float: left;  
+	float: left;
 	/* padding-left: 4em;
     padding-right: 1em;  */
-    width:30em;
+	width: 30em;
 }
 
 #dangerarea {
-	float: left; 
+	float: left;
 	padding-left: 4em;
-	/*padding-right: 4em;*/ 
+	/*padding-right: 4em;*/
 	/* width:10em;  */
 }
-
 </style>
 
 </head>
@@ -173,49 +178,38 @@ h4 {
 	</div>
 
 	<div id="modalsize" class="container">
-		 <div id="myModal" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
-		<div id="modal" class="modal-dialog modal-lg" > 
-			<div class="modal-content">
-				<div class="modal-header">
-					<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-					<h4 id="myModalLabel"><strong id="wheregu"></strong></h4>
-				</div>
-				<div class="modal-body">
-					<div id="salearea">
-						<h4>키워드 분석</h4>
-						<table class="table">
-							<thead>
-								<tr>
-									<th></th>
-									<th>1사분기</th>
-									<!-- 1702~04 -->
-									<th>2사분기</th>
-									<!-- 1705~07 -->
-									<th>3사분기</th>
-									<!-- 1708~010 -->
-									<th>4사분기</th>
-									<!-- 17011~1801 -->
-								</tr>
-							</thead>
-							<tbody class="tbody">
-								
-							</tbody>
-						</table>
+		<div id="myModal" class="modal styled hide fade" tabindex="-1"
+			role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+			<div id="modal" class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<!--  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+						<h4 id="myModalLabel">
+							<strong id="wheregu"></strong>
+						</h4>
 					</div>
-					<div id="dangerarea">
-						<h4>WordCloud</h4>
-						<div id="wordcloudImg" class="descmark">
+					<div class="modal-body">
+						<div id="salearea">
+							<h4>키워드 분석</h4>
+							<table class="table">
+								<tbody id="keyword" class="tbody">
+
+								</tbody>
+							</table>
+						</div>
+						<div id="dangerarea">
+							<h4>WordCloud</h4>
+							<div id="wordcloudImg" class="descmark"></div>
 						</div>
 					</div>
-				</div>		
-			</div>
-					<div class="modal-footer">
-						<button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-					<!-- <div id="dangerarea">창업위험도</div> -->
+				</div>
+				<div class="modal-footer">
+					<button id="close" type="button" class="btn btn-default"
+						data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<a href="#" class="scrollup"><i
 		class="icon-chevron-up icon-square icon-32 active"></i></a>
