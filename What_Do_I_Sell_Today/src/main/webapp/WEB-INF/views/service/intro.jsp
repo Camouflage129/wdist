@@ -8,6 +8,12 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+
 <!-- css -->
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
@@ -45,7 +51,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="span4">
-					<div class="inner-heading">
+					<div class="inner-heading"
+						style="padding-right: 0px; width: 400px;">
 						<h2>상권 분석 서비스란?</h2>
 					</div>
 				</div>
@@ -81,7 +88,7 @@
 
 
 					<div class="list-group">
-<!-- 						<a class="list-group-item list-group-item-action"
+						<!-- 						<a class="list-group-item list-group-item-action"
 							style="color: black;">제공하는 서비스 </a><br> -->
 						<h2 class="display-6">제공하는 서비스</h2>
 						<hr class="my-4">
