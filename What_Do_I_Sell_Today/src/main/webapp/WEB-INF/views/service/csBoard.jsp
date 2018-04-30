@@ -8,7 +8,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
 <!-- css -->
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
@@ -89,57 +89,71 @@
 					</table>
 					<div class="col-sm-1"></div>
 				</div>
-				
-			<!-- end slider -->
+
+				<!-- end slider -->
 		</section>
 		<div class="container">
-					<div class="row">
-					<div class="pagination col-md-4">
-						<ul>
-							<li class="disabled"><a href="#">Prev</a></li>
-							<c:forEach var="i" begin="1" end="${pageNum}" step="1">
-								<c:if test="${thispage eq i}">
-									<li class="active"><a href="freeBoard.do?num=${i}">${i}</a></li>
-								</c:if>
-								<c:if test="${thispage ne i}">
-									<li><a href="freeBoard.do?num=${i}">${i}</a></li>
-								</c:if>
-								<c:if test="${i eq pageNum}">
-									<c:if test="${thispage eq pageNum}">
-										<li class=disabled><a href="#">Next</a></li>
-									</c:if>
-									<c:if test="${thispage ne pageNum}">
-										<li><a href="freeBoard.do?num=${pageNum+1}">Next</a></li>
-									</c:if>
-								</c:if>
-							</c:forEach>
+			<div class="row">
+				<table style="width: 100%;">
+					<tr>
+						<td style="padding-left: 5px;">
+							<div class="pagination col-md-4">
+								<ul>
+									<li class="disabled"><a href="#">Prev</a></li>
+									<c:forEach var="i" begin="1" end="${pageNum}" step="1">
+										<c:if test="${thispage eq i}">
+											<li class="active"><a href="freeBoard.do?num=${i}">${i}</a></li>
+										</c:if>
+										<c:if test="${thispage ne i}">
+											<li><a href="freeBoard.do?num=${i}">${i}</a></li>
+										</c:if>
+										<c:if test="${i eq pageNum}">
+											<c:if test="${thispage eq pageNum}">
+												<li class=disabled><a href="#">Next</a></li>
+											</c:if>
+											<c:if test="${thispage ne pageNum}">
+												<li><a href="freeBoard.do?num=${pageNum+1}">Next</a></li>
+											</c:if>
+										</c:if>
+									</c:forEach>
 
-						</ul>
-					</div>
-					<div class="col-md-7">
-					<form action="searchBoard.do" method="post">
-						<select id="searchTitle" name="searchTitle"
-								class="input-small search-query">
-								<option value="Title">제목</option>
-								<option value="Contents">내용</option>
-								<option value="UsersID">작성자</option>
-							</select> <input placeholder="검색.." type="text"
-								class="input-medium search-query" id="searchBoard">
-							<button type="submit" class="btn btn-square btn-theme"
-								id="searchBoard">Search</button>
-								<input type="hidden" name="num" value="1"> <input
-								id="type" type="hidden" name="Type" value="${type}">
-						</form>
-					</div>
-					<div class="col-md-1">
-						<button id="insertBoard" type="button" class="btn btn-theme">글쓰기</button>
-					</div>
-					</div>
-					</div>
-				
+								</ul>
+							</div>
+						</td>
+
+						<td>
+							<div class="col-md-7">
+								<form action="searchBoard.do" method="post"
+									style="margin-bottom: 0px; padding-right: 0px;">
+									<select id="searchTitle" name="searchTitle"
+										class="input-small search-query">
+										<option value="Title">제목</option>
+										<option value="Contents">내용</option>
+										<option value="UsersID">작성자</option>
+									</select> <input placeholder="검색.." type="text"
+										class="input-medium search-query" id="searchBoard">
+									<button type="submit" class="btn btn-square btn-theme"
+										id="searchBoard">Search</button>
+									<input type="hidden" name="num" value="1"> <input
+										id="type" type="hidden" name="Type" value="${type}">
+								</form>
+							</div>
+						</td>
+
+						<td>
+							<div class="col-md-1">
+								<button id="insertBoard" type="button" class="btn btn-theme">글쓰기</button>
+							</div>
+						</td>
+
+					</tr>
+				</table>
 			</div>
+		</div>
 
-		<jsp:include page="../footer.jsp"></jsp:include>
+	</div>
+
+	<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
 	<a href="#" class="scrollup"><i
 		class="icon-chevron-up icon-square icon-32 active"></i></a>
@@ -162,7 +176,7 @@
 	<script src="js/jquery.slitslider.js"></script>
 	<script src="js/animate.js"></script>
 	<script src="js/freeBoard.js"></script>
-	
+
 	<!-- Template Custom JavaScript File -->
 	<script src="js/custom.js"></script>
 
